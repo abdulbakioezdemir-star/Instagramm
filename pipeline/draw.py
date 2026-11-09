@@ -270,6 +270,17 @@ def ahmed_head(c, st, t):
     hp.cubicTo(400, 250, 300, 230, 178, 345)
     hp.close()
     drawpath(c, hp, HAIR, 13)
+    if st.get("cap"):
+        cp_ = skia.Path()
+        cp_.moveTo(150, 360)
+        cp_.cubicTo(140, 120, 330, 10, 585, 15)
+        cp_.cubicTo(840, 10, 1030, 120, 1020, 360)
+        cp_.cubicTo(900, 300, 740, 270, 585, 275)
+        cp_.cubicTo(430, 270, 270, 300, 150, 360)
+        cp_.close()
+        drawpath(c, cp_, "#FF8FC2", 13)
+        for (bx, by) in [(330, 130), (585, 80), (840, 130), (450, 210), (720, 210)]:
+            circ(c, bx, by, 22, "#FFFFFF", 0, a=200)
     # blush
     oval(c, 318, 582, 62, 33, "#E0907E", a=170)
     oval(c, 852, 582, 62, 33, "#E0907E", a=170)

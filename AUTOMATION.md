@@ -9,7 +9,7 @@ Ziel: Reichweite aufbauen und später Geld verdienen.
 |---|---|---|
 | @ahmed.glowup | 17841475087472410 | **Hauptkonto** – Ahmed-Serie |
 | @ahmed.30tage | 17841425057743152 | noch kein Content – nichts posten, bis der Besitzer Content vorgibt |
-| @ahmed.sucht.liebe | 17841459168444268 | noch kein Content – nichts posten, bis der Besitzer Content vorgibt |
+| @valmora.nation (früher @ahmed.sucht.liebe) | 17841459168444268 | Nations-Serie Valmora – siehe nation/NATION.md |
 
 ## Serie „Ahmed Glowup“
 - Ahmed (27, pleite) hat auf Tinder mit Lena gematcht – mit dem Foto von Cousin Emre. In 30 Tagen treffen sie sich.

@@ -749,8 +749,8 @@ def caption(c, t, who, chunk_words, cy, tail_x=None, appear=0.0):
     c.translate(W / 2, cy)
     c.scale(sc, sc)
     c.translate(-W / 2, -cy)
-    is_l = who == "L"
-    fill = "#FFFFFF" if not is_l else "#FFE1EC"
+    is_l = who in ("L", "K")
+    fill = {"L": "#FFE1EC", "K": "#FFF1D6"}.get(who, "#FFFFFF")
     rrect(c, bx + 12, by + 12, bw, bh, 34, INK)
     rrect(c, bx, by, bw, bh, 34, fill, 8)
     if tail_x:
@@ -761,7 +761,7 @@ def caption(c, t, who, chunk_words, cy, tail_x=None, appear=0.0):
         drawpath(c, tp, fill, 0)
         c.drawLine(tail_x - 30, by + bh - 1, tail_x + 10, by + bh + 50, strokep(INK, 8))
         c.drawLine(tail_x + 10, by + bh + 50, tail_x + 32, by + bh - 1, strokep(INK, 8))
-    lab = "AHMED" if not is_l else "LENA"
+    lab = {"L": "LENA", "K": "DÖNERMANN"}.get(who, "AHMED")
     text(c, lab, W / 2, by + 40, "black", 26, "#E0245E")
     # words with highlight
     idx = 0

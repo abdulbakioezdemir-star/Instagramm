@@ -13,6 +13,12 @@ Die Zuschauer bauen es mit auf:
   (gebaut, beschlossen, entdeckt …). Kosten werden von der Staatskasse abgezogen.
 - Name „Valmora“ und Flagge sind der Start-Vorschlag; die Zuschauer dürfen per Top-Kommentar umbenennen/neue Flagge fordern.
 
+## Aufbau nach Vorbild-Video (Auravale)
+Großes, leeres Gebiet zeigen (Kamerafahrt über Berge, Wälder, Fluss, Meer), Karte mit Grenzen und Fläche (12 km²),
+Flagge, Startwerte-Tafel, sichtbarer Bau mit Fortschrittsbalken und Kosten, Budget-Tafel (alt − Kosten = neu),
+Regeln, OG-Pass für die ersten 100 Einwohner. Welt: nation/pipeline/world.py (Panorama 3600×1920 + Karte).
+Neue Bauten werden in Panorama/Karte eingezeichnet und bleiben in allen späteren Folgen sichtbar.
+
 ## Jedes Reel
 - 1080×1920, 30–50 s, animiert im Stil der Pipeline (pipeline/), eigene Erzählerstimme (edge-tts, ruhig-episch, normal klingend).
 - Hook in Sekunde 0–1 („Tag N meiner eigenen Nation …“), Anzeige oben: Staatskasse € · Einwohner · Tag N.

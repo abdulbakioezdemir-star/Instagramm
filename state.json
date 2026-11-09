@@ -1,0 +1,23 @@
+{
+  "serie": "ahmed-glowup",
+  "account_id": "17841475087472410",
+  "letzte_hauptfolge": {
+    "tag": 1,
+    "media_id": "18448960744131969",
+    "gepostet": "2026-11-09T16:13:02+01:00",
+    "abstimmung": {"A": "Arbeit suchen", "B": "Endlich duschen"},
+    "stand_2026-11-09_23:00": {"A": 1, "B": 1}
+  },
+  "naechste_hauptfolge": {
+    "tag": 2,
+    "fertig": true,
+    "datei": "media/glowup/tag02_beides_v2.mp4",
+    "hinweis": "Tag 2 v2 'Beides' ist fertig und passt zum Unentschieden. Wenn bis zum Lauf eine klare Mehrheit besteht, trotzdem posten (Ahmed probiert beides) – oder neu rendern, wenn die Mehrheit deutlich ist (>= 3 Stimmen Vorsprung).",
+    "caption": "Tag 2: Ihr wart euch nicht einig. Also hat Ahmed BEIDES gemacht… und wurde gefeuert UND tiefgefroren.\nJetzt ruft Lena per Video an. Aber auf seinem Profil ist Cousin Emre.\n\nA = Emre geht ran\nB = \"Meine Kamera ist kaputt\"\nSchreib A oder B – die Mehrheit entscheidet Tag 3!\n\n#ahmedglowup #animation #comedy #dating #reels #KI",
+    "abstimmung": {"A": "Emre geht ran", "B": "Meine Kamera ist kaputt"}
+  },
+  "weitere_posts_2026-11-09": [
+    {"media_id": "17944666827095748", "gepostet": "2026-11-09T11:06:01+01:00", "caption": null, "views": 48}
+  ],
+  "bio_offen": "Bio enthält 'Kevin' statt Ahmed und 'mir Lena'. Neue Bio: 'Helft Ahmed bei seinem Date mit Lena 😊 / 30 Tage bis zum Treffen 🔥 Ihr entscheidet, wie's weitergeht / Neue Folge jeden Tag 12:00 & 18:00' – nur im Browser änderbar."
+}

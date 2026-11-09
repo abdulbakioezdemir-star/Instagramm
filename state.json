@@ -5,19 +5,34 @@
     "tag": 1,
     "media_id": "18448960744131969",
     "gepostet": "2026-11-09T16:13:02+01:00",
-    "abstimmung": {"A": "Arbeit suchen", "B": "Endlich duschen"},
-    "stand_2026-11-09_23:00": {"A": 1, "B": 1}
+    "abstimmung": {
+      "A": "Arbeit suchen",
+      "B": "Endlich duschen"
+    },
+    "stand_2026-11-09_23:00": {
+      "A": 1,
+      "B": 1
+    }
   },
   "naechste_hauptfolge": {
     "tag": 2,
     "fertig": true,
     "datei": "media/glowup/tag02_beides_v2.mp4",
-    "hinweis": "Tag 2 v2 'Beides' ist fertig und passt zum Unentschieden. Wenn bis zum Lauf eine klare Mehrheit besteht, trotzdem posten (Ahmed probiert beides) – oder neu rendern, wenn die Mehrheit deutlich ist (>= 3 Stimmen Vorsprung).",
+    "hinweis": "Tag 2 v2 'Beides' (ein Video) liegt fertig vor und passt zum Unentschieden. Fuer das neue Format in zwei Teile schneiden/neu rendern: Teil 1 = Cold Open bis kalte Dusche ('Stromrechnung'), Cliffhanger; Teil 2 = kurzer Rueckblick (2 s) + Lenas Videocall + A/B-Abstimmung. Skripte fuer beide Teile in pipeline/tag2b/lines.tsv.",
     "caption": "Tag 2: Ihr wart euch nicht einig. Also hat Ahmed BEIDES gemacht… und wurde gefeuert UND tiefgefroren.\nJetzt ruft Lena per Video an. Aber auf seinem Profil ist Cousin Emre.\n\nA = Emre geht ran\nB = \"Meine Kamera ist kaputt\"\nSchreib A oder B – die Mehrheit entscheidet Tag 3!\n\n#ahmedglowup #animation #comedy #dating #reels #KI",
-    "abstimmung": {"A": "Emre geht ran", "B": "Meine Kamera ist kaputt"}
+    "abstimmung": {
+      "A": "Emre geht ran",
+      "B": "Meine Kamera ist kaputt"
+    }
   },
   "weitere_posts_2026-11-09": [
-    {"media_id": "17944666827095748", "gepostet": "2026-11-09T11:06:01+01:00", "caption": null, "views": 48}
+    {
+      "media_id": "17944666827095748",
+      "gepostet": "2026-11-09T11:06:01+01:00",
+      "caption": null,
+      "views": 48
+    }
   ],
-  "bio_offen": "Bio enthält 'Kevin' statt Ahmed und 'mir Lena'. Neue Bio: 'Helft Ahmed bei seinem Date mit Lena 😊 / 30 Tage bis zum Treffen 🔥 Ihr entscheidet, wie's weitergeht / Neue Folge jeden Tag 12:00 & 18:00' – nur im Browser änderbar."
+  "bio_offen": "Bio enthält 'Kevin' statt Ahmed und 'mir Lena'. Neue Bio: 'Helft Ahmed bei seinem Date mit Lena 😊 / 30 Tage bis zum Treffen 🔥 Ihr entscheidet, wie's weitergeht / Neue Folge jeden Tag 12:00 & 18:00' – nur im Browser änderbar.",
+  "format": "2 Teile pro Tag: Teil 1 12:00 (Cliffhanger), Teil 2 18:00 (A/B-Abstimmung)"
 }

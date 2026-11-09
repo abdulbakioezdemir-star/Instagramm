@@ -13,15 +13,18 @@ Ziel: Reichweite aufbauen und später Geld verdienen.
 
 ## Serie „Ahmed Glowup“
 - Ahmed (27, pleite) hat auf Tinder mit Lena gematcht – mit dem Foto von Cousin Emre. In 30 Tagen treffen sie sich.
-- Jede Hauptfolge endet mit einer A/B-Abstimmung. Die Mehrheit der Kommentare entscheidet die nächste Folge.
+- **Zwei Story-Teile pro Tag** (Wunsch des Besitzers, 2026-11-09): Tag N Teil 1 um 12:00, Tag N Teil 2 um 18:00.
+  Teil 1 endet mit einem Cliffhanger (ohne Abstimmung), Teil 2 setzt direkt fort und endet mit der A/B-Abstimmung.
+  Abgestimmt wird unter Teil 2; die Mehrheit entscheidet Tag N+1 Teil 1.
   Unentschieden → Ahmed macht „beides“ oder Claude entscheidet nach dem lustigeren Ausgang.
 - **Stil & Stimme von Tag 1 beibehalten** (Pipeline in `pipeline/`, edge-tts-Stimmen wie in `pipeline/tag2b/`).
   Kein 3D-/Klötzchen-Stil, keine anderen Stimmen. Aussprache muss normal klingen. Lena romantisch/catchy, nie sexualisiert.
-- Hochformat 1080×1920, Hauptfolge ca. 45–65 s, Extra-Post 10–25 s. Musik + Soundeffekte + Untertitel.
+- Hochformat 1080×1920, jeder Teil ca. 35–60 s. Musik + Soundeffekte + Untertitel.
 
 ## Zeitplan (Europe/Berlin)
-- **12:00 Hauptfolge** (Tag N). Lauf startet vorher, zählt Stimmen der letzten Folge, schreibt + rendert, postet um ~12:00.
-- **18:00 Extra-Post** (Teaser, „Was bisher geschah“, Abstimmungs-Erinnerung, Blooper …) + Kommentare beantworten + Analyse.
+- **12:00 Tag N – Teil 1.** Lauf startet 11:07, zählt Stimmen unter Tag N-1 Teil 2, schreibt den ganzen Tag N (beide Teile), rendert Teil 1, postet ~12:00.
+- **18:00 Tag N – Teil 2.** Lauf startet 17:21, rendert Teil 2 (aus dem in state.json gespeicherten Skript), postet ~18:00, beantwortet Kommentare, analysiert.
+- Caption-Titel: „Tag N · Teil 1/2“ bzw. „Tag N · Teil 2/2“.
 
 ## Ablauf jedes Laufs
 1. `state.json` lesen (aktueller Tag, letzte Abstimmung, was schon gepostet ist).

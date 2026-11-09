@@ -1,0 +1,36 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    #cctv-scan { position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 2px, rgba(0,0,0,0) 2px 4px); opacity: .55; }
+    #cctv-noise-wrap { position: absolute; inset: 0; opacity: .09; }
+    #cctv-noise { position: absolute; left: -200px; top: -200px; width: 1480px; height: 2320px;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='7'/><feColorMatrix type='saturate' values='0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+      background-size: 220px 220px; }
+    #cctv-roll { position: absolute; left: 0; top: 0; width: 1080px; height: 220px;
+      background: linear-gradient(180deg, rgba(223,238,226,0) 0%, rgba(223,238,226,.07) 50%, rgba(223,238,226,0) 100%); }
+    #cctv-rec { position: absolute; right: 64px; top: 196px; font: 700 32px "Space Mono", monospace; color: #dfeee2; letter-spacing: .04em; }
+    #cctv-dot { display: inline-block; width: 22px; height: 22px; border-radius: 50%; background: #dfeee2; margin-right: 12px; vertical-align: -1px; }
+  </style>
+  <div id="root" data-composition-id="cctv" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="cctv-noise-wrap"><div id="cctv-noise"></div></div>
+    <div id="cctv-roll"></div>
+    <div id="cctv-scan"></div>
+    <div id="cctv-rec" class="clip" data-start="0" data-duration="26.5"><span id="cctv-dot"></span>REC</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const D = 30;
+    // seeded per-frame jitter of the noise layer: a function of time only
+    const noiseEl = document.querySelector("#cctv-noise");
+    const n = { t: 0 };
+    tl.fromTo(n, { t: 0 }, { t: D, duration: D, ease: "none", onUpdate() {
+      const f = Math.floor(n.t * 30);
+      const h = (k) => { let x = Math.sin((f + 1) * 12.9898 + k * 78.233) * 43758.5453; return x - Math.floor(x); };
+      gsap.set(noiseEl, { x: Math.round(h(1) * 200), y: Math.round(h(2) * 200) });
+    } }, 0);
+    tl.fromTo("#cctv-roll", { y: -220 }, { y: 1920, duration: 7.5, ease: "none", repeat: 3 }, 0);
+    tl.fromTo("#cctv-dot", { opacity: 1 }, { opacity: 0.15, duration: 0.5, ease: "steps(1)", repeat: 26, yoyo: true }, 0);
+    window.__timelines["cctv"] = tl;
+  </script>
+</template>

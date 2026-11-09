@@ -1,0 +1,65 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #070b08; }
+    #alarm-top { position: absolute; left: 0; right: 0; top: 196px; text-align: center; font: 700 96px/1 "Space Mono", monospace; color: #ff2a2a; text-shadow: 0 4px 0 #000; }
+    #alarm-wall { position: absolute; left: 0; top: 330px; width: 1080px; height: 1590px; }
+    .alarm-cell { position: absolute; width: 540px; height: 795px; overflow: hidden; background: #0d1410; }
+    .alarm-plate { position: absolute; left: 0; top: -82.5px; width: 1080px; height: 1920px; transform: scale(.5); transform-origin: 0 0; }
+    .alarm-plate > img, .alarm-plate > div { position: absolute; }
+    .alarm-room { left: 0; top: 0; width: 1080px; height: 1920px; }
+    .alarm-label { position: absolute; left: 18px; top: 14px; font: 700 28px "Space Mono", monospace; color: #fff; text-shadow: 0 2px 0 #000; }
+    .alarm-low { }
+    .alarm-line { position: absolute; background: #050806; }
+    #alarm-tint { position: absolute; inset: 0; background: #ff2a2a; mix-blend-mode: color; }
+    #alarm-pulse { position: absolute; inset: 0; background: #ff2a2a; mix-blend-mode: screen; opacity: 0; }
+    #alarm-band { position: absolute; left: 0; top: 700px; width: 1080px; height: 360px; background: #ff2a2a; }
+    #alarm-word { position: absolute; left: 0; right: 0; top: 0; height: 360px; text-align: center; font: 400 400px/360px "League Gothic", sans-serif; color: #fff; }
+    #alarm-dip { position: absolute; inset: 0; background: #000; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="alarm" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="alarm-wall">
+      <div class="alarm-cell" style="left:0;top:0">
+        <div class="alarm-plate"><img class="alarm-room" src="assets/img/halle.svg">
+          <div id="alarm-run1" style="left:-200px;top:1100px;width:330px;height:700px"><img src="assets/img/figure.svg" style="width:100%;height:100%"></div></div>
+        <div class="alarm-label">CAM 1 · HALLE</div>
+      </div>
+      <div class="alarm-cell" style="left:540px;top:0">
+        <div class="alarm-plate"><img class="alarm-room" src="assets/img/eingang.svg"><img class="alarm-room" src="assets/img/door-frame.svg">
+          <img src="assets/img/door-leaf.svg" style="left:540px;top:580px;width:290px;height:810px;transform:perspective(1400px) rotateY(72deg);transform-origin:100% 50%"></div>
+        <div class="alarm-label">CAM 2 · EINGANG</div>
+      </div>
+      <div class="alarm-cell" style="left:0;top:795px">
+        <div class="alarm-plate"><img class="alarm-room" src="assets/img/flur.svg">
+          <div id="alarm-run3" style="left:418px;top:490px;width:245px;height:520px"><img src="assets/img/figure.svg" style="width:100%;height:100%"></div></div>
+        <div class="alarm-label alarm-low">CAM 3 · FLUR</div>
+      </div>
+      <div class="alarm-cell" style="left:540px;top:795px">
+        <div class="alarm-plate"><img class="alarm-room" src="assets/img/tresor.svg"></div>
+        <div class="alarm-label alarm-low">CAM 4 · TRESOR</div>
+      </div>
+      <div class="alarm-line" style="left:537px;top:0;width:6px;height:1590px"></div>
+      <div class="alarm-line" style="left:0;top:792px;width:1080px;height:6px"></div>
+      <div id="alarm-tint"></div>
+      <div id="alarm-pulse"></div>
+    </div>
+    <div id="alarm-top">03:20:47</div>
+    <div id="alarm-band"><div id="alarm-word">ALARM</div></div>
+    <div id="alarm-dip"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // red pulse at 1.25 Hz (well under 3 flashes per second)
+    tl.fromTo("#alarm-pulse", { opacity: 0.05 }, { opacity: 0.4, duration: 0.4, ease: "sine.inOut", repeat: 10, yoyo: true }, 0);
+    // ALARM stamps in
+    tl.fromTo("#alarm-band", { scaleY: 0 }, { scaleY: 1, duration: 0.12, ease: "expo.out" }, 0);
+    tl.fromTo("#alarm-word", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.14, ease: "expo.out" }, 0.04);
+    // people run: across the hall, away down the corridor
+    tl.fromTo("#alarm-run1", { x: 0 }, { x: 1300, duration: 1.4, ease: "power1.in" }, 0.5);
+    tl.fromTo("#alarm-run1", { y: 0 }, { y: -24, duration: 0.12, ease: "sine.inOut", repeat: 11, yoyo: true }, 0.5);
+    tl.fromTo("#alarm-run3", { scale: 1.4, y: 300, transformOrigin: "50% 100%" }, { scale: 0.25, y: 0, duration: 2.2, ease: "power2.out" }, 0.3);
+    // the band leaves, dip to black before the cut
+    tl.to("#alarm-band", { scaleY: 0, duration: 0.14, ease: "power3.in" }, 3.9);
+    tl.fromTo("#alarm-dip", { opacity: 0 }, { opacity: 0.45, duration: 0.1, ease: "none" }, 4.4);
+    window.__timelines["alarm"] = tl;
+  </script>
+</template>

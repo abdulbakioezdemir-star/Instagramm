@@ -1,0 +1,41 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #070b08; }
+    #end-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #end-cam > img, #end-cam > div { position: absolute; }
+    .end-full { left: 0; top: 0; width: 1080px; height: 1920px; }
+    #end-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,11,8,0) 35%, rgba(7,11,8,.75) 60%, rgba(7,11,8,.75) 75%, rgba(7,11,8,0) 100%); }
+    .end-label { position: absolute; left: 64px; top: 196px; font: 700 32px "Space Mono", monospace; color: #dfeee2; text-shadow: 0 2px 0 #000; }
+    #end-tc { top: 240px; }
+    #end-q { position: absolute; left: 40px; right: 40px; top: 990px; text-align: center;
+      font: 400 230px/1 "League Gothic", sans-serif; color: #f2f7f3; text-shadow: 0 8px 0 rgba(0,0,0,.6); }
+    #end-q .l { display: inline-block; white-space: pre; }
+    #end-cta { position: absolute; left: 40px; right: 40px; top: 1240px; text-align: center; font: 700 40px "Space Mono", monospace; color: #dfeee2; }
+  </style>
+  <div id="root" data-composition-id="ende" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="end-cam">
+      <img class="end-full" src="assets/img/eingang.svg">
+      <div class="end-full" style="clip-path:inset(580px 250px 530px 250px)">
+        <div style="position:absolute;left:555px;top:865px;width:245px;height:520px"><img src="assets/img/figure.svg" style="width:100%;height:100%"></div>
+      </div>
+      <img class="end-full" src="assets/img/door-frame.svg">
+      <img src="assets/img/door-leaf.svg" style="left:540px;top:580px;width:290px;height:810px">
+    </div>
+    <div id="end-shade"></div>
+    <div class="end-label">▌▌ PAUSE · CAM 2</div>
+    <div id="end-tc" class="end-label">03:17:31</div>
+    <div id="end-q"><span class="l">W</span><span class="l">e</span><span class="l">r</span><span class="l"> </span><span class="l">w</span><span class="l">a</span><span class="l">r</span><span class="l"> </span><span class="l">e</span><span class="l">s</span><span class="l">?</span></div>
+    <div id="end-cta">Schreib's in die Kommentare</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // punch in on the frozen figure at the door
+    tl.fromTo("#end-cam", { scale: 1, x: 0, y: 0, filter: "blur(10px)", transformOrigin: "677px 960px" },
+      { scale: 1.9, x: -137, y: -230, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, 0);
+    tl.fromTo("#end-shade", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.2);
+    tl.fromTo("#end-q .l", { opacity: 0.3, filter: "blur(4px)", color: "#587060" }, { opacity: 1, filter: "blur(0px)", color: "#f2f7f3", duration: 0.12, stagger: 0.04, ease: "power2.out" }, 0.3);
+    tl.fromTo("#end-q", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0.3);
+    tl.fromTo("#end-cta", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power2.out" }, 0.75);
+    window.__timelines["ende"] = tl;
+  </script>
+</template>

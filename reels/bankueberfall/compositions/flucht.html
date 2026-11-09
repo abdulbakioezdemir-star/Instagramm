@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #070b08; }
+    #flu-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #flu-cam > img, #flu-cam > div { position: absolute; }
+    .flu-full { left: 0; top: 0; width: 1080px; height: 1920px; }
+    #flu-leaf { left: 540px; top: 580px; width: 290px; height: 810px; }
+    #flu-blue { left: 250px; top: 580px; width: 580px; height: 810px; background: radial-gradient(60% 50% at 70% 60%, #3b74ff, rgba(59,116,255,.45)); mix-blend-mode: screen; opacity: 0; }
+    #flu-floor { left: 0; top: 1400px; width: 1080px; height: 520px; clip-path: polygon(23% 0, 77% 0, 100% 70%, 0 70%);
+      background: linear-gradient(180deg, rgba(59,116,255,.7), rgba(59,116,255,0)); mix-blend-mode: screen; opacity: 0; }
+    .flu-label { position: absolute; left: 64px; top: 196px; font: 700 32px "Space Mono", monospace; color: #dfeee2; text-shadow: 0 2px 0 #000; }
+    #flu-tc { top: 240px; }
+    #flu-line { position: absolute; left: 60px; right: 60px; top: 1060px; text-align: center;
+      font: 400 150px/1 "League Gothic", sans-serif; color: #f2f7f3; text-shadow: 0 6px 0 rgba(0,0,0,.6); }
+    #flu-line .w { display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="flucht" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="flu-cam">
+      <img class="flu-full" src="assets/img/eingang.svg">
+      <div id="flu-blue"></div>
+      <img class="flu-full" src="assets/img/door-frame.svg">
+      <img id="flu-leaf" src="assets/img/door-leaf.svg">
+      <div id="flu-floor"></div>
+    </div>
+    <div class="flu-label">CAM 2 · EINGANG</div>
+    <div id="flu-tc" class="flu-label">03:21:12</div>
+    <div id="flu-line"><span class="w">4</span> <span class="w">Minuten.</span><br><span class="w">Keine</span> <span class="w">Spur.</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const pad = (n) => String(n).padStart(2, "0");
+    const fmt = (s) => `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(Math.floor(s) % 60)}`;
+    const tc = document.querySelector("#flu-tc");
+    const leaf = document.querySelector("#flu-leaf");
+    gsap.set(leaf, { transformOrigin: "100% 50%", transformPerspective: 1400 });
+    const c = { t: 0 };
+    tl.fromTo(c, { t: 0 }, { t: 3.5, duration: 3.5, ease: "none", onUpdate() {
+      tc.textContent = fmt(3 * 3600 + 21 * 60 + 12 + c.t);
+      // the door is still swinging after they ran out: a damped swing, a function of time
+      gsap.set(leaf, { rotationY: 60 * Math.exp(-0.9 * c.t) * Math.cos(2 * Math.PI * 0.6 * c.t) });
+    } }, 0);
+    // police lights arrive outside, 1 Hz
+    tl.fromTo("#flu-blue", { opacity: 0 }, { opacity: 0.85, duration: 0.5, ease: "sine.inOut", repeat: 6, yoyo: true }, 0.4);
+    tl.fromTo("#flu-floor", { opacity: 0 }, { opacity: 0.95, duration: 0.5, ease: "sine.inOut", repeat: 6, yoyo: true }, 0.45);
+    tl.fromTo("#flu-line .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power2.out" }, 0.5);
+    tl.to("#flu-line", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }, 3.15);
+    window.__timelines["flucht"] = tl;
+  </script>
+</template>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="tw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#18231c"/><stop offset="1" stop-color="#2c3d31"/></linearGradient>
+    <linearGradient id="tf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a4d3f"/><stop offset="1" stop-color="#18231c"/></linearGradient>
+    <radialGradient id="inside" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#dfeee2"/><stop offset=".7" stop-color="#86a08c"/><stop offset="1" stop-color="#3a4d3f"/></radialGradient>
+    <clipPath id="hole"><circle cx="540" cy="900" r="360"/></clipPath>
+  </defs>
+  <rect width="1080" height="1500" fill="url(#tw)"/>
+  <g stroke="#121a15" stroke-width="4" opacity=".7">
+    <line x1="0" y1="300" x2="1080" y2="300"/><line x1="0" y1="1420" x2="1080" y2="1420"/>
+  </g>
+  <polygon points="0,1500 1080,1500 1080,1920 0,1920" fill="url(#tf)"/>
+  <g stroke="#253429" stroke-width="3" opacity=".7">
+    <line x1="0" y1="1600" x2="1080" y2="1600"/><line x1="0" y1="1740" x2="1080" y2="1740"/>
+    <line x1="270" y1="1500" x2="120" y2="1920"/><line x1="540" y1="1500" x2="540" y2="1920"/><line x1="810" y1="1500" x2="960" y2="1920"/>
+  </g>
+  <!-- vault interior (seen when the door is open) -->
+  <circle cx="540" cy="900" r="360" fill="url(#inside)"/>
+  <g clip-path="url(#hole)" stroke="#587060" stroke-width="6" fill="none">
+    <rect x="200" y="560" width="680" height="680" fill="#b8cfbc" opacity=".35"/>
+    <path d="M200 650 H880 M200 740 H880 M200 830 H880 M200 920 H880 M200 1010 H880 M200 1100 H880 M200 1190 H880"/>
+    <path d="M285 540 V1260 M370 540 V1260 M455 540 V1260 M540 540 V1260 M625 540 V1260 M710 540 V1260 M795 540 V1260"/>
+    <g fill="#587060" stroke="none"><circle cx="320" cy="700" r="7"/><circle cx="490" cy="790" r="7"/><circle cx="660" cy="700" r="7"/><circle cx="405" cy="880" r="7"/><circle cx="745" cy="970" r="7"/><circle cx="575" cy="1060" r="7"/><circle cx="320" cy="1150" r="7"/></g>
+  </g>
+  <!-- frame ring -->
+  <circle cx="540" cy="900" r="380" fill="none" stroke="#587060" stroke-width="40"/>
+  <circle cx="540" cy="900" r="402" fill="none" stroke="#86a08c" stroke-width="6"/>
+  <circle cx="540" cy="900" r="358" fill="none" stroke="#0d1410" stroke-width="6"/>
+  <!-- hinge -->
+  <rect x="120" y="760" width="60" height="70" rx="8" fill="#3a4d3f" stroke="#0d1410" stroke-width="4"/>
+  <rect x="120" y="980" width="60" height="70" rx="8" fill="#3a4d3f" stroke="#0d1410" stroke-width="4"/>
+  <!-- keypad -->
+  <rect x="960" y="820" width="80" height="130" rx="8" fill="#253429" stroke="#0d1410" stroke-width="4"/>
+  <rect x="972" y="834" width="56" height="22" fill="#86a08c"/>
+  <g fill="#587060"><rect x="974" y="868" width="14" height="14"/><rect x="993" y="868" width="14" height="14"/><rect x="1012" y="868" width="14" height="14"/><rect x="974" y="890" width="14" height="14"/><rect x="993" y="890" width="14" height="14"/><rect x="1012" y="890" width="14" height="14"/><rect x="974" y="912" width="14" height="14"/><rect x="993" y="912" width="14" height="14"/><rect x="1012" y="912" width="14" height="14"/></g>
+  <ellipse cx="540" cy="1530" rx="420" ry="40" fill="#0d1410" opacity=".55"/>
+</svg>

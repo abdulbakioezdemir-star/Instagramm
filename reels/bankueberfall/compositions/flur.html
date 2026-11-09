@@ -1,0 +1,66 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #070b08; }
+    #flur-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #flur-cam > img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .flur-fig { position: absolute; width: 245px; height: 520px; }
+    .flur-fig > img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .flur-beam { position: absolute; left: -330px; top: 400px; width: 900px; height: 700px; transform-origin: 50% 0;
+      clip-path: polygon(48% 0, 52% 0, 100% 100%, 0 100%);
+      background: linear-gradient(180deg, rgba(223,238,226,.85) 0%, rgba(223,238,226,.25) 55%, rgba(223,238,226,0) 100%); }
+    .flur-pool { position: absolute; left: -260px; top: 960px; width: 760px; height: 170px; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(223,238,226,.55), rgba(223,238,226,0)); }
+    #flur-tear { position: absolute; left: 0; top: 760px; width: 1080px; height: 90px; background: #b8cfbc; opacity: 0; mix-blend-mode: screen; }
+    #flur-tear2 { position: absolute; left: 0; top: 1300px; width: 1080px; height: 40px; background: #dfeee2; opacity: 0; mix-blend-mode: screen; }
+    #flur-white { position: absolute; inset: 0; background: #dfeee2; opacity: 0; }
+    .flur-label { position: absolute; left: 64px; top: 196px; font: 700 32px "Space Mono", monospace; color: #dfeee2; text-shadow: 0 2px 0 #000; }
+    #flur-tc { top: 240px; }
+    #flur-line { position: absolute; left: 60px; right: 60px; top: 1080px; text-align: center;
+      font: 400 150px/1 "League Gothic", sans-serif; color: #f2f7f3; text-shadow: 0 6px 0 rgba(0,0,0,.6); }
+    #flur-line .w { display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="flur" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="flur-cam">
+      <img src="assets/img/flur.svg">
+      <div id="flur-f1" class="flur-fig" style="left:380px;top:490px">
+        <div class="flur-pool"></div><img src="assets/img/figure.svg"><div id="flur-b1" class="flur-beam"></div>
+      </div>
+      <div id="flur-f2" class="flur-fig" style="left:470px;top:490px">
+        <div class="flur-pool"></div><img src="assets/img/figure.svg" style="transform:scaleX(-1)"><div id="flur-b2" class="flur-beam"></div>
+      </div>
+    </div>
+    <div id="flur-tear"></div><div id="flur-tear2"></div>
+    <div class="flur-label">CAM 3 · FLUR</div>
+    <div id="flur-tc" class="flur-label">03:18:10</div>
+    <div id="flur-line"><span class="w">Sie</span> <span class="w">kennen</span> <span class="w">den</span> <span class="w">Weg.</span></div>
+    <div id="flur-white"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const pad = (n) => String(n).padStart(2, "0");
+    const fmt = (s) => `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(Math.floor(s) % 60)}`;
+    const tc = document.querySelector("#flur-tc");
+    const c = { t: 0 };
+    tl.fromTo(c, { t: 0 }, { t: 4.5, duration: 4.5, ease: "none", onUpdate() { tc.textContent = fmt(3 * 3600 + 18 * 60 + 10 + c.t); } }, 0);
+
+    // two figures walk down the corridor toward the camera (feet are the origin)
+    tl.fromTo("#flur-f1", { x: 0, y: 0, scale: 0.29, transformOrigin: "50% 100%" }, { x: -250, y: 620, scale: 1.55, duration: 4.4, ease: "power2.in" }, 0);
+    tl.fromTo("#flur-f2", { x: 0, y: 0, scale: 0.27, transformOrigin: "50% 100%" }, { x: 230, y: 560, scale: 1.45, duration: 4.4, ease: "power2.in" }, 0.15);
+    // flashlights sweep
+    tl.fromTo("#flur-b1", { rotation: -14 }, { rotation: 12, duration: 1.1, ease: "sine.inOut", repeat: 3, yoyo: true }, 0);
+    tl.fromTo("#flur-b2", { rotation: 10 }, { rotation: -12, duration: 1.3, ease: "sine.inOut", repeat: 3, yoyo: true }, 0);
+    // line
+    tl.fromTo("#flur-line .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power2.out" }, 0.7);
+    tl.to("#flur-line", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }, 3.7);
+    // signal glitch at 2.1 s
+    const g = 2.1, f = 1 / 30;
+    [[18, 1, 0.9], [-26, 0.4, 0], [10, 0, 0.7], [-6, 0.8, 0], [0, 0, 0]].forEach(([x, a, b], i) => {
+      tl.set("#flur-cam", { x, skewX: x ? x / 6 : 0 }, g + i * f * 2);
+      tl.set("#flur-tear", { opacity: a * 0.35, y: i * 140 }, g + i * f * 2);
+      tl.set("#flur-tear2", { opacity: b * 0.3, y: -i * 90 }, g + i * f * 2);
+    });
+    // the light hits the lens before the cut
+    tl.fromTo("#flur-white", { opacity: 0 }, { opacity: 0.75, duration: 0.25, ease: "power2.in" }, 4.25);
+    window.__timelines["flur"] = tl;
+  </script>
+</template>

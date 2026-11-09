@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="hf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a4d3f"/><stop offset="1" stop-color="#1c2820"/></linearGradient>
+    <linearGradient id="hw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#18231c"/><stop offset="1" stop-color="#2c3d31"/></linearGradient>
+  </defs>
+  <rect width="1080" height="820" fill="url(#hw)"/>
+  <polygon points="0,820 1080,820 1080,1920 0,1920" fill="url(#hf)"/>
+  <!-- counters with glass partitions, diagonal (camera in a corner) -->
+  <polygon points="80,700 1000,560 1000,700 80,900" fill="#121a15"/>
+  <polygon points="80,900 1000,700 1000,760 80,980" fill="#253429"/>
+  <polygon points="80,960 1000,750 1000,1020 80,1300" fill="#18231c"/>
+  <g fill="#86a08c" opacity=".12" stroke="#b8cfbc" stroke-width="3" stroke-opacity=".35">
+    <polygon points="110,520 330,490 330,860 110,890"/><polygon points="360,485 580,455 580,820 360,855"/><polygon points="610,450 830,420 830,780 610,815"/>
+  </g>
+  <g fill="#587060"><rect x="200" y="845" width="60" height="30" transform="skewY(-8)"/><rect x="460" y="830" width="60" height="30" transform="skewY(-8)"/><rect x="710" y="815" width="60" height="30" transform="skewY(-8)"/></g>
+  <!-- waiting area: queue posts and a bench -->
+  <g fill="#0d1410"><rect x="180" y="1420" width="16" height="190"/><rect x="480" y="1380" width="16" height="190"/><rect x="780" y="1340" width="16" height="190"/></g>
+  <path d="M188 1440 Q338 1480 488 1400 Q638 1440 788 1360" stroke="#86a08c" stroke-width="10" fill="none"/>
+  <polygon points="140,1700 560,1640 560,1690 140,1760" fill="#253429"/>
+  <polygon points="140,1760 560,1690 560,1720 140,1790" fill="#0d1410"/>
+  <!-- ceiling lamps reflected on floor -->
+  <ellipse cx="330" cy="1180" rx="160" ry="34" fill="#86a08c" opacity=".18"/>
+  <ellipse cx="760" cy="1120" rx="160" ry="30" fill="#86a08c" opacity=".14"/>
+  <!-- wall clock -->
+  <circle cx="860" cy="260" r="80" fill="#253429" stroke="#86a08c" stroke-width="8"/>
+  <line x1="860" y1="260" x2="860" y2="206" stroke="#dfeee2" stroke-width="8"/><line x1="860" y1="260" x2="880" y2="270" stroke="#dfeee2" stroke-width="8"/>
+  <rect x="100" y="200" width="420" height="120" fill="#253429"/>
+  <rect x="130" y="235" width="300" height="18" fill="#587060"/><rect x="130" y="270" width="200" height="14" fill="#3a4d3f"/>
+</svg>

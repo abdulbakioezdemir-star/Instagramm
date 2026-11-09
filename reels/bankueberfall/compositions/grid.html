@@ -1,0 +1,75 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #070b08; }
+    #grid-title { position: absolute; left: 0; right: 0; top: 182px; text-align: center;
+      font: 400 136px/1 "League Gothic", sans-serif; color: #f2f7f3; text-shadow: 0 6px 0 rgba(0,0,0,.6); }
+    #grid-wall { position: absolute; left: 0; top: 330px; width: 1080px; height: 1590px; }
+    .grid-cell { position: absolute; width: 540px; height: 795px; overflow: hidden; background: #0d1410; }
+    .grid-plate { position: absolute; left: 0; top: -82.5px; width: 1080px; height: 1920px; transform: scale(.5); transform-origin: 0 0; }
+    .grid-plate > img, .grid-plate > div { position: absolute; }
+    .grid-room { left: 0; top: 0; width: 1080px; height: 1920px; }
+    .grid-label { position: absolute; left: 18px; top: 14px; font: 700 28px "Space Mono", monospace; color: #dfeee2; text-shadow: 0 2px 0 #000; }
+    .grid-tc { position: absolute; left: 18px; top: 50px; font: 700 28px "Space Mono", monospace; color: #dfeee2; text-shadow: 0 2px 0 #000; }
+    .grid-line { position: absolute; background: #050806; }
+    #grid-box { left: 545px; top: 820px; width: 250px; height: 590px; border: 6px solid #f2f7f3; }
+    #grid-boxlabel { position: absolute; left: -6px; top: -80px; font: 700 58px "Space Mono", monospace; color: #070b08; background: #f2f7f3; padding: 0 12px; }
+  </style>
+  <div id="root" data-composition-id="grid" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="grid-wall">
+      <div id="grid-c1" class="grid-cell" style="left:0;top:0">
+        <div class="grid-plate"><img class="grid-room" src="assets/img/halle.svg"></div>
+        <div class="grid-label">CAM 1 · HALLE</div><div class="grid-tc">03:17:04</div>
+      </div>
+      <div id="grid-c2" class="grid-cell" style="left:540px;top:0">
+        <div class="grid-plate">
+          <img class="grid-room" src="assets/img/eingang.svg">
+          <div id="grid-out" style="left:0;top:0;width:1080px;height:1920px;clip-path:inset(580px 250px 530px 250px)">
+            <div id="grid-fig" style="position:absolute;left:330px;top:865px;width:245px;height:520px"><img src="assets/img/figure.svg" style="width:100%;height:100%"></div>
+          </div>
+          <img class="grid-room" src="assets/img/door-frame.svg">
+          <img src="assets/img/door-leaf.svg" style="left:540px;top:580px;width:290px;height:810px">
+          <div id="grid-box"><div id="grid-boxlabel">BEWEGUNG</div></div>
+        </div>
+        <div class="grid-label">CAM 2 · EINGANG</div><div class="grid-tc">03:17:04</div>
+      </div>
+      <div id="grid-c3" class="grid-cell" style="left:0;top:795px">
+        <div class="grid-plate"><img class="grid-room" src="assets/img/flur.svg"></div>
+        <div class="grid-label">CAM 3 · FLUR</div><div class="grid-tc">03:17:04</div>
+      </div>
+      <div id="grid-c4" class="grid-cell" style="left:540px;top:795px">
+        <div class="grid-plate">
+          <img class="grid-room" src="assets/img/tresor.svg">
+          <img src="assets/img/vault-door.svg" style="left:170px;top:530px;width:740px;height:740px">
+          <img src="assets/img/wheel.svg" style="left:360px;top:720px;width:360px;height:360px">
+        </div>
+        <div class="grid-label">CAM 4 · TRESOR</div><div class="grid-tc">03:17:04</div>
+      </div>
+      <div class="grid-line" style="left:537px;top:0;width:6px;height:1590px"></div>
+      <div class="grid-line" style="left:0;top:792px;width:1080px;height:6px"></div>
+    </div>
+    <div id="grid-title">Die Bank ist leer.</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const pad = (n) => String(n).padStart(2, "0");
+    const fmt = (s) => `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(Math.floor(s) % 60)}`;
+    const tcs = document.querySelectorAll("#grid-wall .grid-tc");
+    const base = 3 * 3600 + 17 * 60 + 4;
+    const c = { t: 0 };
+    tl.fromTo(c, { t: 0 }, { t: 4, duration: 4, ease: "none", onUpdate() { tcs.forEach((el) => (el.textContent = fmt(base + c.t))); } }, 0);
+
+    // a hooded figure walks past the glass door, then stops at it
+    tl.fromTo("#grid-fig", { x: 0 }, { x: 225, duration: 1.3, ease: "power1.inOut" }, 0.2);
+    tl.fromTo("#grid-fig", { y: 0 }, { y: -10, duration: 0.22, ease: "sine.inOut", repeat: 5, yoyo: true }, 0.2);
+    // motion detection box
+    tl.fromTo("#grid-box", { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.15, ease: "expo.out" }, 1.6);
+    tl.to("#grid-box", { opacity: 0.25, duration: 0.2, ease: "steps(1)", repeat: 3, yoyo: true }, 1.9);
+    // title leaves, camera dives into CAM 2
+    tl.to("#grid-title", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 3.25);
+    tl.to("#grid-box", { opacity: 0, duration: 0.1 }, 3.3);
+    tl.fromTo("#grid-wall", { scale: 1, x: 0, y: 0, transformOrigin: "810px 397.5px" },
+      { scale: 2, x: -270, y: 232.5, duration: 0.6, ease: "power3.in" }, 3.4);
+    tl.fromTo("#grid-wall", { filter: "blur(0px)" }, { filter: "blur(5px)", duration: 0.25, ease: "power2.in" }, 3.75);
+    window.__timelines["grid"] = tl;
+  </script>
+</template>

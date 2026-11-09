@@ -1,0 +1,59 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #070b08; }
+    #tre-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #tre-cam > img, #tre-cam > div { position: absolute; }
+    #tre-door { left: 170px; top: 530px; width: 740px; height: 740px; }
+    #tre-door > img { position: absolute; }
+    #tre-spill { left: 120px; top: 1290px; width: 840px; height: 630px; clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
+      background: linear-gradient(180deg, rgba(223,238,226,.55), rgba(223,238,226,0)); opacity: 0; }
+    #tre-key { left: 972px; top: 834px; width: 56px; height: 22px; background: #f2f7f3; opacity: 0; }
+    .tre-label { position: absolute; left: 64px; top: 196px; font: 700 32px "Space Mono", monospace; color: #dfeee2; text-shadow: 0 2px 0 #000; }
+    #tre-tc { top: 240px; }
+    #tre-line { position: absolute; left: 60px; right: 60px; top: 1150px; text-align: center;
+      font: 400 150px/1 "League Gothic", sans-serif; color: #f2f7f3; text-shadow: 0 6px 0 rgba(0,0,0,.6); }
+    #tre-line .w { display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="tresor" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="tre-cam">
+      <img src="assets/img/tresor.svg" style="left:0;top:0;width:1080px;height:1920px">
+      <div id="tre-spill"></div>
+      <div id="tre-door">
+        <img src="assets/img/vault-door.svg" style="left:0;top:0;width:740px;height:740px">
+        <img id="tre-wheel" src="assets/img/wheel.svg" style="left:190px;top:190px;width:360px;height:360px">
+      </div>
+      <div id="tre-key"></div>
+      <img src="assets/img/figure.svg" style="left:820px;top:880px;width:330px;height:700px;transform:scaleX(-1)">
+      <img id="tre-fig" src="assets/img/figure.svg" style="left:-170px;top:1000px;width:620px;height:1316px">
+    </div>
+    <div class="tre-label">CAM 4 · TRESOR</div>
+    <div id="tre-tc" class="tre-label">03:19:02</div>
+    <div id="tre-line"><span class="w">Sie</span> <span class="w">kennen</span> <span class="w">den</span> <span class="w">Code.</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const pad = (n) => String(n).padStart(2, "0");
+    const fmt = (s) => `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(Math.floor(s) % 60)}`;
+    const tc = document.querySelector("#tre-tc");
+    const c = { t: 0 };
+    tl.fromTo(c, { t: 0 }, { t: 5.5, duration: 5.5, ease: "none", onUpdate() { tc.textContent = fmt(3 * 3600 + 19 * 60 + 2 + c.t); } }, 0);
+
+    // keypad: code typed, screen blinks
+    tl.fromTo("#tre-key", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "steps(1)", repeat: 7, yoyo: true }, 0.4);
+    tl.set("#tre-key", { opacity: 1 }, 1.4);
+    // the wheel turns
+    tl.fromTo("#tre-wheel", { rotation: 0 }, { rotation: -720, duration: 1.6, ease: "power2.inOut" }, 1.5);
+    // the door swings open on its left hinge, light spills out
+    tl.fromTo("#tre-door", { rotationY: 0, transformOrigin: "0% 50%", transformPerspective: 1600 },
+      { rotationY: -100, duration: 1.8, ease: "power2.inOut" }, 3.2);
+    tl.fromTo("#tre-spill", { opacity: 0 }, { opacity: 1, duration: 1.4, ease: "power2.inOut" }, 3.5);
+    // foreground figure leans in as the door opens
+    tl.fromTo("#tre-fig", { x: -60 }, { x: 40, duration: 1.6, ease: "power2.inOut" }, 3.4);
+    // line
+    tl.fromTo("#tre-line .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power2.out" }, 0.6);
+    tl.to("#tre-line", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }, 3.3);
+    // the camera starts to shake as the riser builds
+    tl.fromTo("#tre-cam", { x: 0, y: 0 }, { x: 4, y: -3, duration: 0.05, ease: "none", repeat: 9, yoyo: true }, 5.0);
+    window.__timelines["tresor"] = tl;
+  </script>
+</template>

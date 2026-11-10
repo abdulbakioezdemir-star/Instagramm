@@ -55,7 +55,7 @@
     { t: ev.hook, end: T(2) - 0.1, lines: ['99 SCHLÄGE.', 'KEIN *RISS*.'] },
     { t: T(2), end: T(3, 2) - 0.1, lines: ['DIE LEUTE', '*LACHTEN*.'] },
     { t: T(3, 2), end: T(5) - 0.1, lines: ['„GIB AUF.', 'DER STEIN IST *STÄRKER*.“'], small: true },
-    { t: T(5), end: ev.reveal - 0.1, lines: ['ER SCHLUG', '*WEITER*.'] },
+    { t: T(5), end: ev.reveal - 0.1, lines: ['ER NICKTE HÖFLICH.', 'UND SCHLUG *WEITER*.'], small: true },
     { t: ev.reveal, end: T(8, 2) - 0.1, lines: ['VON AUSSEN:', '*NICHTS*.'] },
     { t: T(8, 2), end: ev.last - 0.1, lines: ['DOCH INNEN WAR LÄNGST', '*ALLES* GERISSEN.'], small: true },
     { t: ev.last, end: ev.drop - 0.05, lines: ['UND DANN …'] },

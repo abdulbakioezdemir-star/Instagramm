@@ -65,3 +65,41 @@ def bootssteg(d, x0, y, length, prog, t):
         d.rectangle([bx - 110, by - 6, bx + 110, by + 6], fill=(30, 90, 150))
         d.line([(bx, by), (bx, by - 170)], fill=(110, 80, 50), width=8)
         d.polygon([(bx + 6, by - 165), (bx + 6, by - 20), (bx + 100, by - 30)], fill=(255, 196, 110))
+
+def baeckerei(d, x, base, prog, t, font=None):
+    """Kleine Bäckerei am Strand (Tag 2 · Teil 2, Wunsch aus den Kommentaren). x = linke Kante, base = Boden.
+    Wird von unten nach oben gebaut; fertig mit Markise, Schild, Brot im Fenster und Rauch aus dem Schornstein."""
+    w, hw = 330, 215
+    top = base - (hw + 95) * prog
+    if prog <= 0: return
+    wy0 = max(base - hw, top)
+    d.rectangle([x, wy0, x + w, base], fill=(250, 225, 180))
+    if prog > 0.65:
+        d.polygon([(x - 25, base - hw), (x + w / 2, base - hw - 95), (x + w + 25, base - hw)], fill=(160, 85, 50))
+        d.rectangle([x + w - 85, base - hw - 100, x + w - 50, base - hw - 30], fill=(120, 70, 50))
+    if prog > 0.4:
+        d.rectangle([x + 30, base - 110, x + 95, base], fill=(130, 85, 50))
+        d.rectangle([x + 130, base - 105, x + w - 30, base - 30], fill=(255, 235, 170), outline=(130, 85, 50), width=6)
+        for k in range(4):
+            bx = x + 145 + k * 40
+            d.ellipse([bx, base - 72, bx + 36, base - 47], fill=(200, 130, 60))
+    if prog >= 1:
+        for k in range(6):
+            d.rectangle([x + k * w / 6, base - hw, x + (k + 1) * w / 6, base - hw + 40],
+                        fill=(230, 80, 80) if k % 2 == 0 else (255, 255, 255))
+        if font is not None:
+            d.rounded_rectangle([x + 15, base - hw + 50, x + w - 15, base - 118], radius=12, fill=(255, 250, 240),
+                                outline=(160, 85, 50), width=4)
+            d.text((x + w / 2, base - hw + 50 + (hw - 168) / 2), "BÄCKEREI", font=font, fill=(160, 85, 50), anchor="mm")
+        for k in range(4):
+            ph = (t * 0.6 + k * 0.25) % 1.0
+            cx = x + w - 67 + math.sin(t * 2 + k) * 14 * ph
+            cy = base - hw - 105 - ph * 120
+            r = 12 + ph * 22
+            g = int(235 - ph * 30)
+            d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(g, g, g))
+    if 0 < prog < 1:
+        for yy in range(int(top), base, 50):
+            d.line([(x - 15, yy), (x + w + 15, yy)], fill=(150, 110, 70), width=5)
+        d.line([(x - 15, top), (x - 15, base)], fill=(150, 110, 70), width=6)
+        d.line([(x + w + 15, top), (x + w + 15, base)], fill=(150, 110, 70), width=6)

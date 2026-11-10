@@ -27,3 +27,12 @@
   („1 = Hafen · 2 = Bäckerei · 3 = Brücke – schreib die Zahl!“), gleiche Optionen in der Caption.
   Eigene Wünsche bleiben erlaubt; der Top-Kommentar gewinnt, sonst die meistgenannte Zahl.
 - Erste Sekunde: sofort das Land + große Zahl (Kasse oder Einwohner) zeigen, kein langsames Intro.
+
+## 2026-11-10 21:00 – Tag 2 · Teil 2/2 (Bäckerei, 32 s)
+- Zahlen vor dem Post: Tag 1 131 Views / 1 Like / Skip 53,7 % / Ø 7,2 s. Tag 2·T1 598 Views / 15 Likes / 1 Kommentar / Skip 55,4 % / Ø 9,7 s. Follower 7.
+- Erster echter Top-Kommentar: „Bau einen Bäcker“ (1 Like; Username über API leer → im Video „Top-Kommentar“ statt Name). Umgesetzt, Antwort unter den Kommentar gesetzt.
+- Länge nach Befehl 2: 32 s (6 Sätze statt 8). Test des Tages: **Hook-Art „Konsequenz zuerst“** – 3 Varianten: (A) „Ihr wolltet einen Bäcker. Ich habe sechs Euro übrig.“ (B) „Mein Land hat jetzt Brot. Aber kein Geld mehr.“ (C) „Ein einziger Kommentar hat gerade fast mein ganzes Geld ausgegeben.“ → **C gewählt** (Neugier + Mitmach-Hinweis). Fliegende Münzen ab Frame 0 für Bewegung, roter Kasten „66 € → 6 €“.
+- Selbstironie-Zeile (Befehl 3): „Das Brot ist frisch. Der Gründer ist pleite.“ als zwei Karten (grün/rot).
+- Ende mit 3 nummerierten Optionen (1 Fischerhütte · 2 Brunnen · 3 Garten) im Bild + Caption.
+- Technik: tts.py neu (edge-tts braucht in der Cloud den Proxy-CA `/root/.ccr/ca-bundle.crt`, sonst SSL-Fehler; tts.py setzt das automatisch). Bäckerei-Schild auf die Wand statt aufs Dach (sonst abgeschnitten).
+- Nächstes Mal prüfen: Skip-Rate von Teil 2 vs. Teil 1 (55 %) → zeigt, ob der Konsequenz-Hook besser hält. Kasse ist fast leer → Spannung „reicht das Geld?“ nutzen.

@@ -37,6 +37,33 @@ Der Chef-Bot bewertet täglich. Er fährt **nicht selbst hoch**, sondern meldet 
 
 ---
 
+## Befehl 3 – Humor und Hook (gültig sofort, gegeben am 2026-11-10)
+
+**Kritik des Besitzers:** Die Gags sind schwach, der Hook am Anfang auch, und es fehlt realistischer, nachvollziehbarer Humor. Gilt für alle Konten, vor allem @ahmed.glowup.
+
+### Humor: realistisch statt ausgedacht
+- Witze aus dem **echten Alltag**, in dem sich Zuschauer wiedererkennen („Das bin ich!“): Dating-Apps, Handy, Familie, Kumpels, Geld, Schule/Arbeit, Peinlichkeiten.
+- **Beobachtung + Übertreibung:** Nimm etwas, das jeder kennt, und treib es eine Stufe zu weit. Beispiele für die Richtung: 20 Minuten an einer Antwort tippen und dann nur „haha ja“ schicken. „Bin in 5 Minuten da“ sagen, während man noch unter der Dusche steht. Die Mama fragt bei jedem Treffen, ob das Mädchen „aus guter Familie“ ist.
+- **Erwartung vs. Realität:** Was Ahmed sich vorstellt, und wie es wirklich läuft. Harter Schnitt dazwischen.
+- **Pointe am Ende des Satzes**, kurz, ohne Erklärung danach. Nie den Witz erklären.
+- **Timing:** Kurze Pause oder Stille vor der Pointe, Reaktions-Shot danach (Gesicht, Blick in die Kamera, Sound-Effekt). Mindestens **3 Lacher pro Reel**, der stärkste am Ende.
+- Ahmed reagiert **menschlich**: unsicher, stolz, peinlich berührt, übermütig. Echte Gefühle machen den Witz.
+- Verboten: Wortwitze ohne Bezug, generische Witze, „random“ Gags, alles, was beleidigend oder über Herkunft/Religion herabsetzend ist.
+- Selbsttest vor dem Rendern: Würde ein 18–25-Jähriger das an einen Freund schicken mit „bro das bist du“? Wenn nein, umschreiben.
+
+### Hook (Sekunde 0–2)
+- Das Reel startet **mitten in der Situation**, nie mit Intro, Logo oder Begrüßung.
+- Erste Zeile ist eine **Behauptung, Frage oder Peinlichkeit**, die neugierig macht. Beispiele für die Richtung: „Ich hab Lena aus Versehen meine Mama geschickt.“ / „POV: Du hast 3 Stunden für ein Date gestylt und sie sagt ‚Bin krank‘.“ / „Das war der peinlichste Moment meines Lebens.“
+- Text auf dem Bild in den ersten 2 Sekunden, groß und lesbar, max. 8 Wörter.
+- Erste Sekunde zeigt **Bewegung oder ein Gesicht mit starker Emotion**.
+- Für jedes Reel **3 Hook-Varianten** schreiben und die stärkste nehmen. Die Wahl in LEARNINGS.md notieren.
+
+### Für Lorebound und Valmora
+- Gleiche Hook-Regeln. Humor sparsamer, aber eine trockene, menschliche Zeile pro Reel ist erwünscht (Valmora: der Gründer kommentiert seine Fehler selbstironisch).
+
+---
+
 ## Status (vom Chef-Bot gepflegt)
 - 2026-11-10: Befehl 1 angelegt. Stufe 1 startet am 2026-11-11.
 - 2026-11-10: Befehl 2 vom Besitzer: Stufe 1 = 2 Reels/Tag/Konto statt 4. Extra-Bots pausiert.
+- 2026-11-10: Befehl 3 vom Besitzer: stärkere, realistische Gags und stärkerer Hook.

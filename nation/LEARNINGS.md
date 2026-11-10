@@ -1,0 +1,20 @@
+# Valmora – Learnings
+
+## Zahlen
+| Reel | gepostet | Views | Likes | Kommentare | Shares | Skip-Rate | Ø Watch-Time | Follower |
+|---|---|---|---|---|---|---|---|---|
+| Tag 1 (Gründung, 45 s) | 2026-11-09 23:29 | 115 | 1 | 0 | 0 | 52,8 % | 6,9 s | 1 |
+| Tag 2 · Teil 1 (Bootssteg, 49 s) | 2026-11-10 15:01 | – | – | – | – | – | – | – |
+
+## Tag 1 → Tag 2 (2026-11-10)
+- Schlecht: Mehr als die Hälfte wischt in den ersten 3 s weg, Ø nur ~7 s von 45 s. Kein einziger Kommentar → Mitmach-Mechanik greift noch nicht.
+- Posting um 23:29 war spät – kaum Reichweite in der Nacht.
+- Geändert in Tag 2: Text ab Frame 0 (kein Schwarz-Fade-in), sofort Konflikt im Hook („nur noch 200 €“ in rotem Kasten), Taiko-Schlag auf 0,05 s,
+  Spannung „fast pleite – ich brauche euch“ statt neutraler Erklärung. Kürzere Pausen zwischen Sätzen (0,35 s statt 0,6 s).
+- Technik: Untertitel-Gruppen brechen jetzt nach Breite um (lange Zahlwörter wie „ZWEIHUNDERTEINS“ wurden abgeschnitten). Bauten in bauten.py ausgelagert.
+- edge-tts muss in neuer Umgebung installiert werden (`pip install edge-tts --break-system-packages`).
+
+## Nächstes Mal
+- Tag-2-Zahlen (Skip-Rate!) mit Tag 1 vergleichen. Wenn Skip-Rate weiter > 45 %: Hook noch kürzer (≤ 2 s gesprochen), erstes Bild = fertiger Bau/Boot in Bewegung.
+- Wenn wieder keine Kommentare: konkrete A/B-Frage stellen („Schule oder Bäckerei?“) – leichter zu beantworten als offene Frage.
+- Zahlen in der Erzählung kurz halten (lange Zahlwörter bremsen).

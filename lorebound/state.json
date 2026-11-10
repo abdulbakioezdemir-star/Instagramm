@@ -31,6 +31,21 @@
       "dauer_s": 38,
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/fenrir/"
+    },
+    {
+      "datum": "2026-11-10",
+      "zeit": "19:00",
+      "slot": "Slot 2 (19:00)",
+      "slug": "hundertster-schlag",
+      "thema": "Gleichnis/Motivation",
+      "serie": "Gleichnisse in 30 Sekunden #1",
+      "titel": "Der hundertste Schlag",
+      "media_id": "18141305875618889",
+      "permalink": "https://www.instagram.com/reel/Dfkf_1qlHZ9/",
+      "video": "media/lorebound/hundertster-schlag.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/hundertster-schlag/"
     }
   ],
   "naechste_themen_ideen": [
@@ -40,7 +55,10 @@
     "Wissen: Wie groß ist das Universum wirklich?",
     "Mythos: Sisyphos",
     "Fantasy: Die Bibliothek, die Erinnerungen frisst",
-    "Gleichnis: Der Bambus, der 5 Jahre unsichtbar wächst"
+    "Gleichnis #2: Der Bambus, der Jahre unter der Erde wächst"
   ],
-  "letzte_kategorie": "Mythen & Sagen"
+  "letzte_kategorie": "Gleichnis/Motivation",
+  "serien": {
+    "Gleichnisse in 30 Sekunden": 1
+  }
 }

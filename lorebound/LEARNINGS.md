@@ -25,3 +25,13 @@ Duplikat (gelöscht): 63 Views, Skip 67 %, Ø 3,5 s. followers_count lieferte 0 
 - 0 Follower trotz ~230 Views: Es fehlt ein Grund zum Folgen. **Ab sofort Serien-Rahmen**: oben eingeblendet und in Caption
   „Mythen in 30 Sekunden #N“, „Wissen in 30 Sekunden #N“ usw.; Schlusszeile: „Folge für Teil #N+1“.
 - Skip-Raten 45–61 %: erste Sekunde muss eine überraschende Behauptung + starkes Bild sein (wie „ER HATTE ALLES.“).
+
+## 2026-11-10 – Reel 19:00 „Der hundertste Schlag“ (Gleichnis, Serie „Gleichnisse in 30 Sekunden #1“)
+**Zahlen vorher (Windsor, 16:35 UTC):** Papier→Mond 129 Views / Skip 61 % / Ø 6,9 s; Schachmatt 91 / 45 % / Ø 6,7 s / 1 Save; Fenrir 7 / 57 % / Ø 3,8 s. Follower 0. Keine Kommentare.
+**Wahl:** Gleichnis, weil Schachmatt (Gleichnis) die beste Skip-Rate hatte und heute schon Wissen + Mythos liefen.
+**Hook-Varianten (Befehl 3):** a) „99 Schläge. Kein Riss.“ b) „Alle lachten über ihn. Zu früh.“ c) „Dieser Stein hielt 99 Schläge aus.“ → a) gewählt (4 Wörter, Zahl + Widerspruch, Hammerschlag + Kamerawackeln auf Frame 0).
+**Test des Tages:** Serien-Rahmen erstmals im Bild („GLEICHNISSE IN 30 SEKUNDEN · #1“ oben, Schluss-Tafel „FOLGE FÜR TEIL #2“) + sichtbarer Zähler „SCHLAG 1 … 100“ als Grund zum Dranbleiben. Ziel: Ø Watch > 10 s und erster Follower.
+**Trockene Zeile:** „Er nickte höflich. Und schlug weiter.“
+**Technik:** 30,0 s, animation-studio, Musik synthetisiert, -13 LUFS, Drop bei 22,0 s per verify exakt synchron. Jeder der 28 Hammerschläge ist ein Ton (Stein-Knock + Metall), Lautstärke wächst mit dem Zähler. Hammer horizontal von rechts (Schwung-Drehpunkt außerhalb des Bildes war unsichtbar) – Stein dafür 70 px nach links.
+**Gepostet:** 18:00:40 UTC (19:00 Berlin), media_id 18141305875618889, https://www.instagram.com/reel/Dfkf_1qlHZ9/ – Fenrir lag kurz vorher bei 10 Views (Skip 60 %).
+**Nächstes Mal prüfen:** Skip-Rate/Ø Watch vs. Schachmatt; ob der Zähler die Watch-Time hebt. Wenn ja: Zähler/Countdown-Motiv auch in Mythen/Wissen nutzen.

@@ -244,75 +244,21 @@
   "fade": 0.8
  },
  {
-  "id": "vo-n1",
-  "src": "assets/voice/n1.wav",
-  "start": 0.6,
-  "dur": 0.78,
-  "track": 40,
-  "vol": 1
+  "id": "mu-bed",
+  "src": "assets/music/prologue.mp3",
+  "start": 0,
+  "dur": 30,
+  "track": 60,
+  "vol": 0.6,
+  "fade": 1.2,
+  "mediastart": 2.0
  },
  {
-  "id": "vo-n2",
-  "src": "assets/voice/n2.wav",
-  "start": 3.95,
-  "dur": 1.24,
-  "track": 41,
-  "vol": 1
- },
- {
-  "id": "vo-k1",
-  "src": "assets/voice/k1.wav",
-  "start": 7.45,
-  "dur": 1.59,
-  "track": 42,
-  "vol": 1
- },
- {
-  "id": "vo-k2",
-  "src": "assets/voice/k2.wav",
-  "start": 8.35,
-  "dur": 1.7,
-  "track": 43,
-  "vol": 1
- },
- {
-  "id": "vo-k3",
-  "src": "assets/voice/k3.wav",
-  "start": 12.4,
-  "dur": 2.02,
-  "track": 44,
-  "vol": 1
- },
- {
-  "id": "vo-n3",
-  "src": "assets/voice/n3.wav",
-  "start": 14.6,
-  "dur": 1.81,
-  "track": 45,
-  "vol": 1
- },
- {
-  "id": "vo-k4",
-  "src": "assets/voice/k4.wav",
-  "start": 22.05,
-  "dur": 0.67,
-  "track": 46,
-  "vol": 1
- },
- {
-  "id": "vo-c1",
-  "src": "assets/voice/c1.wav",
-  "start": 25.6,
-  "dur": 1.96,
-  "track": 47,
-  "vol": 1
- },
- {
-  "id": "vo-n4",
-  "src": "assets/voice/n4.wav",
-  "start": 27.4,
-  "dur": 2.45,
-  "track": 48,
-  "vol": 1
+  "id": "sx-note",
+  "src": "assets/sfx/pop.mp3",
+  "start": 25.526,
+  "dur": 0.6,
+  "track": 61,
+  "vol": 0.7
  }
 ]

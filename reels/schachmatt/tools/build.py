@@ -199,12 +199,16 @@ write(cid, scene(cid, body, js, 3.2, PHONE_CSS))
 # ---------------------------------------------------------------- 4. the pieces laugh at the pawn (9.8 - 12.2)
 cid = "bmock"
 bub = lambda t: f'<div class="bub">{t}</div>'
-pcs = [piece(cid, "n1", "knight", "black", 1, 2, 6, bub("😂")), piece(cid, "b1", "bishop", "black", 2, 3, 6),
-       piece(cid, "r1", "rook", "black", 3, 3, 6, bub("Ein Nichts.")), piece(cid, "q1", "queen", "black", 4, 3, 6),
-       piece(cid, "n2", "knight", "black", 5, 2, 6, bub("🤣")), piece(cid, "k1", "king", "black", 3, 5, 8),
+pcs = [piece(cid, "n1", "knight", "black", 1, 2, 6), piece(cid, "b1", "bishop", "black", 2, 3, 6),
+       piece(cid, "r1", "rook", "black", 3, 3, 6), piece(cid, "q1", "queen", "black", 4, 3, 6),
+       piece(cid, "n2", "knight", "black", 5, 2, 6), piece(cid, "k1", "king", "black", 3, 5, 8),
        piece(cid, "pawn", "pawn", "white", 3, 1, 0)]
 body = backdrop(cid) + f"""
-    <div class="{cid}-stage"><div class="{cid}-world"><img src="assets/img/board.svg">{''.join(pcs)}</div></div>"""
+    <div class="{cid}-stage"><div class="{cid}-world"><img src="assets/img/board.svg">{''.join(pcs)}</div></div>
+    <div id="bmock-t" class="flatbub" style="left:110px;top:650px">😂</div>
+    <div id="bmock-u" class="flatbub" style="left:370px;top:690px">Ein Nichts.</div>
+    <div id="bmock-v" class="flatbub" style="left:860px;top:640px">🤣</div>
+    <div id="bmock-title" style="position:absolute;left:60px;right:60px;top:250px;text-align:center;font:400 150px/1 'League Gothic',sans-serif;color:#f6f1e7;text-transform:uppercase"><span class="bmw">Vom</span> <span class="bmw" style="color:#f2c66d">König</span><br><span class="bmw">zum</span> <span class="bmw">Bauern.</span></div>"""
 js = board_js(cid, 70) + f"""
     aimSet(3, 1.7, 720);
     aim(3, 2.0, 830, 0, 2.4, "power1.inOut");
@@ -218,9 +222,11 @@ js = board_js(cid, 70) + f"""
       tl.to("#{cid}-" + id + "-tip", {{ rotation: a, transformOrigin: "50% 100%", duration: 0.35, ease: "power2.out" }}, 0.9 + i * 0.06);
       tl.to("#{cid}-" + id + "-tip", {{ rotation: a * 0.4, duration: 0.11, ease: "sine.inOut", yoyo: true, repeat: 7 }}, 1.3 + i * 0.05);
     }});
-    ["n1", "r1", "n2"].forEach((id, i) => tl.fromTo("#{cid}-" + id + "-tip .bub", {{ opacity: 0, scale: 0.5 }}, {{ opacity: 1, scale: 1, duration: 0.28, ease: "back.out(2)" }}, 1.05 + i * 0.25));
+    ["#bmock-t", "#bmock-u", "#bmock-v"].forEach((b, i) => tl.fromTo(b, {{ opacity: 0, scale: 0.5, transformOrigin: "50% 100%" }}, {{ opacity: 1, scale: 1, duration: 0.28, ease: "back.out(2)" }}, 1.0 + i * 0.22));
+    tl.fromTo(".bmw", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.08, ease: "power2.out" }}, 0.15);
+    tl.to("#bmock-title", {{ opacity: 0, filter: "blur(8px)", duration: 0.2 }}, 2.15);
 """
-write(cid, scene(cid, body, js, 2.4))
+write(cid, scene(cid, body, js, 2.4, ".flatbub { position: absolute; font: 900 64px/1 'Inter', sans-serif; color: #111; background: #f4f1ea; padding: 20px 30px; border-radius: 40px; box-shadow: 0 16px 40px rgba(0,0,0,.45); }"))
 
 # ---------------------------------------------------------------- 5. the system is down (12.2 - 16.6)
 cid = "night"
@@ -323,22 +329,37 @@ js = """
 """
 write(cid, scene(cid, body, js, 2.4, PHONE_CSS))
 
-# ---------------------------------------------------------------- captions (whole film)
-CAPS = [("n1", 0.6, 1.6, "Er hatte alles."), ("n2", 3.95, 1.9, "Dann verlor er alles."),
-        ("k3", 12.4, 2.0, "Nichts geht mehr! Alles ist down!"), ("n3", 14.6, 2.6, "Aber sein Wissen konnte ihm keiner nehmen."),("c1", 25.6, 2.2, "Ab morgen leitest du das Team.")]
-json.dump(CAPS, open(os.path.join(ROOT, "tools", "captions.json"), "w"))
-caps = "".join(f'<div id="cap-{i}" class="clip cap" data-start="{s}" data-duration="{d}"><span>{t}</span></div>' for i, s, d, t in CAPS)
-write("caps", f"""<template>
+# ---------------------------------------------------------------- titles (whole film): the words the voice would have said
+write("caps", """<template>
   <style>
-    #root {{ position: absolute; inset: 0; pointer-events: none; }}
-    .cap {{ position: absolute; left: 70px; right: 70px; top: 1170px; text-align: center; }}
-    .cap span {{ display: inline-block; font: 900 58px/1.18 "Inter", sans-serif; color: #fff; background: rgba(0,0,0,.72); padding: 16px 30px; border-radius: 20px; }}
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    .ttl { position: absolute; left: 60px; right: 60px; text-align: center; font: 400 170px/0.98 "League Gothic", sans-serif;
+      color: #f6f1e7; text-transform: uppercase; text-shadow: 0 8px 30px rgba(0,0,0,.55); }
+    .ttl .g { color: #f2c66d; }
+    .ttl span { display: inline-block; }
+    #ttl-3 { font-size: 132px; }
+    #note { position: absolute; left: 50px; right: 50px; top: 190px; height: 170px; border-radius: 44px; background: rgba(28,30,34,.92);
+      box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+    #note-ic { position: absolute; left: 30px; top: 34px; width: 100px; height: 100px; border-radius: 24px; background: #3b5bdb; color: #fff;
+      font: 800 40px/100px "Inter", sans-serif; text-align: center; }
+    #note-h { position: absolute; left: 156px; top: 32px; font: 700 32px "Inter", sans-serif; color: #c9ccd2; }
+    #note-h b { color: #fff; }
+    #note-t { position: absolute; left: 156px; top: 82px; font: 800 44px "Inter", sans-serif; color: #fff; }
   </style>
-  <div id="root" data-composition-id="caps" data-width="1080" data-height="1920">{caps}</div>
+  <div id="root" data-composition-id="caps" data-width="1080" data-height="1920">
+    <div id="ttl-1" class="clip ttl" data-start="0" data-duration="3.3" style="top:250px"><span>Er</span> <span>hatte</span> <span class="g">alles.</span></div>
+    <div id="ttl-3" class="clip ttl" data-start="14.55" data-duration="2.0" style="top:250px"><span>Aber</span> <span>sein</span> <span class="g">Wissen</span><br><span>konnte</span> <span>ihm</span> <span>keiner</span> <span>nehmen.</span></div>
+    <div id="note" class="clip" data-start="25.5" data-duration="2.1"><div id="note-ic">TV</div>
+      <div id="note-h"><b>Chef</b> · Team Vertrieb · jetzt</div><div id="note-t">Ab morgen leitest du das Team. 👑</div></div>
+  </div>
   <script>
-    const tl = gsap.timeline({{ paused: true }});
-    document.querySelectorAll("#root .cap span").forEach(() => {{}});
-    {''.join(f'tl.fromTo("#cap-{i} span", {{ opacity: 0, filter: "blur(6px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.14, ease: "power2.out" }}, {s});' for i, s, d, t in CAPS)}
+    const tl = gsap.timeline({ paused: true });
+    // frame 0 is the hook: the first line is already there, it leaves with a blur
+    tl.to("#ttl-1", { opacity: 0, filter: "blur(10px)", duration: 0.2, ease: "power2.in" }, 3.05);
+    tl.fromTo("#ttl-3 span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.07, ease: "power2.out" }, 14.55);
+    tl.to("#ttl-3", { opacity: 0, filter: "blur(10px)", duration: 0.2 }, 16.3);
+    tl.fromTo("#note", { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "back.out(1.4)" }, 25.5);
+    tl.to("#note", { y: -260, opacity: 0, duration: 0.3, ease: "power3.in" }, 27.3);
     window.__timelines["caps"] = tl;
   </script>
 </template>
@@ -382,7 +403,7 @@ hosts = "\n".join(
 AUDIO = json.load(open(os.path.join(ROOT, "tools", "audio.json")))
 audio = "\n".join(
     f'      <audio id="{a["id"]}" class="clip" src="{a["src"]}" data-start="{a["start"]}" data-duration="{a["dur"]}" data-track-index="{a["track"]}" data-volume="{a.get("vol", 1)}"'
-    + (f' data-fade-out="{a["fade"]}"' if a.get("fade") else "") + "></audio>"
+    + (f' data-fade-out="{a["fade"]}"' if a.get("fade") else "") + (f' data-media-start="{a["mediastart"]}"' if a.get("mediastart") else "") + "></audio>"
     for a in AUDIO)
 open(os.path.join(ROOT, "index.html"), "w").write(f"""<!doctype html>
 <html lang="de">

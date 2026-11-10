@@ -1,26 +1,214 @@
 {
  "music": "sunset.mp3",
  "lines": [
-  {"id":"s1","text":"Das BMW-Logo ist *kein* *Propeller.*"},
-  {"id":"s2","text":"Auch wenn es fast jeder glaubt."},
-  {"id":"s3","text":"Die Propeller-Geschichte stammt aus einer Werbeanzeige von *1929.*"},
-  {"id":"s4","text":"Das Logo zeigt die Farben Bayerns: *Weiß* *und* *Blau.*"},
-  {"id":"s5","text":"Angefangen hat alles *1916.* Mit Flugmotoren."},
-  {"id":"s6","text":"*1923* kam das erste Motorrad."},
-  {"id":"s7","text":"*1928* das erste Auto."},
-  {"id":"s8","text":"Und seit *1933* prägt ein Detail das Gesicht der Marke: die *Niere.*"},
-  {"id":"s9","text":"Jetzt weißt du, was das Logo wirklich zeigt."}
+  {
+   "id": "s1",
+   "text": "Das BMW-Logo ist *kein* *Propeller.*"
+  },
+  {
+   "id": "s2",
+   "text": "Auch wenn es fast jeder glaubt."
+  },
+  {
+   "id": "s3",
+   "text": "Die Propeller-Geschichte stammt aus einer Werbeanzeige von *1929.*"
+  },
+  {
+   "id": "s4",
+   "text": "Das Logo zeigt die Farben Bayerns: *Weiß* *und* *Blau.*"
+  },
+  {
+   "id": "s5",
+   "text": "Angefangen hat alles *1916.* Mit Flugmotoren."
+  },
+  {
+   "id": "s6",
+   "text": "*1923* kam das erste Motorrad."
+  },
+  {
+   "id": "s7",
+   "text": "*1928* das erste Auto."
+  },
+  {
+   "id": "s8",
+   "text": "Und seit *1933* prägt ein Detail das Gesicht der Marke: die *Niere.*"
+  },
+  {
+   "id": "s9",
+   "text": "Jetzt weißt du, was das Logo wirklich zeigt."
+  }
  ],
  "shots": [
-  {"img":"shot1_0.png","zoom":[1.0,1.12],"pan":[[0,0],[0,0]]},
-  {"img":"shot2_0.png","zoom":[1.06,1.0],"pan":[[0,-0.6],[0,0.4]]},
-  {"img":"shot3_0.png","zoom":[1.02,1.08],"pan":[[-0.8,0],[0.8,0]],"year":"1929","cut":true},
-  {"img":"shot4_0.png","zoom":[1.15,1.05],"pan":[[0.3,0.3],[-0.2,-0.2]]},
-  {"img":"shot5_0.png","zoom":[1.0,1.12],"pan":[[0.6,0],[-0.4,-0.2]],"year":"1916"},
-  {"img":"shot6_0.png","zoom":[1.05,1.05],"pan":[[-0.9,0.2],[0.9,0.2]],"year":"1923"},
-  {"img":"shot7_0.png","zoom":[1.12,1.0],"pan":[[0,-0.8],[0,0.3]],"year":"1928"},
-  {"img":"shot8_1.png","zoom":[1.0,1.2],"pan":[[0,0],[0,0.3]],"year":"1933"},
-  {"img":"shot9_0.png","zoom":[1.0,1.15],"pan":[[0,0.4],[0,-0.4]]}
+  {
+   "img": "shot1_1.png",
+   "zoom": [
+    1.0,
+    1.12
+   ],
+   "pan": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "img": "shot2_1.png",
+   "zoom": [
+    1.06,
+    1.0
+   ],
+   "pan": [
+    [
+     0,
+     -0.6
+    ],
+    [
+     0,
+     0.4
+    ]
+   ]
+  },
+  {
+   "img": "shot3_0.png",
+   "zoom": [
+    1.02,
+    1.08
+   ],
+   "pan": [
+    [
+     -0.8,
+     0
+    ],
+    [
+     0.8,
+     0
+    ]
+   ],
+   "year": "1929",
+   "cut": true
+  },
+  {
+   "img": "shot4_1.png",
+   "zoom": [
+    1.15,
+    1.05
+   ],
+   "pan": [
+    [
+     0.3,
+     0.3
+    ],
+    [
+     -0.2,
+     -0.2
+    ]
+   ]
+  },
+  {
+   "img": "shot5_1.png",
+   "zoom": [
+    1.0,
+    1.12
+   ],
+   "pan": [
+    [
+     0.6,
+     0
+    ],
+    [
+     -0.4,
+     -0.2
+    ]
+   ],
+   "year": "1916"
+  },
+  {
+   "img": "shot6_1.png",
+   "zoom": [
+    1.05,
+    1.05
+   ],
+   "pan": [
+    [
+     -0.9,
+     0.2
+    ],
+    [
+     0.9,
+     0.2
+    ]
+   ],
+   "year": "1923"
+  },
+  {
+   "img": "shot7_1.png",
+   "zoom": [
+    1.12,
+    1.0
+   ],
+   "pan": [
+    [
+     0,
+     -0.8
+    ],
+    [
+     0,
+     0.3
+    ]
+   ],
+   "year": "1928"
+  },
+  {
+   "img": "shot8_1.png",
+   "zoom": [
+    1.0,
+    1.2
+   ],
+   "pan": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0.3
+    ]
+   ],
+   "year": "1933"
+  },
+  {
+   "img": "shot9_1.png",
+   "zoom": [
+    1.0,
+    1.15
+   ],
+   "pan": [
+    [
+     0,
+     0.4
+    ],
+    [
+     0,
+     -0.4
+    ]
+   ]
+  }
  ],
- "sfx": [["whoosh-short.mp3", 8.15, 0.5], ["click-soft.mp3", 22.6, 0.6]]
+ "sfx": [
+  [
+   "whoosh-short.mp3",
+   8.15,
+   0.5
+  ],
+  [
+   "click-soft.mp3",
+   22.6,
+   0.6
+  ]
+ ]
 }

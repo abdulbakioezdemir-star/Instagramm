@@ -27,9 +27,9 @@
       "views": 48
     }
   ],
-  "format": "2 Teile pro Tag: Teil 1 12:00 (Cliffhanger), Teil 2 18:00 (A/B-Abstimmung)",
+  "format": "Ab 2026-11-11 (BEFEHLE.md Befehl 1): 4 Reels/Tag – 09:30 Bonus, 12:00 Teil 1/2, 14:30 Bonus, 18:00 Teil 2/2 + A/B; je 28–32 s",
   "bio": "korrigiert 2026-11-09 (Ahmed statt Kevin, Zeiten 12:00 & 18:00)",
-  "aktueller_tag": 2,
+  "aktueller_tag": 3,
   "tag_2": {
     "abstimmung_tag1": {
       "A": 2,
@@ -44,19 +44,60 @@
       "dauer_s": 49.4
     },
     "teil2": {
-      "gepostet": false,
+      "gepostet": "2026-11-10T18:00:05+01:00",
       "skript": "pipeline/tag02/tag02.py (PART=2, lines2.tsv) – Anleitung pipeline/tag02/README.md",
       "ziel_datei": "media/glowup/tag02_teil2.mp4",
-      "caption": "Tag 2 · Teil 2/2\nLena ruft per Video an – aber auf Ahmeds Profil ist Cousin Emre. Und Ahmed ist ein Eiswürfel 🥶\n\nA = Emre geht ran\nB = \"Meine Kamera ist kaputt\"\nSchreib A oder B – die Mehrheit entscheidet Tag 3 (morgen 12 Uhr)!\n\n#ahmedglowup #animation #comedy #dating #reels",
+      "caption": "Tag 2 · Teil 2/2\nLena ruft per Video an – aber auf Ahmeds Profil ist Cousin Emre. Und Ahmed zittert so stark, sein Handy denkt, es ist ein Erdbeben 🥶📳\n\nA = Emre geht ran\nB = \"Meine Kamera ist kaputt\"\nSchreibt A oder B – die Mehrheit entscheidet Tag 3 (morgen 12 Uhr)!\nSchick das deinem Freund, der nie duscht 😂\n\n#ahmedglowup #animation #comedy #dating #reels",
       "abstimmung": {
         "A": "Emre geht ran",
         "B": "Meine Kamera ist kaputt"
-      }
+      },
+      "media_id": "18112940438615129",
+      "datei": "media/glowup/tag02_teil2.mp4",
+      "dauer_s": 31.05,
+      "slot": "18:00 Teil 2/2 + A/B"
     }
   },
   "stimmen": {
     "Ahmed": "de-DE-FlorianMultilingualNeural +0Hz +7%",
     "Lena": "de-DE-SeraphinaMultilingualNeural +0Hz +0%",
     "Doenermann": "de-DE-ConradNeural +0Hz +0%"
-  }
+  },
+  "letzte_abstimmungs_folge": {
+    "tag": 2,
+    "teil": 2,
+    "media_id": "18112940438615129",
+    "gepostet": "2026-11-10T18:00:05+01:00",
+    "abstimmung": {
+      "A": "Emre geht ran",
+      "B": "Meine Kamera ist kaputt"
+    },
+    "entscheidet": "Tag 3 Teil 1 (2026-11-11 12:00)"
+  },
+  "analyse_2026-11-10_17:30": {
+    "followers": 6,
+    "tag1": {
+      "views": 1469,
+      "reach": 1113,
+      "skip": 0.432,
+      "avg_watch_s": 21.6,
+      "likes": 31,
+      "shares": 2,
+      "saves": 3,
+      "comments": 8
+    },
+    "tag2_teil1": {
+      "views": 446,
+      "reach": 361,
+      "skip": 0.357,
+      "avg_watch_s": 16.0,
+      "likes": 7,
+      "shares": 0,
+      "saves": 0,
+      "comments": 1
+    }
+  },
+  "beantwortete_kommentare": [
+    "17991599940112967"
+  ]
 }

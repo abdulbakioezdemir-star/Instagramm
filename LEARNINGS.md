@@ -21,3 +21,18 @@
   Die A/B-Abstimmung zieht Kommentare – unbedingt bei jedem Teil 2/2 beibehalten.
 - Tag 2 · Teil 1: 438 Views nach 5 h, Skip 36 % (bester Wert bisher) → der Cold Open mit Konflikt in Sekunde 0 funktioniert.
 - A/B-Optionen immer zusätzlich groß als Text im Bild und in der Caption.
+
+## 2026-11-10 18:00 (Tag 2 · Teil 2)
+- Gepostet 18:00:05, media_id 18112940438615129 (31 s). Kommentar unter Teil 1 beantwortet.
+- Zahlen 17:30 (Windsor, ohne force_refresh): Follower **6** (vorher 2).
+  - Tag 1 (16:13, 09.11.): 1.469 Views, 1.113 Reach, Skip-Rate **43,2 %**, Ø Watch 21,6 s, 31 Likes, 2 Shares, 3 Saves, 8 Kommentare (inkl. 4 Antworten).
+  - Tag 2 Teil 1 (12:00, 49 s): 446 Views in 5,5 h, 361 Reach, Skip-Rate **35,7 %** (bester Wert bisher), Ø Watch 16,0 s (≈33 % von 49 s), 7 Likes, 0 Shares, 0 Saves, 1 Kommentar.
+  - Reel 09.11. 11:06 ohne Caption: 190 Views, Skip 51 %, Ø Watch 7,9 s.
+- **Funktioniert:** Cold-Open-Hook (kalte Dusche + „KALT!!!“ ab 0,05 s) senkt die Skip-Rate deutlich (54 → 43 → 36 %).
+  Zuschauer schlagen von selbst Lösungen vor („Gehe nicht ran, sag du bist auf der Arbeit“) → Story-Fragen ziehen Kommentare.
+- **Funktioniert nicht:** Watch-Time bricht bei 49 s nach ~16 s ein; Teil 1 hat 0 Shares/Saves. Ohne A/B-Frage kaum Kommentare (1 vs. 8).
+- **Geändert in Teil 2:** auf **31 s** gekürzt (Zeile a09 „Denk nach…“ gestrichen, Abspann 2,4 → 2,0 s) – Vorgabe BEFEHLE.md 28–32 s.
+  Share-CTA in der Caption getestet („Schick das deinem Freund, der nie duscht“).
+- **Für die nächsten Teile:** jeder Teil 28–32 s, max. 5 Sprechzeilen; auch Teil 1 mit einer Mini-Frage enden („Was würdest du tun?“), damit Kommentare kommen;
+  Zuschauer-Vorschläge als Easter-Egg einbauen (z. B. Ahmed: „Einer sagt, ich soll sagen, ich bin auf der Arbeit… Bruder, ich wurde gefeuert!“).
+- Pipeline-Fix: README-Setup-Schleife für `tag2/` schluckte stdin (ffmpeg) → nur 1 Zeile erzeugt, Import brach ab. Jetzt `ffmpeg -nostdin` + Lena-Stimme korrekt.

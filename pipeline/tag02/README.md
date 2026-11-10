@@ -11,7 +11,7 @@ cd /home/claude && P=instagramm/pipeline
 pip install edge-tts skia-python --break-system-packages -q
 cp $P/draw.py $P/scenes.py $P/audio.py $P/mix.sh $P/tts.py . && cp -r $P/fonts .
 echo '{"mouth":[0],"ev":{},"t1":"","scenes":[],"lines":[],"total":1}' > timeline.json
-mkdir -p tag2 && cp $P/tag2/* tag2/ && cd tag2 && while IFS=$'\t' read i w txt; do python3 /home/claude/tts.py "$txt" de-DE-FlorianMultilingualNeural $i.mp3 +0Hz +7%; ffmpeg -v error -y -i $i.mp3 -ar 48000 -ac 1 $i.wav; done < lines.tsv
+mkdir -p tag2 && cp $P/tag2/* tag2/ && cd tag2 && while IFS=$'\t' read i w txt; do v=de-DE-FlorianMultilingualNeural; r=+7%; [ "$w" = L ] && v=de-DE-SeraphinaMultilingualNeural && r=+0%; python3 /home/claude/tts.py "$txt" $v $i.mp3 +0Hz $r </dev/null; ffmpeg -nostdin -v error -y -i $i.mp3 -ar 48000 -ac 1 $i.wav; done < lines.tsv
 cd /home/claude/instagramm/pipeline/tag02
 python3 tag02.py 2 tts                        # Stimmen erzeugen + Timeline
 python3 tag02.py 2 preview 0.5 5 12 20 26 33  # Kontaktbogen -> /home/claude/tag02_work/teil2/prev.png

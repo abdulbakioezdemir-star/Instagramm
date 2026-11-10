@@ -15,3 +15,9 @@
 - **Problem:** Stimmen-Namen waren nirgends gespeichert → per Spektral-Abgleich mit tag02_beides_v2.mp4 rekonstruiert
   (Ahmed Florian +7 %, Lena Seraphina, Dönermann Conrad). Jetzt in state.json + AUTOMATION.md festgehalten.
 - **Ändern:** 0 Shares bisher → in Teil 2 einen klar teilbaren Gag (Erdbeben-Zittern) und CTA „Schick das deinem Freund, der nie duscht“ testen.
+
+## 2026-11-10 Analyse (Chat mit Besitzer, 17:30)
+- Tag 1 ist das stärkste Reel aller Konten: 1.469 Views, 31 Likes, 8 Kommentare, Skip 43 %, Ø 21,6 s.
+  Die A/B-Abstimmung zieht Kommentare – unbedingt bei jedem Teil 2/2 beibehalten.
+- Tag 2 · Teil 1: 438 Views nach 5 h, Skip 36 % (bester Wert bisher) → der Cold Open mit Konflikt in Sekunde 0 funktioniert.
+- A/B-Optionen immer zusätzlich groß als Text im Bild und in der Caption.

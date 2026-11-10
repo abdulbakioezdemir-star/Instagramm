@@ -18,3 +18,12 @@
 - Tag-2-Zahlen (Skip-Rate!) mit Tag 1 vergleichen. Wenn Skip-Rate weiter > 45 %: Hook noch kürzer (≤ 2 s gesprochen), erstes Bild = fertiger Bau/Boot in Bewegung.
 - Wenn wieder keine Kommentare: konkrete A/B-Frage stellen („Schule oder Bäckerei?“) – leichter zu beantworten als offene Frage.
 - Zahlen in der Erzählung kurz halten (lange Zahlwörter bremsen).
+
+## 2026-11-10 Analyse (Chat mit Besitzer, 17:30)
+- Tag 1 (55 s): 125 Views, Skip 53 %, Ø nur 6,9 s Watch-Time → zu lang, die meisten gehen nach dem Intro.
+- Tag 2 (kürzer): 343 Views, 11 Likes, 1 Kommentar, Skip 39 % → deutlich besser. Kürzer und direkter funktioniert.
+- Problem: Offene Frage „Was bauen wir?“ bringt kaum Kommentare. Bei Ahmed bringt A/B 8 Kommentare.
+- **Ab sofort:** Jedes Bau-Reel (Teil 1/2, Teil 2/2) endet mit **3 nummerierten Optionen** groß im Bild
+  („1 = Hafen · 2 = Bäckerei · 3 = Brücke – schreib die Zahl!“), gleiche Optionen in der Caption.
+  Eigene Wünsche bleiben erlaubt; der Top-Kommentar gewinnt, sonst die meistgenannte Zahl.
+- Erste Sekunde: sofort das Land + große Zahl (Kasse oder Einwohner) zeigen, kein langsames Intro.

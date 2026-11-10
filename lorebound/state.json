@@ -1,7 +1,43 @@
 {
   "account_id": "17841470787432002",
   "posts": [
-    {"datum": "2026-11-10", "slug": "schachmatt", "thema": "Gleichnis/Motivation", "media_id": "18114428522177649", "hinweis": "Besitzer hat das Reel zusätzlich selbst gepostet – Duplikat, er löscht eins"}
+    {
+      "datum": "2026-11-10",
+      "slug": "schachmatt",
+      "thema": "Gleichnis/Motivation",
+      "media_id": "18114428522177649",
+      "hinweis": "Duplikat 18114428522177649 vom Besitzer gelöscht; verbleibend 17930052021429811 (74 Views, Skip 45 %, Ø 6,0 s)",
+      "media_id_verbleibend": "17930052021429811"
+    },
+    {
+      "datum": "2026-11-10",
+      "zeit": "13:00",
+      "slug": "fenrir",
+      "thema": "Mythen & Sagen (nordisch)",
+      "titel": "Die Fessel, die es nicht gibt",
+      "media_id": "18156426646522049",
+      "permalink": "https://www.instagram.com/reel/Dfj2iMdnDwE/",
+      "video": "media/lorebound/fenrir.mp4",
+      "dauer_s": 38,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/fenrir/"
+    }
   ],
-  "naechste_themen_ideen": ["Mythos: Ikarus", "Wissen: Warum der Himmel blau ist", "Fantasy: Der letzte Drache", "Nordisch: Fenrir und die Kette", "Wissen: Wie groß ist das Universum wirklich?"]
+  "naechste_themen_ideen": [
+    "Mythos: Ikarus",
+    "Wissen: Warum der Himmel blau ist",
+    "Fantasy: Der letzte Drache",
+    "Wissen: Wie groß ist das Universum wirklich?",
+    "Mythos: Sisyphos",
+    "Fantasy: Die Bibliothek, die Erinnerungen frisst",
+    "Gleichnis: Der Bambus, der 5 Jahre unsichtbar wächst"
+  ],
+  "unbekannte_posts": [
+    {
+      "media_id": "18137974267678434",
+      "permalink": "https://www.instagram.com/reel/Dfjzh0LTcIp/",
+      "hinweis": "am 2026-11-10 vor 13:00 erschienen, nicht von diesem Lauf"
+    }
+  ],
+  "letzte_kategorie": "Mythen & Sagen"
 }

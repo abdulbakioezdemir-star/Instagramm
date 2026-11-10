@@ -1,0 +1,66 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0a0807; }
+    .news-stage { position: absolute; inset: 0; perspective: 1500px; perspective-origin: 540px 1290px; }
+    .news-world { position: absolute; left: 40px; top: 560px; width: 1000px; height: 1000px; transform-style: preserve-3d; }
+    .news-world > img { position: absolute; left: 0; top: 0; width: 1000px; height: 1000px; }
+    .pc { position: absolute; width: 0; height: 0; transform-style: preserve-3d; }
+    .up { position: absolute; transform-style: preserve-3d; }
+    .tip { position: absolute; inset: 0; }
+    .tip > img { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
+    .shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.55), rgba(0,0,0,0)); }
+    .bub { position: absolute; left: 50%; bottom: 104%; white-space: nowrap; transform: translateX(-50%);
+      font: 800 44px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 14px 22px; border-radius: 26px; }
+  </style>
+  <style>
+    .ph { position: absolute; left: 150px; top: 200px; width: 780px; height: 1560px; border-radius: 96px; background: #050506;
+      box-shadow: 0 60px 120px rgba(0,0,0,.6), inset 0 0 0 3px #2a2c31; }
+    .ph-scr { position: absolute; left: 18px; top: 18px; right: 18px; bottom: 18px; border-radius: 80px; overflow: hidden; background: #0d0f13; }
+    .ph-bar { position: absolute; left: 0; right: 0; top: 0; height: 96px; font: 700 30px "Inter", sans-serif; color: #f2f2f2; }
+    .ph-bar span { position: absolute; top: 34px; left: 64px; }
+    .ph-isl { position: absolute; left: 50%; top: 26px; width: 200px; height: 56px; margin-left: -100px; border-radius: 30px; background: #000; }
+    .ph-head { position: absolute; left: 0; right: 0; top: 96px; height: 120px; border-bottom: 1px solid #23262c; }
+    .ph-av { position: absolute; left: 40px; top: 22px; width: 76px; height: 76px; border-radius: 50%; background: #3b5bdb; color: #fff;
+      font: 800 32px/76px "Inter", sans-serif; text-align: center; }
+    .ph-title { position: absolute; left: 136px; top: 26px; font: 800 36px "Inter", sans-serif; color: #f5f5f5; }
+    .ph-sub { position: absolute; left: 136px; top: 72px; font: 500 26px "Inter", sans-serif; color: #8b9099; }
+    .msg { position: absolute; left: 36px; max-width: 560px; padding: 20px 26px; border-radius: 34px; background: #23272e;
+      font: 500 38px/1.25 "Inter", sans-serif; color: #f1f1f1; }
+    .msg b { display: block; font: 800 28px "Inter", sans-serif; margin-bottom: 6px; }
+    .msg.me { left: auto; right: 36px; background: #1f9d5c; }
+    .typing { position: absolute; left: 36px; width: 120px; height: 64px; border-radius: 32px; background: #23272e; }
+    .typing i { position: absolute; top: 26px; width: 13px; height: 13px; border-radius: 50%; background: #9aa0a9; }
+</style>
+  <div id="root" data-composition-id="news" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="news-office" style="position:absolute;inset:-40px;filter:blur(16px)">
+      <img src="assets/img/office.svg" style="position:absolute;left:40px;top:40px;width:1080px;height:1920px">
+      <div style="position:absolute;left:40px;top:40px;width:1080px;height:1920px"><div class="news-scr" style="position:absolute;left:341.4px;top:988.7px;width:76.1px;height:47.9px;background:#2b3a4f;border-radius:1.128px"></div><div class="news-scr" style="position:absolute;left:448.5px;top:988.7px;width:76.1px;height:47.9px;background:#2b3a4f;border-radius:1.128px"></div><div class="news-scr" style="position:absolute;left:555.5px;top:988.7px;width:76.1px;height:47.9px;background:#2b3a4f;border-radius:1.128px"></div><div class="news-scr" style="position:absolute;left:662.5px;top:988.7px;width:76.1px;height:47.9px;background:#2b3a4f;border-radius:1.128px"></div><div class="news-scr" style="position:absolute;left:281.3px;top:1058.0px;width:99.1px;height:62.4px;background:#2b3a4f;border-radius:1.468px"></div><div class="news-scr" style="position:absolute;left:420.7px;top:1058.0px;width:99.1px;height:62.4px;background:#2b3a4f;border-radius:1.468px"></div><div class="news-scr" style="position:absolute;left:560.2px;top:1058.0px;width:99.1px;height:62.4px;background:#2b3a4f;border-radius:1.468px"></div><div class="news-scr" style="position:absolute;left:699.6px;top:1058.0px;width:99.1px;height:62.4px;background:#2b3a4f;border-radius:1.468px"></div><div class="news-scr" style="position:absolute;left:196.1px;top:1156.1px;width:131.7px;height:82.9px;background:#2b3a4f;border-radius:1.952px"></div><div class="news-scr" style="position:absolute;left:381.5px;top:1156.1px;width:131.7px;height:82.9px;background:#2b3a4f;border-radius:1.952px"></div><div class="news-scr" style="position:absolute;left:566.8px;top:1156.1px;width:131.7px;height:82.9px;background:#2b3a4f;border-radius:1.952px"></div><div class="news-scr" style="position:absolute;left:752.2px;top:1156.1px;width:131.7px;height:82.9px;background:#2b3a4f;border-radius:1.952px"></div><div class="news-scr" style="position:absolute;left:66.1px;top:1305.9px;width:181.5px;height:114.3px;background:#2b3a4f;border-radius:2.688px"></div><div class="news-scr" style="position:absolute;left:321.5px;top:1305.9px;width:181.5px;height:114.3px;background:#2b3a4f;border-radius:2.688px"></div><div class="news-scr" style="position:absolute;left:577.0px;top:1305.9px;width:181.5px;height:114.3px;background:#2b3a4f;border-radius:2.688px"></div><div class="news-scr" style="position:absolute;left:832.4px;top:1305.9px;width:181.5px;height:114.3px;background:#2b3a4f;border-radius:2.688px"></div></div>
+    </div>
+    <div style="position:absolute;inset:0;background:rgba(10,8,6,.45)"></div>
+    <div id="news-ph" class="ph"><div class="ph-scr">
+        <div class="ph-bar"><span>09:41</span><div class="ph-isl"></div></div>
+        <div class="ph-head" style="display:none"><div class="ph-av" style="background:transparent"></div><div class="ph-title"></div><div class="ph-sub"></div></div>
+        
+        <div style="position:absolute;left:0;right:0;top:96px;height:110px;font:900 40px/110px 'Inter',sans-serif;color:#fff;padding-left:44px;letter-spacing:-.01em">NEWS<span style="color:#e03131">24</span></div>
+        <div id="news-img" style="position:absolute;left:36px;right:36px;top:220px;height:470px;border-radius:30px;overflow:hidden;background:#1a1410">
+          <img src="assets/img/board.svg" style="position:absolute;left:-120px;top:-260px;width:1000px;opacity:.55;filter:blur(2px)">
+          <img src="assets/pieces/crown.svg" style="position:absolute;left:190px;top:120px;width:300px;transform:rotate(-24deg)">
+        </div>
+        <div style="position:absolute;left:40px;right:40px;top:716px;font:900 66px/1.04 'Inter',sans-serif;color:#fff;letter-spacing:-.02em">Ex-CEO verliert alles</div>
+        <div style="position:absolute;left:40px;right:40px;top:870px;font:500 34px/1.3 'Inter',sans-serif;color:#a5abb4">Firma weg. Vermögen weg.<br>Freunde auch.</div>
+        <div id="news-c1" class="msg" style="top:1010px"><b style="color:#ffa94d">mike_88</b>verdient 😂😂</div>
+        <div id="news-c2" class="msg" style="top:1160px"><b style="color:#74c0fc">sarah.k</b>Vom Thron in die Gosse</div>
+        <div id="news-c3" class="msg" style="top:1310px"><b style="color:#b197fc">jonas</b>Wer stellt den noch ein? 🤣</div>
+      </div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    
+    // carried in from the rolling crown: the picture starts huge and pulls back into the phone
+    tl.fromTo("#news-ph", { scale: 2.6, x: 40, y: 900, rotation: -4, filter: "blur(10px)" }, { scale: 1, x: 0, y: 0, rotation: -2, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, 0);
+    tl.to("#news-ph", { rotation: 1, y: -14, duration: 2.3, ease: "sine.inOut" }, 0.7);
+    ["#news-c1", "#news-c2", "#news-c3"].forEach((s, i) => tl.fromTo(s, { opacity: 0, scale: 0.6, transformOrigin: "0% 100%" }, { opacity: 1, scale: 1, duration: 0.32, ease: "back.out(1.6)" }, 1.0 + i * 0.45));
+
+    window.__timelines["news"] = tl;
+  </script>
+</template>

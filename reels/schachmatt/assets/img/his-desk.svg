@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+<polygon points="-60,1560 760,1500 820,1600 -60,1700" fill="#2e333b"/>
+<rect x="-60" y="1650" width="900" height="300" fill="#13161a"/>
+<rect x="60" y="1060" width="560" height="360" rx="14" fill="#07080a"/>
+<rect x="320" y="1420" width="40" height="80" fill="#07080a"/><rect x="250" y="1490" width="180" height="20" rx="6" fill="#07080a"/>
+<path d="M600 1920 L600 1700 Q600 1560 700 1520 Q760 1500 790 1470 Q760 1450 752 1400 Q744 1300 820 1280 Q900 1270 912 1360 Q920 1420 880 1470 Q910 1500 970 1520 Q1080 1560 1080 1700 L1080 1920 Z" fill="#050608"/>
+<path d="M752 1400 Q744 1300 820 1280 Q900 1270 912 1360" fill="none" stroke="#7fe3a8" stroke-opacity=".35" stroke-width="5"/>
+</svg>

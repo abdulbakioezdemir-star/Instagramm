@@ -1,0 +1,32 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0a0807; }
+    .green-stage { position: absolute; inset: 0; perspective: 1500px; perspective-origin: 540px 1290px; }
+    .green-world { position: absolute; left: 40px; top: 560px; width: 1000px; height: 1000px; transform-style: preserve-3d; }
+    .green-world > img { position: absolute; left: 0; top: 0; width: 1000px; height: 1000px; }
+    .pc { position: absolute; width: 0; height: 0; transform-style: preserve-3d; }
+    .up { position: absolute; transform-style: preserve-3d; }
+    .tip { position: absolute; inset: 0; }
+    .tip > img { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
+    .shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.55), rgba(0,0,0,0)); }
+    .bub { position: absolute; left: 50%; bottom: 104%; white-space: nowrap; transform: translateX(-50%);
+      font: 800 44px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 14px 22px; border-radius: 26px; }
+  </style>
+  <div id="root" data-composition-id="green" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="green-office" style="position:absolute;inset:-40px;filter:blur(0px)">
+      <img src="assets/img/office.svg" style="position:absolute;left:40px;top:40px;width:1080px;height:1920px">
+      <div style="position:absolute;left:40px;top:40px;width:1080px;height:1920px"><div class="green-scr" style="position:absolute;left:341.4px;top:988.7px;width:76.1px;height:47.9px;background:#ff3b30;border-radius:1.128px"></div><div class="green-scr" style="position:absolute;left:448.5px;top:988.7px;width:76.1px;height:47.9px;background:#ff3b30;border-radius:1.128px"></div><div class="green-scr" style="position:absolute;left:555.5px;top:988.7px;width:76.1px;height:47.9px;background:#ff3b30;border-radius:1.128px"></div><div class="green-scr" style="position:absolute;left:662.5px;top:988.7px;width:76.1px;height:47.9px;background:#ff3b30;border-radius:1.128px"></div><div class="green-scr" style="position:absolute;left:281.3px;top:1058.0px;width:99.1px;height:62.4px;background:#ff3b30;border-radius:1.468px"></div><div class="green-scr" style="position:absolute;left:420.7px;top:1058.0px;width:99.1px;height:62.4px;background:#ff3b30;border-radius:1.468px"></div><div class="green-scr" style="position:absolute;left:560.2px;top:1058.0px;width:99.1px;height:62.4px;background:#ff3b30;border-radius:1.468px"></div><div class="green-scr" style="position:absolute;left:699.6px;top:1058.0px;width:99.1px;height:62.4px;background:#ff3b30;border-radius:1.468px"></div><div class="green-scr" style="position:absolute;left:196.1px;top:1156.1px;width:131.7px;height:82.9px;background:#ff3b30;border-radius:1.952px"></div><div class="green-scr" style="position:absolute;left:381.5px;top:1156.1px;width:131.7px;height:82.9px;background:#ff3b30;border-radius:1.952px"></div><div class="green-scr" style="position:absolute;left:566.8px;top:1156.1px;width:131.7px;height:82.9px;background:#ff3b30;border-radius:1.952px"></div><div class="green-scr" style="position:absolute;left:752.2px;top:1156.1px;width:131.7px;height:82.9px;background:#ff3b30;border-radius:1.952px"></div><div class="green-scr" style="position:absolute;left:66.1px;top:1305.9px;width:181.5px;height:114.3px;background:#ff3b30;border-radius:2.688px"></div><div class="green-scr" style="position:absolute;left:321.5px;top:1305.9px;width:181.5px;height:114.3px;background:#ff3b30;border-radius:2.688px"></div><div class="green-scr" style="position:absolute;left:577.0px;top:1305.9px;width:181.5px;height:114.3px;background:#ff3b30;border-radius:2.688px"></div><div class="green-scr" style="position:absolute;left:832.4px;top:1305.9px;width:181.5px;height:114.3px;background:#ff3b30;border-radius:2.688px"></div></div>
+    </div>
+    <div id="green-wash" style="position:absolute;inset:0;background:#ff1e1e;mix-blend-mode:multiply;opacity:.35"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    
+    tl.fromTo("#green-office", { scale: 1.12, transformOrigin: "540px 900px" }, { scale: 1.18, duration: 1.2, ease: "none" }, 0);
+    const scr = Array.from(document.querySelectorAll(".green-scr")).reverse();
+    tl.to(scr, { backgroundColor: "#2fd06b", duration: 0.08, stagger: 0.045, ease: "none" }, 0.15);
+    tl.to("#green-wash", { backgroundColor: "#1fbf5a", opacity: 0.22, duration: 0.6, ease: "power2.inOut" }, 0.3);
+
+    window.__timelines["green"] = tl;
+  </script>
+</template>

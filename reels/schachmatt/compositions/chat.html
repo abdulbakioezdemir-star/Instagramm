@@ -1,0 +1,65 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0a0807; }
+    .chat-stage { position: absolute; inset: 0; perspective: 1500px; perspective-origin: 540px 1290px; }
+    .chat-world { position: absolute; left: 40px; top: 560px; width: 1000px; height: 1000px; transform-style: preserve-3d; }
+    .chat-world > img { position: absolute; left: 0; top: 0; width: 1000px; height: 1000px; }
+    .pc { position: absolute; width: 0; height: 0; transform-style: preserve-3d; }
+    .up { position: absolute; transform-style: preserve-3d; }
+    .tip { position: absolute; inset: 0; }
+    .tip > img { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
+    .shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.55), rgba(0,0,0,0)); }
+    .bub { position: absolute; left: 50%; bottom: 104%; white-space: nowrap; transform: translateX(-50%);
+      font: 800 44px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 14px 22px; border-radius: 26px; }
+  </style>
+  <style>
+    .ph { position: absolute; left: 150px; top: 200px; width: 780px; height: 1560px; border-radius: 96px; background: #050506;
+      box-shadow: 0 60px 120px rgba(0,0,0,.6), inset 0 0 0 3px #2a2c31; }
+    .ph-scr { position: absolute; left: 18px; top: 18px; right: 18px; bottom: 18px; border-radius: 80px; overflow: hidden; background: #0d0f13; }
+    .ph-bar { position: absolute; left: 0; right: 0; top: 0; height: 96px; font: 700 30px "Inter", sans-serif; color: #f2f2f2; }
+    .ph-bar span { position: absolute; top: 34px; left: 64px; }
+    .ph-isl { position: absolute; left: 50%; top: 26px; width: 200px; height: 56px; margin-left: -100px; border-radius: 30px; background: #000; }
+    .ph-head { position: absolute; left: 0; right: 0; top: 96px; height: 120px; border-bottom: 1px solid #23262c; }
+    .ph-av { position: absolute; left: 40px; top: 22px; width: 76px; height: 76px; border-radius: 50%; background: #3b5bdb; color: #fff;
+      font: 800 32px/76px "Inter", sans-serif; text-align: center; }
+    .ph-title { position: absolute; left: 136px; top: 26px; font: 800 36px "Inter", sans-serif; color: #f5f5f5; }
+    .ph-sub { position: absolute; left: 136px; top: 72px; font: 500 26px "Inter", sans-serif; color: #8b9099; }
+    .msg { position: absolute; left: 36px; max-width: 560px; padding: 20px 26px; border-radius: 34px; background: #23272e;
+      font: 500 38px/1.25 "Inter", sans-serif; color: #f1f1f1; }
+    .msg b { display: block; font: 800 28px "Inter", sans-serif; margin-bottom: 6px; }
+    .msg.me { left: auto; right: 36px; background: #1f9d5c; }
+    .typing { position: absolute; left: 36px; width: 120px; height: 64px; border-radius: 32px; background: #23272e; }
+    .typing i { position: absolute; top: 26px; width: 13px; height: 13px; border-radius: 50%; background: #9aa0a9; }
+</style>
+  <div id="root" data-composition-id="chat" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="chat-office" style="position:absolute;inset:-40px;filter:blur(18px)">
+      <img src="assets/img/office.svg" style="position:absolute;left:40px;top:40px;width:1080px;height:1920px">
+      <div style="position:absolute;left:40px;top:40px;width:1080px;height:1920px"><div class="chat-scr" style="position:absolute;left:341.4px;top:988.7px;width:76.1px;height:47.9px;background:#c7d6ea;border-radius:1.128px"></div><div class="chat-scr" style="position:absolute;left:448.5px;top:988.7px;width:76.1px;height:47.9px;background:#c7d6ea;border-radius:1.128px"></div><div class="chat-scr" style="position:absolute;left:555.5px;top:988.7px;width:76.1px;height:47.9px;background:#c7d6ea;border-radius:1.128px"></div><div class="chat-scr" style="position:absolute;left:662.5px;top:988.7px;width:76.1px;height:47.9px;background:#c7d6ea;border-radius:1.128px"></div><div class="chat-scr" style="position:absolute;left:281.3px;top:1058.0px;width:99.1px;height:62.4px;background:#c7d6ea;border-radius:1.468px"></div><div class="chat-scr" style="position:absolute;left:420.7px;top:1058.0px;width:99.1px;height:62.4px;background:#c7d6ea;border-radius:1.468px"></div><div class="chat-scr" style="position:absolute;left:560.2px;top:1058.0px;width:99.1px;height:62.4px;background:#c7d6ea;border-radius:1.468px"></div><div class="chat-scr" style="position:absolute;left:699.6px;top:1058.0px;width:99.1px;height:62.4px;background:#c7d6ea;border-radius:1.468px"></div><div class="chat-scr" style="position:absolute;left:196.1px;top:1156.1px;width:131.7px;height:82.9px;background:#c7d6ea;border-radius:1.952px"></div><div class="chat-scr" style="position:absolute;left:381.5px;top:1156.1px;width:131.7px;height:82.9px;background:#c7d6ea;border-radius:1.952px"></div><div class="chat-scr" style="position:absolute;left:566.8px;top:1156.1px;width:131.7px;height:82.9px;background:#c7d6ea;border-radius:1.952px"></div><div class="chat-scr" style="position:absolute;left:752.2px;top:1156.1px;width:131.7px;height:82.9px;background:#c7d6ea;border-radius:1.952px"></div><div class="chat-scr" style="position:absolute;left:66.1px;top:1305.9px;width:181.5px;height:114.3px;background:#c7d6ea;border-radius:2.688px"></div><div class="chat-scr" style="position:absolute;left:321.5px;top:1305.9px;width:181.5px;height:114.3px;background:#c7d6ea;border-radius:2.688px"></div><div class="chat-scr" style="position:absolute;left:577.0px;top:1305.9px;width:181.5px;height:114.3px;background:#c7d6ea;border-radius:2.688px"></div><div class="chat-scr" style="position:absolute;left:832.4px;top:1305.9px;width:181.5px;height:114.3px;background:#c7d6ea;border-radius:2.688px"></div></div>
+    </div>
+    <div style="position:absolute;inset:0;background:rgba(20,24,30,.35)"></div>
+    <div id="chat-ph" class="ph"><div class="ph-scr">
+        <div class="ph-bar"><span>09:41</span><div class="ph-isl"></div></div>
+        <div class="ph-head"><div class="ph-av" style="background:#3b5bdb">TV</div><div class="ph-title">Team Vertrieb</div><div class="ph-sub">Lisa, Tom, Kevin, Daniel</div></div>
+        
+        <div id="chat-sys" style="position:absolute;left:0;right:0;top:250px;text-align:center;font:600 26px 'Inter',sans-serif;color:#8b9099">Daniel (Praktikant) ist beigetreten</div>
+        <div id="chat-t1" class="typing" style="top:320px"><i style="left:28px"></i><i style="left:54px"></i><i style="left:80px"></i></div>
+        <div id="chat-m1" class="msg" style="top:320px"><b style="color:#ff8787">Lisa</b>Habt ihr den Neuen gesehen? 👀</div>
+        <div id="chat-m2" class="msg" style="top:520px"><b style="color:#74c0fc">Tom</b>Das ist echt der Ex-Chef? Krass 😂</div>
+        <div id="chat-m3" class="msg" style="top:720px"><b style="color:#ff8787">Lisa</b>Opa, der Drucker ist da drüben 🤣</div>
+        <div id="chat-m4" class="msg" style="top:920px"><b style="color:#ffd43b">Kevin</b>😂😂😂</div>
+      </div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    
+    tl.fromTo("#chat-ph", { y: 30, rotation: 1.5 }, { y: -20, rotation: -1, duration: 3.2, ease: "sine.inOut" }, 0);
+    tl.fromTo("#chat-office", { scale: 1.04 }, { scale: 1.0, duration: 3.2, ease: "none" }, 0);
+    tl.fromTo("#chat-t1 i", { y: 0 }, { y: -8, duration: 0.16, stagger: 0.07, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.05);
+    tl.set("#chat-t1", { opacity: 0 }, 0.4);
+    const pop = (s, at) => tl.fromTo(s, { opacity: 0, scale: 0.7, transformOrigin: "0% 100%" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.7)" }, at);
+    tl.set("#chat-m1", { opacity: 0 }, 0);
+    pop("#chat-m1", 0.4); pop("#chat-m2", 0.9); pop("#chat-m3", 2.3); pop("#chat-m4", 2.8);
+
+    window.__timelines["chat"] = tl;
+  </script>
+</template>

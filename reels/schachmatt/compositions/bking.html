@@ -1,0 +1,96 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0a0807; }
+    .bking-stage { position: absolute; inset: 0; perspective: 1500px; perspective-origin: 540px 1290px; }
+    .bking-world { position: absolute; left: 40px; top: 560px; width: 1000px; height: 1000px; transform-style: preserve-3d; }
+    .bking-world > img { position: absolute; left: 0; top: 0; width: 1000px; height: 1000px; }
+    .pc { position: absolute; width: 0; height: 0; transform-style: preserve-3d; }
+    .up { position: absolute; transform-style: preserve-3d; }
+    .tip { position: absolute; inset: 0; }
+    .tip > img { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
+    .shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.55), rgba(0,0,0,0)); }
+    .bub { position: absolute; left: 50%; bottom: 104%; white-space: nowrap; transform: translateX(-50%);
+      font: 800 44px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 14px 22px; border-radius: 26px; }
+  </style>
+  <div id="root" data-composition-id="bking" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="bking-back" style="position:absolute;inset:0;background:linear-gradient(180deg,#1a120c 0%,#2a1c12 38%,#120c08 70%,#070504 100%)">
+      <div style="position:absolute;left:620px;top:160px;width:300px;height:520px;background:linear-gradient(180deg,rgba(255,226,170,.16),rgba(255,226,170,0));transform:skewX(-8deg)"></div>
+    </div>
+    <div class="bking-stage"><div id="bking-world" class="bking-world"><img src="assets/img/board.svg"><div id="bking-r1" class="pc" style="left:212.5px;top:212.5px"><div class="shadow" style="left:-66.0px;top:-30.0px;width:132.0px;height:60.0px"></div>
+        <div id="bking-r1-up" class="up" style="left:-60.0px;top:-240px;width:120px;height:240px">
+          <div id="bking-r1-tip" class="tip"><img id="bking-r1-img" src="assets/pieces/rook-white.svg" style="filter:blur(7px)"></div>
+        </div>
+      </div><div id="bking-b1" class="pc" style="left:672.5px;top:212.5px"><div class="shadow" style="left:-66.0px;top:-30.0px;width:132.0px;height:60.0px"></div>
+        <div id="bking-b1-up" class="up" style="left:-60.0px;top:-260px;width:120px;height:260px">
+          <div id="bking-b1-tip" class="tip"><img id="bking-b1-img" src="assets/pieces/bishop-black.svg" style="filter:blur(7px)"></div>
+        </div>
+      </div><div id="bking-n1" class="pc" style="left:327.5px;top:97.5px"><div class="shadow" style="left:-69.30000000000001px;top:-31.5px;width:138.60000000000002px;height:63.0px"></div>
+        <div id="bking-n1-up" class="up" style="left:-63.0px;top:-252px;width:126px;height:252px">
+          <div id="bking-n1-tip" class="tip"><img id="bking-n1-img" src="assets/pieces/knight-black.svg" style="filter:blur(8px)"></div>
+        </div>
+      </div><div id="bking-r2" class="pc" style="left:787.5px;top:97.5px"><div class="shadow" style="left:-66.0px;top:-30.0px;width:132.0px;height:60.0px"></div>
+        <div id="bking-r2-up" class="up" style="left:-60.0px;top:-240px;width:120px;height:240px">
+          <div id="bking-r2-tip" class="tip"><img id="bking-r2-img" src="assets/pieces/rook-black.svg" style="filter:blur(8px)"></div>
+        </div>
+      </div><div id="bking-p1" class="pc" style="left:97.5px;top:327.5px"><div class="shadow" style="left:-60.50000000000001px;top:-27.5px;width:121.00000000000001px;height:55.0px"></div>
+        <div id="bking-p1-up" class="up" style="left:-55.0px;top:-220px;width:110px;height:220px">
+          <div id="bking-p1-tip" class="tip"><img id="bking-p1-img" src="assets/pieces/pawn-white.svg" style="filter:blur(6px)"></div>
+        </div>
+      </div><div id="bking-q1" class="pc" style="left:787.5px;top:327.5px"><div class="shadow" style="left:-72.60000000000001px;top:-33.0px;width:145.20000000000002px;height:66.0px"></div>
+        <div id="bking-q1-up" class="up" style="left:-66.0px;top:-282px;width:132px;height:282px">
+          <div id="bking-q1-tip" class="tip"><img id="bking-q1-img" src="assets/pieces/queen-white.svg" style="filter:blur(5px)"></div>
+        </div>
+      </div><div id="bking-king" class="pc" style="left:442.5px;top:442.5px"><div class="shadow" style="left:-75.9px;top:-34.5px;width:151.8px;height:69.0px"></div>
+        <div id="bking-king-up" class="up" style="left:-69.0px;top:-296px;width:138px;height:296px">
+          <div id="bking-king-tip" class="tip"><img id="bking-king-img" src="assets/pieces/king-gold.svg" style="filter:blur(0px)"><img id="bking-crown" src="assets/pieces/crown.svg" style="left:-8px;top:-24px;bottom:auto;width:154px;height:154px"></div>
+        </div>
+      </div><div id="bking-p2" class="pc" style="left:212.5px;top:672.5px"><div class="shadow" style="left:-60.50000000000001px;top:-27.5px;width:121.00000000000001px;height:55.0px"></div>
+        <div id="bking-p2-up" class="up" style="left:-55.0px;top:-220px;width:110px;height:220px">
+          <div id="bking-p2-tip" class="tip"><img id="bking-p2-img" src="assets/pieces/pawn-black.svg" style="filter:blur(9px)"></div>
+        </div>
+      </div><div id="bking-b2" class="pc" style="left:787.5px;top:672.5px"><div class="shadow" style="left:-66.0px;top:-30.0px;width:132.0px;height:60.0px"></div>
+        <div id="bking-b2-up" class="up" style="left:-60.0px;top:-260px;width:120px;height:260px">
+          <div id="bking-b2-tip" class="tip"><img id="bking-b2-img" src="assets/pieces/bishop-white.svg" style="filter:blur(10px)"></div>
+        </div>
+      </div></div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    
+    const W = document.querySelector(".bking-world");
+    const ups = document.querySelectorAll(".bking-world .up");
+    const cam = { rx: 74 };
+    const stand = () => { gsap.set(W, { rotationX: cam.rx }); ups.forEach((u) => gsap.set(u, { rotationX: -cam.rx, transformOrigin: "50% 100%" })); };
+    stand();
+    const tilt = (to, at, dur, ease) => tl.to(cam, { rx: to, duration: dur, ease, onUpdate: stand }, at);
+    const blur = (id, px, at, dur) => tl.to("#bking-" + id + "-img", { filter: `blur(${px}px)`, duration: dur, ease: "power2.inOut" }, at);
+    const SQ = 115;
+    // the lens aims at a square: that square stays on the stage's perspective origin (540, 1150)
+    const aimVals = (f, r) => { const px = 40 + f * SQ + SQ / 2, py = 40 + (7 - r) * SQ + SQ / 2;
+      return { x: 540 - 40 - px, y: 1290 - 560 - py, transformOrigin: `${px}px ${py}px` }; };
+    const aimSet = (f, r, z) => gsap.set(W, { ...aimVals(f, r), z });
+    const aim = (f, r, z, at, dur, ease = "power2.inOut") => tl.to(W, { ...aimVals(f, r), z, duration: dur, ease }, at);
+    const move = (id, df, dr, at, dur = 0.34) => {
+      tl.to("#bking-" + id, { x: "+=" + df * SQ, y: "-=" + dr * SQ, duration: dur, ease: "power3.inOut" }, at);
+      tl.fromTo("#bking-" + id + "-tip", { y: 0 }, { y: -34, duration: dur / 2, ease: "power2.out", yoyo: true, repeat: 1 }, at);
+    };
+    const fall = (id, dir, at) => {
+      tl.to("#bking-" + id + "-tip", { rotation: 86 * dir, transformOrigin: "50% 100%", duration: 0.42, ease: "power2.in" }, at);
+      tl.to("#bking-" + id + "-tip", { rotation: 80 * dir, duration: 0.09, ease: "power1.out", yoyo: true, repeat: 1 }, at + 0.42);
+    };
+
+    // camera: low macro on the king, a slow push
+    aimSet(3, 4.4, 700);
+    aim(3, 4.1, 900, 0, 2.1, "power1.inOut");
+    // crown sits on the king's head
+    // the fall, in slow motion
+    tl.to("#bking-king-tip", { rotation: 84, transformOrigin: "50% 100%", duration: 0.8, ease: "power2.in" }, 1.75);
+    tl.to("#bking-king-tip", { rotation: 79, duration: 0.12, ease: "power1.out", yoyo: true, repeat: 1 }, 2.55);
+    // the crown slips off as he lands
+    tl.to("#bking-crown", { x: 70, y: 40, rotation: 35, duration: 0.35, ease: "power2.out" }, 2.5);
+    // the lens dives onto the fallen king and his crown
+    aim(4.6, 4.2, 1160, 2.6, 1.0, "power2.in");
+
+    window.__timelines["bking"] = tl;
+  </script>
+</template>

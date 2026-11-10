@@ -1,0 +1,44 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0a0807; }
+    .night-stage { position: absolute; inset: 0; perspective: 1500px; perspective-origin: 540px 1290px; }
+    .night-world { position: absolute; left: 40px; top: 560px; width: 1000px; height: 1000px; transform-style: preserve-3d; }
+    .night-world > img { position: absolute; left: 0; top: 0; width: 1000px; height: 1000px; }
+    .pc { position: absolute; width: 0; height: 0; transform-style: preserve-3d; }
+    .up { position: absolute; transform-style: preserve-3d; }
+    .tip { position: absolute; inset: 0; }
+    .tip > img { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
+    .shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.55), rgba(0,0,0,0)); }
+    .bub { position: absolute; left: 50%; bottom: 104%; white-space: nowrap; transform: translateX(-50%);
+      font: 800 44px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 14px 22px; border-radius: 26px; }
+  </style>
+  <div id="root" data-composition-id="night" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="night-office" style="position:absolute;inset:-40px;filter:blur(0px)">
+      <img src="assets/img/office.svg" style="position:absolute;left:40px;top:40px;width:1080px;height:1920px">
+      <div style="position:absolute;left:40px;top:40px;width:1080px;height:1920px"><div class="night-scr" style="position:absolute;left:341.4px;top:988.7px;width:76.1px;height:47.9px;background:#ff3b30;border-radius:1.128px"></div><div class="night-scr" style="position:absolute;left:448.5px;top:988.7px;width:76.1px;height:47.9px;background:#ff3b30;border-radius:1.128px"></div><div class="night-scr" style="position:absolute;left:555.5px;top:988.7px;width:76.1px;height:47.9px;background:#ff3b30;border-radius:1.128px"></div><div class="night-scr" style="position:absolute;left:662.5px;top:988.7px;width:76.1px;height:47.9px;background:#ff3b30;border-radius:1.128px"></div><div class="night-scr" style="position:absolute;left:281.3px;top:1058.0px;width:99.1px;height:62.4px;background:#ff3b30;border-radius:1.468px"></div><div class="night-scr" style="position:absolute;left:420.7px;top:1058.0px;width:99.1px;height:62.4px;background:#ff3b30;border-radius:1.468px"></div><div class="night-scr" style="position:absolute;left:560.2px;top:1058.0px;width:99.1px;height:62.4px;background:#ff3b30;border-radius:1.468px"></div><div class="night-scr" style="position:absolute;left:699.6px;top:1058.0px;width:99.1px;height:62.4px;background:#ff3b30;border-radius:1.468px"></div><div class="night-scr" style="position:absolute;left:196.1px;top:1156.1px;width:131.7px;height:82.9px;background:#ff3b30;border-radius:1.952px"></div><div class="night-scr" style="position:absolute;left:381.5px;top:1156.1px;width:131.7px;height:82.9px;background:#ff3b30;border-radius:1.952px"></div><div class="night-scr" style="position:absolute;left:566.8px;top:1156.1px;width:131.7px;height:82.9px;background:#ff3b30;border-radius:1.952px"></div><div class="night-scr" style="position:absolute;left:752.2px;top:1156.1px;width:131.7px;height:82.9px;background:#ff3b30;border-radius:1.952px"></div><div class="night-scr" style="position:absolute;left:66.1px;top:1305.9px;width:181.5px;height:114.3px;background:#ff3b30;border-radius:2.688px"></div><div class="night-scr" style="position:absolute;left:321.5px;top:1305.9px;width:181.5px;height:114.3px;background:#ff3b30;border-radius:2.688px"></div><div class="night-scr" style="position:absolute;left:577.0px;top:1305.9px;width:181.5px;height:114.3px;background:#ff3b30;border-radius:2.688px"></div><div class="night-scr" style="position:absolute;left:832.4px;top:1305.9px;width:181.5px;height:114.3px;background:#ff3b30;border-radius:2.688px"></div></div>
+    </div>
+    <div id="night-red" style="position:absolute;inset:0;background:#ff1e1e;mix-blend-mode:multiply;opacity:.35"></div>
+    <div id="night-alert" style="position:absolute;left:90px;right:90px;top:230px;text-align:center;font:900 64px/1 'Inter',sans-serif;color:#fff;background:#d90f0f;padding:26px 0;border-radius:18px;letter-spacing:.02em">SYSTEM AUSGEFALLEN</div>
+    <div id="night-desk" style="position:absolute;inset:0;filter:blur(12px)">
+      <img src="assets/img/his-desk.svg" style="position:absolute;left:0;top:0;width:1080px;height:1920px">
+      <div id="night-mon" style="position:absolute;left:78px;top:1078px;width:524px;height:324px;border-radius:6px;background:#06120b;overflow:hidden">
+        <div class="night-code" style="position:absolute;left:24px;top:22px;height:12px;width:180px;background:#94d82d;border-radius:6px"></div><div class="night-code" style="position:absolute;left:54px;top:52px;height:12px;width:247px;background:#51cf66;border-radius:6px"></div><div class="night-code" style="position:absolute;left:84px;top:82px;height:12px;width:314px;background:#51cf66;border-radius:6px"></div><div class="night-code" style="position:absolute;left:24px;top:112px;height:12px;width:381px;background:#51cf66;border-radius:6px"></div><div class="night-code" style="position:absolute;left:54px;top:142px;height:12px;width:188px;background:#94d82d;border-radius:6px"></div><div class="night-code" style="position:absolute;left:84px;top:172px;height:12px;width:255px;background:#51cf66;border-radius:6px"></div><div class="night-code" style="position:absolute;left:24px;top:202px;height:12px;width:322px;background:#51cf66;border-radius:6px"></div><div class="night-code" style="position:absolute;left:54px;top:232px;height:12px;width:389px;background:#51cf66;border-radius:6px"></div><div class="night-code" style="position:absolute;left:84px;top:262px;height:12px;width:196px;background:#94d82d;border-radius:6px"></div><div class="night-code" style="position:absolute;left:24px;top:292px;height:12px;width:263px;background:#51cf66;border-radius:6px"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    
+    tl.fromTo("#night-office", { scale: 1.0, transformOrigin: "540px 900px" }, { scale: 1.12, duration: 4.4, ease: "power1.inOut" }, 0);
+    tl.fromTo("#night-red", { opacity: 0.22 }, { opacity: 0.42, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+    tl.fromTo("#night-alert", { opacity: 0, scale: 1.2 }, { opacity: 1, scale: 1, duration: 0.2, ease: "expo.out" }, 0.1);
+    tl.to("#night-alert", { opacity: 0, filter: "blur(8px)", duration: 0.2 }, 2.1);
+    // rack focus: from the red room to the one man who stays calm
+    tl.to("#night-desk", { filter: "blur(0px)", duration: 0.6, ease: "power2.inOut" }, 2.2);
+    tl.to("#night-office", { filter: "blur(9px)", duration: 0.6, ease: "power2.inOut" }, 2.2);
+    tl.fromTo("#night-desk", { y: 60 }, { y: 0, duration: 2.2, ease: "power2.out" }, 2.2);
+    tl.fromTo(".night-code", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.12, stagger: 0.14, ease: "none" }, 2.7);
+
+    window.__timelines["night"] = tl;
+  </script>
+</template>

@@ -324,7 +324,7 @@ js = """
 write(cid, scene(cid, body, js, 2.4, PHONE_CSS))
 
 # ---------------------------------------------------------------- captions (whole film)
-CAPS = [("n1", 0.45, 1.9, "Er hatte alles."), ("n2", 3.95, 1.9, "Dann verlor er alles."),
+CAPS = [("n1", 0.6, 1.6, "Er hatte alles."), ("n2", 3.95, 1.9, "Dann verlor er alles."),
         ("k3", 12.4, 2.0, "Nichts geht mehr! Alles ist down!"), ("n3", 14.6, 2.6, "Aber sein Wissen konnte ihm keiner nehmen."),("c1", 25.6, 2.2, "Ab morgen leitest du das Team.")]
 json.dump(CAPS, open(os.path.join(ROOT, "tools", "captions.json"), "w"))
 caps = "".join(f'<div id="cap-{i}" class="clip cap" data-start="{s}" data-duration="{d}"><span>{t}</span></div>' for i, s, d, t in CAPS)

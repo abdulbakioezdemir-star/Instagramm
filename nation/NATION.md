@@ -24,7 +24,8 @@ Neue Bauten werden in Panorama/Karte eingezeichnet und bleiben in allen spätere
 - Hook in Sekunde 0–1 („Tag N meiner eigenen Nation …“), Anzeige oben: Staatskasse € · Einwohner · Tag N.
 - Zeigen, was der Top-Kommentar gewünscht hat (Name des Kommentators nennen = Anreiz zum Kommentieren), Kosten abziehen.
 - Ende: „Der Top-Kommentar entscheidet, was ich als Nächstes baue. Folgen = Einwohner werden.“
-- Ein Reel pro Tag um ca. 15:00 (Europe/Berlin).
+- **Zwei Reels pro Tag** (Wunsch Besitzer 2026-11-10): 15:00 = Tag N · Teil 1/2, 21:00 = Tag N · Teil 2/2.
+  Jedes Reel setzt den Top-Kommentar unter dem jeweils letzten Reel um. Tag-Zähler steigt nur bei Teil 1.
 
 ## Grenzen
 - Nichts Politisch-Reales, keine echten Staaten verspotten, nichts Beleidigendes/Sexuelles umsetzen; solche Top-Kommentare überspringen → nächstbester.

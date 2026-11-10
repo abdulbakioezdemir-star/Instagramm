@@ -19,6 +19,8 @@ Ziel: Reichweite aufbauen und später Geld verdienen.
   Abgestimmt wird unter Teil 2; die Mehrheit entscheidet Tag N+1 Teil 1.
   Unentschieden → Ahmed macht „beides“ oder Claude entscheidet nach dem lustigeren Ausgang.
 - **Stil & Stimme von Tag 1 beibehalten** (Pipeline in `pipeline/`, edge-tts-Stimmen wie in `pipeline/tag2b/`).
+  Stimmen: Ahmed = de-DE-FlorianMultilingualNeural +0Hz +7 %, Lena = de-DE-SeraphinaMultilingualNeural +0Hz +0 %,
+  Dönermann = de-DE-ConradNeural +0Hz +0 %. Neueste Vorlage mit Setup-Anleitung: `pipeline/tag02/` (README.md).
   Kein 3D-/Klötzchen-Stil, keine anderen Stimmen. Aussprache muss normal klingen. Lena romantisch/catchy, nie sexualisiert.
 - Hochformat 1080×1920, jeder Teil ca. 35–60 s. Musik + Soundeffekte + Untertitel.
 

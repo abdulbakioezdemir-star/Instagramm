@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<defs><radialGradient id="o" cx=".38" cy=".32" r=".8"><stop offset="0" stop-color="#4fa3e8"/><stop offset=".6" stop-color="#1d5fa8"/><stop offset="1" stop-color="#06203f"/></radialGradient>
+<radialGradient id="a" cx=".5" cy=".5" r=".5"><stop offset=".93" stop-color="#7cc4ff" stop-opacity="0"/><stop offset="1" stop-color="#9fd6ff" stop-opacity=".7"/></radialGradient>
+<clipPath id="k"><circle cx="500" cy="500" r="490"/></clipPath></defs>
+<circle cx="500" cy="500" r="490" fill="url(#o)"/>
+<g clip-path="url(#k)" fill="#3f8a4a"><path d="M260 210 q90 -40 160 20 q30 70 -30 120 q-40 70 -110 40 q-70 -40 -60 -110z"/><path d="M520 380 q110 -30 190 40 q60 90 -20 170 q-80 70 -150 10 q-60 -80 -20 -220z"/><path d="M300 600 q60 -20 90 40 q10 90 -60 120 q-60 -10 -60 -80z"/></g>
+<g clip-path="url(#k)" fill="#fff" opacity=".55"><path d="M150 420 q120 -40 260 0 q-120 30 -260 0z"/><path d="M480 250 q140 -30 260 10 q-140 20 -260 -10z"/><path d="M420 720 q160 -30 300 10 q-160 25 -300 -10z"/></g>
+<circle cx="500" cy="500" r="500" fill="url(#a)"/></svg>

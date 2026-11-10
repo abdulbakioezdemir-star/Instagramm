@@ -1,0 +1,33 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    .cap { position: absolute; left: 60px; right: 60px; top: 1120px; text-align: center; }
+    .capin { display: inline-block; font: 900 60px/1.2 "Inter", sans-serif; color: #fff; letter-spacing: -.01em;
+      background: rgba(8,8,10,.72); padding: 16px 28px; border-radius: 22px; }
+    .w { display: inline-block; }
+    .hl { color: #ffc94d; }
+    .ttl { position: absolute; left: 50px; right: 50px; top: 250px; text-align: center; font: 400 180px/0.92 "League Gothic", sans-serif; color: #fff;
+      text-transform: uppercase; text-shadow: 0 10px 40px rgba(0,0,0,.65); }
+    .ttl b { font-weight: 400; color: #ffc94d; }
+  </style>
+  <div id="root" data-composition-id="words" data-width="1080" data-height="1920" data-layout-allow-overlap><div id="cap-0" class="clip cap" data-start="0.15" data-duration="3.82"><div class="capin"><span class="w">Falte</span> <span class="w">dieses</span> <span class="w">Blatt</span> <span class="w hl">42×</span> <span class="w">–</span> <span class="w">und</span> <span class="w">es</span> <span class="w">reicht</span> <span class="w">bis</span> <span class="w">zum</span> <span class="w hl">Mond.</span></div></div><div id="cap-1" class="clip cap" data-start="4.1" data-duration="1.7"><div class="capin"><span class="w">Klingt</span> <span class="w">verrückt?</span> <span class="w">Pass</span> <span class="w">auf.</span></div></div><div id="cap-2" class="clip cap" data-start="6.0" data-duration="2.18"><div class="capin"><span class="w hl">10×</span> <span class="w">gefaltet:</span> <span class="w">so</span> <span class="w">hoch</span> <span class="w">wie</span> <span class="w">eine</span> <span class="w hl">Tasse.</span></div></div><div id="cap-3" class="clip cap" data-start="8.4" data-duration="2.9"><div class="capin"><span class="w hl">23×:</span> <span class="w hl">höher</span> <span class="w hl">als</span> <span class="w hl">das</span> <span class="w hl">höchste</span> <span class="w hl">Gebäude</span> <span class="w">der</span> <span class="w">Welt.</span></div></div><div id="cap-4" class="clip cap" data-start="11.5" data-duration="2.07"><div class="capin"><span class="w hl">27×:</span> <span class="w hl">über</span> <span class="w hl">dem</span> <span class="w hl">Mount</span> <span class="w hl">Everest.</span></div></div><div id="cap-5" class="clip cap" data-start="13.8" data-duration="2.31"><div class="capin"><span class="w hl">32×:</span> <span class="w hl">vorbei</span> <span class="w hl">an</span> <span class="w hl">der</span> <span class="w hl">Raumstation.</span></div></div><div id="cap-6" class="clip cap" data-start="16.4" data-duration="1.22"><div class="capin"><span class="w">Und</span> <span class="w">bei</span> <span class="w hl">42×</span> <span class="w">…</span></div></div><div id="cap-7" class="clip cap" data-start="18.4" data-duration="1.5"><div class="capin"><span class="w">…</span> <span class="w">erreicht</span> <span class="w">es</span> <span class="w">den</span> <span class="w hl">Mond.</span></div></div><div id="cap-8" class="clip cap" data-start="20.3" data-duration="3.89"><div class="capin"><span class="w">Das</span> <span class="w">ist</span> <span class="w hl">exponentielles</span> <span class="w">Wachstum.</span> <span class="w">Dein</span> <span class="w">Gehirn</span> <span class="w">kann</span> <span class="w">es</span> <span class="w">sich</span> <span class="w">nicht</span> <span class="w">vorstellen.</span></div></div><div id="cap-9" class="clip cap" data-start="24.4" data-duration="2.36"><div class="capin"><span class="w">Der</span> <span class="w">Weltrekord</span> <span class="w">liegt</span> <span class="w">übrigens</span> <span class="w">bei</span> <span class="w hl">12×.</span></div></div><div id="cap-10" class="clip cap" data-start="27.3" data-duration="1.95"><div class="capin"><span class="w">Schaffst</span> <span class="w">du</span> <span class="w hl">8?</span> <span class="w">Nimm</span> <span class="w">dir</span> <span class="w">ein</span> <span class="w">Blatt.</span></div></div><div id="ttl-0" class="clip ttl" data-start="20.5" data-duration="3.7">4,4 Billionen<br><b>Lagen Papier</b></div><div id="ttl-1" class="clip ttl" data-start="24.5" data-duration="2.3">Weltrekord:<br><b>12×</b></div><div id="ttl-2" class="clip ttl" data-start="27.35" data-duration="1.9">Schaffst du<br><b>8?</b> 👇</div></div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cap-0 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.285, ease: "power2.out" }, 0.15);
+    tl.fromTo("#cap-1 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.320, ease: "power2.out" }, 4.1);
+    tl.fromTo("#cap-2 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.255, ease: "power2.out" }, 6.0);
+    tl.fromTo("#cap-3 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.297, ease: "power2.out" }, 8.4);
+    tl.fromTo("#cap-4 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.320, ease: "power2.out" }, 11.5);
+    tl.fromTo("#cap-5 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.320, ease: "power2.out" }, 13.8);
+    tl.fromTo("#cap-6 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.250, ease: "power2.out" }, 16.4);
+    tl.fromTo("#cap-7 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.246, ease: "power2.out" }, 18.4);
+    tl.fromTo("#cap-8 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.290, ease: "power2.out" }, 20.3);
+    tl.fromTo("#cap-9 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.320, ease: "power2.out" }, 24.4);
+    tl.fromTo("#cap-10 .w", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.228, ease: "power2.out" }, 27.3);
+    tl.fromTo("#ttl-0", { opacity: 0, scale: 1.25, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out" }, 20.5);
+    tl.fromTo("#ttl-1", { opacity: 0, scale: 1.25, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out" }, 24.5);
+    tl.fromTo("#ttl-2", { opacity: 0, scale: 1.25, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out" }, 27.35);
+    
+    window.__timelines["words"] = tl;
+  </script>
+</template>

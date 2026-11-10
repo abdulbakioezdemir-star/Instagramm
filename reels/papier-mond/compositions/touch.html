@@ -1,0 +1,39 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #020309; }
+    #tc-cam { position: absolute; inset: 0; }
+    #tc-stars { position: absolute; inset: 0; background-image:
+      radial-gradient(1.6px 1.6px at 12% 18%, #fff, transparent), radial-gradient(1.2px 1.2px at 32% 64%, #fff, transparent),
+      radial-gradient(1.8px 1.8px at 74% 22%, #fff, transparent), radial-gradient(1.1px 1.1px at 86% 70%, #fff, transparent),
+      radial-gradient(1.4px 1.4px at 55% 42%, #fff, transparent), radial-gradient(1px 1px at 20% 84%, #fff, transparent);
+      background-size: 300px 340px; opacity: .8; }
+    #tc-moon { position: absolute; left: -110px; top: -260px; width: 1300px; height: 1300px; }
+    #tc-earth { position: absolute; left: 640px; top: 1360px; width: 330px; height: 330px; filter: blur(3px); opacity: .9; }
+    #tc-col { position: absolute; left: 470px; top: 1010px; width: 110px; height: 1100px;
+      background: repeating-linear-gradient(180deg, rgba(0,0,0,.07) 0 1px, rgba(0,0,0,0) 1px 3px), linear-gradient(90deg, #a9a59b 0%, #fbfaf5 30%, #ecebe4 65%, #8f8b82 100%); }
+    #tc-dust { position: absolute; left: 380px; top: 960px; width: 290px; height: 110px; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(210,205,195,.85), rgba(210,205,195,0)); opacity: 0; }
+    #tc-flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="touch" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="tc-cam">
+      <div id="tc-stars"></div>
+      <img id="tc-earth" src="assets/img/earth.svg">
+      <img id="tc-moon" src="assets/img/moon.svg">
+      <div id="tc-col"></div>
+      <div id="tc-dust"></div>
+    </div>
+    <div id="tc-flash"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#tc-cam", { scale: 1.12, transformOrigin: "540px 900px" }, { scale: 1.0, duration: 1.9, ease: "power2.out" }, 0);
+    tl.fromTo("#tc-col", { y: 900 }, { y: 0, duration: 0.42, ease: "power3.in" }, 0);
+    tl.fromTo("#tc-flash", { opacity: 0 }, { opacity: 0.55, duration: 0.05 }, 0.42);
+    tl.to("#tc-flash", { opacity: 0, duration: 0.4, ease: "power2.out" }, 0.47);
+    tl.fromTo("#tc-dust", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1.6, duration: 0.5, ease: "expo.out" }, 0.42);
+    tl.to("#tc-dust", { opacity: 0, duration: 0.9, ease: "power2.in" }, 0.95);
+    tl.fromTo("#tc-cam", { x: 0 }, { x: 10, duration: 0.05, ease: "none", yoyo: true, repeat: 7 }, 0.42);
+    window.__timelines["touch"] = tl;
+  </script>
+</template>

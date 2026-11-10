@@ -36,3 +36,6 @@
 - **Für die nächsten Teile:** jeder Teil 28–32 s, max. 5 Sprechzeilen; auch Teil 1 mit einer Mini-Frage enden („Was würdest du tun?“), damit Kommentare kommen;
   Zuschauer-Vorschläge als Easter-Egg einbauen (z. B. Ahmed: „Einer sagt, ich soll sagen, ich bin auf der Arbeit… Bruder, ich wurde gefeuert!“).
 - Pipeline-Fix: README-Setup-Schleife für `tag2/` schluckte stdin (ffmpeg) → nur 1 Zeile erzeugt, Import brach ab. Jetzt `ffmpeg -nostdin` + Lena-Stimme korrekt.
+- **Für Tag 3 (BEFEHLE.md Befehl 3 beachten):** Start mitten in der Situation mit Peinlichkeits-Behauptung + Text ≤ 8 Wörter in s 0–2,
+  3 Hook-Varianten schreiben, ≥ 3 Alltags-Lacher (Erwartung vs. Realität, z. B. Emre im Videocall vs. Ahmed im Hintergrund), stärkste Pointe am Ende.
+  Tagestest Tag 3: Hook als Peinlichkeits-Behauptung statt Rückblick – mit Skip-Rate von Tag 2 Teil 2 vergleichen.

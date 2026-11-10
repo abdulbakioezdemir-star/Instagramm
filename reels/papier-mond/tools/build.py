@@ -310,7 +310,8 @@ A = json.load(open(os.path.join(ROOT, "tools", "audio.json")))
 audio = "\n".join(
     f'      <audio id="{a["id"]}" class="clip" src="{a["src"]}" data-start="{a["start"]}" data-duration="{a["dur"]}" data-track-index="{a["track"]}" data-volume="{a.get("vol", 1)}"'
     + (f' data-fade-in="{a["fadein"]}"' if a.get("fadein") else "") + (f' data-fade-out="{a["fade"]}"' if a.get("fade") else "")
-    + (f' data-media-start="{a["ms"]}"' if a.get("ms") else "") + "></audio>" for a in A)
+    + (f' data-media-start="{a["ms"]}"' if a.get("ms") else "")
+    + (" data-automation='" + json.dumps(a["auto"], separators=(",", ":")) + "'" if a.get("auto") else "") + "></audio>" for a in A)
 open(os.path.join(ROOT, "index.html"), "w").write(f"""<!doctype html>
 <html lang="de">
   <head>

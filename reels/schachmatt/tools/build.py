@@ -28,7 +28,7 @@ def head(cid):
     .tip > img {{ position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }}
     .shadow {{ position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.55), rgba(0,0,0,0)); }}
     .bub {{ position: absolute; left: 50%; bottom: 104%; white-space: nowrap; transform: translateX(-50%);
-      font: 800 44px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 14px 22px; border-radius: 26px; }}
+      font: 900 84px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 22px 34px; border-radius: 40px; }}
   </style>"""
 
 def backdrop(cid):
@@ -125,7 +125,7 @@ PHONE_CSS = """
     .ph-av { position: absolute; left: 40px; top: 22px; width: 76px; height: 76px; border-radius: 50%; background: #3b5bdb; color: #fff;
       font: 800 32px/76px "Inter", sans-serif; text-align: center; }
     .ph-title { position: absolute; left: 136px; top: 26px; font: 800 36px "Inter", sans-serif; color: #f5f5f5; }
-    .ph-sub { position: absolute; left: 136px; top: 72px; font: 500 26px "Inter", sans-serif; color: #8b9099; }
+    .ph-sub { position: absolute; left: 136px; top: 72px; font: 500 30px "Inter", sans-serif; color: #8b9099; }
     .msg { position: absolute; left: 36px; max-width: 560px; padding: 20px 26px; border-radius: 34px; background: #23272e;
       font: 500 38px/1.25 "Inter", sans-serif; color: #f1f1f1; }
     .msg b { display: block; font: 800 28px "Inter", sans-serif; margin-bottom: 6px; }
@@ -169,14 +169,14 @@ js = f"""
     // carried in from the rolling crown: the picture starts huge and pulls back into the phone
     tl.fromTo("#news-ph", {{ scale: 2.6, x: 40, y: 900, rotation: -4, filter: "blur(10px)" }}, {{ scale: 1, x: 0, y: 0, rotation: -2, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }}, 0);
     tl.to("#news-ph", {{ rotation: 1, y: -14, duration: 2.3, ease: "sine.inOut" }}, 0.7);
-    ["#news-c1", "#news-c2", "#news-c3"].forEach((s, i) => tl.fromTo(s, {{ opacity: 0, scale: 0.6, transformOrigin: "0% 100%" }}, {{ opacity: 1, scale: 1, duration: 0.32, ease: "back.out(1.6)" }}, 1.0 + i * 0.45));
+    ["#news-c1", "#news-c2", "#news-c3"].forEach((s, i) => tl.fromTo(s, {{ opacity: 0, scale: 0.6, transformOrigin: "0% 100%" }}, {{ opacity: 1, scale: 1, duration: 0.32, ease: "back.out(1.6)" }}, 0.7 + i * 0.35));
 """
 write(cid, scene(cid, body, js, 3.0, PHONE_CSS))
 
 # ---------------------------------------------------------------- 3. the team chat (6.6 - 9.8)
 cid = "chat"
 chat_inner = """
-        <div id="chat-sys" style="position:absolute;left:0;right:0;top:250px;text-align:center;font:600 26px 'Inter',sans-serif;color:#8b9099">Daniel (Praktikant) ist beigetreten</div>
+        <div id="chat-sys" style="position:absolute;left:0;right:0;top:250px;text-align:center;font:600 30px 'Inter',sans-serif;color:#8b9099">Daniel (Praktikant) ist beigetreten</div>
         <div id="chat-t1" class="typing" style="top:320px"><i style="left:28px"></i><i style="left:54px"></i><i style="left:80px"></i></div>
         <div id="chat-m1" class="msg" style="top:320px"><b style="color:#ff8787">Lisa</b>Habt ihr den Neuen gesehen? 👀</div>
         <div id="chat-m2" class="msg" style="top:520px"><b style="color:#74c0fc">Tom</b>Das ist echt der Ex-Chef? Krass 😂</div>
@@ -192,7 +192,7 @@ js = """
     tl.set("#chat-t1", { opacity: 0 }, 0.4);
     const pop = (s, at) => tl.fromTo(s, { opacity: 0, scale: 0.7, transformOrigin: "0% 100%" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.7)" }, at);
     tl.set("#chat-m1", { opacity: 0 }, 0);
-    pop("#chat-m1", 0.4); pop("#chat-m2", 0.9); pop("#chat-m3", 2.3); pop("#chat-m4", 2.8);
+    pop("#chat-m1", 0.35); pop("#chat-m2", 0.8); pop("#chat-m3", 1.7); pop("#chat-m4", 2.5);
 """
 write(cid, scene(cid, body, js, 3.2, PHONE_CSS))
 
@@ -271,10 +271,10 @@ js = board_js(cid, 66) + f"""
     // capture the rook
     move("pawn", -1, 1, 4.3); fall("r1", -1, 4.48); tl.to("#{cid}-r1", {{ x: "-=160", y: "+=40", opacity: 0, duration: 0.5, ease: "power2.in" }}, 4.8); follow(0, 3, 4.25);
     // capture the bishop, then run
-    move("pawn", 1, 1, 6.9); fall("b1", 1, 7.08); tl.to("#{cid}-b1", {{ x: "+=160", opacity: 0, duration: 0.5, ease: "power2.in" }}, 7.4); follow(1, 4, 6.85);
-    move("pawn", 0, 1, 7.45, 0.28); follow(1, 5, 7.4, 0.4);
-    move("pawn", 0, 1, 7.85, 0.28); follow(1, 6, 7.8, 0.4);
-    move("pawn", 0, 1, 8.25, 0.28); follow(1, 7, 8.2, 0.4);
+    move("pawn", 1, 1, 7.15); fall("b1", 1, 7.33); tl.to("#{cid}-b1", {{ x: "+=160", opacity: 0, duration: 0.5, ease: "power2.in" }}, 7.65); follow(1, 4, 7.1);
+    move("pawn", 0, 1, 7.62, 0.26); follow(1, 5, 7.58, 0.36);
+    move("pawn", 0, 1, 7.95, 0.26); follow(1, 6, 7.92, 0.34);
+    move("pawn", 0, 1, 8.28, 0.26); follow(1, 7, 8.25, 0.34);
     // promotion: a shaft of light, the pawn becomes the queen
     tl.fromTo("#brun-shaft", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.25, ease: "power2.out" }}, 8.45);
     tl.to("#brun-shaft", {{ opacity: 0.35, duration: 1.4, ease: "power2.inOut" }}, 8.9);
@@ -317,24 +317,22 @@ body = office_bg(cid, "#2fd06b", 18) + f"""
     <div style="position:absolute;inset:0;background:rgba(8,20,12,.45)"></div>
     {phone(cid, "Team Vertrieb", "Lisa, Tom, Kevin, Daniel", ("TV", "#3b5bdb"), who_inner)}"""
 js = """
-    tl.fromTo("#who-ph", { y: 40, scale: 1.03 }, { y: 0, scale: 1, duration: 1.6, ease: "power2.out" }, 0);
+    tl.fromTo("#who-ph", { y: 40, scale: 1.03 }, { y: 0, scale: 1, duration: 2.4, ease: "power2.out" }, 0);
     const pop = (s, at, o = "0% 100%") => tl.fromTo(s, { opacity: 0, scale: 0.7, transformOrigin: o }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.7)" }, at);
-    pop("#who-m1", 0.15); pop("#who-m2", 0.55); pop("#who-m3", 1.15, "100% 100%");
+    pop("#who-m1", 0.1); pop("#who-m2", 0.7); pop("#who-m3", 1.4, "100% 100%");
 """
-write(cid, scene(cid, body, js, 1.6, PHONE_CSS))
+write(cid, scene(cid, body, js, 2.4, PHONE_CSS))
 
 # ---------------------------------------------------------------- captions (whole film)
 CAPS = [("n1", 0.45, 1.9, "Er hatte alles."), ("n2", 3.95, 1.9, "Dann verlor er alles."),
-        ("k1", 7.4, 1.6, "Das ist echt der Ex-Chef? Krass."), ("k2", 8.95, 2.1, "Opa, der Drucker ist da drüben."),
-        ("k3", 12.4, 2.0, "Nichts geht mehr! Alles ist down!"), ("n3", 14.6, 2.6, "Aber sein Wissen konnte ihm keiner nehmen."),
-        ("k4", 22.15, 1.2, "Wer… war das?"), ("c1", 25.2, 1.9, "Ab morgen leitest du das Team.")]
+        ("k3", 12.4, 2.0, "Nichts geht mehr! Alles ist down!"), ("n3", 14.6, 2.6, "Aber sein Wissen konnte ihm keiner nehmen."),("c1", 25.6, 2.2, "Ab morgen leitest du das Team.")]
 json.dump(CAPS, open(os.path.join(ROOT, "tools", "captions.json"), "w"))
 caps = "".join(f'<div id="cap-{i}" class="clip cap" data-start="{s}" data-duration="{d}"><span>{t}</span></div>' for i, s, d, t in CAPS)
 write("caps", f"""<template>
   <style>
     #root {{ position: absolute; inset: 0; pointer-events: none; }}
     .cap {{ position: absolute; left: 70px; right: 70px; top: 1170px; text-align: center; }}
-    .cap span {{ display: inline-block; font: 800 50px/1.2 "Inter", sans-serif; color: #fff; background: rgba(0,0,0,.62); padding: 14px 26px; border-radius: 18px; }}
+    .cap span {{ display: inline-block; font: 900 58px/1.18 "Inter", sans-serif; color: #fff; background: rgba(0,0,0,.72); padding: 16px 30px; border-radius: 20px; }}
   </style>
   <div id="root" data-composition-id="caps" data-width="1080" data-height="1920">{caps}</div>
   <script>
@@ -376,7 +374,7 @@ write("film", """<template>
 
 # ---------------------------------------------------------------- root
 HOSTS = [("bking", 0, 3.6, 1), ("news", 3.6, 3.0, 1), ("chat", 6.6, 3.2, 1), ("bmock", 9.8, 2.4, 1), ("night", 12.2, 4.4, 1),
-         ("brun", 16.6, 13.4, 1), ("green", 19.4, 1.2, 2), ("who", 21.6, 1.6, 2), ("caps", 0, 30, 5), ("film", 0, 30, 6)]
+         ("brun", 16.6, 13.4, 1), ("green", 19.4, 1.2, 2), ("who", 21.3, 2.4, 2), ("caps", 0, 30, 5), ("film", 0, 30, 6)]
 hosts = "\n".join(
     f'      <div id="{h}" data-composition-id="{h}" data-composition-src="compositions/{h}.html" data-start="{s}" data-duration="{d}" '
     f'data-track-index="{z}" data-track-kind="{"captions" if h == "caps" else "graphics"}" data-width="1080" data-height="1920" style="z-index:{z}"></div>'

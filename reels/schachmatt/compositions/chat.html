@@ -10,7 +10,7 @@
     .tip > img { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
     .shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.55), rgba(0,0,0,0)); }
     .bub { position: absolute; left: 50%; bottom: 104%; white-space: nowrap; transform: translateX(-50%);
-      font: 800 44px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 14px 22px; border-radius: 26px; }
+      font: 900 84px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 22px 34px; border-radius: 40px; }
   </style>
   <style>
     .ph { position: absolute; left: 150px; top: 200px; width: 780px; height: 1560px; border-radius: 96px; background: #050506;
@@ -23,7 +23,7 @@
     .ph-av { position: absolute; left: 40px; top: 22px; width: 76px; height: 76px; border-radius: 50%; background: #3b5bdb; color: #fff;
       font: 800 32px/76px "Inter", sans-serif; text-align: center; }
     .ph-title { position: absolute; left: 136px; top: 26px; font: 800 36px "Inter", sans-serif; color: #f5f5f5; }
-    .ph-sub { position: absolute; left: 136px; top: 72px; font: 500 26px "Inter", sans-serif; color: #8b9099; }
+    .ph-sub { position: absolute; left: 136px; top: 72px; font: 500 30px "Inter", sans-serif; color: #8b9099; }
     .msg { position: absolute; left: 36px; max-width: 560px; padding: 20px 26px; border-radius: 34px; background: #23272e;
       font: 500 38px/1.25 "Inter", sans-serif; color: #f1f1f1; }
     .msg b { display: block; font: 800 28px "Inter", sans-serif; margin-bottom: 6px; }
@@ -41,7 +41,7 @@
         <div class="ph-bar"><span>09:41</span><div class="ph-isl"></div></div>
         <div class="ph-head"><div class="ph-av" style="background:#3b5bdb">TV</div><div class="ph-title">Team Vertrieb</div><div class="ph-sub">Lisa, Tom, Kevin, Daniel</div></div>
         
-        <div id="chat-sys" style="position:absolute;left:0;right:0;top:250px;text-align:center;font:600 26px 'Inter',sans-serif;color:#8b9099">Daniel (Praktikant) ist beigetreten</div>
+        <div id="chat-sys" style="position:absolute;left:0;right:0;top:250px;text-align:center;font:600 30px 'Inter',sans-serif;color:#8b9099">Daniel (Praktikant) ist beigetreten</div>
         <div id="chat-t1" class="typing" style="top:320px"><i style="left:28px"></i><i style="left:54px"></i><i style="left:80px"></i></div>
         <div id="chat-m1" class="msg" style="top:320px"><b style="color:#ff8787">Lisa</b>Habt ihr den Neuen gesehen? 👀</div>
         <div id="chat-m2" class="msg" style="top:520px"><b style="color:#74c0fc">Tom</b>Das ist echt der Ex-Chef? Krass 😂</div>
@@ -58,7 +58,7 @@
     tl.set("#chat-t1", { opacity: 0 }, 0.4);
     const pop = (s, at) => tl.fromTo(s, { opacity: 0, scale: 0.7, transformOrigin: "0% 100%" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.7)" }, at);
     tl.set("#chat-m1", { opacity: 0 }, 0);
-    pop("#chat-m1", 0.4); pop("#chat-m2", 0.9); pop("#chat-m3", 2.3); pop("#chat-m4", 2.8);
+    pop("#chat-m1", 0.35); pop("#chat-m2", 0.8); pop("#chat-m3", 1.7); pop("#chat-m4", 2.5);
 
     window.__timelines["chat"] = tl;
   </script>

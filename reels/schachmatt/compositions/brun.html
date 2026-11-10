@@ -10,7 +10,7 @@
     .tip > img { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
     .shadow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.55), rgba(0,0,0,0)); }
     .bub { position: absolute; left: 50%; bottom: 104%; white-space: nowrap; transform: translateX(-50%);
-      font: 800 44px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 14px 22px; border-radius: 26px; }
+      font: 900 84px/1 "Inter", sans-serif; color: #111; background: #f4f1ea; padding: 22px 34px; border-radius: 40px; }
   </style>
   <div id="root" data-composition-id="brun" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
     <div id="brun-back" style="position:absolute;inset:0;background:linear-gradient(180deg,#1a120c 0%,#2a1c12 38%,#120c08 70%,#070504 100%)">
@@ -96,10 +96,10 @@
     // capture the rook
     move("pawn", -1, 1, 4.3); fall("r1", -1, 4.48); tl.to("#brun-r1", { x: "-=160", y: "+=40", opacity: 0, duration: 0.5, ease: "power2.in" }, 4.8); follow(0, 3, 4.25);
     // capture the bishop, then run
-    move("pawn", 1, 1, 6.9); fall("b1", 1, 7.08); tl.to("#brun-b1", { x: "+=160", opacity: 0, duration: 0.5, ease: "power2.in" }, 7.4); follow(1, 4, 6.85);
-    move("pawn", 0, 1, 7.45, 0.28); follow(1, 5, 7.4, 0.4);
-    move("pawn", 0, 1, 7.85, 0.28); follow(1, 6, 7.8, 0.4);
-    move("pawn", 0, 1, 8.25, 0.28); follow(1, 7, 8.2, 0.4);
+    move("pawn", 1, 1, 7.15); fall("b1", 1, 7.33); tl.to("#brun-b1", { x: "+=160", opacity: 0, duration: 0.5, ease: "power2.in" }, 7.65); follow(1, 4, 7.1);
+    move("pawn", 0, 1, 7.62, 0.26); follow(1, 5, 7.58, 0.36);
+    move("pawn", 0, 1, 7.95, 0.26); follow(1, 6, 7.92, 0.34);
+    move("pawn", 0, 1, 8.28, 0.26); follow(1, 7, 8.25, 0.34);
     // promotion: a shaft of light, the pawn becomes the queen
     tl.fromTo("#brun-shaft", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 8.45);
     tl.to("#brun-shaft", { opacity: 0.35, duration: 1.4, ease: "power2.inOut" }, 8.9);

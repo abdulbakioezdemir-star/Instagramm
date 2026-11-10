@@ -28,7 +28,7 @@
  {
   "id": "sx-np0",
   "src": "assets/sfx/pop.mp3",
-  "start": 4.526,
+  "start": 4.226,
   "dur": 0.6,
   "track": 13,
   "vol": 0.6
@@ -36,23 +36,23 @@
  {
   "id": "sx-np1",
   "src": "assets/sfx/pop.mp3",
-  "start": 4.976,
+  "start": 4.576,
   "dur": 0.6,
-  "track": 13,
+  "track": 23,
   "vol": 0.6
  },
  {
   "id": "sx-np2",
   "src": "assets/sfx/pop.mp3",
-  "start": 5.426,
+  "start": 4.926,
   "dur": 0.6,
-  "track": 13,
+  "track": 33,
   "vol": 0.6
  },
  {
   "id": "sx-cp0",
   "src": "assets/sfx/pop.mp3",
-  "start": 6.926,
+  "start": 6.876,
   "dur": 0.6,
   "track": 13,
   "vol": 0.6
@@ -60,25 +60,25 @@
  {
   "id": "sx-cp1",
   "src": "assets/sfx/pop.mp3",
-  "start": 7.426,
+  "start": 7.326,
   "dur": 0.6,
-  "track": 13,
+  "track": 23,
   "vol": 0.6
  },
  {
   "id": "sx-cp2",
   "src": "assets/sfx/pop.mp3",
-  "start": 8.826,
+  "start": 8.226,
   "dur": 0.6,
-  "track": 13,
+  "track": 33,
   "vol": 0.6
  },
  {
   "id": "sx-cp3",
   "src": "assets/sfx/pop.mp3",
-  "start": 9.326,
+  "start": 9.026,
   "dur": 0.6,
-  "track": 13,
+  "track": 43,
   "vol": 0.6
  },
  {
@@ -110,7 +110,7 @@
   "src": "assets/sfx/typing.mp3",
   "start": 15.338,
   "dur": 1.4,
-  "track": 15,
+  "track": 25,
   "vol": 0.6,
   "fade": 0.3
  },
@@ -127,7 +127,7 @@
   "src": "assets/sfx/click-soft.mp3",
   "start": 18.735,
   "dur": 0.36,
-  "track": 16,
+  "track": 36,
   "vol": 0.9
  },
  {
@@ -141,15 +141,15 @@
  {
   "id": "sx-clk3",
   "src": "assets/sfx/click-soft.mp3",
-  "start": 23.835,
+  "start": 24.085,
   "dur": 0.36,
-  "track": 16,
+  "track": 36,
   "vol": 0.9
  },
  {
   "id": "sx-clk4",
   "src": "assets/sfx/click.mp3",
-  "start": 24.325,
+  "start": 24.475,
   "dur": 0.36,
   "track": 16,
   "vol": 0.9
@@ -157,15 +157,15 @@
  {
   "id": "sx-clk5",
   "src": "assets/sfx/click-soft.mp3",
-  "start": 24.725,
+  "start": 24.805,
   "dur": 0.36,
-  "track": 16,
+  "track": 36,
   "vol": 0.9
  },
  {
   "id": "sx-clk6",
   "src": "assets/sfx/click.mp3",
-  "start": 25.125,
+  "start": 25.135,
   "dur": 0.36,
   "track": 16,
   "vol": 0.9
@@ -189,7 +189,7 @@
  {
   "id": "sx-cap2",
   "src": "assets/sfx/key-press.mp3",
-  "start": 24.069,
+  "start": 24.319,
   "dur": 0.42,
   "track": 17,
   "vol": 0.9
@@ -205,7 +205,7 @@
  {
   "id": "sx-wp0",
   "src": "assets/sfx/pop.mp3",
-  "start": 21.676,
+  "start": 21.326,
   "dur": 0.6,
   "track": 13,
   "vol": 0.6
@@ -213,17 +213,17 @@
  {
   "id": "sx-wp1",
   "src": "assets/sfx/pop.mp3",
-  "start": 22.076,
+  "start": 21.926,
   "dur": 0.6,
-  "track": 13,
+  "track": 23,
   "vol": 0.6
  },
  {
   "id": "sx-wp2",
   "src": "assets/sfx/pop.mp3",
-  "start": 22.676,
+  "start": 22.626,
   "dur": 0.6,
-  "track": 13,
+  "track": 33,
   "vol": 0.6
  },
  {

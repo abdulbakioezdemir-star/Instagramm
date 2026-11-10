@@ -89,16 +89,15 @@ if PART == 1:
 else:
     s = 0.0
     e = put("r01", 0.35)
-    e = put("a09", e + 0.3)
-    e = put("a12", e + 0.25)
+    e = put("a12", e + 0.25)  # a09 gestrichen (30-s-Vorgabe BEFEHLE.md)
     e = put("l02", e + 0.35)
     e = put("a11", e + 0.25)
     EV["cfreeze"] = e + 0.1
     SC["call"] = (s, EV["cfreeze"] + 0.6)
     s = SC["call"][1]
     e = put("a07", s + 0.2)
-    SC["poll"] = (s, e + 2.4)
-    CALL_LINES, CLIFF = ["r01", "a09", "a12", "l02", "a11"], None
+    SC["poll"] = (s, e + 2.0)
+    CALL_LINES, CLIFF = ["r01", "a12", "l02", "a11"], None
     ORDER = ["call", "poll"]
 TOTAL = SC[ORDER[-1]][1]
 

@@ -9,7 +9,7 @@ Ziel: Reichweite aufbauen und später Geld verdienen.
 |---|---|---|
 | @ahmed.glowup | 17841475087472410 | **Hauptkonto** – Ahmed-Serie |
 | @ahmed.30tage | 17841425057743152 | noch kein Content – nichts posten, bis der Besitzer Content vorgibt |
-| @lorebound.tales (früher @parfum_finder) | 17841470787432002 (Meta-Profil-ID) | Animationen: Fantasy & Wissen – Content folgt, noch nichts automatisch posten |
+| @lorebound.tales (früher @parfum_finder) | 17841470787432002 | Animationen: Fantasy & Wissen – täglich automatisch, siehe lorebound/LOREBOUND.md |
 | @valmora.nation (früher @ahmed.sucht.liebe) | 17841459168444268 | Nations-Serie Valmora – siehe nation/NATION.md |
 
 ## Serie „Ahmed Glowup“

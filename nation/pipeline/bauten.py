@@ -143,3 +143,49 @@ def fischerhuette(d, x, base, prog, t, font=None):
             d.line([(x - 15, yy), (x + w + 15, yy)], fill=(150, 110, 70), width=5)
         d.line([(x - 15, top), (x - 15, base)], fill=(150, 110, 70), width=6)
         d.line([(x + w + 15, top), (x + w + 15, base)], fill=(150, 110, 70), width=6)
+
+def strandbar(d, x, base, prog, t, font=None):
+    """Strandbar am Strand (Tag 3 · Teil 2, Abstimmung '1', Wunsch von till.ue). x = linke Kante, base = Boden.
+    Theke mit Strohdach-Kante, gestreifter Sonnenschirm, zwei Hocker, Schild 'BAR'. Baut sich in Stufen auf."""
+    if prog <= 0: return
+    wood, dark, straw = (170, 120, 70), (105, 70, 40), (225, 190, 110)
+    # Theke (Stufe 1)
+    tw, th = 200, 80
+    q = min(1, prog / 0.4)
+    ty = base - th * q
+    d.rectangle([x, ty, x + tw, base], fill=wood)
+    for xx in range(x + 20, x + tw, 30):
+        d.line([(xx, ty), (xx, base)], fill=dark, width=3)
+    if prog > 0.35:
+        d.rectangle([x - 10, base - th - 12, x + tw + 10, base - th], fill=dark)       # Thekenplatte
+        for k in range(10):                                                              # Strohfransen
+            fx = x - 8 + k * 22
+            d.polygon([(fx, base - th), (fx + 22, base - th), (fx + 11, base - th + 22)], fill=straw)
+    # Sonnenschirm (Stufe 2)
+    if prog > 0.45:
+        q2 = min(1, (prog - 0.45) / 0.3)
+        px = x + tw + 60
+        top = base - 190 * q2
+        d.line([(px, base), (px, top)], fill=(240, 240, 240), width=7)
+        if q2 >= 1:
+            sway = math.sin(t * 2) * 3
+            r = 95
+            cols = [(235, 80, 80), (255, 255, 255)]
+            for k in range(6):
+                a0, a1 = -r + k * (2 * r / 6), -r + (k + 1) * (2 * r / 6)
+                d.polygon([(px + sway, top - 45), (px + a0, top + 5), (px + a1, top + 5)], fill=cols[k % 2])
+    # Hocker (Stufe 3)
+    if prog > 0.75:
+        for hx in (x + 40, x + 130):
+            d.line([(hx + 15, base - 55), (hx + 15, base)], fill=dark, width=6)
+            d.ellipse([hx - 5, base - 65, hx + 35, base - 48], fill=(235, 80, 80))
+    # Schild + Getränk (fertig)
+    if prog >= 1:
+        d.rounded_rectangle([x + 40, base - th - 70, x + 160, base - th - 18], radius=12, fill=(255, 245, 210), outline=dark, width=4)
+        if font: d.text((x + 100, base - th - 44), "BAR", font=font, fill=dark, anchor="mm")
+        gx = x + 165; gy = base - th - 12
+        d.polygon([(gx, gy - 40), (gx + 26, gy - 40), (gx + 20, gy), (gx + 6, gy)], fill=(255, 170, 60), outline=(255, 255, 255))
+        d.line([(gx + 18, gy - 40), (gx + 28, gy - 58)], fill=(90, 200, 120), width=4)
+    if 0 < prog < 1:
+        for yy in range(int(base - 200 * prog), base, 45):
+            d.line([(x - 15, yy), (x + tw + 15, yy)], fill=(150, 110, 70), width=5)

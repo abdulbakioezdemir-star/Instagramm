@@ -2,7 +2,7 @@
 Intro: Scheinwerfer-Kontur zeichnet sich als Lichtlinie, Auto flackert herein, Drop bei 4,0 s.
 Übergänge (2-3 Frames): Whip mit Bewegungsunschärfe, Zoom-Blur, Rotations-Whip, Halbton-Blitz, Weißblitz.
 python tools/render_v3.py -> bmw-edit-v3.mp4"""
-import json, math, subprocess
+import json, math, os, subprocess
 from pathlib import Path
 import numpy as np, cv2
 from PIL import Image, ImageDraw, ImageFont
@@ -10,8 +10,8 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent.parent
 V3 = HERE / "v3"
 W, H, FPS, DUR = 1080, 1920, 24, 30.0
-N = int(DUR * FPS)
-CFG = json.load(open(HERE / "tools" / "edit_v3.json"))
+N = int(float(os.environ.get("V3_SECONDS", DUR)) * FPS)
+CFG = json.load(open(os.environ.get("V3_EDL", HERE / "tools" / "edit_v3.json")))
 MUSIC, MS = V3 / "music" / CFG["music"], CFG["music_start"]
 DROP = CFG["drop"]
 
@@ -107,14 +107,22 @@ def look(f, i):
 
 # ------------------------------------------------------------------ intro: the headlight drawn as a line of light
 INTRO = CFG["intro"]
+INTRO_CACHE = {}
 def intro_frame(t):
     name = INTRO["img"]
     base = view(name, INTRO["zoom"], INTRO["ox"], INTRO["oy"])
     g = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(cv2.GaussianBlur(g, (5, 5), 0), 80, 160)
-    bright = (g > 150).astype(np.uint8) * 255
-    line = cv2.bitwise_and(edges, cv2.dilate(bright, np.ones((25, 25), np.uint8)))
-    line = cv2.dilate(line, np.ones((3, 3), np.uint8)).astype(np.float32) / 255
+    LINE = INTRO_CACHE.get("line")
+    if LINE is None:
+        # only the outline of the brightest lights: a thin, clean line
+        hot = (cv2.GaussianBlur(g, (7, 7), 0) > np.percentile(g, 98.2)).astype(np.uint8) * 255
+        hot = cv2.morphologyEx(hot, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+        cnts, _ = cv2.findContours(hot, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        cnts = sorted(cnts, key=cv2.contourArea, reverse=True)[:6]
+        canvas = np.zeros((H, W), np.uint8)
+        cv2.drawContours(canvas, cnts, -1, 255, 3, lineType=cv2.LINE_AA)
+        LINE = INTRO_CACHE["line"] = canvas.astype(np.float32) / 255
+    line = LINE
     out = np.zeros((H, W, 3), np.float32)
     if t < 0.5:
         return out.astype(np.uint8)
@@ -122,7 +130,7 @@ def intro_frame(t):
     p = min(1, (t - 0.5) / 1.6)
     sweep = np.clip((p * (W + 300) - xx) / 300, 0, 1)
     tr = line * sweep
-    glow = cv2.GaussianBlur(tr, (0, 0), 9) * 2.2 + tr
+    glow = cv2.GaussianBlur(tr, (0, 0), 7) * 1.6 + cv2.GaussianBlur(tr, (0, 0), 22) * 1.2 + tr
     out += np.dstack([glow * 255, glow * 245, glow * 230])
     # the car flickers in with interlace lines
     if t > 2.2:

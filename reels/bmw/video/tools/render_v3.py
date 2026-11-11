@@ -23,6 +23,13 @@ print("drop", DROP, "cuts", len(cuts), [round(c, 2) for c in cuts[:6]], "…")
 # ------------------------------------------------------------------ plates
 def load(name):
     im = cv2.imread(str(V3 / "img" / name))
+    # exposure match: the brightest lights sit near full white, mids lifted a touch on dark plates
+    g = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    hi = max(np.percentile(g, 99.6), 1)
+    gain = min(1.8, 245 / hi)
+    mid = np.median(g) * gain
+    gamma = 0.85 if mid < 35 else 1.0
+    im = np.clip(255 * np.power(np.clip(im.astype(np.float32) * gain / 255, 0, 1), gamma), 0, 255).astype(np.uint8)
     return cv2.resize(im, (int(W * 1.25), int(H * 1.25)), interpolation=cv2.INTER_LANCZOS4)
 PL = {}
 def plate(name):
@@ -231,10 +238,10 @@ for j, c in enumerate(cuts):
         inputs += ["-i", str(HERE / "sfx" / "whoosh-short.mp3")]
         ms = int(max(0, c - 0.16) * 1000)
         flt.append(f"[{len(lbl)}:a]adelay={ms}|{ms},volume=0.35,apad[w{j}]"); lbl.append(f"[w{j}]")
-flt.append(f"{''.join(lbl)}amix=inputs={len(lbl)}:normalize=0,atrim=0:{DUR},loudnorm=I=-13:TP=-1.5[out]")
+flt.append(f"{''.join(lbl)}amix=inputs={len(lbl)}:normalize=0,atrim=0:{DUR},loudnorm=I=-13:TP=-1.5,volume=-1.8dB,alimiter=limit=0.5:level=false:attack=1:release=40[out]")
 subprocess.run(["ffmpeg", "-y", "-v", "error", *inputs, "-filter_complex", ";".join(flt), "-map", "[out]", "-ar", "48000",
                 str(HERE / "build" / "v3.wav")], check=True)
 subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(HERE / "build" / "v3.mp4"), "-i", str(HERE / "build" / "v3.wav"),
-                "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart",
+                "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart",
                 str(HERE / "bmw-edit-v3.mp4")], check=True)
 print("done")

@@ -12,7 +12,7 @@
  "end_text": "SEIT 1916",
  "shots": [
   {
-   "img": "shot2_0.png",
+   "img": "shot13_0.png",
    "tin": "flash",
    "z": 1.0,
    "ox": 0,
@@ -28,15 +28,15 @@
    "drift": -1
   },
   {
-   "img": "shot5_0.png",
+   "img": "shot12_1.png",
    "tin": "halftone",
-   "z": 1.1,
+   "z": 1.05,
    "ox": -0.3,
    "oy": 0,
    "drift": 1
   },
   {
-   "img": "shot2_1.png",
+   "img": "shot13_1.png",
    "tin": "zoom",
    "z": 1.0,
    "ox": 0,
@@ -44,7 +44,7 @@
    "drift": -1
   },
   {
-   "img": "shot12_0.png",
+   "img": "shot16_1.png",
    "tin": "spin",
    "z": 1.05,
    "ox": 0.3,
@@ -54,7 +54,7 @@
   {
    "img": "shot6_0.png",
    "tin": "whip",
-   "z": 1.05,
+   "z": 1.1,
    "ox": -0.3,
    "oy": -0.2,
    "drift": -1
@@ -68,7 +68,7 @@
    "drift": 1
   },
   {
-   "img": "shot8_0.png",
+   "img": "shot17_1.png",
    "tin": "whip",
    "z": 1.0,
    "ox": 0.3,
@@ -76,7 +76,7 @@
    "drift": -1
   },
   {
-   "img": "shot8_1.png",
+   "img": "shot2_1.png",
    "tin": "zoom",
    "z": 1.05,
    "ox": -0.3,
@@ -100,7 +100,7 @@
    "drift": 1
   },
   {
-   "img": "shot4_0.png",
+   "img": "shot14_0.png",
    "tin": "zoom",
    "z": 1.0,
    "ox": -0.3,
@@ -124,7 +124,7 @@
    "drift": -1
   },
   {
-   "img": "shot4_1.png",
+   "img": "shot14_1.png",
    "tin": "spin",
    "z": 1.0,
    "ox": -0.3,
@@ -148,7 +148,7 @@
    "drift": 1
   },
   {
-   "img": "shot11_0.png",
+   "img": "shot15_0.png",
    "tin": "halftone",
    "z": 1.05,
    "ox": -0.3,
@@ -156,7 +156,7 @@
    "drift": -1
   },
   {
-   "img": "shot11_1.png",
+   "img": "shot15_1.png",
    "tin": "zoom",
    "z": 1.0,
    "ox": 0,
@@ -164,7 +164,7 @@
    "drift": 1
   },
   {
-   "img": "shot10_0.png",
+   "img": "shot16_0.png",
    "tin": "whip",
    "z": 1.0,
    "ox": 0.3,
@@ -180,23 +180,23 @@
    "drift": 1
   },
   {
-   "img": "shot5_1.png",
+   "img": "shot1_0.png",
    "tin": "whip",
-   "z": 1.15,
+   "z": 1.1,
    "ox": 0,
    "oy": -0.2,
    "drift": -1
   },
   {
-   "img": "shot1_0.png",
+   "img": "shot12_1.png",
    "tin": "zoom",
-   "z": 1.1,
+   "z": 1.2,
    "ox": 0.3,
    "oy": -0.2,
    "drift": 1
   },
   {
-   "img": "shot2_0.png",
+   "img": "shot13_0.png",
    "tin": "halftone",
    "z": 1.2,
    "ox": -0.3,
@@ -220,15 +220,15 @@
    "drift": -1
   },
   {
-   "img": "shot12_1.png",
+   "img": "shot16_1.png",
    "tin": "zoom",
-   "z": 1.0,
+   "z": 1.15,
    "ox": -0.3,
    "oy": 0.2,
    "drift": 1
   },
   {
-   "img": "shot12_0.png",
+   "img": "shot12_1.png",
    "tin": "spin",
    "z": 1.0,
    "ox": 0,

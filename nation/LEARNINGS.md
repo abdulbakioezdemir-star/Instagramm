@@ -48,3 +48,13 @@
 - Technik: tag03.py nutzt relative Font-Pfade (läuft in jedem Clone-Ordner). Fischerhütte in bauten.py (x=590, Boden 1885, unterhalb der Untertitel). Bauphase nur 1,4 s → nächstes Mal Bau länger zeigen (eigener Satz).
 - Nächstes Mal: Shares-Zahl von Tag 3 prüfen; wenn Namen im Bild Kommentare steigern → fest übernehmen. Kasse ~4 € → Strandbar braucht Likes: „Wenn ihr X Likes schafft, baue ich…“ als Ziel-Mechanik testen.
 - Gepostet 15:00 Berlin, media_id 18118625588112500. 7 Kommentare beantwortet (Abstimmende, Strandbar-Wunsch, Bäckerei-Chef, 'Wo ist die Mauer?'). Keine Spam-Kommentare.
+
+## 2026-11-11 21:00 – Tag 3 · Teil 2/2 (Strandbar, 32 s)
+- Zahlen vor dem Post: Tag 1 149 Views / 2 Likes / Skip 54 %. Tag 2·T1 1.194 / 33 / 4 Kom. / Skip 52 % / Ø 9,7 s. Tag 2·T2 (Bäckerei) 751 / 25 / 14 Kom. / **Skip 37 %** / Ø 12,0 s. Tag 3·T1 (Fischerhütte, ~5,5 h alt) 195 / 5 / 3 Kom. / Skip 41 % / Ø 8,4 s. Follower 14 (+2). Shares weiterhin überall 0.
+- Tag 3·T1 läuft nach 5 h deutlich schwächer als T2 gestern (195 vs. 541 Views zum ähnlichen Zeitpunkt) – Namen-im-Bild-Test noch nicht auswertbar; 3 Kommentare, alle „1“ (Strandbar).
+- Abstimmung: 3× „1“ (587pii, till.ue, 041_sxcz_; alle 0 Likes) → Strandbar (Wunsch von till.ue). Kasse 1000 + 65 − 1050 = 15 € → Strandbar −15 € → **0 €**.
+- **Test des Tages: Like-Ziel-Mechanik** – Kasse ist leer, Reel betont „1 Like = 1 €“ groß in der Abstimmungsszene. Hypothese: mehr Likes pro View als bisher (Ø ~3 %). Auswerten: Likes/Views von T2 vs. T1.
+- Hook-Varianten: (A) „Drei Stimmen für die Strandbar. Danach hatte mein Land null Euro.“ (B) „Meine Strandbar ist offen. Ich kann mir kein Getränk leisten.“ (C) „Fünfzehn Euro. Eine Strandbar. Ratet, was übrig bleibt.“ → **A gewählt** (Konsequenz-Hook = Gewinner von gestern, roter „0 €“-Kasten). B als Selbstironie-Zeile in der Mitte.
+- Neue Optionen: 1 Brunnen · 2 Garten · 3 Mauer (Wunsch seal.medusa, 2 Likes).
+- Technik: tag03b.py zoomt in Bau-/Pleite-Szene auf den Strand (zoomed(), z=1,75), damit der neue Bau groß zu sehen ist; Untertitel wandern dort auf y=1330 (sonst über dem Bau). Bauphase jetzt ~3,6 s mit eigener Bauteil-Liste (Sonnenschirm/Theke/Hocker) – Learning von T1 umgesetzt. strandbar() in bauten.py (x=70, Boden 1890). Unten links ist der Strand jetzt voll → nächster Bau braucht anderen Platz (z. B. Insel/Wald oder pan_view weiter links).
+- Gepostet 21:00 Berlin, media_id 18102445040653370. 4 Kommentare beantwortet (3 Strandbar-Stimmen, Mauer-Wunsch seal.medusa). Kein Spam.

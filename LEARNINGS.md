@@ -39,3 +39,17 @@
 - **Für Tag 3 (BEFEHLE.md Befehl 3 beachten):** Start mitten in der Situation mit Peinlichkeits-Behauptung + Text ≤ 8 Wörter in s 0–2,
   3 Hook-Varianten schreiben, ≥ 3 Alltags-Lacher (Erwartung vs. Realität, z. B. Emre im Videocall vs. Ahmed im Hintergrund), stärkste Pointe am Ende.
   Tagestest Tag 3: Hook als Peinlichkeits-Behauptung statt Rückblick – mit Skip-Rate von Tag 2 Teil 2 vergleichen.
+
+## 2026-11-11 12:00 (Tag 3 · Teil 1)
+- Abstimmung Tag 2 Teil 2: **B 7 : A 0** (7 Kommentare – bisher meiste Stimmen). → „Meine Kamera ist kaputt“.
+- Zahlen 11:15 (Windsor, ohne force_refresh):
+  - Tag 2 Teil 1 (49 s): **1.962 Views** (jetzt bestes Reel), 1.520 Reach, Skip **26,1 %** (Rekord), Ø 20,4 s, 35 Likes, 1 Share, 2 Saves.
+  - Tag 2 Teil 2 (31 s): 603 Views, 497 Reach, Skip 39,1 %, Ø 11,6 s (≈37 %), 13 Likes, 7 Kommentare, 0 Shares, 3 Saves.
+  - Tag 1: 1.518 Views, Skip 43,1 %.
+- Erkenntnis: Teil 1 (12 Uhr, Cold Open mit Action) bekommt viel mehr Reichweite als Teil 2 (18 Uhr, Rückblick-Start). Teil 2 startet mit „Vorhin bei Ahmed…“ → höhere Skip-Rate. Für Teil 2 künftig auch mit neuer Pointe in Sekunde 0 starten statt Rückblick-Satz.
+- Hook-Varianten Tag 3 Teil 1: (1) „Ich hab Lena gesagt, meine Kamera ist kaputt. Sie war an.“ (2) „POV: Du lügst, deine Kamera ist kaputt – und sie ist an.“ (3) „7 von 7 sagen B. Nicht mal meine Mama vertraut mir so.“ → **(1) gewählt** (Peinlichkeits-Behauptung + Text „MEINE KAMERA WAR AN.“ ab 0 s, LIVE-Stempel bei Sekunde ~3).
+- **Tagestest:** Hook als Peinlichkeits-Behauptung statt Rückblick/Action → mit Skip 26 % (Tag 2 T1) vergleichen.
+- Gags (Alltag): Front-Kamera von unten/„HD-Nasenlöcher“ (Erwartung vs. Realität), „Ihr wollt mein Gesicht also genauso wenig sehen wie ich“, Daumen hoch „Alles schwarz. Voll schade.“ während man ihn sieht.
+- Länge 31,7 s (Vorgabe 28–32 s). Caption endet mit Frage „Was würdest DU jetzt sagen?“ (Test: Kommentare unter Teil 1).
+- Pipeline: neue Vorlage `pipeline/tag03/` (tag03.py mit Szenen cold/vote/call/nose/poll); Teil 2 schon fertig geschrieben + getestet (30,4 s). Whisper-Prüfung: Transkript korrekt, nur „Ahmed?“ von Lena wird als „Ok Matt“ erkannt (klingt aber ok).
+- 4 Abstimmungs-Kommentare als Ahmed beantwortet, keine Beleidigungen/Spam.

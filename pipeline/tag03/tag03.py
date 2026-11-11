@@ -510,12 +510,12 @@ def s_nose(c, t):
             pill(c, "FILTER: PLEITE & KALT", 540, 700, 54, fill="#1F4BD8", name="black", padx=36, pady=22)
             c.restore()
         if ta >= ST["l03"] + 0.1:
-            T2.stamp(c, ta, ST["l03"] + 0.1, "ERWISCHT", 540, 560, "#E0245E", 100, 8)
+            T2.stamp(c, ta, ST["l03"] + 0.1, "ERWISCHT", 540, 1060, "#E0245E", 100, 8)
     c.restore()
     if PART == 2 and t < 1.6:
         k = 1 - clamp((t - 1.25) / 0.35)
-        c.drawRect(skia.Rect.MakeXYWH(0, 1290, W, 150), fillp("#000000", int(170 * k)))
-        text(c, "VORHIN BEI AHMED…", 540, 1392, "black", 74, "#FFD84D")
+        c.drawRect(skia.Rect.MakeXYWH(0, 1500, W, 150), fillp("#000000", int(170 * k)))
+        text(c, "VORHIN BEI AHMED…", 540, 1602, "black", 74, "#FFD84D")
     if frz:
         a = int(120 * clamp(prog(t, cf, 0.12)))
         c.drawRect(skia.Rect.MakeWH(W, H), fillp("#000000", a))

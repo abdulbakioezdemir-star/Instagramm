@@ -55,7 +55,12 @@
       "media_id": "18112940438615129",
       "datei": "media/glowup/tag02_teil2.mp4",
       "dauer_s": 31.05,
-      "slot": "18:00 Teil 2/2 + A/B"
+      "slot": "18:00 Teil 2/2 + A/B",
+      "abstimmung_ergebnis": {
+        "A": 0,
+        "B": 7,
+        "stand": "2026-11-11 11:15"
+      }
     }
   },
   "stimmen": {
@@ -72,7 +77,8 @@
       "A": "Emre geht ran",
       "B": "Meine Kamera ist kaputt"
     },
-    "entscheidet": "Tag 3 Teil 1 (2026-11-11 12:00)"
+    "entscheidet": "Tag 3 Teil 1 (2026-11-11 12:00)",
+    "ergebnis": "B 7 : A 0 -> Kamera 'kaputt' (Tag 3)"
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -98,6 +104,67 @@
     }
   },
   "beantwortete_kommentare": [
-    "17991599940112967"
-  ]
+    "17991599940112967",
+    "18119970532797340",
+    "17921965875463270",
+    "17922436941245960",
+    "18132415186770564"
+  ],
+  "tag_3": {
+    "abstimmung_tag2": {
+      "A": 0,
+      "B": 7,
+      "ergebnis": "B – Meine Kamera ist kaputt"
+    },
+    "teil1": {
+      "media_id": "17898690384418244",
+      "gepostet": "2026-11-11T12:01:25+01:00",
+      "datei": "media/glowup/tag03_teil1.mp4",
+      "permalink": "https://www.instagram.com/reel/DfmUzEBgsc5/",
+      "dauer_s": 31.66,
+      "slot": "12:00 Teil 1/2",
+      "hook": "Ich hab Lena gesagt, meine Kamera ist kaputt. Sie war an. (Text: MEINE KAMERA WAR AN.)"
+    },
+    "teil2": {
+      "skript": "pipeline/tag03/tag03.py (PART=2, lines2.tsv) – Anleitung pipeline/tag03/README.md (getestet, 30,4 s)",
+      "ziel_datei": "media/glowup/tag03_teil2.mp4",
+      "abstimmung": {
+        "A": "Die Wahrheit sagen",
+        "B": "Ich bin Emres Zwilling"
+      },
+      "caption": "Tag 3 · Teil 2/2\nLena sieht nur Ahmeds Nasenlöcher – und er sagt, das ist ein Filter. Filtername: „Pleite & kalt“ 🥶\n\nA = Die Wahrheit sagen\nB = „Ich bin Emres Zwilling“\nSchreibt A oder B – die Mehrheit entscheidet Tag 4 (morgen 12 Uhr)!\nSchick das deinem Freund, der nur von unten filmt 😂\n\n#ahmedglowup #animation #comedy #dating #reels"
+    }
+  },
+  "analyse_2026-11-11_11:15": {
+    "tag1": {
+      "views": 1518,
+      "reach": 1155,
+      "skip": 0.431,
+      "avg_watch_s": 21.6,
+      "likes": 31,
+      "comments": 8,
+      "shares": 2,
+      "saves": 3
+    },
+    "tag2_teil1": {
+      "views": 1962,
+      "reach": 1520,
+      "skip": 0.261,
+      "avg_watch_s": 20.4,
+      "likes": 35,
+      "comments": 2,
+      "shares": 1,
+      "saves": 2
+    },
+    "tag2_teil2": {
+      "views": 603,
+      "reach": 497,
+      "skip": 0.391,
+      "avg_watch_s": 11.6,
+      "likes": 13,
+      "comments": 7,
+      "shares": 0,
+      "saves": 3
+    }
+  }
 }

@@ -46,6 +46,21 @@
       "dauer_s": 30,
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/hundertster-schlag/"
+    },
+    {
+      "datum": "2026-11-11",
+      "zeit": "12:57",
+      "slot": "Slot 1 (13:00)",
+      "slug": "sisyphos",
+      "thema": "Mythen & Sagen (griechisch)",
+      "serie": "Mythen in 30 Sekunden #1",
+      "titel": "Sisyphos – Er betrog den Tod",
+      "media_id": "18098604404136628",
+      "permalink": "https://www.instagram.com/reel/DfmbLmiDyYj/",
+      "video": "media/lorebound/sisyphos.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/sisyphos/"
     }
   ],
   "naechste_themen_ideen": [
@@ -53,12 +68,12 @@
     "Wissen: Warum der Himmel blau ist",
     "Fantasy: Der letzte Drache",
     "Wissen: Wie groß ist das Universum wirklich?",
-    "Mythos: Sisyphos",
     "Fantasy: Die Bibliothek, die Erinnerungen frisst",
     "Gleichnis #2: Der Bambus, der Jahre unter der Erde wächst"
   ],
-  "letzte_kategorie": "Gleichnis/Motivation",
+  "letzte_kategorie": "Mythen & Sagen",
   "serien": {
-    "Gleichnisse in 30 Sekunden": 1
+    "Gleichnisse in 30 Sekunden": 1,
+    "Mythen in 30 Sekunden": 1
   }
 }

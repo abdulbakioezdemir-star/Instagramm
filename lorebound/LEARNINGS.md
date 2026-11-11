@@ -35,3 +35,14 @@ Duplikat (gelöscht): 63 Views, Skip 67 %, Ø 3,5 s. followers_count lieferte 0 
 **Technik:** 30,0 s, animation-studio, Musik synthetisiert, -13 LUFS, Drop bei 22,0 s per verify exakt synchron. Jeder der 28 Hammerschläge ist ein Ton (Stein-Knock + Metall), Lautstärke wächst mit dem Zähler. Hammer horizontal von rechts (Schwung-Drehpunkt außerhalb des Bildes war unsichtbar) – Stein dafür 70 px nach links.
 **Gepostet:** 18:00:40 UTC (19:00 Berlin), media_id 18141305875618889, https://www.instagram.com/reel/Dfkf_1qlHZ9/ – Fenrir lag kurz vorher bei 10 Views (Skip 60 %).
 **Nächstes Mal prüfen:** Skip-Rate/Ø Watch vs. Schachmatt; ob der Zähler die Watch-Time hebt. Wenn ja: Zähler/Countdown-Motiv auch in Mythen/Wissen nutzen.
+
+## 2026-11-11 – Reel 13:00 „Sisyphos – Er betrog den Tod“ (Mythen, Serie „Mythen in 30 Sekunden #1“)
+**Zahlen vorher (Windsor, 10:35 UTC, 14 Tage):** Hundertster Schlag 156 Views / Reach 134 / **Skip 37 % / Ø 10,5 s** (bester Wert bisher); Papier→Mond 130 / 61 % / 6,8 s; Schachmatt 105 / 50 % / 6,2 s / 1 Save; Fenrir 41 / 58 % / 7,4 s. Follower 0, keine Likes/Shares/Kommentare.
+**Erkenntnis:** Zähler-Motiv + Serien-Rahmen (Hundertster Schlag) hat Skip-Rate um ~15 Punkte gesenkt und Ø Watch über 10 s gehoben → **Gewinner ausbauen**.
+**Wahl:** Mythos (letztes Reel war Gleichnis), aber mit dem Gewinner-Bauplan: sichtbarer Zähler „VERSUCH 1 … 9.999 → ∞“, Serien-Tag oben, „FOLGE FÜR TEIL #2“ am Ende.
+**Hook-Varianten:** a) „Er betrog den Tod.“ b) „Dieser König legte den Tod in Ketten.“ c) „Seine Strafe: für immer.“ → a) (4 Wörter, Behauptung, Ketten schnappen auf Frame 0 zu + Boom + Kamerawackeln).
+**Test des Tages:** Funktioniert der Zähler auch außerhalb der Gleichnis-Serie (Mythos)? Vergleich Skip/Ø Watch mit Hundertster Schlag. Zusätzlich: erstmals Frage an Zuschauer in der Caption („Wärst du an seiner Stelle glücklich?“) → Kommentare?
+**Trockene Zeile:** „Fast oben? Immer nur fast.“ Schluss: Camus-Zitat (1942) – starke, zitierfähige Schlusszeile.
+**Technik:** 30,0 s, animation-studio, Musik synthetisiert (-12,9 LUFS), Drop 22,0 s per verify exakt synchron. Akt 1 (0–8 s) Tod in Ketten, „eingefrorene Zeit“ (Partikel stehen 4–6 s still, Herzschlag setzt aus), Akt 2 Berg im Zeitraffer (8 Schub-Zyklen, immer kürzer). Figur: Füße 380 px hangabwärts vom Felskontakt, 35° Neigung, sonst verdeckt der Fels sie. Bergspitze bei H·0,47, damit stehende Figur nicht in die Texttafeln ragt. Kartenausblendung 0,1 s statt 0,25 s (sonst überlappen Tafeln).
+**Gepostet:** 11:57 UTC (12:57 Berlin), media_id 18098604404136628, https://www.instagram.com/reel/DfmbLmiDyYj/
+**Nächstes Mal prüfen:** Sisyphos vs. Hundertster Schlag (Skip, Ø Watch). Wenn Sisyphos ≥ ähnlich gut: Zähler wird Standard für alle Kategorien. 19-Uhr-Lauf heute: weder Mythen noch Gleichnis → Wissen oder Fantasy.

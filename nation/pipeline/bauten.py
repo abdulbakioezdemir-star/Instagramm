@@ -103,3 +103,43 @@ def baeckerei(d, x, base, prog, t, font=None):
             d.line([(x - 15, yy), (x + w + 15, yy)], fill=(150, 110, 70), width=5)
         d.line([(x - 15, top), (x - 15, base)], fill=(150, 110, 70), width=6)
         d.line([(x + w + 15, top), (x + w + 15, base)], fill=(150, 110, 70), width=6)
+
+def fischerhuette(d, x, base, prog, t, font=None):
+    """Fischerhütte am Strand (Tag 3 · Teil 1, Abstimmung '1'). x = linke Kante, base = Boden.
+    Holzhütte auf Pfählen, Netz, Trockengestell mit Fischen. Wird von unten nach oben gebaut."""
+    if prog <= 0: return
+    w, hw, roof = 250, 120, 70
+    wood, dark = (150, 105, 65), (100, 68, 40)
+    top = base - (hw + roof + 20) * prog
+    # Pfähle
+    for px in (x + 15, x + w - 30):
+        d.rectangle([px, max(base - 20, top), px + 15, base], fill=dark)
+    wy0 = max(base - 20 - hw, top)
+    if wy0 < base - 20:
+        d.rectangle([x, wy0, x + w, base - 20], fill=wood)
+        for yy in range(int(wy0) + 20, base - 20, 24):
+            d.line([(x, yy), (x + w, yy)], fill=dark, width=3)
+    if prog > 0.7:
+        d.polygon([(x - 20, base - 20 - hw), (x + w / 2, base - 20 - hw - roof), (x + w + 20, base - 20 - hw)], fill=(70, 110, 150))
+    if prog > 0.45:
+        d.rectangle([x + 25, base - 115, x + 80, base - 20], fill=dark)
+        d.rectangle([x + 120, base - 115, x + 210, base - 65], fill=(180, 220, 240), outline=dark, width=5)
+    if prog >= 1:
+        # Trockengestell mit Fischen rechts daneben
+        gx = x + w + 40
+        d.line([(gx, base), (gx, base - 110)], fill=dark, width=7)
+        d.line([(gx + 110, base), (gx + 110, base - 110)], fill=dark, width=7)
+        d.line([(gx - 5, base - 105), (gx + 115, base - 105)], fill=dark, width=6)
+        for k in range(3):
+            fx = gx + 18 + k * 36; sw = math.sin(t * 3 + k) * 4
+            d.line([(fx, base - 105), (fx + sw, base - 85)], fill=(60, 60, 60), width=2)
+            d.polygon([(fx + sw - 9, base - 85), (fx + sw + 9, base - 85), (fx + sw, base - 40)], fill=(150, 175, 195))
+            d.polygon([(fx + sw - 9, base - 38), (fx + sw + 9, base - 38), (fx + sw, base - 50)], fill=(150, 175, 195))
+        # Netz an der Wand
+        for k in range(5):
+            d.line([(x + 220 + k * 0, base - 130 + k * 20), (x + 245, base - 130 + k * 20)], fill=(230, 220, 190), width=2)
+    if 0 < prog < 1:
+        for yy in range(int(top), base, 45):
+            d.line([(x - 15, yy), (x + w + 15, yy)], fill=(150, 110, 70), width=5)
+        d.line([(x - 15, top), (x - 15, base)], fill=(150, 110, 70), width=6)
+        d.line([(x + w + 15, top), (x + w + 15, base)], fill=(150, 110, 70), width=6)

@@ -512,10 +512,13 @@ def s_nose(c, t):
         if ta >= ST["l03"] + 0.1:
             T2.stamp(c, ta, ST["l03"] + 0.1, "ERWISCHT", 540, 1060, "#E0245E", 100, 8)
     c.restore()
-    if PART == 2 and t < 1.6:
-        k = 1 - clamp((t - 1.25) / 0.35)
-        c.drawRect(skia.Rect.MakeXYWH(0, 1500, W, 150), fillp("#000000", int(170 * k)))
-        text(c, "VORHIN BEI AHMED…", 540, 1602, "black", 74, "#FFD84D")
+    if PART == 2 and t < 2.4:
+        # Hook-Text statt Rueckblick (LEARNINGS 11.11.: "Vorhin bei..." -> hoehere Skip-Rate)
+        k = 1 - clamp((t - 2.05) / 0.35)
+        c.drawRect(skia.Rect.MakeXYWH(0, 1470, W, 230), fillp("#000000", int(185 * k)))
+        if k > 0.05:
+            text(c, "SIE SAH NUR", 540, 1560, "black", 76, "#FFD84D")
+            text(c, "MEINE NASENLÖCHER.", 540, 1652, "black", 76, "#FFD84D")
     if frz:
         a = int(120 * clamp(prog(t, cf, 0.12)))
         c.drawRect(skia.Rect.MakeWH(W, H), fillp("#000000", a))

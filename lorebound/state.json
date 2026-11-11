@@ -61,19 +61,35 @@
       "dauer_s": 30,
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/sisyphos/"
+    },
+    {
+      "datum": "2026-11-11",
+      "zeit": "19:00",
+      "slot": "Slot 2 (19:00)",
+      "slug": "venus-tag",
+      "thema": "Wissen (Weltall)",
+      "serie": "Wissen in 30 Sekunden #1",
+      "titel": "Ein Tag länger als ein Jahr (Venus)",
+      "media_id": "18147484315606747",
+      "permalink": "https://www.instagram.com/reel/DfnExBdDb1Z/",
+      "video": "media/lorebound/venus-tag.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/venus-tag/"
     }
   ],
   "naechste_themen_ideen": [
     "Mythos: Ikarus",
     "Wissen: Warum der Himmel blau ist",
     "Fantasy: Der letzte Drache",
-    "Wissen: Wie groß ist das Universum wirklich?",
     "Fantasy: Die Bibliothek, die Erinnerungen frisst",
-    "Gleichnis #2: Der Bambus, der Jahre unter der Erde wächst"
+    "Gleichnis #2: Der Bambus, der Jahre unter der Erde wächst",
+    "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen"
   ],
-  "letzte_kategorie": "Mythen & Sagen",
+  "letzte_kategorie": "Wissen",
   "serien": {
     "Gleichnisse in 30 Sekunden": 1,
-    "Mythen in 30 Sekunden": 1
+    "Mythen in 30 Sekunden": 1,
+    "Wissen in 30 Sekunden": 1
   }
 }

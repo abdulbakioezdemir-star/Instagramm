@@ -1,0 +1,239 @@
+{
+ "music": "mind-trap.mp3",
+ "music_start": 44.245,
+ "drop": 4.0,
+ "beats_per_shot": 2,
+ "intro": {
+  "img": "shot1_0.png",
+  "zoom": 1.05,
+  "ox": 0,
+  "oy": 0
+ },
+ "end_text": "SEIT 1916",
+ "shots": [
+  {
+   "img": "shot2_0.png",
+   "tin": "flash",
+   "z": 1.0,
+   "ox": 0,
+   "oy": 0,
+   "drift": 1
+  },
+  {
+   "img": "shot1_1.png",
+   "tin": "whip",
+   "z": 1.05,
+   "ox": 0.3,
+   "oy": 0,
+   "drift": -1
+  },
+  {
+   "img": "shot5_0.png",
+   "tin": "halftone",
+   "z": 1.1,
+   "ox": -0.3,
+   "oy": 0,
+   "drift": 1
+  },
+  {
+   "img": "shot2_1.png",
+   "tin": "zoom",
+   "z": 1.0,
+   "ox": 0,
+   "oy": -0.2,
+   "drift": -1
+  },
+  {
+   "img": "shot12_0.png",
+   "tin": "spin",
+   "z": 1.05,
+   "ox": 0.3,
+   "oy": -0.2,
+   "drift": 1
+  },
+  {
+   "img": "shot6_0.png",
+   "tin": "whip",
+   "z": 1.05,
+   "ox": -0.3,
+   "oy": -0.2,
+   "drift": -1
+  },
+  {
+   "img": "shot6_1.png",
+   "tin": "glitch",
+   "z": 1.15,
+   "ox": 0,
+   "oy": 0.2,
+   "drift": 1
+  },
+  {
+   "img": "shot8_0.png",
+   "tin": "whip",
+   "z": 1.0,
+   "ox": 0.3,
+   "oy": 0.2,
+   "drift": -1
+  },
+  {
+   "img": "shot8_1.png",
+   "tin": "zoom",
+   "z": 1.05,
+   "ox": -0.3,
+   "oy": 0.2,
+   "drift": 1
+  },
+  {
+   "img": "shot3_0.png",
+   "tin": "halftone",
+   "z": 1.05,
+   "ox": 0,
+   "oy": 0,
+   "drift": -1
+  },
+  {
+   "img": "shot3_1.png",
+   "tin": "whip",
+   "z": 1.1,
+   "ox": 0.3,
+   "oy": 0,
+   "drift": 1
+  },
+  {
+   "img": "shot4_0.png",
+   "tin": "zoom",
+   "z": 1.0,
+   "ox": -0.3,
+   "oy": 0,
+   "drift": -1
+  },
+  {
+   "img": "shot9_0.png",
+   "tin": "whip",
+   "z": 1.05,
+   "ox": 0,
+   "oy": -0.2,
+   "drift": 1
+  },
+  {
+   "img": "shot9_1.png",
+   "tin": "glitch",
+   "z": 1.1,
+   "ox": 0.3,
+   "oy": -0.2,
+   "drift": -1
+  },
+  {
+   "img": "shot4_1.png",
+   "tin": "spin",
+   "z": 1.0,
+   "ox": -0.3,
+   "oy": -0.2,
+   "drift": 1
+  },
+  {
+   "img": "shot7_0.png",
+   "tin": "flash",
+   "z": 1.0,
+   "ox": 0,
+   "oy": 0.2,
+   "drift": -1
+  },
+  {
+   "img": "shot7_1.png",
+   "tin": "whip",
+   "z": 1.1,
+   "ox": 0.3,
+   "oy": 0.2,
+   "drift": 1
+  },
+  {
+   "img": "shot11_0.png",
+   "tin": "halftone",
+   "z": 1.05,
+   "ox": -0.3,
+   "oy": 0.2,
+   "drift": -1
+  },
+  {
+   "img": "shot11_1.png",
+   "tin": "zoom",
+   "z": 1.0,
+   "ox": 0,
+   "oy": 0,
+   "drift": 1
+  },
+  {
+   "img": "shot10_0.png",
+   "tin": "whip",
+   "z": 1.0,
+   "ox": 0.3,
+   "oy": 0,
+   "drift": -1
+  },
+  {
+   "img": "shot10_1.png",
+   "tin": "spin",
+   "z": 1.05,
+   "ox": -0.3,
+   "oy": 0,
+   "drift": 1
+  },
+  {
+   "img": "shot5_1.png",
+   "tin": "whip",
+   "z": 1.15,
+   "ox": 0,
+   "oy": -0.2,
+   "drift": -1
+  },
+  {
+   "img": "shot1_0.png",
+   "tin": "zoom",
+   "z": 1.1,
+   "ox": 0.3,
+   "oy": -0.2,
+   "drift": 1
+  },
+  {
+   "img": "shot2_0.png",
+   "tin": "halftone",
+   "z": 1.2,
+   "ox": -0.3,
+   "oy": -0.2,
+   "drift": -1
+  },
+  {
+   "img": "shot3_0.png",
+   "tin": "flash",
+   "z": 1.25,
+   "ox": 0,
+   "oy": 0.2,
+   "drift": 1
+  },
+  {
+   "img": "shot6_0.png",
+   "tin": "whip",
+   "z": 1.25,
+   "ox": 0.3,
+   "oy": 0.2,
+   "drift": -1
+  },
+  {
+   "img": "shot12_1.png",
+   "tin": "zoom",
+   "z": 1.0,
+   "ox": -0.3,
+   "oy": 0.2,
+   "drift": 1
+  },
+  {
+   "img": "shot12_0.png",
+   "tin": "spin",
+   "z": 1.0,
+   "ox": 0,
+   "oy": 0,
+   "drift": -1
+  }
+ ]
+}

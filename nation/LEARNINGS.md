@@ -36,3 +36,15 @@
 - Ende mit 3 nummerierten Optionen (1 Fischerhütte · 2 Brunnen · 3 Garten) im Bild + Caption.
 - Technik: tts.py neu (edge-tts braucht in der Cloud den Proxy-CA `/root/.ccr/ca-bundle.crt`, sonst SSL-Fehler; tts.py setzt das automatisch). Bäckerei-Schild auf die Wand statt aufs Dach (sonst abgeschnitten).
 - Nächstes Mal prüfen: Skip-Rate von Teil 2 vs. Teil 1 (55 %) → zeigt, ob der Konsequenz-Hook besser hält. Kasse ist fast leer → Spannung „reicht das Geld?“ nutzen.
+
+## 2026-11-11 15:00 – Tag 3 · Teil 1/2 (Fischerhütte, 32 s)
+- Zahlen vor dem Post (≈ 17–24 h): Tag 1 145 Views / 2 Likes / Skip 53,5 % / Ø 9,2 s. Tag 2·T1 1.175 Views / 32 Likes / 3 Kom. / Skip 52,1 % / Ø 9,6 s.
+  **Tag 2·T2 (Bäckerei, Konsequenz-Hook)** 541 Views / 20 Likes / **8 Kommentare** / **Skip 39 %** / Ø 11,9 s. Follower 12 (gestern 7). Shares überall 0.
+- Ergebnis Test gestern: Konsequenz-Hook + 3 nummerierte Optionen → Skip-Rate 52 % → 39 %, Kommentare 3 → 8. **Gewinner, beibehalten.**
+- Kommentare unter T2: 3× „1“ (korosensei0815, eliasbike2026, karstenffm), 1× „3“, „Bau eine Strandbar“ (till.ue), „mach mich zum Bäckerei-Chef“ (tizianspahn). Alle 0 Likes → meistgenannte Zahl gewinnt: Fischerhütte (−40 €). Bonus: tizianspahn wird Bäckerei-Chef (kostenlos, „Gehalt: 1 Brötchen“ = Selbstironie-Zeile).
+- Kasse: 1000 + 54 Likes − 1010 = 44 € → nach Hütte 4 €.
+- **Test des Tages: Namen der Abstimmenden im Bild** (3 Usernames groß in der Stats-Szene + Bäckerei-Chef-Ernennung). Hypothese: Wer seinen Namen sieht, kommentiert wieder/teilt (Shares bisher 0). Hook-Varianten: (A) „Drei von euch haben die Eins gewählt. Ich habe 44 €.“ (B) „Ich hab einen Bäckerei-Chef ernannt. Gehalt: ein Brötchen.“ (C) „Mein Land hat nur noch 44 Euro – und ihr wollt eine Fischerhütte.“ → **A gewählt** (Mitmach-Beweis + Geldspannung, kurz).
+- Neue Optionen: 1 Strandbar (Zuschauerwunsch till.ue) · 2 Brunnen · 3 Garten.
+- Technik: tag03.py nutzt relative Font-Pfade (läuft in jedem Clone-Ordner). Fischerhütte in bauten.py (x=590, Boden 1885, unterhalb der Untertitel). Bauphase nur 1,4 s → nächstes Mal Bau länger zeigen (eigener Satz).
+- Nächstes Mal: Shares-Zahl von Tag 3 prüfen; wenn Namen im Bild Kommentare steigern → fest übernehmen. Kasse ~4 € → Strandbar braucht Likes: „Wenn ihr X Likes schafft, baue ich…“ als Ziel-Mechanik testen.
+- Gepostet 15:00 Berlin, media_id 18118625588112500. 7 Kommentare beantwortet (Abstimmende, Strandbar-Wunsch, Bäckerei-Chef, 'Wo ist die Mauer?'). Keine Spam-Kommentare.

@@ -29,7 +29,7 @@
   ],
   "format": "Ab 2026-11-11 (BEFEHLE.md Befehl 2): 2 Reels/Tag – 12:00 Teil 1/2, 18:00 Teil 2/2 + A/B; je 28–32 s; Humor/Hook nach Befehl 3",
   "bio": "korrigiert 2026-11-09 (Ahmed statt Kevin, Zeiten 12:00 & 18:00)",
-  "aktueller_tag": 3,
+  "aktueller_tag": 4,
   "tag_2": {
     "abstimmung_tag1": {
       "A": 2,
@@ -69,16 +69,15 @@
     "Doenermann": "de-DE-ConradNeural +0Hz +0%"
   },
   "letzte_abstimmungs_folge": {
-    "tag": 2,
+    "tag": 3,
     "teil": 2,
-    "media_id": "18112940438615129",
-    "gepostet": "2026-11-10T18:00:05+01:00",
+    "media_id": "18123486640985940",
+    "gepostet": "2026-11-11T18:00:30+01:00",
     "abstimmung": {
-      "A": "Emre geht ran",
-      "B": "Meine Kamera ist kaputt"
+      "A": "Die Wahrheit sagen",
+      "B": "Ich bin Emres Zwilling"
     },
-    "entscheidet": "Tag 3 Teil 1 (2026-11-11 12:00)",
-    "ergebnis": "B 7 : A 0 -> Kamera 'kaputt' (Tag 3)"
+    "entscheidet": "Tag 4 Teil 1 (2026-11-12 12:00)"
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -108,7 +107,14 @@
     "18119970532797340",
     "17921965875463270",
     "17922436941245960",
-    "18132415186770564"
+    "18132415186770564",
+    "18416317582093640",
+    "17917252326519861",
+    "18314987044303428",
+    "18227215249337686",
+    "18416411011085476",
+    "17915657604286837",
+    "18008824112791398"
   ],
   "tag_3": {
     "abstimmung_tag2": {
@@ -132,7 +138,13 @@
         "A": "Die Wahrheit sagen",
         "B": "Ich bin Emres Zwilling"
       },
-      "caption": "Tag 3 · Teil 2/2\nLena sieht nur Ahmeds Nasenlöcher – und er sagt, das ist ein Filter. Filtername: „Pleite & kalt“ 🥶\n\nA = Die Wahrheit sagen\nB = „Ich bin Emres Zwilling“\nSchreibt A oder B – die Mehrheit entscheidet Tag 4 (morgen 12 Uhr)!\nSchick das deinem Freund, der nur von unten filmt 😂\n\n#ahmedglowup #animation #comedy #dating #reels"
+      "caption": "Tag 3 · Teil 2/2\nLena sieht nur Ahmeds Nasenlöcher – und er sagt, das ist ein Filter. Filtername: „Pleite & kalt“ 🥶\n\nA = Die Wahrheit sagen\nB = „Ich bin Emres Zwilling“\nSchreibt A oder B – die Mehrheit entscheidet Tag 4 (morgen 12 Uhr)!\nSchick das deinem Freund, der nur von unten filmt 😂\n\n#ahmedglowup #animation #comedy #dating #reels",
+      "media_id": "18123486640985940",
+      "gepostet": "2026-11-11T18:00:30+01:00",
+      "datei": "media/glowup/tag03_teil2.mp4",
+      "dauer_s": 30.43,
+      "slot": "18:00 Teil 2/2 + A/B",
+      "hook_text": "SIE SAH NUR MEINE NASENLÖCHER. (statt 'VORHIN BEI AHMED…')"
     }
   },
   "analyse_2026-11-11_11:15": {
@@ -166,5 +178,52 @@
       "shares": 0,
       "saves": 3
     }
-  }
+  },
+  "analyse_2026-11-11_17:25": {
+    "followers": 13,
+    "tag1": {
+      "views": 1549,
+      "reach": 1181,
+      "skip": 0.43,
+      "avg_watch_s": 21.5,
+      "likes": 31,
+      "comments": 8,
+      "shares": 2,
+      "saves": 3
+    },
+    "tag2_teil1": {
+      "views": 2205,
+      "reach": 1746,
+      "skip": 0.276,
+      "avg_watch_s": 20.1,
+      "likes": 38,
+      "comments": 2,
+      "shares": 1,
+      "saves": 2
+    },
+    "tag2_teil2": {
+      "views": 1165,
+      "reach": 925,
+      "skip": 0.379,
+      "avg_watch_s": 12.0,
+      "likes": 20,
+      "comments": 13,
+      "shares": 0,
+      "saves": 3
+    },
+    "tag3_teil1": {
+      "views": 2456,
+      "reach": 1850,
+      "skip": 0.26,
+      "avg_watch_s": 20.1,
+      "likes": 30,
+      "comments": 2,
+      "shares": 3,
+      "saves": 0
+    }
+  },
+  "zuschauer_ideen": [
+    "Sag dein Handy wurde gehackt (lior_darken427)",
+    "Sag die Wahrheit (sifa.asil)"
+  ]
 }

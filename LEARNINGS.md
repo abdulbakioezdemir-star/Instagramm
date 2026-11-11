@@ -53,3 +53,26 @@
 - Länge 31,7 s (Vorgabe 28–32 s). Caption endet mit Frage „Was würdest DU jetzt sagen?“ (Test: Kommentare unter Teil 1).
 - Pipeline: neue Vorlage `pipeline/tag03/` (tag03.py mit Szenen cold/vote/call/nose/poll); Teil 2 schon fertig geschrieben + getestet (30,4 s). Whisper-Prüfung: Transkript korrekt, nur „Ahmed?“ von Lena wird als „Ok Matt“ erkannt (klingt aber ok).
 - 4 Abstimmungs-Kommentare als Ahmed beantwortet, keine Beleidigungen/Spam.
+
+## 2026-11-11 18:00 (Tag 3 · Teil 2)
+- Zahlen 17:25 (Windsor, ohne force_refresh) – Follower **13** (gestern 6):
+  | Reel | Views | Reach | Skip | Ø Watch | Likes | Komm. | Shares | Saves |
+  |---|---|---|---|---|---|---|---|---|
+  | Tag 1 (09.11., 49 s) | 1.549 | 1.181 | 43,0 % | 21,5 s | 31 | 8 | 2 | 3 |
+  | Tag 2 T1 (12:00, 49 s) | 2.205 | 1.746 | 27,6 % | 20,1 s | 38 | 2 | 1 | 2 |
+  | Tag 2 T2 (18:00, 31 s) | 1.165 | 925 | 37,9 % | 12,0 s | 20 | 13 | 0 | 3 |
+  | **Tag 3 T1 (12:00, 31,7 s)** | **2.456 in 6 h** | 1.850 | **26,0 %** | **20,1 s (≈63 %)** | 30 | 2 | **3** | 0 |
+- **Tagestest Tag 3 T1 (Peinlichkeits-Hook „Ich hab Lena gesagt, meine Kamera ist kaputt. Sie war an.“): Gewinner.**
+  Bestes Reel aller Zeiten nach 6 h, Skip 26 % (= Rekord), Ø Watch 20 s bei nur 31,7 s Länge → Retention fast verdoppelt ggü. 49 s-Folgen. Meiste Shares (3).
+  → Peinlichkeits-Behauptung als erster Satz + Text ≤ 8 Wörter ist ab jetzt Standard-Hook. 28–32 s bestätigt.
+- **Teil 1 vs. Teil 2:** Teil 1 (12 Uhr) holt ~2× Views, Teil 2 (18 Uhr) holt die Kommentare (13 vs. 2) durch die A/B-Frage. Teil 2 hat höhere Skip (38 %) und nur Ø 12 s.
+- **Geändert in Teil 2 (Test heute):** Einblendung „VORHIN BEI AHMED…“ ersetzt durch Hook-Text „SIE SAH NUR MEINE NASENLÖCHER.“ (0–2,4 s); erster Satz bleibt Peinlichkeits-Behauptung. Morgen Skip mit Tag 2 T2 (37,9 %) vergleichen.
+- Hook-Varianten Teil 2: (1) „Lena hat mich gesehen. Nicht Emre. Nur meine Nasenlöcher.“ (2) „Ich hab Lena gesagt, meine Nasenlöcher sind ein Filter.“ (3) „POV: Sie sieht dich zum ersten Mal – von unten.“ → **(1)** (schon gerendert/getestet, Text-Overlay aus (1) abgeleitet).
+- Gepostet 18:00, media_id 18123486640985940 (30,4 s).
+- Kommentare: Zuschauer schlagen Ausreden vor („Sag dein Handy wurde gehackt“, „Sag die Wahrheit“) → in Tag 4 als Easter-Egg einbauen (z. B. Ahmed: „Einer sagt, sag, du wurdest gehackt… Wer hackt ein Handy mit 3 % Akku?“). Frage „wie machst du diese videos?“ ehrlich beantwortet (KI-Hilfe).
+  7 Kommentare beantwortet (inkl. 3 übersehene B-Stimmen von gestern), kein Spam.
+- **Für die nächsten Teile:**
+  - Teil 2 nicht nur mit Rückblick-Satz starten: idealerweise neue Pointe/Peinlichkeit in Sekunde 0, die ohne Teil 1 verständlich ist.
+  - Teil 1 holt kaum Kommentare (2) → im Teil 1 eine Ein-Wort-Frage einbauen („Was würdest DU sagen? 1 Wort!“) und testen.
+  - Saves = 0 bei T1 → Caption-Test „Speicher dir das für dein nächstes Date“.
+  - Watch-Time: Teil 2 verliert in der Poll-Karte (21–30 s, 9 s statisch). Poll kürzer (≤ 6 s) und Ahmed-Reaktion animieren.

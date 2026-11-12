@@ -1,0 +1,76 @@
+[
+ {
+  "id": "music",
+  "src": "music/inspiring-technology.mp3",
+  "start": 0,
+  "dur": 27.2,
+  "track": 20,
+  "vol": 0.7,
+  "fade": 1.6
+ },
+ {
+  "id": "wh0",
+  "src": "sfx/whoosh-short.mp3",
+  "start": 4.471,
+  "dur": 0.55,
+  "track": 10,
+  "vol": 0.35
+ },
+ {
+  "id": "wh1",
+  "src": "sfx/whoosh.mp3",
+  "start": 9.071,
+  "dur": 0.55,
+  "track": 11,
+  "vol": 0.35
+ },
+ {
+  "id": "wh2",
+  "src": "sfx/whoosh-short.mp3",
+  "start": 13.671,
+  "dur": 0.55,
+  "track": 10,
+  "vol": 0.35
+ },
+ {
+  "id": "wh3",
+  "src": "sfx/whoosh.mp3",
+  "start": 22.271,
+  "dur": 0.55,
+  "track": 11,
+  "vol": 0.35
+ },
+ {
+  "id": "clk1",
+  "src": "sfx/click-soft.mp3",
+  "start": 7.436,
+  "dur": 0.36,
+  "track": 12,
+  "vol": 0.7
+ },
+ {
+  "id": "clk2",
+  "src": "sfx/click-soft.mp3",
+  "start": 18.936,
+  "dur": 0.36,
+  "track": 12,
+  "vol": 0.7
+ },
+ {
+  "id": "scan",
+  "src": "sfx/pop.mp3",
+  "start": 16.967,
+  "dur": 0.6,
+  "track": 13,
+  "vol": 0.45
+ },
+ {
+  "id": "lead",
+  "src": "sfx/notification.mp3",
+  "start": 20.248,
+  "dur": 1.8,
+  "track": 14,
+  "vol": 0.6,
+  "fade": 0.6
+ }
+]

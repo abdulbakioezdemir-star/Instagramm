@@ -1,0 +1,7 @@
+.hyperframes/
+.media/
+build/
+__pycache__/
+node_modules/
+ui/*_full.png
+ui/d_home_full.png

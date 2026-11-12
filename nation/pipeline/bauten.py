@@ -189,3 +189,37 @@ def strandbar(d, x, base, prog, t, font=None):
     if 0 < prog < 1:
         for yy in range(int(base - 200 * prog), base, 45):
             d.line([(x - 15, yy), (x + tw + 15, yy)], fill=(150, 110, 70), width=5)
+
+def mauer(d, x, base, prog, t, font=None, steine=3):
+    """Mini-Mauer am Strand (Tag 4 · Teil 1, Abstimmung '3', Wunsch von seal.medusa). x = linke Kante, base = Boden.
+    Nur drei Steinreihen hoch (Kasse reichte nicht für mehr). Reihen kommen nacheinander dazu."""
+    if prog <= 0: return
+    sw, sh, n = 50, 30, 4                      # Stein-Breite/-Höhe, Steine pro Reihe
+    stone, dark = (175, 170, 160), (110, 105, 98)
+    rows = min(steine, int(prog * steine + 0.999))
+    for r in range(rows):
+        q = 1.0 if r < rows - 1 or prog >= 1 else min(1, (prog * steine - r) * 1.2)
+        off = (sw // 2) if r % 2 else 0
+        y1 = base - r * sh; y0 = y1 - sh
+        drop = (1 - q) * -60
+        for k in range(n + (1 if r % 2 else 0)):
+            x0 = x + k * sw - off; x1 = x0 + sw
+            x0 = max(x0, x); x1 = min(x1, x + n * sw)
+            if x1 - x0 < 8: continue
+            d.rectangle([x0 + 2, y0 + drop + 2, x1 - 2, y1 + drop - 2], fill=stone, outline=dark, width=3)
+    if prog >= 1 and font:
+        d.rounded_rectangle([x + n * sw + 15, base - 75, x + n * sw + 115, base - 35], radius=8, fill=(255, 245, 210), outline=dark, width=3)
+        d.text((x + n * sw + 65, base - 55), "MAUER", font=font, fill=dark, anchor="mm")
+        d.line([(x + n * sw + 65, base - 35), (x + n * sw + 65, base)], fill=dark, width=4)
+
+def katze(d, x, base, s=1.0, hop=0.0, col=(60, 60, 70)):
+    """Kleine Katze (Seitenansicht), läuft nach rechts. hop = Höhe über Boden."""
+    y = base - hop
+    d.ellipse([x - 30 * s, y - 40 * s, x + 30 * s, y - 12 * s], fill=col)               # Körper
+    d.ellipse([x + 18 * s, y - 58 * s, x + 46 * s, y - 30 * s], fill=col)               # Kopf
+    d.polygon([(x + 22 * s, y - 52 * s), (x + 26 * s, y - 68 * s), (x + 32 * s, y - 55 * s)], fill=col)
+    d.polygon([(x + 34 * s, y - 55 * s), (x + 40 * s, y - 68 * s), (x + 44 * s, y - 50 * s)], fill=col)
+    d.ellipse([x + 34 * s, y - 49 * s, x + 39 * s, y - 44 * s], fill=(240, 220, 90))     # Auge
+    for lx in (-22, -10, 10, 20):
+        d.line([(x + lx * s, y - 18 * s), (x + lx * s, y)], fill=col, width=max(2, int(6 * s)))
+    d.line([(x - 28 * s, y - 30 * s), (x - 48 * s, y - 60 * s)], fill=col, width=max(2, int(7 * s)))  # Schwanz

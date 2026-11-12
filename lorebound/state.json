@@ -76,6 +76,21 @@
       "dauer_s": 30,
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/venus-tag/"
+    },
+    {
+      "datum": "2026-11-12",
+      "zeit": "13:00",
+      "slot": "Slot 1 (13:00)",
+      "slug": "bambus",
+      "thema": "Gleichnis/Motivation",
+      "serie": "Gleichnisse in 30 Sekunden #2",
+      "titel": "Der Bambus – Du wächst nach unten",
+      "media_id": "17989900539091476",
+      "permalink": "https://www.instagram.com/reel/DfpAVlvDyfW/",
+      "video": "media/lorebound/bambus.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/bambus/"
     }
   ],
   "naechste_themen_ideen": [
@@ -83,12 +98,11 @@
     "Wissen: Warum der Himmel blau ist",
     "Fantasy: Der letzte Drache",
     "Fantasy: Die Bibliothek, die Erinnerungen frisst",
-    "Gleichnis #2: Der Bambus, der Jahre unter der Erde wächst",
     "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen"
   ],
-  "letzte_kategorie": "Wissen",
+  "letzte_kategorie": "Gleichnis",
   "serien": {
-    "Gleichnisse in 30 Sekunden": 1,
+    "Gleichnisse in 30 Sekunden": 2,
     "Mythen in 30 Sekunden": 1,
     "Wissen in 30 Sekunden": 1
   }

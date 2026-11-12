@@ -1,9 +1,9 @@
 {
   "account_id": "17841459168444268",
   "nation": "Valmora",
-  "tag": 3,
-  "staatskasse_eur": 0,
-  "einwohner": 14,
+  "tag": 4,
+  "staatskasse_eur": 1,
+  "einwohner": 15,
   "gebaut": [
     {
       "was": "Leuchtturm-Haus am Strand",
@@ -29,22 +29,27 @@
       "was": "Strandbar am Strand (Abstimmung '1', Wunsch till.ue)",
       "kosten": 15,
       "tag": 3
+    },
+    {
+      "was": "Mini-Mauer am Strand, 3 Steine hoch (Abstimmung '3', Wunsch seal.medusa)",
+      "kosten": 10,
+      "tag": 4
     }
   ],
-  "letztes_reel_media_id": "18102445040653370",
-  "naechstes_reel": "Tag 4 · Teil 1/2 (15:00): Top-Kommentar unter Tag-3-T2 bzw. meistgenannte Zahl (1 Brunnen / 2 Garten / 3 Mauer). Kasse 0 € + neue Likes → Kosten an Kasse anpassen.",
+  "letztes_reel_media_id": "18101302799099828",
+  "naechstes_reel": "Tag 4 · Teil 2/2 (21:00): Abstimmung unter Tag-4-T1 (1 Brunnen / 2 Garten / 3 Strandkörbe). Kasse 1 € + neue Likes → Kosten anpassen. Platz: Strand bei Mauer voll; nächster Bau z. B. rechts am Fluss/Insel.",
   "profil_offen": null,
   "tag1_video": "media/nation/valmora_tag01.mp4",
   "tag1_status": "gepostet 2026-11-09 23:28 (Europe/Berlin)",
   "stimme": "edge-tts de-DE-FlorianMultilingualNeural, pitch -4Hz, rate +4%",
-  "vorlage": "nation/pipeline/tag03b.py (neueste, 32 s; zoomed() für Bau-Szene; Bauten in bauten.py: lighthouse, bootssteg, baeckerei, fischerhuette, strandbar; braucht world.py, synth_body.py, panorama.jpg, logo_valmora.jpg im Arbeitsordner)",
+  "vorlage": "nation/pipeline/tag04.py (neueste, 32 s; zoomed() zentriert auf Mauer x0=170; mauer()+katze() in bauten.py; Fonts aus ./fonts oder ../../pipeline/fonts)",
   "tag1_inhalt": "Gründung, 12 km² (Nordgebirge, großer Wald, Fluss mit Wasserfall, Bucht, Strand, Insel), Leuchtturm-Haus am Strand gebaut (−800 €)",
-  "ausgaben_eur": 1065,
+  "ausgaben_eur": 1075,
   "staatskasse_formel": "1000 + alle Likes − ausgaben_eur",
   "profil": "@valmora.nation, Name 'Valmora | Eigenes Land', Logo als Profilbild, Bio gesetzt (2026-11-09)",
   "letztes_reel_link": null,
-  "letztes_reel_teil": "Tag 3 · Teil 2/2",
-  "likes_gesamt": 65,
+  "letztes_reel_teil": "Tag 4 · Teil 1/2",
+  "likes_gesamt": 76,
   "tag2_video": "media/nation/valmora_tag02.mp4",
   "tag2_status": "gepostet 2026-11-10 15:01 (Europe/Berlin)",
   "tag2_inhalt": "Kein Kommentar unter Tag 1 → selbst entschieden: Bootssteg mit Boot am Strand (−150 €). Kasse 200+1 Like=201 → 51 €. 'Fast pleite – ich brauche euch.'",
@@ -54,7 +59,7 @@
   "optionen_offen": {
     "1": "Brunnen",
     "2": "Garten",
-    "3": "Mauer"
+    "3": "Strandkörbe"
   },
   "tag3_video": "media/nation/valmora_tag03.mp4",
   "tag3_inhalt": "Abstimmung 3× '1' (korosensei0815, eliasbike2026, karstenffm) → Fischerhütte am Strand (−40 €). tizianspahn = Bäckerei-Chef (Gehalt: 1 Brötchen). Kasse 44 → 4 €. Optionen: 1 Strandbar · 2 Brunnen · 3 Garten.",
@@ -62,5 +67,8 @@
   "tag3_status": "gepostet 2026-11-11 15:00 (Europe/Berlin), media_id 18118625588112500, Slot 15:00 (Teil 1/2)",
   "tag3_teil2_video": "media/nation/valmora_tag03_teil2.mp4",
   "tag3_teil2_inhalt": "Abstimmung 3× '1' (587pii, till.ue, 041_sxcz_) → Strandbar (−15 €). Kasse 15 → 0 €. 'Die Bar ist offen. Ich kann mir kein Getränk leisten.' Optionen: 1 Brunnen · 2 Garten · 3 Mauer (seal.medusa).",
-  "tag3_teil2_status": "gepostet 2026-11-11 21:00 (Europe/Berlin), media_id 18102445040653370, Slot 21:00 (Teil 2/2)"
+  "tag3_teil2_status": "gepostet 2026-11-11 21:00 (Europe/Berlin), media_id 18102445040653370, Slot 21:00 (Teil 2/2)",
+  "tag4_video": "media/nation/valmora_tag04.mp4",
+  "tag4_inhalt": "Abstimmung 3× '3' (seal.medusa, karstenffm, 041_sxcz_) → Mini-Mauer 3 Steine hoch (−10 €). Kasse 1000+76−1065=11 → 1 €. Hook 'Keiner hat gesagt, wofür.' Katze steigt drüber. Optionen: 1 Brunnen · 2 Garten · 3 Strandkörbe (587pii).",
+  "tag4_status": "gepostet 2026-11-12 15:00 (Europe/Berlin), media_id 18101302799099828, Slot 15:00 (Teil 1/2)"
 }

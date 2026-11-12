@@ -294,7 +294,11 @@
       "datei": "media/glowup/tag04_teil1.mp4",
       "dauer_s": 32.44,
       "slot": "12:00 Teil 1/2",
-      "hook": "Ich hab Lena gesagt, ich bin Emres Zwilling. Wir sehen uns null ähnlich. (Text: ICH HAB JETZT EINEN ZWILLING.)"
+      "hook": "Ich hab Lena gesagt, ich bin Emres Zwilling. Wir sehen uns null ähnlich. (Text: ICH HAB JETZT EINEN ZWILLING.)",
+      "media_id": "18422693974152086",
+      "gepostet": "2026-11-12T12:00:48+01:00",
+      "permalink": "https://www.instagram.com/reel/Dfo5duujRhl/",
+      "caption_test": "Ein-Wort-Frage am Ende der Caption (Kommentare unter T1)"
     },
     "teil2": {
       "skript": "pipeline/tag04/tag04.py (PART=2, lines2.tsv) – Anleitung pipeline/tag04/README.md (getestet, 31,8 s)",

@@ -94,5 +94,6 @@
 - Gags (Alltag): Zuschauer-Easter-Egg „mach dich hübsch“ → „Bruder… das war schon hübsch.“; „Er hat die Muskeln gekriegt. Ich das WLAN-Passwort.“; Cousin antwortet seit 3 Wochen nur mit Daumen hoch (Cliffhanger).
 - Länge 32,4 s. Whisper-Check: alles korrekt; Seraphinas kurzes „Süß!“ wurde als „Sass“ erkannt → umformuliert zu „Voll süß!“ (wird korrekt erkannt).
 - **Tagestest:** Caption von Teil 1 endet mit Ein-Wort-Frage („Wie kommt Ahmed an ein Zwillingsfoto? 1 Wort 👇“) → Kommentare unter T1 mit Tag 3 T1 (4) vergleichen.
+- Gepostet 12:00:48, media_id 18422693974152086 (https://www.instagram.com/reel/Dfo5duujRhl/).
 - Teil 2 fertig geschrieben + getestet (31,8 s): Panorama-Trick, Foto mit 3 Armen, „ZU DRITT?!“, Poll A = echten Emre anrufen / B = Ahmed spielt beide. Poll-Karte kürzer (Abspann 1,6 s).
 - 8 Kommentare als Ahmed beantwortet (5× B, 2× A, 1 Frage „wie machst du die Videos?“ – ehrlich: KI-Hilfe), kein Spam/keine Beleidigungen.

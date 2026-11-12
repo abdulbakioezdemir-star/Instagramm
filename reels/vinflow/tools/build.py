@@ -9,9 +9,9 @@ BASE_CSS = f"""
     #root {{ position: absolute; inset: 0; overflow: hidden; background: #0b0c0e; font-family: "Inter", sans-serif; }}
     .full {{ position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }}
     .shade {{ position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,9,11,.55) 0%, rgba(8,9,11,0) 30%, rgba(8,9,11,0) 55%, rgba(8,9,11,.85) 100%); }}
-    .line {{ position: absolute; left: 80px; right: 80px; text-align: center; color: {INK}; font-weight: 600; letter-spacing: -.02em; }}
+    .line {{ position: absolute; left: 80px; right: 80px; text-align: center; color: {INK}; font-weight: 600; letter-spacing: -.02em; text-shadow: 0 4px 28px rgba(0,0,0,.65); }}
     .line .r {{ color: {RED}; }}
-    .cap {{ position: absolute; left: 80px; right: 80px; top: 1160px; text-align: center; font: 600 58px/1.15 "Inter", sans-serif; color: {INK}; letter-spacing: -.02em; }}
+    .cap {{ position: absolute; left: 80px; right: 80px; top: 1160px; text-align: center; font: 600 58px/1.15 "Inter", sans-serif; color: {INK}; letter-spacing: -.02em; text-shadow: 0 4px 28px rgba(0,0,0,.65); }}
     .sub {{ position: absolute; left: 80px; right: 80px; top: 1250px; text-align: center; font: 500 34px/1.3 "Inter", sans-serif; color: rgba(244,244,242,.62); }}
     .phone {{ position: absolute; width: 600px; height: 1252px; border-radius: 92px; background: #0a0a0b;
       box-shadow: 0 0 0 3px #2b2d31, 0 50px 120px rgba(0,0,0,.65); }}
@@ -48,8 +48,9 @@ write("s1", scene("s1", f"""
     <img id="s1-a" class="full" src="img/shot1_1.png">
     <img id="s1-b" class="full" src="img/shot2_1.png" style="opacity:0">
     <div class="shade"></div>
+    <div style="position:absolute;left:0;right:0;top:880px;height:700px;background:linear-gradient(180deg,rgba(8,9,11,0),rgba(8,9,11,.72) 35%,rgba(8,9,11,.72) 70%,rgba(8,9,11,0))"></div>
     <div id="s1-l1" class="line" style="top:1080px;font-size:66px">Du verkaufst Autos.</div>
-    <div id="s1-l2" class="line" style="top:1170px;font-size:66px;line-height:1.12">Aber wo finden Kunden<br><span class="r">deinen Bestand?</span></div>
+    <div id="s1-l2" class="line" style="top:1170px;font-size:66px;line-height:1.12">Aber wo finden Kunden<br><span class="r" style="color:#ff2a4a">deinen Bestand?</span></div>
 """, f"""
     tl.fromTo("#s1-a", {{ scale: 1.12, x: 30 }}, {{ scale: 1.02, x: -20, duration: 3.2, ease: "none" }}, 0);
     tl.fromTo("#s1-b", {{ opacity: 0, scale: 1.1 }}, {{ opacity: 1, scale: 1.03, duration: 0.9, ease: "power2.inOut" }}, 2.3);
@@ -62,7 +63,7 @@ write("s1", scene("s1", f"""
 
 # ------------------------------------------------------------------ 2. the dealer publishes his stock with VINFlow Direct
 write("s2", scene("s2", f"""
-    <img id="s2-bg" class="full" src="img/shot3_0.png">
+    <img id="s2-bg" class="full" src="img/shot3_1.png">
     <div class="shade"></div>
     <div id="s2-ui" style="position:absolute;inset:0;background:#0b0c0e;opacity:0">
       <div id="s2-win" style="position:absolute;left:60px;top:420px;width:960px;border-radius:26px;overflow:hidden;background:#18191c;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 2px #26282c">
@@ -82,9 +83,9 @@ write("s2", scene("s2", f"""
       </div>
       <div id="s2-ring" style="position:absolute;width:70px;height:70px;border-radius:50%;border:4px solid {RED};opacity:0"></div>
     </div>
-    <div id="s2-cap" class="cap">Ein Klick.<br><span style="color:{RED}">Dein Bestand ist online.</span></div>
+    <div id="s2-cap" class="cap" style="top:1440px">Ein Klick.<br><span style="color:{RED}">Dein Bestand ist online.</span></div>
 """, f"""
-    tl.fromTo("#s2-bg", {{ scale: 1.0 }}, {{ scale: 1.35, transformOrigin: "52% 42%", duration: 1.8, ease: "power2.in" }}, 0);
+    tl.fromTo("#s2-bg", {{ scale: 1.0 }}, {{ scale: 1.35, transformOrigin: "65% 66%", duration: 1.8, ease: "power2.in" }}, 0);
     tl.fromTo("#s2-ui", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.35, ease: "power2.out" }}, 1.55);
     tl.fromTo("#s2-win", {{ scale: 1.08, filter: "blur(10px)" }}, {{ scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }}, 1.55);
     // the cursor goes to the Direct channel and clicks
@@ -117,7 +118,7 @@ write("s3", scene("s3", f"""
 
 # ------------------------------------------------------------------ 4. a QR code on the car: scan, land on the vehicle page
 write("s4", scene("s4", f"""
-    <img id="s4-bg" class="full" src="img/shot4_0.png">
+    <img id="s4-bg" class="full" src="img/shot4_1.png">
     <div class="shade"></div>
     <div id="s4-card" style="position:absolute;left:330px;top:520px;width:420px;height:560px;border-radius:22px;background:#fff;box-shadow:0 30px 60px rgba(0,0,0,.45)">
       <img src="ui/vinflow-logo.png" style="position:absolute;left:30px;top:28px;width:64px;height:64px;border-radius:14px">
@@ -130,7 +131,7 @@ write("s4", scene("s4", f"""
       <div class="isl"></div>
       <div class="scr" style="background:#111">
         <div id="s4-cam" style="position:absolute;inset:0;overflow:hidden">
-          <img src="img/shot4_0.png" style="position:absolute;left:-260px;top:-300px;width:1080px;height:1920px;object-fit:cover;filter:blur(1px)">
+          <img src="img/shot4_1.png" style="position:absolute;left:-260px;top:-300px;width:1080px;height:1920px;object-fit:cover;filter:blur(1px)">
           <div style="position:absolute;left:90px;top:280px;width:380px;height:500px;border-radius:20px;background:#fff">
             <img src="ui/qr_audi.png" style="position:absolute;left:50px;top:110px;width:280px;height:280px">
           </div>

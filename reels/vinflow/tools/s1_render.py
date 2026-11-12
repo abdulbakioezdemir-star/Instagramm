@@ -1,13 +1,11 @@
-"""Opening shot: black -> the showroom's light strips switch on one after another -> the room comes up,
-while the camera dollies in; then a cut on motion into a lateral move along the row of cars.
-Writes clips/s1.mp4 (4.6 s, 30 fps, no audio)."""
+"""Opening: the camera lands on the showroom with the first hit of the music, then whips into a lateral move
+along the row of cars. Writes clips/s1.mp4 (4.0 s, 30 fps, no audio)."""
 import math, subprocess
 from pathlib import Path
 import numpy as np, cv2
 
 HERE = Path(__file__).resolve().parent.parent
-W, H, FPS, DUR = 1080, 1920, 30, 4.6
-CUT = 2.95
+W, H, FPS, DUR = 1080, 1920, 30, 4.0
 
 def plate(name, scale=1.3):
     im = cv2.imread(str(HERE / "img" / name))
@@ -26,34 +24,38 @@ def view(img, z, ox=0.0, oy=0.0):
 def ease(x):
     x = min(1, max(0, x)); return x * x * (3 - 2 * x)
 
-yy = np.mgrid[0:H, 0:W][0].astype(np.float32)
+def expo_out(x):
+    x = min(1, max(0, x)); return 1 - pow(2, -10 * x) if x < 1 else 1.0
 
-def lights_on(t):
-    # one continuous dolly-in through the whole reveal
-    u = ease((t - 0.0) / CUT)
-    frame = view(A, 1.0 + 0.11 * u, 0.0, -0.05 + 0.08 * u).astype(np.float32)
-    g = cv2.cvtColor(frame.astype(np.uint8), cv2.COLOR_BGR2GRAY).astype(np.float32)
-    lamps = np.clip((g - 200) / 45, 0, 1)                                 # the light strips and their reflections
-    # the strips switch on from the far ceiling to the camera
-    p = (t - 1.15) / 0.75
-    sweep = np.clip((p * (H + 500) - yy) / 500, 0, 1)
-    # a fluorescent start: the first strips blink twice
-    blink = 1.0
-    if 1.15 < t < 1.42:
-        blink = 0.25 if int((t - 1.15) * 30) % 3 == 1 else 1.0
-    lamp_layer = frame * (lamps * sweep * blink)[..., None]
-    glow = cv2.GaussianBlur(lamp_layer, (0, 0), 14) * 0.9
-    ambient = 0.05 + 0.95 * ease((t - 1.75) / 1.0)                        # the room fills with light
-    out = frame * ambient + (lamp_layer + glow) * (1 - ambient * 0.85)
-    if t < 1.15:
-        out *= 0.0                                                         # pure black before the lights
-    return np.clip(out, 0, 255).astype(np.uint8)
+def motion_blur(f, length):
+    if length < 2:
+        return f
+    L = int(length) | 1
+    k = np.zeros((1, L), np.float32); k[0, :] = 1.0 / L
+    return cv2.filter2D(f, -1, k)
+
+CUT = 2.0
+def opening(t):
+    # the camera lands on the first hit of the music: a fast push that settles, then keeps drifting
+    z = 1.0 + 0.16 * (1 - expo_out(t / 0.9)) + 0.03 * (t / CUT)
+    f = view(A, z, 0.0, 0.05)
+    # whip out to the right in the last frames before the cut
+    if t > CUT - 0.13:
+        k = (t - (CUT - 0.13)) / 0.13
+        f = np.roll(f, int(-260 * k * k), axis=1)
+        f = motion_blur(f, 160 * k)
+    return f
 
 def dolly(t):
-    # lateral move along the row, already moving at the cut, still moving at the end
+    # whip in from the right, then a steady lateral move along the row
     u = (t - CUT) / (DUR - CUT)
-    ox = 0.75 - 1.1 * u
-    return view(B, 1.32 + 0.05 * u, ox, 0.05)
+    ox = 0.8 - 1.2 * u
+    f = view(B, 1.32 + 0.04 * u, ox, 0.05)
+    if t < CUT + 0.13:
+        k = 1 - (t - CUT) / 0.13
+        f = np.roll(f, int(260 * k * k), axis=1)
+        f = motion_blur(f, 160 * k)
+    return f
 
 out = HERE / "clips" / "s1.mp4"
 out.parent.mkdir(exist_ok=True)
@@ -62,7 +64,7 @@ enc = subprocess.Popen(["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_f
                        stdin=subprocess.PIPE)
 for i in range(int(DUR * FPS)):
     t = i / FPS
-    f = lights_on(t) if t < CUT else dolly(t)
+    f = opening(t) if t < CUT else dolly(t)
     enc.stdin.write(f.tobytes())
 enc.stdin.close(); enc.wait()
 print("wrote", out)

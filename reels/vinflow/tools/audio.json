@@ -1,42 +1,26 @@
 [
  {
   "id": "music",
-  "src": "music/inspiring-technology.mp3",
+  "src": "music/silent-force.mp3",
   "start": 0,
-  "dur": 27.2,
+  "dur": 25.0,
   "track": 20,
-  "vol": 0.7,
-  "fade": 1.6,
-  "fadein": 1.4
+  "vol": 0.75,
+  "ms": 16.48,
+  "fade": 1.5
  },
  {
-  "id": "wh0",
+  "id": "whip1",
   "src": "sfx/whoosh-short.mp3",
-  "start": 4.471,
+  "start": 1.871,
   "dur": 0.55,
   "track": 10,
   "vol": 0.35
  },
  {
-  "id": "wh1",
+  "id": "thru",
   "src": "sfx/whoosh.mp3",
-  "start": 9.071,
-  "dur": 0.55,
-  "track": 11,
-  "vol": 0.35
- },
- {
-  "id": "wh2",
-  "src": "sfx/whoosh-short.mp3",
-  "start": 13.671,
-  "dur": 0.55,
-  "track": 10,
-  "vol": 0.35
- },
- {
-  "id": "wh3",
-  "src": "sfx/whoosh.mp3",
-  "start": 22.271,
+  "start": 5.371,
   "dur": 0.55,
   "track": 11,
   "vol": 0.35
@@ -44,58 +28,58 @@
  {
   "id": "clk1",
   "src": "sfx/click-soft.mp3",
-  "start": 7.436,
+  "start": 6.486,
   "dur": 0.36,
   "track": 12,
   "vol": 0.7
  },
  {
-  "id": "clk2",
-  "src": "sfx/click-soft.mp3",
-  "start": 18.936,
-  "dur": 0.36,
-  "track": 12,
-  "vol": 0.7
+  "id": "up",
+  "src": "sfx/whoosh-short.mp3",
+  "start": 7.771,
+  "dur": 0.55,
+  "track": 10,
+  "vol": 0.3
  },
  {
   "id": "scan",
   "src": "sfx/pop.mp3",
-  "start": 16.967,
+  "start": 14.417,
   "dur": 0.6,
   "track": 13,
   "vol": 0.45
  },
  {
+  "id": "tap",
+  "src": "sfx/click-soft.mp3",
+  "start": 15.986,
+  "dur": 0.36,
+  "track": 12,
+  "vol": 0.7
+ },
+ {
+  "id": "across",
+  "src": "sfx/whoosh.mp3",
+  "start": 16.321,
+  "dur": 0.55,
+  "track": 11,
+  "vol": 0.3
+ },
+ {
   "id": "lead",
   "src": "sfx/notification.mp3",
-  "start": 20.248,
-  "dur": 1.8,
+  "start": 16.948,
+  "dur": 1.6,
   "track": 14,
-  "vol": 0.6,
+  "vol": 0.55,
   "fade": 0.6
  },
  {
-  "id": "lamp1",
-  "src": "sfx/click.mp3",
-  "start": 1.136,
-  "dur": 0.36,
-  "track": 15,
-  "vol": 0.55
- },
- {
-  "id": "lamp2",
-  "src": "sfx/click-soft.mp3",
-  "start": 1.436,
-  "dur": 0.36,
-  "track": 16,
-  "vol": 0.45
- },
- {
-  "id": "cut1",
+  "id": "tile",
   "src": "sfx/whoosh-short.mp3",
-  "start": 2.821,
+  "start": 18.721,
   "dur": 0.55,
-  "track": 17,
+  "track": 10,
   "vol": 0.3
  }
 ]

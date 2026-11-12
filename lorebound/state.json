@@ -91,19 +91,34 @@
       "dauer_s": 30,
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/bambus/"
+    },
+    {
+      "datum": "2026-11-12",
+      "zeit": "19:00",
+      "slot": "Slot 2 (19:00)",
+      "slug": "leere-truhe",
+      "thema": "Fantasy-Kurzgeschichte",
+      "serie": "Fantasy in 30 Sekunden #1",
+      "titel": "Die leere Truhe – Der Drache, der nichts bewachte",
+      "media_id": "17971737360195477",
+      "video": "media/lorebound/leere-truhe.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/leere-truhe/"
     }
   ],
   "naechste_themen_ideen": [
     "Mythos: Ikarus",
     "Wissen: Warum der Himmel blau ist",
-    "Fantasy: Der letzte Drache",
     "Fantasy: Die Bibliothek, die Erinnerungen frisst",
-    "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen"
+    "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen",
+    "Gleichnis #3 (Gewinner-Serie, ein Objekt + Zähler)"
   ],
-  "letzte_kategorie": "Gleichnis",
+  "letzte_kategorie": "Fantasy",
   "serien": {
     "Gleichnisse in 30 Sekunden": 2,
     "Mythen in 30 Sekunden": 1,
-    "Wissen in 30 Sekunden": 1
+    "Wissen in 30 Sekunden": 1,
+    "Fantasy in 30 Sekunden": 1
   }
 }

@@ -29,7 +29,7 @@
   ],
   "format": "Ab 2026-11-11 (BEFEHLE.md Befehl 2): 2 Reels/Tag – 12:00 Teil 1/2, 18:00 Teil 2/2 + A/B; je 28–32 s; Humor/Hook nach Befehl 3",
   "bio": "korrigiert 2026-11-09 (Ahmed statt Kevin, Zeiten 12:00 & 18:00)",
-  "aktueller_tag": 4,
+  "aktueller_tag": 5,
   "tag_2": {
     "abstimmung_tag1": {
       "A": 2,
@@ -69,21 +69,15 @@
     "Doenermann": "de-DE-ConradNeural +0Hz +0%"
   },
   "letzte_abstimmungs_folge": {
-    "tag": 3,
+    "tag": 4,
     "teil": 2,
-    "media_id": "18123486640985940",
-    "gepostet": "2026-11-11T18:00:30+01:00",
+    "media_id": "17952247524346816",
+    "gepostet": "2026-11-12T18:00:30+01:00",
     "abstimmung": {
-      "A": "Die Wahrheit sagen",
-      "B": "Ich bin Emres Zwilling"
+      "A": "Den echten Emre anrufen",
+      "B": "Ahmed spielt beide"
     },
-    "entscheidet": "Tag 4 Teil 1 (2026-11-12 12:00)",
-    "ergebnis": {
-      "A": 2,
-      "B": 5,
-      "stand": "2026-11-12 11:15",
-      "ergebnis": "B – Ich bin Emres Zwilling"
-    }
+    "entscheidet": "Tag 5 Teil 1 (2026-11-13 12:00)"
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -128,7 +122,10 @@
     "18118827010819346",
     "17978313606159938",
     "18117562067163737",
-    "18047794709684921"
+    "18047794709684921",
+    "18133836103764900",
+    "18098154365446004",
+    "17886308121624988"
   ],
   "tag_3": {
     "abstimmung_tag2": {
@@ -239,7 +236,8 @@
   "zuschauer_ideen": [
     "Sag dein Handy wurde gehackt (lior_darken427)",
     "Sag die Wahrheit (sifa.asil)",
-    "Mach dich hübscher und dann sag die Wahrheit (lior_darken427) – in Tag 4 T1 eingebaut"
+    "Mach dich hübscher und dann sag die Wahrheit (lior_darken427) – in Tag 4 T1 eingebaut",
+    "Nimm KI, das muss doch klappen (lior_darken427) – Idee für Tag 5"
   ],
   "analyse_2026-11-12_11:15": {
     "followers": 13,
@@ -307,8 +305,67 @@
         "A": "Den echten Emre anrufen",
         "B": "Ahmed spielt beide"
       },
-      "caption": "Tag 4 · Teil 2/2\nAhmed fälscht ein Zwillingsfoto mit dem Panorama-Trick – und sein „Bruder“ hat 3 Arme 💪💪💪\n\nA = Den echten Emre anrufen\nB = Ahmed spielt einfach beide\nSchreibt A oder B – die Mehrheit entscheidet Tag 5 (morgen 12 Uhr)!\nSchick das deinem Freund, der jedes Foto 20× neu macht 😂\n\n#ahmedglowup #animation #comedy #dating #reels",
-      "hook_text": "ICH HAB MICH SELBST GEKLONT."
+      "caption": "Tag 4 · Teil 2/2\nAhmed fälscht ein Zwillingsfoto mit dem Panorama-Trick – und sein „Bruder“ hat 3 Arme 💪💪💪\n\nA = Den echten Emre anrufen\nB = Ahmed spielt einfach beide\nSchreibt A oder B – die Mehrheit entscheidet Tag 5 (morgen 12 Uhr)!\nSpeicher dir den Panorama-Trick fürs nächste Gruppenfoto 😂\n\n#ahmedglowup #animation #comedy #dating #reels",
+      "hook_text": "ICH HAB MICH SELBST GEKLONT.",
+      "media_id": "17952247524346816",
+      "gepostet": "2026-11-12T18:00:30+01:00",
+      "datei": "media/glowup/tag04_teil2.mp4",
+      "dauer_s": 31.8,
+      "slot": "18:00 Teil 2/2 + A/B",
+      "caption_test": "Save-CTA statt Share-CTA"
+    }
+  },
+  "analyse_2026-11-12_17:15": {
+    "followers": 14,
+    "tag2_teil1": {
+      "views": 2318,
+      "reach": 1833,
+      "skip": 0.284,
+      "avg_watch_s": 19.9,
+      "likes": 39,
+      "comments": 2,
+      "shares": 1,
+      "saves": 2
+    },
+    "tag2_teil2": {
+      "views": 1274,
+      "reach": 1021,
+      "skip": 0.394,
+      "avg_watch_s": 12.1,
+      "likes": 20,
+      "comments": 20,
+      "shares": 0,
+      "saves": 3
+    },
+    "tag3_teil1": {
+      "views": 3113,
+      "reach": 2389,
+      "skip": 0.268,
+      "avg_watch_s": 22.9,
+      "likes": 36,
+      "comments": 4,
+      "shares": 4,
+      "saves": 0
+    },
+    "tag3_teil2": {
+      "views": 2483,
+      "reach": 1840,
+      "skip": 0.267,
+      "avg_watch_s": 16.1,
+      "likes": 34,
+      "comments": 17,
+      "shares": 1,
+      "saves": 1
+    },
+    "tag4_teil1": {
+      "views": 2346,
+      "reach": 1655,
+      "skip": 0.283,
+      "avg_watch_s": 16.4,
+      "likes": 18,
+      "comments": 1,
+      "shares": 0,
+      "saves": 1
     }
   }
 }

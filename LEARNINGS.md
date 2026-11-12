@@ -97,3 +97,18 @@
 - Gepostet 12:00:48, media_id 18422693974152086 (https://www.instagram.com/reel/Dfo5duujRhl/).
 - Teil 2 fertig geschrieben + getestet (31,8 s): Panorama-Trick, Foto mit 3 Armen, „ZU DRITT?!“, Poll A = echten Emre anrufen / B = Ahmed spielt beide. Poll-Karte kürzer (Abspann 1,6 s).
 - 8 Kommentare als Ahmed beantwortet (5× B, 2× A, 1 Frage „wie machst du die Videos?“ – ehrlich: KI-Hilfe), kein Spam/keine Beleidigungen.
+
+## 2026-11-12 18:00 (Tag 4 · Teil 2)
+- Gepostet 18:00:30, media_id 17952247524346816 (31,8 s, Skript vom 12-Uhr-Lauf unverändert). Whisper-Check korrekt.
+- Zahlen 17:15 (Windsor, ohne force_refresh), Follower **14** (+1):
+  | Reel | Views | Reach | Skip | Ø Watch | Likes | Komm. | Shares | Saves |
+  |---|---|---|---|---|---|---|---|---|
+  | Tag 3 T1 (31,7 s) | 3.113 | 2.389 | 26,8 % | 22,9 s | 36 | 4 | 4 | 0 |
+  | **Tag 3 T2 (30,4 s)** | **2.483** | 1.840 | **26,7 %** | 16,1 s | 34 | 17 | 1 | 1 |
+  | Tag 4 T1 (32,4 s, ~5 h) | 2.346 | 1.655 | 28,3 % | 16,4 s (≈51 %) | 18 | 1 | 0 | 1 |
+- **Teil 1 vs. Teil 2:** Mit Peinlichkeits-Hook ist Teil 2 aufgeholt: Tag 3 T2 hat 2.483 Views (Tag 2 T2: 1.274) und gleiche Skip wie T1. Teil 2 bringt weiter die Kommentare (17 vs. 4).
+- **Tagestest Tag 4 T1 (Ein-Wort-Frage in der Caption): kein Effekt** – 1 Kommentar (Tag 3 T1: 4). Fragen in der Caption reichen nicht; Frage muss im Video gesprochen/eingeblendet werden.
+- **Problem Tag 4 T1:** Ø Watch 16,4 s (Tag 3 T1: 22,9 s) und nur 18 Likes, 0 Shares. Vermutung: Mitte (5:2-Karte + Easter-Egg) zu lang/statisch, Zwilling-Prämisse braucht Erklärung. → Tag 5: keine Abstimmungs-Ergebniskarte länger als 1,5 s, nach dem Hook sofort Action.
+- **Test heute (Teil 2):** Save-CTA statt Share-CTA in der Caption („Speicher dir den Panorama-Trick fürs nächste Gruppenfoto“). Morgen Saves mit Tag 3 T2 (1) vergleichen.
+- Follower wachsen kaum (13 → 14) trotz 2–3 k Views/Reel → Ideen: Serien-Hinweis „Folge mir, sonst verpasst du Tag 5“ als letzte Einblendung testen; Profil-Highlights sind Sache des Besitzers.
+- 3 Kommentare beantwortet (Zuschauer-Idee „Nimm KI“ → Easter-Egg-Kandidat für Tag 5), kein Spam.

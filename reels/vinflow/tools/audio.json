@@ -6,7 +6,8 @@
   "dur": 27.2,
   "track": 20,
   "vol": 0.7,
-  "fade": 1.6
+  "fade": 1.6,
+  "fadein": 1.4
  },
  {
   "id": "wh0",
@@ -72,5 +73,29 @@
   "track": 14,
   "vol": 0.6,
   "fade": 0.6
+ },
+ {
+  "id": "lamp1",
+  "src": "sfx/click.mp3",
+  "start": 1.136,
+  "dur": 0.36,
+  "track": 15,
+  "vol": 0.55
+ },
+ {
+  "id": "lamp2",
+  "src": "sfx/click-soft.mp3",
+  "start": 1.436,
+  "dur": 0.36,
+  "track": 16,
+  "vol": 0.45
+ },
+ {
+  "id": "cut1",
+  "src": "sfx/whoosh-short.mp3",
+  "start": 2.821,
+  "dur": 0.55,
+  "track": 17,
+  "vol": 0.3
  }
 ]

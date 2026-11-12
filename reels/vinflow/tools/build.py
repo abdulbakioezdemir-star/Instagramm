@@ -22,7 +22,7 @@ BASE_CSS = f"""
 
 def scene(cid, body, js, css=""):
     return f"""<template>
-  <style>{BASE_CSS}{css}</style>
+  <style>{BASE_CSS}{css.replace("{{","{").replace("}}","}")}</style>
   <div id="root" data-composition-id="{cid}" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
     {body}
   </div>
@@ -43,23 +43,18 @@ def words(text):
 WIN_IN = 'tl.fromTo("{s}", {{ opacity: 0, y: 26, filter: "blur(8px)" }}, {{ opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }}, {t});'
 OUT = 'tl.to("{s}", {{ opacity: 0, filter: "blur(8px)", duration: 0.35, ease: "power2.in" }}, {t});'
 
-# ------------------------------------------------------------------ 1. the showroom: where do customers find your stock?
+# ------------------------------------------------------------------ 1. the showroom: lights on, then where do customers find your stock?
 write("s1", scene("s1", f"""
-    <img id="s1-a" class="full" src="img/shot1_1.png">
-    <img id="s1-b" class="full" src="img/shot2_1.png" style="opacity:0">
-    <div class="shade"></div>
-    <div style="position:absolute;left:0;right:0;top:880px;height:700px;background:linear-gradient(180deg,rgba(8,9,11,0),rgba(8,9,11,.72) 35%,rgba(8,9,11,.72) 70%,rgba(8,9,11,0))"></div>
-    <div id="s1-l1" class="line" style="top:1080px;font-size:66px">Du verkaufst Autos.</div>
-    <div id="s1-l2" class="line" style="top:1170px;font-size:66px;line-height:1.12">Aber wo finden Kunden<br><span class="r" style="color:#ff2a4a">deinen Bestand?</span></div>
+    <video id="s1-v" class="clip full" src="clips/s1.mp4" muted playsinline data-start="0" data-duration="4.6"></video>
+    <div style="position:absolute;left:0;right:0;top:980px;height:640px;background:linear-gradient(180deg,rgba(8,9,11,0),rgba(8,9,11,.6) 40%,rgba(8,9,11,.6) 70%,rgba(8,9,11,0))"></div>
+    <div id="s1-l1" class="line" style="top:880px;font-size:84px;font-weight:700">{words("Du verkaufst Autos.")}</div>
+    <div id="s1-l2" class="line" style="top:1180px;font-size:72px;font-weight:700;line-height:1.12">{words("Aber wo finden Kunden")}<br><span class="r" style="color:#ff2a4a">{words("deinen Bestand?")}</span></div>
 """, f"""
-    tl.fromTo("#s1-a", {{ scale: 1.12, x: 30 }}, {{ scale: 1.02, x: -20, duration: 3.2, ease: "none" }}, 0);
-    tl.fromTo("#s1-b", {{ opacity: 0, scale: 1.1 }}, {{ opacity: 1, scale: 1.03, duration: 0.9, ease: "power2.inOut" }}, 2.3);
-    tl.to("#s1-b", {{ scale: 1.0, duration: 1.6, ease: "none" }}, 3.2);
-    {WIN_IN.format(s="#s1-l1", t=0.35)}
-    {OUT.format(s="#s1-l1", t=1.95)}
-    {WIN_IN.format(s="#s1-l2", t=2.2)}
-    {OUT.format(s="#s1-l2", t=4.2)}
-"""))
+    // frame 0 is the hook: the first line is already there on black
+    tl.to("#s1-l1", {{ opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "power2.in" }}, 1.85);
+    tl.fromTo("#s1-l2 .w", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.22, stagger: 0.07, ease: "power2.out" }}, 3.0);
+    tl.to("#s1-l2", {{ opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }}, 4.3);
+""", ".w {{ display: inline-block; }}"))
 
 # ------------------------------------------------------------------ 2. the dealer publishes his stock with VINFlow Direct
 write("s2", scene("s2", f"""

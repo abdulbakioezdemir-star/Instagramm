@@ -2,7 +2,7 @@
   "account_id": "17841459168444268",
   "nation": "Valmora",
   "tag": 4,
-  "staatskasse_eur": 1,
+  "staatskasse_eur": 10,
   "einwohner": 15,
   "gebaut": [
     {
@@ -34,22 +34,27 @@
       "was": "Mini-Mauer am Strand, 3 Steine hoch (Abstimmung '3', Wunsch seal.medusa)",
       "kosten": 10,
       "tag": 4
+    },
+    {
+      "was": "Mauer erhöht auf 6 Steine (Top-Kommentar 'Eine noch höhere Mauer', karstenffm)",
+      "kosten": 9,
+      "tag": 4
     }
   ],
-  "letztes_reel_media_id": "18101302799099828",
-  "naechstes_reel": "Tag 4 · Teil 2/2 (21:00): Abstimmung unter Tag-4-T1 (1 Brunnen / 2 Garten / 3 Strandkörbe). Kasse 1 € + neue Likes → Kosten anpassen. Platz: Strand bei Mauer voll; nächster Bau z. B. rechts am Fluss/Insel.",
+  "letztes_reel_media_id": "18161475304503329",
+  "naechstes_reel": "Tag 5 · Teil 1/2 (15:00): Abstimmung unter Tag-4-T2 (1 Brunnen / 2 Goldmine / 3 Strandkörbe). Kasse 10 € + neue Likes. Goldmine passt ins Nordgebirge (rechts/oben im Panorama), Strand links ist voll.",
   "profil_offen": null,
   "tag1_video": "media/nation/valmora_tag01.mp4",
   "tag1_status": "gepostet 2026-11-09 23:28 (Europe/Berlin)",
   "stimme": "edge-tts de-DE-FlorianMultilingualNeural, pitch -4Hz, rate +4%",
-  "vorlage": "nation/pipeline/tag04.py (neueste, 32 s; zoomed() zentriert auf Mauer x0=170; mauer()+katze() in bauten.py; Fonts aus ./fonts oder ../../pipeline/fonts)",
+  "vorlage": "nation/pipeline/tag04b.py (neueste, 30,6 s; mauer(steine=6), Hook mit springender Katze ab Frame 0, Hook-Untertitel y=1150; tts.py mit Retry + SKIP_DONE=1)",
   "tag1_inhalt": "Gründung, 12 km² (Nordgebirge, großer Wald, Fluss mit Wasserfall, Bucht, Strand, Insel), Leuchtturm-Haus am Strand gebaut (−800 €)",
-  "ausgaben_eur": 1075,
+  "ausgaben_eur": 1084,
   "staatskasse_formel": "1000 + alle Likes − ausgaben_eur",
   "profil": "@valmora.nation, Name 'Valmora | Eigenes Land', Logo als Profilbild, Bio gesetzt (2026-11-09)",
   "letztes_reel_link": null,
-  "letztes_reel_teil": "Tag 4 · Teil 1/2",
-  "likes_gesamt": 76,
+  "letztes_reel_teil": "Tag 4 · Teil 2/2",
+  "likes_gesamt": 94,
   "tag2_video": "media/nation/valmora_tag02.mp4",
   "tag2_status": "gepostet 2026-11-10 15:01 (Europe/Berlin)",
   "tag2_inhalt": "Kein Kommentar unter Tag 1 → selbst entschieden: Bootssteg mit Boot am Strand (−150 €). Kasse 200+1 Like=201 → 51 €. 'Fast pleite – ich brauche euch.'",
@@ -58,7 +63,7 @@
   "tag2_teil2_inhalt": "Top-Kommentar 'Bau einen Bäcker' (Username nicht lesbar) → Bäckerei am Strand (−60 €). Kasse 1000+16−950=66 → 6 €. 'Das Brot ist frisch. Der Gründer ist pleite.' Ende: 1 Fischerhütte · 2 Brunnen · 3 Garten.",
   "optionen_offen": {
     "1": "Brunnen",
-    "2": "Garten",
+    "2": "Goldmine (Wunsch korosensei0815)",
     "3": "Strandkörbe"
   },
   "tag3_video": "media/nation/valmora_tag03.mp4",
@@ -70,5 +75,8 @@
   "tag3_teil2_status": "gepostet 2026-11-11 21:00 (Europe/Berlin), media_id 18102445040653370, Slot 21:00 (Teil 2/2)",
   "tag4_video": "media/nation/valmora_tag04.mp4",
   "tag4_inhalt": "Abstimmung 3× '3' (seal.medusa, karstenffm, 041_sxcz_) → Mini-Mauer 3 Steine hoch (−10 €). Kasse 1000+76−1065=11 → 1 €. Hook 'Keiner hat gesagt, wofür.' Katze steigt drüber. Optionen: 1 Brunnen · 2 Garten · 3 Strandkörbe (587pii).",
-  "tag4_status": "gepostet 2026-11-12 15:00 (Europe/Berlin), media_id 18101302799099828, Slot 15:00 (Teil 1/2)"
+  "tag4_status": "gepostet 2026-11-12 15:00 (Europe/Berlin), media_id 18101302799099828, Slot 15:00 (Teil 1/2)",
+  "tag4_teil2_video": "media/nation/valmora_tag04_teil2.mp4",
+  "tag4_teil2_inhalt": "Top-Kommentar karstenffm 'Eine noch höhere Mauer' (2 Likes) → Mauer 3→6 Steine (−9 €). Kasse 1000+94−1075=19 → 10 €. Hook 'Die Katze ist über meine Mauer gestiegen. Das war ein Fehler.' Pointe: Katze geht außen rum. Optionen: 1 Brunnen · 2 Goldmine · 3 Strandkörbe.",
+  "tag4_teil2_status": "gepostet 2026-11-12 21:00 (Europe/Berlin), media_id 18161475304503329, Slot 21:00 (Teil 2/2)"
 }

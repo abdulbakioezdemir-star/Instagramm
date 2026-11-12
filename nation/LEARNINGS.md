@@ -68,3 +68,12 @@
 - Technik: edge-tts lieferte für „Sechsundsiebzig Likes. Elf Euro.“ mehrfach NoAudioReceived → Satz umformuliert (Kommas statt Punkte) half; Zeilen einzeln mit Retry erzeugen. Pausen 0,15 s → 32,3 s. mauer()/katze() in bauten.py, Mauer bei x=380, Boden 1790. zoomed() verschiebt Ausschnitt auf x0=170. Kleiner Fehler: Untertitel-Rest („DRÜBER“) läuft 0,1 s in die Abstimmungsszene – harmlos.
 - Nächstes Mal: Skip-Rate T1 heute vs. 43–54 % → Humor-Hook fest übernehmen, wenn < 45 %. Reichweite sinkt → Gewinner-Format (Bäckerei: Konsequenz + Pointe am Ende) mit neuem Humor kombinieren. Platz am Strand links ist voll → nächster Bau rechts (Fluss/Insel).
 - Gepostet 15:00 Berlin, media_id 18101302799099828. 4 Kommentare beantwortet (3 Mauer-Stimmen, Strandkörbe-Wunsch). Kein Spam.
+
+## 2026-11-12 21:00 – Tag 4 · Teil 2/2 (Mauer 2.0, 30,6 s)
+- Zahlen vor dem Post: Tag 4·T1 (Mauer, ~5 h) 421 Views / 15 Likes / 5 Kom. / **Skip 44,8 %** / Ø 10,3 s – bestes Reel seit der Bäckerei (nach 5 h mehr als doppelt so viele Views wie Tag 3·T1). Tag 3·T1 333 / 10 / Skip 43 %. Tag 3·T2 311 / 8 / Skip 53 %. Likes gesamt 94, Follower 15 (±0).
+- Ergebnis Test T1: **Humor-/Rätsel-Hook gewinnt** (Skip < 45 %, Likes-Quote 3,6 %). → Gewinner ausbauen: dieses Reel ist die direkte Fortsetzung (Mauer + Katze).
+- Top-Kommentar: „Eine noch höhere Mauer“ (karstenffm, 2 Likes) → Mauer 3 → 6 Steine (−9 €). Kasse 1000 + 94 − 1075 = 19 € → **10 €**. Neuer Wunsch „Goldmine für mehr Geld“ (korosensei0815) als Option 2.
+- **Test des Tages: Fortsetzungs-Hook mit Running Gag** (Katze aus T1). Varianten: (A) „Meine Mauer war euch zu niedrig.“ (B) „Ein Kommentar, zwei Likes: Die Mauer muss höher.“ (C) „Die Katze ist über meine Mauer gestiegen. Das war ein Fehler.“ → **C gewählt** (Bewegung ab Frame 0: Katze springt im Hook über die alte Mauer, roter Kasten „FEHLER!“). Pointe: „Die Katze geht einfach außen rum.“
+- Auswerten morgen: Skip-Rate T2 vs. T1 (44,8 %). Wenn ≤ 45 %: Katze als wiederkehrende Figur behalten (Maskottchen-Potenzial).
+- Technik: tts.py mit 4 Retries pro Zeile + SKIP_DONE=1 (fertige Zeilen überspringen). „Also: Stein vier…“ (Doppelpunkt) gab NoAudioReceived → Kommas helfen. Hook-Untertitel auf y=1150, sonst verdecken sie Mauer+Katze im Zoom.
+- Gepostet 21:00 Berlin, media_id 18161475304503329. 4 Kommentare unter T1 beantwortet. Kein Spam.

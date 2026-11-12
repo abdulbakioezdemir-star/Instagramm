@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np, cv2
 
 HERE = Path(__file__).resolve().parent.parent
-W, H, FPS, DUR = 1080, 1920, 30, 4.0
+W, H, FPS, DUR = 1080, 1920, 30, 4.8
 
 def plate(name, scale=1.3):
     im = cv2.imread(str(HERE / "img" / name))
@@ -34,14 +34,14 @@ def motion_blur(f, length):
     k = np.zeros((1, L), np.float32); k[0, :] = 1.0 / L
     return cv2.filter2D(f, -1, k)
 
-CUT = 2.0
+CUT = 2.4
 def opening(t):
     # the camera lands on the first hit of the music: a fast push that settles, then keeps drifting
-    z = 1.0 + 0.16 * (1 - expo_out(t / 0.9)) + 0.03 * (t / CUT)
+    z = 1.0 + 0.16 * (1 - expo_out(t / 1.1)) + 0.03 * (t / CUT)
     f = view(A, z, 0.0, 0.05)
     # whip out to the right in the last frames before the cut
-    if t > CUT - 0.13:
-        k = (t - (CUT - 0.13)) / 0.13
+    if t > CUT - 0.16:
+        k = (t - (CUT - 0.16)) / 0.16
         f = np.roll(f, int(-260 * k * k), axis=1)
         f = motion_blur(f, 160 * k)
     return f
@@ -51,8 +51,8 @@ def dolly(t):
     u = (t - CUT) / (DUR - CUT)
     ox = 0.8 - 1.2 * u
     f = view(B, 1.32 + 0.04 * u, ox, 0.05)
-    if t < CUT + 0.13:
-        k = 1 - (t - CUT) / 0.13
+    if t < CUT + 0.16:
+        k = 1 - (t - CUT) / 0.16
         f = np.roll(f, int(260 * k * k), axis=1)
         f = motion_blur(f, 160 * k)
     return f

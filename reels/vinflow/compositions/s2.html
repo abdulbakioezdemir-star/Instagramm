@@ -58,6 +58,8 @@
     // everything leaves upward: the phone will arrive in the same motion
     tl.to(["#s2-ui", "#s2-cap"], { y: -700, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 3.7);
 
+    // slow the whole scene down evenly, so every beat-locked move stays on the new beat grid
+    tl.getChildren(false, true, true).forEach((c) => { c.startTime(c.startTime() * 1.2); if (c.duration()) c.duration(c.duration() * 1.2); });
     window.__timelines["s2"] = tl;
   </script>
 </template>

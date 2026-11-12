@@ -24,7 +24,9 @@ BASE_CSS = f"""
     .phone .scr img.page {{ position: absolute; left: 0; top: 0; width: 560px; }}
 """
 
-def scene(cid, body, js):
+K = 1.2   # 100 BPM: a bar is 2.4 s instead of 2.0 s, so every move runs 20 % slower
+
+def scene(cid, body, js, k=K):
     return f"""<template>
   <style>{BASE_CSS}</style>
   <div id="root" data-composition-id="{cid}" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
@@ -33,6 +35,8 @@ def scene(cid, body, js):
   <script>
     const tl = gsap.timeline({{ paused: true }});
     {js}
+    // slow the whole scene down evenly, so every beat-locked move stays on the new beat grid
+    tl.getChildren(false, true, true).forEach((c) => {{ c.startTime(c.startTime() * {k}); if (c.duration()) c.duration(c.duration() * {k}); }});
     window.__timelines["{cid}"] = tl;
   </script>
 </template>
@@ -54,7 +58,7 @@ DARK = '<div style="position:absolute;inset:0;background:radial-gradient(70% 45%
 
 # ------------------------------------------------------------------ 1. (0-4 s) the showroom, the question
 write("s1", scene("s1", f"""
-    <video id="s1-v" class="clip full" src="clips/s1.mp4" muted playsinline data-start="0" data-duration="4"></video>
+    <video id="s1-v" class="clip full" src="clips/s1.mp4" muted playsinline data-start="0" data-duration="4.8"></video>
     <div style="position:absolute;left:0;right:0;top:760px;height:820px;background:linear-gradient(180deg,rgba(8,9,11,0),rgba(8,9,11,.62) 35%,rgba(8,9,11,.62) 70%,rgba(8,9,11,0))"></div>
     <div id="s1-l1" class="line" style="top:960px;font-size:92px">{words("Du verkaufst Autos.")}</div>
     <div id="s1-l2" class="line" style="top:920px;font-size:80px;line-height:1.1">{words("Aber wo finden Kunden")}<br><span class="r">{words("deinen Bestand?")}</span></div>
@@ -217,8 +221,8 @@ write("s5", scene("s5", f"""
     tl.fromTo(["#s5-total", "#s5-n2"], {{ scale: 1.18 }}, {{ scale: 1, duration: 0.4, ease: "expo.out", transformOrigin: "100% 50%" }}, 1.0);
     {words_in("#s5-cap", 1.5)}
     // the red +1 tile takes the frame: it becomes the VINFlow tile of the finale
-    tl.to(["#s5-dash", "#s5-toast", "#s5-cap"], {{ opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }}, 2.55);
-    tl.to("#s5-tile", {{ x: 370, y: -814, scale: 2.2, color: "rgba(255,255,255,0)", duration: 0.45, ease: "power3.inOut" }}, 2.55);
+    tl.to(["#s5-dash", "#s5-toast", "#s5-cap"], {{ opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }}, 3.55);
+    tl.to("#s5-tile", {{ x: 370, y: -814, scale: 2.2, color: "rgba(255,255,255,0)", duration: 0.45, ease: "power3.inOut" }}, 3.55);
 """))
 
 # ------------------------------------------------------------------ 6. (19-24 s) finale
@@ -242,11 +246,11 @@ write("s6", scene("s6", f"""
     tl.fromTo("#s6-c .w", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.3, stagger: 0.5, ease: "expo.out" }}, 2.5);
     tl.fromTo("#s6-btn", {{ opacity: 0, scale: 0.9 }}, {{ opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }}, 4.0);
     tl.fromTo("#s6-url", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.4 }}, 4.2);
-"""))
+""", k=1))
 
 # ------------------------------------------------------------------ root
-HOSTS = [("s1", 0, 4.0), ("s2", 4.0, 4.0), ("s3", 8.0, 4.0), ("s4", 12.0, 4.0), ("s5", 16.0, 3.0), ("s6", 19.0, 6.0)]
-DUR = 25.0
+HOSTS = [("s1", 0, 4.8), ("s2", 4.8, 4.8), ("s3", 9.6, 4.8), ("s4", 14.4, 4.8), ("s5", 19.2, 4.8), ("s6", 24.0, 6.0)]
+DUR = 30.0
 hosts = "\n".join(f'      <div id="{h}" data-composition-id="{h}" data-composition-src="compositions/{h}.html" data-start="{s}" data-duration="{d}" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:1"></div>' for h, s, d in HOSTS)
 A = json.load(open(os.path.join(ROOT, "tools", "audio.json")))
 audio = "\n".join(f'      <audio id="{a["id"]}" class="clip" src="{a["src"]}" data-start="{a["start"]}" data-duration="{a["dur"]}" data-track-index="{a["track"]}" data-volume="{a.get("vol", 1)}"'

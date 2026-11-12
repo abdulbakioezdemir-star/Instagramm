@@ -75,9 +75,11 @@
     tl.fromTo(["#s5-total", "#s5-n2"], { scale: 1.18 }, { scale: 1, duration: 0.4, ease: "expo.out", transformOrigin: "100% 50%" }, 1.0);
     tl.fromTo("#s5-cap .w", { opacity: 0, filter: "blur(10px)", scale: 1.06 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.28, stagger: 0.06, ease: "expo.out" }, 1.5);
     // the red +1 tile takes the frame: it becomes the VINFlow tile of the finale
-    tl.to(["#s5-dash", "#s5-toast", "#s5-cap"], { opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }, 2.55);
-    tl.to("#s5-tile", { x: 370, y: -814, scale: 2.2, color: "rgba(255,255,255,0)", duration: 0.45, ease: "power3.inOut" }, 2.55);
+    tl.to(["#s5-dash", "#s5-toast", "#s5-cap"], { opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }, 3.55);
+    tl.to("#s5-tile", { x: 370, y: -814, scale: 2.2, color: "rgba(255,255,255,0)", duration: 0.45, ease: "power3.inOut" }, 3.55);
 
+    // slow the whole scene down evenly, so every beat-locked move stays on the new beat grid
+    tl.getChildren(false, true, true).forEach((c) => { c.startTime(c.startTime() * 1.2); if (c.duration()) c.duration(c.duration() * 1.2); });
     window.__timelines["s5"] = tl;
   </script>
 </template>

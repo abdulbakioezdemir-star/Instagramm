@@ -40,6 +40,8 @@
     tl.fromTo("#s6-btn", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 4.0);
     tl.fromTo("#s6-url", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 4.2);
 
+    // slow the whole scene down evenly, so every beat-locked move stays on the new beat grid
+    tl.getChildren(false, true, true).forEach((c) => { c.startTime(c.startTime() * 1); if (c.duration()) c.duration(c.duration() * 1); });
     window.__timelines["s6"] = tl;
   </script>
 </template>

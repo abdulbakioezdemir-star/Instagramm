@@ -55,6 +55,8 @@
     tl.set("#s4-cam", { opacity: 0 }, 2.5);
     tl.fromTo("#s4-page", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 2.5);
 
+    // slow the whole scene down evenly, so every beat-locked move stays on the new beat grid
+    tl.getChildren(false, true, true).forEach((c) => { c.startTime(c.startTime() * 1.2); if (c.duration()) c.duration(c.duration() * 1.2); });
     window.__timelines["s4"] = tl;
   </script>
 </template>

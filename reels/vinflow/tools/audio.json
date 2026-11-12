@@ -1,85 +1,85 @@
 [
  {
   "id": "music",
-  "src": "music/silent-force.mp3",
+  "src": "music/latypov-corporate.mp3",
   "start": 0,
-  "dur": 25.0,
+  "dur": 30.0,
   "track": 20,
   "vol": 0.75,
-  "ms": 16.48,
-  "fade": 1.5
+  "ms": 16.815,
+  "fade": 1.8
  },
  {
   "id": "whip1",
   "src": "sfx/whoosh-short.mp3",
-  "start": 1.871,
+  "start": 2.271,
   "dur": 0.55,
   "track": 10,
-  "vol": 0.35
+  "vol": 0.3
  },
  {
   "id": "thru",
   "src": "sfx/whoosh.mp3",
-  "start": 5.371,
+  "start": 6.471,
   "dur": 0.55,
   "track": 11,
-  "vol": 0.35
+  "vol": 0.3
  },
  {
   "id": "clk1",
   "src": "sfx/click-soft.mp3",
-  "start": 6.486,
+  "start": 7.786,
   "dur": 0.36,
   "track": 12,
-  "vol": 0.7
+  "vol": 0.65
  },
  {
   "id": "up",
   "src": "sfx/whoosh-short.mp3",
-  "start": 7.771,
+  "start": 9.421,
   "dur": 0.55,
   "track": 10,
-  "vol": 0.3
+  "vol": 0.25
  },
  {
   "id": "scan",
   "src": "sfx/pop.mp3",
-  "start": 14.417,
+  "start": 17.317,
   "dur": 0.6,
   "track": 13,
-  "vol": 0.45
+  "vol": 0.4
  },
  {
   "id": "tap",
   "src": "sfx/click-soft.mp3",
-  "start": 15.986,
+  "start": 19.186,
   "dur": 0.36,
   "track": 12,
-  "vol": 0.7
+  "vol": 0.65
  },
  {
   "id": "across",
   "src": "sfx/whoosh.mp3",
-  "start": 16.321,
+  "start": 19.671,
   "dur": 0.55,
   "track": 11,
-  "vol": 0.3
+  "vol": 0.25
  },
  {
   "id": "lead",
   "src": "sfx/notification.mp3",
-  "start": 16.948,
+  "start": 20.348,
   "dur": 1.6,
   "track": 14,
-  "vol": 0.55,
+  "vol": 0.5,
   "fade": 0.6
  },
  {
   "id": "tile",
   "src": "sfx/whoosh-short.mp3",
-  "start": 18.721,
+  "start": 23.721,
   "dur": 0.55,
   "track": 10,
-  "vol": 0.3
+  "vol": 0.25
  }
 ]

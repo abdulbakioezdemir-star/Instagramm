@@ -37,6 +37,8 @@
     tl.fromTo("#s3-cap .w", { opacity: 0, filter: "blur(10px)", scale: 1.06 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.28, stagger: 0.06, ease: "expo.out" }, 0.5);
     tl.fromTo("#s3-sub", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.9);
 
+    // slow the whole scene down evenly, so every beat-locked move stays on the new beat grid
+    tl.getChildren(false, true, true).forEach((c) => { c.startTime(c.startTime() * 1.2); if (c.duration()) c.duration(c.duration() * 1.2); });
     window.__timelines["s3"] = tl;
   </script>
 </template>

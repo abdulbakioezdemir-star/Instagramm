@@ -77,7 +77,13 @@
       "A": "Die Wahrheit sagen",
       "B": "Ich bin Emres Zwilling"
     },
-    "entscheidet": "Tag 4 Teil 1 (2026-11-12 12:00)"
+    "entscheidet": "Tag 4 Teil 1 (2026-11-12 12:00)",
+    "ergebnis": {
+      "A": 2,
+      "B": 5,
+      "stand": "2026-11-12 11:15",
+      "ergebnis": "B – Ich bin Emres Zwilling"
+    }
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -114,7 +120,15 @@
     "18227215249337686",
     "18416411011085476",
     "17915657604286837",
-    "18008824112791398"
+    "18008824112791398",
+    "18118230224018358",
+    "18067620860533435",
+    "18392248132300023",
+    "18091299167701379",
+    "18118827010819346",
+    "17978313606159938",
+    "18117562067163737",
+    "18047794709684921"
   ],
   "tag_3": {
     "abstimmung_tag2": {
@@ -224,6 +238,73 @@
   },
   "zuschauer_ideen": [
     "Sag dein Handy wurde gehackt (lior_darken427)",
-    "Sag die Wahrheit (sifa.asil)"
-  ]
+    "Sag die Wahrheit (sifa.asil)",
+    "Mach dich hübscher und dann sag die Wahrheit (lior_darken427) – in Tag 4 T1 eingebaut"
+  ],
+  "analyse_2026-11-12_11:15": {
+    "followers": 13,
+    "tag2_teil1": {
+      "views": 2288,
+      "reach": 1815,
+      "skip": 0.281,
+      "avg_watch_s": 19.9,
+      "likes": 39,
+      "comments": 2,
+      "shares": 1,
+      "saves": 2
+    },
+    "tag2_teil2": {
+      "views": 1246,
+      "reach": 1001,
+      "skip": 0.394,
+      "avg_watch_s": 12.0,
+      "likes": 20,
+      "comments": 19,
+      "shares": 0,
+      "saves": 3
+    },
+    "tag3_teil1": {
+      "views": 3071,
+      "reach": 2366,
+      "skip": 0.265,
+      "avg_watch_s": 23.0,
+      "likes": 36,
+      "comments": 4,
+      "shares": 4,
+      "saves": 0
+    },
+    "tag3_teil2": {
+      "views": 1678,
+      "reach": 1267,
+      "skip": 0.286,
+      "avg_watch_s": 15.8,
+      "likes": 24,
+      "comments": 7,
+      "shares": 1,
+      "saves": 0
+    }
+  },
+  "tag_4": {
+    "abstimmung_tag3": {
+      "A": 2,
+      "B": 5,
+      "ergebnis": "B – Ich bin Emres Zwilling"
+    },
+    "teil1": {
+      "datei": "media/glowup/tag04_teil1.mp4",
+      "dauer_s": 32.44,
+      "slot": "12:00 Teil 1/2",
+      "hook": "Ich hab Lena gesagt, ich bin Emres Zwilling. Wir sehen uns null ähnlich. (Text: ICH HAB JETZT EINEN ZWILLING.)"
+    },
+    "teil2": {
+      "skript": "pipeline/tag04/tag04.py (PART=2, lines2.tsv) – Anleitung pipeline/tag04/README.md (getestet, 31,8 s)",
+      "ziel_datei": "media/glowup/tag04_teil2.mp4",
+      "abstimmung": {
+        "A": "Den echten Emre anrufen",
+        "B": "Ahmed spielt beide"
+      },
+      "caption": "Tag 4 · Teil 2/2\nAhmed fälscht ein Zwillingsfoto mit dem Panorama-Trick – und sein „Bruder“ hat 3 Arme 💪💪💪\n\nA = Den echten Emre anrufen\nB = Ahmed spielt einfach beide\nSchreibt A oder B – die Mehrheit entscheidet Tag 5 (morgen 12 Uhr)!\nSchick das deinem Freund, der jedes Foto 20× neu macht 😂\n\n#ahmedglowup #animation #comedy #dating #reels",
+      "hook_text": "ICH HAB MICH SELBST GEKLONT."
+    }
+  }
 }

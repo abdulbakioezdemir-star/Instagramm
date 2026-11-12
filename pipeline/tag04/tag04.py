@@ -537,22 +537,22 @@ def fake_photo(c, t, glitch):
     c.drawRect(skia.Rect.MakeXYWH(x0, y0 + 680, w, 300), fillp("#B98A5E"))
     # linker "Zwilling" - verzerrt mit drittem Arm
     c.save()
-    c.translate(360, 1300)
+    c.translate(400, 1290)
     c.skew(-0.12, 0)
     c.scale(1.0, 1.08)
-    c.translate(-360, -1300)
-    sx, sy, s = 360, 1300, 0.95
-    px, py = sx + (515 - 330) * s, sy - (705 - 400) * s
-    for ang in (-150,):
-        c.save()
-        c.translate(px, py)
-        c.rotate(ang + math.sin(t * 6) * 6)
-        oval(c, 20 * s, 75 * s, 44 * s, 105 * s, SHIRT, 11 * s)
-        circ(c, 26 * s, 178 * s, 37 * s, SKIN, 11 * s)
-        c.restore()
+    c.translate(-400, -1290)
+    sx, sy, s = 400, 1290, 0.8
     ahmed(c, 1.0, sx, sy, s, dict(mouth=0, eyes="smug", mshape="grin", rarm=-160, larm=20))
+    # dritter Arm (Panorama-Fehler) - links aus der Schulter nach oben
+    px, py = sx + (150 - 330) * s, sy - (705 - 470) * s
+    c.save()
+    c.translate(px, py)
+    c.rotate(105 + math.sin(t * 6) * 10)
+    oval(c, -18 * s, 70 * s, 42 * s, 100 * s, SHIRT, 11 * s)
+    circ(c, -28 * s, 165 * s, 36 * s, SKIN, 11 * s)
     c.restore()
-    ahmed(c, 2.0, 720, 1300, 0.95, dict(mouth=0, eyes="smug", mshape="smile", rarm=-160, wave=0))
+    c.restore()
+    ahmed(c, 2.0, 770, 1290, 0.8, dict(mouth=0, eyes="smug", mshape="smile", rarm=-160, wave=0))
     # Panorama-Naht
     if glitch:
         r = random.Random(int(t * 12))
@@ -592,8 +592,8 @@ def s_photo(c, t):
         pop(c, ta, ST["a11"] + 0.4, 540, 1400, kind="el")
         pill(c, "ARMTAG. JEDEN TAG.", 540, 1400, 54, fill="#2FBF71", name="black", padx=32, pady=22)
         c.restore()
-    if ta > wt("l03", 5) - 0.05:
-        T2.stamp(c, ta, wt("l03", 5) - 0.05, "ZU DRITT?!", 540, 1400, "#E0245E", 110, 8)
+    if ta > wt("l03", 8) - 0.05:
+        T2.stamp(c, ta, wt("l03", 8) - 0.05, "ZU DRITT?!", 540, 1400, "#E0245E", 110, 8)
     if frz:
         cliff_overlay(c, t, cf, "ZU DRITT?!", None)
     else:
@@ -803,7 +803,7 @@ def build_audio():
         tension(a + 0.2, cf)
         stampfx(EV["arms"])
         add(sfx, ST["a11"] + 0.4, pop_(), 0.45)
-        stampfx(wt("l03", 5) - 0.05)
+        stampfx(wt("l03", 8) - 0.05)
         cliff(cf, b)
     if "poll" in SC:
         a, b = SC["poll"]

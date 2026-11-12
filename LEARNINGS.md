@@ -76,3 +76,23 @@
   - Teil 1 holt kaum Kommentare (2) → im Teil 1 eine Ein-Wort-Frage einbauen („Was würdest DU sagen? 1 Wort!“) und testen.
   - Saves = 0 bei T1 → Caption-Test „Speicher dir das für dein nächstes Date“.
   - Watch-Time: Teil 2 verliert in der Poll-Karte (21–30 s, 9 s statisch). Poll kürzer (≤ 6 s) und Ahmed-Reaktion animieren.
+
+## 2026-11-12 12:00 (Tag 4 · Teil 1)
+- Abstimmung Tag 3 Teil 2: **B 5 : A 2** → „Ich bin Emres Zwilling“. (A-Stimmen: „Die Wahrheit“, „mach dich hübscher und dann die Wahrheit“.)
+- Zahlen 11:15 (Windsor, ohne force_refresh), Follower 13 (unverändert):
+  | Reel | Views | Reach | Skip | Ø Watch | Likes | Komm. | Shares | Saves |
+  |---|---|---|---|---|---|---|---|---|
+  | Tag 2 T1 (49 s) | 2.288 | 1.815 | 28,1 % | 19,9 s | 39 | 2 | 1 | 2 |
+  | Tag 2 T2 (31 s) | 1.246 | 1.001 | 39,4 % | 12,0 s | 20 | 19 | 0 | 3 |
+  | **Tag 3 T1 (31,7 s)** | **3.071** | 2.366 | 26,5 % | **23,0 s (≈73 %)** | 36 | 4 | **4** | 0 |
+  | Tag 3 T2 (30,4 s) | 1.678 (17 h) | 1.267 | **28,6 %** | 15,8 s | 24 | 7 | 1 | 0 |
+- **Test gestern (Teil 2 mit Hook-Text „SIE SAH NUR MEINE NASENLÖCHER.“ statt „VORHIN BEI AHMED…“): Gewinner.** Skip Teil 2 von 39,4 % → **28,6 %**, Ø Watch 12,0 → 15,8 s.
+  → Teil 2 startet ab jetzt immer mit eigener Peinlichkeits-Hook-Zeile + Text, nie mit Rückblick.
+- Tag 3 T1 ist bestes Reel (3.071 Views, 73 % Watch-Ratio) → Gewinner-Format (Peinlichkeits-Behauptung + Text ≤ 8 Wörter in s 0) beibehalten.
+- Problem: Follower stagnieren bei 13 trotz ~3.000 Views/Reel; Saves = 0 bei den letzten zwei Reels.
+- Hook-Varianten Tag 4 T1: (1) „Ich hab Lena gesagt, ich bin Emres Zwilling. Wir sehen uns null ähnlich.“ (2) „POV: Du erfindest einen Zwilling und sie will ein Familienfoto.“ (3) „5 zu 2 für B. Ich hab jetzt offiziell einen Zwilling.“ → **(1)** (gleiche Bauart wie Gewinner Tag 3 T1, Pointe am Satzende). Text „ICH HAB JETZT EINEN ZWILLING.“
+- Gags (Alltag): Zuschauer-Easter-Egg „mach dich hübsch“ → „Bruder… das war schon hübsch.“; „Er hat die Muskeln gekriegt. Ich das WLAN-Passwort.“; Cousin antwortet seit 3 Wochen nur mit Daumen hoch (Cliffhanger).
+- Länge 32,4 s. Whisper-Check: alles korrekt; Seraphinas kurzes „Süß!“ wurde als „Sass“ erkannt → umformuliert zu „Voll süß!“ (wird korrekt erkannt).
+- **Tagestest:** Caption von Teil 1 endet mit Ein-Wort-Frage („Wie kommt Ahmed an ein Zwillingsfoto? 1 Wort 👇“) → Kommentare unter T1 mit Tag 3 T1 (4) vergleichen.
+- Teil 2 fertig geschrieben + getestet (31,8 s): Panorama-Trick, Foto mit 3 Armen, „ZU DRITT?!“, Poll A = echten Emre anrufen / B = Ahmed spielt beide. Poll-Karte kürzer (Abspann 1,6 s).
+- 8 Kommentare als Ahmed beantwortet (5× B, 2× A, 1 Frage „wie machst du die Videos?“ – ehrlich: KI-Hilfe), kein Spam/keine Beleidigungen.

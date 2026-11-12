@@ -18,5 +18,11 @@ async def one(k, text):
 async def main():
     for ln in open(sys.argv[1], encoding="utf-8"):
         if "\t" in ln:
-            k, t = ln.rstrip("\n").split("\t", 1); await one(k, t)
+            k, t = ln.rstrip("\n").split("\t", 1)
+            if os.path.exists(f"{k}.mp3.json") and os.environ.get("SKIP_DONE"): continue
+            for att in range(4):  # edge-tts liefert manchmal NoAudioReceived -> Retry
+                try: await one(k, t); break
+                except Exception as e:
+                    print(k, "Retry", att + 1, type(e).__name__); await asyncio.sleep(1.5)
+            else: raise SystemExit(f"TTS fehlgeschlagen: {k} – Satz umformulieren")
 asyncio.run(main())

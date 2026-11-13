@@ -18,7 +18,7 @@ for i in range(22):
     rest = d * (1 - ph)
     js.append(f'tl.fromTo("#e{i}", {{ y: {y0:.0f}, x: {drift*ph:.0f}, opacity: {op:.2f} }}, {{ y: -60, x: {drift:.0f}, duration: {rest:.2f}, ease: "none" }}, 0);')
     js.append(f'tl.fromTo("#e{i}", {{ y: 2000, x: 0 }}, {{ y: -60, x: {drift:.0f}, duration: {d:.2f}, ease: "none", repeat: 2, immediateRender: false }}, {rest:.2f});')
-brand = "".join(f'<span class="bl" style="display:inline-block">{c if c != " " else "&nbsp;"}</span>' for c in "BAKI MOTION")
+brand = "".join(f'<span class="bl" style="display:inline-block">{c if c != " " else "&nbsp;"}</span>' for c in "BAKI MOTIONS")
 sfx = []
 for i, (t, f, v) in enumerate([(2.78, "whoosh", .22), (4.25, "whoosh", .3), (8.98, "whoosh-short", .25), (11.45, "whoosh-short", .22), (13.88, "whoosh-short", .25)]):
     sfx.append(f'<audio id="sx{i}" class="clip" src="sfx/{f}.mp3" data-start="{t}" data-duration="0.6" data-track-index="{10+i}" data-volume="{v}"></audio>')

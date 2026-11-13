@@ -7,9 +7,9 @@ tpl = (HERE / "tools" / "index.tpl.html").read_text()
 logo = (HERE / "ui" / "logo.svg").read_text()
 rng = random.Random(7)
 emb, js = [], []
-for i in range(48):
+for i in range(34):
     x, sz, d, delay = rng.uniform(20, 1060), rng.uniform(4, 10), rng.uniform(7, 13), rng.uniform(0, 12)
-    op = rng.uniform(.25, .8)
+    op = rng.uniform(.12, .4)
     emb.append(f'<div class="ember" id="e{i}" style="left:{x:.0f}px;top:0;width:{sz:.1f}px;height:{sz:.1f}px"></div>')
     drift = rng.uniform(-90, 90)
     # each ember rises from below the frame; start offset spreads them over the screen at t=0

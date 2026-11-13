@@ -33,13 +33,14 @@
       .ember { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #ffb46b; box-shadow: 0 0 12px 3px rgba(255,122,0,.7); }
       #flash { background: radial-gradient(60% 40% at 50% 46%, rgba(255,140,40,.55), rgba(255,100,0,0) 70%); opacity: 0; mix-blend-mode: screen; }
       #vig { background: radial-gradient(110% 75% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,.7) 100%); }
+      #b1, #b2, #b3 { opacity: .55; } #lines { opacity: .4 !important; } #rays { opacity: .5; } #grid { opacity: .45; }
       #grain { opacity: .07; mix-blend-mode: overlay; background-size: 256px 256px; }
 
       /* ---------- type ---------- */
       .h { font-family: Sora; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1.02; text-align: center; width: 1080px; left: 0; }
-      .o { color: var(--or); text-shadow: 0 0 40px rgba(255,122,0,.35); }
+      .o { color: var(--or); }
       .w { display: inline-block; will-change: transform, opacity, filter; }
-      .mask { overflow: hidden; display: block; padding: 0 0 0.12em; }
+      .mask { overflow: hidden; display: block; padding: 0.1em 0 0.14em; margin: -0.1em 0 -0.14em; }
       #t1 { top: 760px; font-size: 118px; }
       #t2 { top: 700px; font-size: 168px; }
       /* pillars */
@@ -59,6 +60,7 @@
       #uf { top: 945px; font-size: 132px; }
       /* sweep */
       .band { position: absolute; left: -600px; width: 2400px; height: 520px; border-radius: 260px; transform-origin: 50% 50%; }
+      #band1, #band2, #ring { display: none; }
       #band1 { background: linear-gradient(90deg, #ff6a00, #ff9a2e); box-shadow: 0 0 120px rgba(255,122,0,.8); }
       #band2 { background: #2a1408; }
       /* logo */
@@ -125,20 +127,6 @@
           <div class="ember" id="e31" style="left:995px;top:0;width:9.9px;height:9.9px"></div>
           <div class="ember" id="e32" style="left:225px;top:0;width:5.2px;height:5.2px"></div>
           <div class="ember" id="e33" style="left:699px;top:0;width:8.8px;height:8.8px"></div>
-          <div class="ember" id="e34" style="left:800px;top:0;width:6.9px;height:6.9px"></div>
-          <div class="ember" id="e35" style="left:1031px;top:0;width:6.4px;height:6.4px"></div>
-          <div class="ember" id="e36" style="left:152px;top:0;width:4.9px;height:4.9px"></div>
-          <div class="ember" id="e37" style="left:1040px;top:0;width:7.9px;height:7.9px"></div>
-          <div class="ember" id="e38" style="left:1030px;top:0;width:7.9px;height:7.9px"></div>
-          <div class="ember" id="e39" style="left:879px;top:0;width:5.3px;height:5.3px"></div>
-          <div class="ember" id="e40" style="left:290px;top:0;width:6.5px;height:6.5px"></div>
-          <div class="ember" id="e41" style="left:627px;top:0;width:9.4px;height:9.4px"></div>
-          <div class="ember" id="e42" style="left:564px;top:0;width:4.1px;height:4.1px"></div>
-          <div class="ember" id="e43" style="left:199px;top:0;width:6.8px;height:6.8px"></div>
-          <div class="ember" id="e44" style="left:598px;top:0;width:8.7px;height:8.7px"></div>
-          <div class="ember" id="e45" style="left:823px;top:0;width:7.0px;height:7.0px"></div>
-          <div class="ember" id="e46" style="left:657px;top:0;width:7.0px;height:7.0px"></div>
-          <div class="ember" id="e47" style="left:517px;top:0;width:9.6px;height:9.6px"></div>
           <div id="flash" class="full"></div>
         </div>
 
@@ -154,11 +142,11 @@
         </div>
         <!-- 3 pillars -->
         <div id="pill" class="abs">
-          <div id="col">
+          <div id="col" style="top:750px;height:230px;overflow:hidden">
             <div class="pw" id="p0" style="top:0">Strategie.</div>
-            <div class="pw" id="p1" style="top:220px">Content.</div>
-            <div class="pw" id="p2" style="top:440px">Reichweite.</div>
-            <div class="pw o" id="p3" style="top:660px;color:#ff7a00">Wachstum.</div>
+            <div class="pw" id="p1" style="top:0">Content.</div>
+            <div class="pw" id="p2" style="top:0">Reichweite.</div>
+            <div class="pw o" id="p3" style="top:0;color:#ff7a00">Wachstum.</div>
           </div>
           <div id="bar" class="abs"><div id="barf"></div></div>
           <div id="count" class="abs"><span class="digits"><span id="dg"><span>01</span><span>02</span><span>03</span></span></span> / 04</div>
@@ -210,198 +198,146 @@
       ["#l1", "#l2", "#l3", "#l4", "#l5", "#l6"].forEach((id, i) => {
         tl.fromTo(id, { strokeDasharray: "420 1800", strokeDashoffset: 2200 - i * 400 }, { strokeDashoffset: -1800 - i * 300, duration: 6 + i * 1.3, ease: "none", repeat: Math.ceil(18 / (6 + i * 1.3)) }, i * 0.4);
       });
-      tl.fromTo("#e0", { y: 1836, x: -2, opacity: 0.54 }, { y: -60, x: -24, duration: 10.04, ease: "none" }, 0);
+      tl.fromTo("#e0", { y: 1836, x: -2, opacity: 0.27 }, { y: -60, x: -24, duration: 10.04, ease: "none" }, 0);
       tl.fromTo("#e0", { y: 2000, x: 0 }, { y: -60, x: -24, duration: 10.91, ease: "none", repeat: 2, immediateRender: false }, 10.04);
-      tl.fromTo("#e1", { y: 516, x: -53, opacity: 0.29 }, { y: -60, x: -74, duration: 2.02, ease: "none" }, 0);
+      tl.fromTo("#e1", { y: 516, x: -53, opacity: 0.14 }, { y: -60, x: -74, duration: 2.02, ease: "none" }, 0);
       tl.fromTo("#e1", { y: 2000, x: 0 }, { y: -60, x: -74, duration: 7.22, ease: "none", repeat: 2, immediateRender: false }, 2.02);
-      tl.fromTo("#e2", { y: 1287, x: 28, opacity: 0.60 }, { y: -60, x: 81, duration: 5.06, ease: "none" }, 0);
+      tl.fromTo("#e2", { y: 1287, x: 28, opacity: 0.30 }, { y: -60, x: 81, duration: 5.06, ease: "none" }, 0);
       tl.fromTo("#e2", { y: 2000, x: 0 }, { y: -60, x: 81, duration: 7.74, ease: "none", repeat: 2, immediateRender: false }, 5.06);
-      tl.fromTo("#e3", { y: 1910, x: -2, opacity: 0.72 }, { y: -60, x: -38, duration: 12.30, ease: "none" }, 0);
+      tl.fromTo("#e3", { y: 1910, x: -2, opacity: 0.36 }, { y: -60, x: -38, duration: 12.30, ease: "none" }, 0);
       tl.fromTo("#e3", { y: 2000, x: 0 }, { y: -60, x: -38, duration: 12.86, ease: "none", repeat: 2, immediateRender: false }, 12.30);
-      tl.fromTo("#e4", { y: 1781, x: 2, opacity: 0.35 }, { y: -60, x: 15, duration: 7.91, ease: "none" }, 0);
+      tl.fromTo("#e4", { y: 1781, x: 2, opacity: 0.17 }, { y: -60, x: 15, duration: 7.91, ease: "none" }, 0);
       tl.fromTo("#e4", { y: 2000, x: 0 }, { y: -60, x: 15, duration: 8.85, ease: "none", repeat: 2, immediateRender: false }, 7.91);
-      tl.fromTo("#e5", { y: 1849, x: -4, opacity: 0.28 }, { y: -60, x: -53, duration: 9.53, ease: "none" }, 0);
+      tl.fromTo("#e5", { y: 1849, x: -4, opacity: 0.14 }, { y: -60, x: -53, duration: 9.53, ease: "none" }, 0);
       tl.fromTo("#e5", { y: 2000, x: 0 }, { y: -60, x: -53, duration: 10.29, ease: "none", repeat: 2, immediateRender: false }, 9.53);
-      tl.fromTo("#e6", { y: 371, x: -29, opacity: 0.50 }, { y: -60, x: -36, duration: 1.86, ease: "none" }, 0);
+      tl.fromTo("#e6", { y: 371, x: -29, opacity: 0.25 }, { y: -60, x: -36, duration: 1.86, ease: "none" }, 0);
       tl.fromTo("#e6", { y: 2000, x: 0 }, { y: -60, x: -36, duration: 8.88, ease: "none", repeat: 2, immediateRender: false }, 1.86);
-      tl.fromTo("#e7", { y: 322, x: 55, opacity: 0.54 }, { y: -60, x: 68, duration: 1.57, ease: "none" }, 0);
+      tl.fromTo("#e7", { y: 322, x: 55, opacity: 0.27 }, { y: -60, x: 68, duration: 1.57, ease: "none" }, 0);
       tl.fromTo("#e7", { y: 2000, x: 0 }, { y: -60, x: 68, duration: 8.46, ease: "none", repeat: 2, immediateRender: false }, 1.57);
-      tl.fromTo("#e8", { y: 1773, x: 5, opacity: 0.48 }, { y: -60, x: 46, duration: 11.46, ease: "none" }, 0);
+      tl.fromTo("#e8", { y: 1773, x: 5, opacity: 0.24 }, { y: -60, x: 46, duration: 11.46, ease: "none" }, 0);
       tl.fromTo("#e8", { y: 2000, x: 0 }, { y: -60, x: 46, duration: 12.88, ease: "none", repeat: 2, immediateRender: false }, 11.46);
-      tl.fromTo("#e9", { y: 1777, x: 1, opacity: 0.67 }, { y: -60, x: 13, duration: 6.45, ease: "none" }, 0);
+      tl.fromTo("#e9", { y: 1777, x: 1, opacity: 0.33 }, { y: -60, x: 13, duration: 6.45, ease: "none" }, 0);
       tl.fromTo("#e9", { y: 2000, x: 0 }, { y: -60, x: 13, duration: 7.24, ease: "none", repeat: 2, immediateRender: false }, 6.45);
-      tl.fromTo("#e10", { y: 685, x: -5, opacity: 0.57 }, { y: -60, x: -8, duration: 4.04, ease: "none" }, 0);
+      tl.fromTo("#e10", { y: 685, x: -5, opacity: 0.28 }, { y: -60, x: -8, duration: 4.04, ease: "none" }, 0);
       tl.fromTo("#e10", { y: 2000, x: 0 }, { y: -60, x: -8, duration: 11.17, ease: "none", repeat: 2, immediateRender: false }, 4.04);
-      tl.fromTo("#e11", { y: 332, x: 29, opacity: 0.28 }, { y: -60, x: 36, duration: 1.87, ease: "none" }, 0);
+      tl.fromTo("#e11", { y: 332, x: 29, opacity: 0.14 }, { y: -60, x: 36, duration: 1.87, ease: "none" }, 0);
       tl.fromTo("#e11", { y: 2000, x: 0 }, { y: -60, x: 36, duration: 9.84, ease: "none", repeat: 2, immediateRender: false }, 1.87);
-      tl.fromTo("#e12", { y: 1410, x: 9, opacity: 0.46 }, { y: -60, x: 30, duration: 8.52, ease: "none" }, 0);
+      tl.fromTo("#e12", { y: 1410, x: 9, opacity: 0.23 }, { y: -60, x: 30, duration: 8.52, ease: "none" }, 0);
       tl.fromTo("#e12", { y: 2000, x: 0 }, { y: -60, x: 30, duration: 11.93, ease: "none", repeat: 2, immediateRender: false }, 8.52);
-      tl.fromTo("#e13", { y: 1639, x: 8, opacity: 0.28 }, { y: -60, x: 48, duration: 6.60, ease: "none" }, 0);
+      tl.fromTo("#e13", { y: 1639, x: 8, opacity: 0.14 }, { y: -60, x: 48, duration: 6.60, ease: "none" }, 0);
       tl.fromTo("#e13", { y: 2000, x: 0 }, { y: -60, x: 48, duration: 8.01, ease: "none", repeat: 2, immediateRender: false }, 6.60);
-      tl.fromTo("#e14", { y: 1755, x: -1, opacity: 0.29 }, { y: -60, x: -9, duration: 8.23, ease: "none" }, 0);
+      tl.fromTo("#e14", { y: 1755, x: -1, opacity: 0.14 }, { y: -60, x: -9, duration: 8.23, ease: "none" }, 0);
       tl.fromTo("#e14", { y: 2000, x: 0 }, { y: -60, x: -9, duration: 9.35, ease: "none", repeat: 2, immediateRender: false }, 8.23);
-      tl.fromTo("#e15", { y: 208, x: -13, opacity: 0.40 }, { y: -60, x: -15, duration: 1.55, ease: "none" }, 0);
+      tl.fromTo("#e15", { y: 208, x: -13, opacity: 0.20 }, { y: -60, x: -15, duration: 1.55, ease: "none" }, 0);
       tl.fromTo("#e15", { y: 2000, x: 0 }, { y: -60, x: -15, duration: 11.92, ease: "none", repeat: 2, immediateRender: false }, 1.55);
-      tl.fromTo("#e16", { y: 1707, x: -7, opacity: 0.35 }, { y: -60, x: -48, duration: 10.94, ease: "none" }, 0);
+      tl.fromTo("#e16", { y: 1707, x: -7, opacity: 0.17 }, { y: -60, x: -48, duration: 10.94, ease: "none" }, 0);
       tl.fromTo("#e16", { y: 2000, x: 0 }, { y: -60, x: -48, duration: 12.75, ease: "none", repeat: 2, immediateRender: false }, 10.94);
-      tl.fromTo("#e17", { y: 1383, x: -4, opacity: 0.25 }, { y: -60, x: -15, duration: 7.38, ease: "none" }, 0);
+      tl.fromTo("#e17", { y: 1383, x: -4, opacity: 0.12 }, { y: -60, x: -15, duration: 7.38, ease: "none" }, 0);
       tl.fromTo("#e17", { y: 2000, x: 0 }, { y: -60, x: -15, duration: 10.53, ease: "none", repeat: 2, immediateRender: false }, 7.38);
-      tl.fromTo("#e18", { y: 658, x: 14, opacity: 0.53 }, { y: -60, x: 21, duration: 4.43, ease: "none" }, 0);
+      tl.fromTo("#e18", { y: 658, x: 14, opacity: 0.26 }, { y: -60, x: 21, duration: 4.43, ease: "none" }, 0);
       tl.fromTo("#e18", { y: 2000, x: 0 }, { y: -60, x: 21, duration: 12.72, ease: "none", repeat: 2, immediateRender: false }, 4.43);
-      tl.fromTo("#e19", { y: 445, x: 40, opacity: 0.73 }, { y: -60, x: 54, duration: 3.04, ease: "none" }, 0);
+      tl.fromTo("#e19", { y: 445, x: 40, opacity: 0.36 }, { y: -60, x: 54, duration: 3.04, ease: "none" }, 0);
       tl.fromTo("#e19", { y: 2000, x: 0 }, { y: -60, x: 54, duration: 12.40, ease: "none", repeat: 2, immediateRender: false }, 3.04);
-      tl.fromTo("#e20", { y: -57, x: -78, opacity: 0.28 }, { y: -60, x: -78, duration: 0.01, ease: "none" }, 0);
+      tl.fromTo("#e20", { y: -57, x: -78, opacity: 0.14 }, { y: -60, x: -78, duration: 0.01, ease: "none" }, 0);
       tl.fromTo("#e20", { y: 2000, x: 0 }, { y: -60, x: -78, duration: 7.62, ease: "none", repeat: 2, immediateRender: false }, 0.01);
-      tl.fromTo("#e21", { y: 1856, x: -4, opacity: 0.25 }, { y: -60, x: -63, duration: 8.41, ease: "none" }, 0);
+      tl.fromTo("#e21", { y: 1856, x: -4, opacity: 0.12 }, { y: -60, x: -63, duration: 8.41, ease: "none" }, 0);
       tl.fromTo("#e21", { y: 2000, x: 0 }, { y: -60, x: -63, duration: 9.04, ease: "none", repeat: 2, immediateRender: false }, 8.41);
-      tl.fromTo("#e22", { y: 1038, x: -30, opacity: 0.59 }, { y: -60, x: -63, duration: 3.81, ease: "none" }, 0);
+      tl.fromTo("#e22", { y: 1038, x: -30, opacity: 0.29 }, { y: -60, x: -63, duration: 3.81, ease: "none" }, 0);
       tl.fromTo("#e22", { y: 2000, x: 0 }, { y: -60, x: -63, duration: 7.15, ease: "none", repeat: 2, immediateRender: false }, 3.81);
-      tl.fromTo("#e23", { y: 1669, x: 14, opacity: 0.72 }, { y: -60, x: 89, duration: 7.71, ease: "none" }, 0);
+      tl.fromTo("#e23", { y: 1669, x: 14, opacity: 0.36 }, { y: -60, x: 89, duration: 7.71, ease: "none" }, 0);
       tl.fromTo("#e23", { y: 2000, x: 0 }, { y: -60, x: 89, duration: 9.18, ease: "none", repeat: 2, immediateRender: false }, 7.71);
-      tl.fromTo("#e24", { y: 1664, x: -7, opacity: 0.44 }, { y: -60, x: -42, duration: 6.29, ease: "none" }, 0);
+      tl.fromTo("#e24", { y: 1664, x: -7, opacity: 0.22 }, { y: -60, x: -42, duration: 6.29, ease: "none" }, 0);
       tl.fromTo("#e24", { y: 2000, x: 0 }, { y: -60, x: -42, duration: 7.52, ease: "none", repeat: 2, immediateRender: false }, 6.29);
-      tl.fromTo("#e25", { y: 767, x: -38, opacity: 0.54 }, { y: -60, x: -64, duration: 2.87, ease: "none" }, 0);
+      tl.fromTo("#e25", { y: 767, x: -38, opacity: 0.27 }, { y: -60, x: -64, duration: 2.87, ease: "none" }, 0);
       tl.fromTo("#e25", { y: 2000, x: 0 }, { y: -60, x: -64, duration: 7.14, ease: "none", repeat: 2, immediateRender: false }, 2.87);
-      tl.fromTo("#e26", { y: 1681, x: 5, opacity: 0.72 }, { y: -60, x: 35, duration: 8.60, ease: "none" }, 0);
+      tl.fromTo("#e26", { y: 1681, x: 5, opacity: 0.36 }, { y: -60, x: 35, duration: 8.60, ease: "none" }, 0);
       tl.fromTo("#e26", { y: 2000, x: 0 }, { y: -60, x: 35, duration: 10.17, ease: "none", repeat: 2, immediateRender: false }, 8.60);
-      tl.fromTo("#e27", { y: 1675, x: 8, opacity: 0.54 }, { y: -60, x: 50, duration: 6.74, ease: "none" }, 0);
+      tl.fromTo("#e27", { y: 1675, x: 8, opacity: 0.27 }, { y: -60, x: 50, duration: 6.74, ease: "none" }, 0);
       tl.fromTo("#e27", { y: 2000, x: 0 }, { y: -60, x: 50, duration: 8.00, ease: "none", repeat: 2, immediateRender: false }, 6.74);
-      tl.fromTo("#e28", { y: -51, x: 55, opacity: 0.72 }, { y: -60, x: 55, duration: 0.05, ease: "none" }, 0);
+      tl.fromTo("#e28", { y: -51, x: 55, opacity: 0.36 }, { y: -60, x: 55, duration: 0.05, ease: "none" }, 0);
       tl.fromTo("#e28", { y: 2000, x: 0 }, { y: -60, x: 55, duration: 11.87, ease: "none", repeat: 2, immediateRender: false }, 0.05);
-      tl.fromTo("#e29", { y: 469, x: -63, opacity: 0.45 }, { y: -60, x: -85, duration: 2.15, ease: "none" }, 0);
+      tl.fromTo("#e29", { y: 469, x: -63, opacity: 0.22 }, { y: -60, x: -85, duration: 2.15, ease: "none" }, 0);
       tl.fromTo("#e29", { y: 2000, x: 0 }, { y: -60, x: -85, duration: 8.36, ease: "none", repeat: 2, immediateRender: false }, 2.15);
-      tl.fromTo("#e30", { y: -1, x: -9, opacity: 0.78 }, { y: -60, x: -9, duration: 0.24, ease: "none" }, 0);
+      tl.fromTo("#e30", { y: -1, x: -9, opacity: 0.39 }, { y: -60, x: -9, duration: 0.24, ease: "none" }, 0);
       tl.fromTo("#e30", { y: 2000, x: 0 }, { y: -60, x: -9, duration: 8.56, ease: "none", repeat: 2, immediateRender: false }, 0.24);
-      tl.fromTo("#e31", { y: 1292, x: -17, opacity: 0.37 }, { y: -60, x: -49, duration: 8.35, ease: "none" }, 0);
+      tl.fromTo("#e31", { y: 1292, x: -17, opacity: 0.18 }, { y: -60, x: -49, duration: 8.35, ease: "none" }, 0);
       tl.fromTo("#e31", { y: 2000, x: 0 }, { y: -60, x: -49, duration: 12.73, ease: "none", repeat: 2, immediateRender: false }, 8.35);
-      tl.fromTo("#e32", { y: 1989, x: -0, opacity: 0.71 }, { y: -60, x: -4, duration: 10.69, ease: "none" }, 0);
+      tl.fromTo("#e32", { y: 1989, x: -0, opacity: 0.36 }, { y: -60, x: -4, duration: 10.69, ease: "none" }, 0);
       tl.fromTo("#e32", { y: 2000, x: 0 }, { y: -60, x: -4, duration: 10.74, ease: "none", repeat: 2, immediateRender: false }, 10.69);
-      tl.fromTo("#e33", { y: 1885, x: 3, opacity: 0.75 }, { y: -60, x: 51, duration: 7.09, ease: "none" }, 0);
+      tl.fromTo("#e33", { y: 1885, x: 3, opacity: 0.37 }, { y: -60, x: 51, duration: 7.09, ease: "none" }, 0);
       tl.fromTo("#e33", { y: 2000, x: 0 }, { y: -60, x: 51, duration: 7.51, ease: "none", repeat: 2, immediateRender: false }, 7.09);
-      tl.fromTo("#e34", { y: 1643, x: 9, opacity: 0.43 }, { y: -60, x: 54, duration: 6.67, ease: "none" }, 0);
-      tl.fromTo("#e34", { y: 2000, x: 0 }, { y: -60, x: 54, duration: 8.07, ease: "none", repeat: 2, immediateRender: false }, 6.67);
-      tl.fromTo("#e35", { y: 1572, x: -12, opacity: 0.65 }, { y: -60, x: -59, duration: 7.46, ease: "none" }, 0);
-      tl.fromTo("#e35", { y: 2000, x: 0 }, { y: -60, x: -59, duration: 9.41, ease: "none", repeat: 2, immediateRender: false }, 7.46);
-      tl.fromTo("#e36", { y: 396, x: 46, opacity: 0.33 }, { y: -60, x: 59, duration: 2.75, ease: "none" }, 0);
-      tl.fromTo("#e36", { y: 2000, x: 0 }, { y: -60, x: 59, duration: 12.43, ease: "none", repeat: 2, immediateRender: false }, 2.75);
-      tl.fromTo("#e37", { y: 510, x: -63, opacity: 0.32 }, { y: -60, x: -87, duration: 2.52, ease: "none" }, 0);
-      tl.fromTo("#e37", { y: 2000, x: 0 }, { y: -60, x: -87, duration: 9.10, ease: "none", repeat: 2, immediateRender: false }, 2.52);
-      tl.fromTo("#e38", { y: 1788, x: 7, opacity: 0.49 }, { y: -60, x: 67, duration: 9.12, ease: "none" }, 0);
-      tl.fromTo("#e38", { y: 2000, x: 0 }, { y: -60, x: 67, duration: 10.16, ease: "none", repeat: 2, immediateRender: false }, 9.12);
-      tl.fromTo("#e39", { y: 1149, x: 6, opacity: 0.38 }, { y: -60, x: 16, duration: 5.00, ease: "none" }, 0);
-      tl.fromTo("#e39", { y: 2000, x: 0 }, { y: -60, x: 16, duration: 8.51, ease: "none", repeat: 2, immediateRender: false }, 5.00);
-      tl.fromTo("#e40", { y: 1171, x: -3, opacity: 0.44 }, { y: -60, x: -8, duration: 4.65, ease: "none" }, 0);
-      tl.fromTo("#e40", { y: 2000, x: 0 }, { y: -60, x: -8, duration: 7.79, ease: "none", repeat: 2, immediateRender: false }, 4.65);
-      tl.fromTo("#e41", { y: 1678, x: 1, opacity: 0.53 }, { y: -60, x: 6, duration: 8.03, ease: "none" }, 0);
-      tl.fromTo("#e41", { y: 2000, x: 0 }, { y: -60, x: 6, duration: 9.52, ease: "none", repeat: 2, immediateRender: false }, 8.03);
-      tl.fromTo("#e42", { y: 1530, x: 12, opacity: 0.25 }, { y: -60, x: 54, duration: 7.44, ease: "none" }, 0);
-      tl.fromTo("#e42", { y: 2000, x: 0 }, { y: -60, x: 54, duration: 9.64, ease: "none", repeat: 2, immediateRender: false }, 7.44);
-      tl.fromTo("#e43", { y: 788, x: 2, opacity: 0.43 }, { y: -60, x: 3, duration: 4.67, ease: "none" }, 0);
-      tl.fromTo("#e43", { y: 2000, x: 0 }, { y: -60, x: 3, duration: 11.35, ease: "none", repeat: 2, immediateRender: false }, 4.67);
-      tl.fromTo("#e44", { y: 186, x: -35, opacity: 0.39 }, { y: -60, x: -40, duration: 0.91, ease: "none" }, 0);
-      tl.fromTo("#e44", { y: 2000, x: 0 }, { y: -60, x: -40, duration: 7.64, ease: "none", repeat: 2, immediateRender: false }, 0.91);
-      tl.fromTo("#e45", { y: 188, x: -9, opacity: 0.75 }, { y: -60, x: -10, duration: 1.25, ease: "none" }, 0);
-      tl.fromTo("#e45", { y: 2000, x: 0 }, { y: -60, x: -10, duration: 10.37, ease: "none", repeat: 2, immediateRender: false }, 1.25);
-      tl.fromTo("#e46", { y: 300, x: 5, opacity: 0.50 }, { y: -60, x: 6, duration: 1.76, ease: "none" }, 0);
-      tl.fromTo("#e46", { y: 2000, x: 0 }, { y: -60, x: 6, duration: 10.07, ease: "none", repeat: 2, immediateRender: false }, 1.76);
-      tl.fromTo("#e47", { y: 65, x: -41, opacity: 0.77 }, { y: -60, x: -43, duration: 0.68, ease: "none" }, 0);
-      tl.fromTo("#e47", { y: 2000, x: 0 }, { y: -60, x: -43, duration: 11.20, ease: "none", repeat: 2, immediateRender: false }, 0.68);
 
-      /* pulse helper: background reacts on every cut */
-      const pulse = (t, a = .9) => tl.fromTo("#flash", { opacity: a }, { opacity: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, t);
-      const blurIn = (sel, t, st = 0.06) => tl.fromTo(sel, { yPercent: 110, opacity: 0, filter: "blur(14px)" }, { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.7, ease: E, stagger: st }, t);
+      /* one motion language: words rise out of a hard edge, leave upward through it. no blur, no overlap. */
+      const IN = (sel, t, st = 0.07, d = 0.75) => tl.fromTo(sel, { yPercent: 135 }, { yPercent: 0, duration: d, ease: "expo.out", stagger: st }, t);
+      const OUT = (sel, t, st = 0.04) => tl.to(sel, { yPercent: -135, duration: 0.38, ease: "power3.in", stagger: st }, t);
+      const pulse = (t, a = .35) => tl.fromTo("#flash", { opacity: a }, { opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, t);
 
-      /* ======== 1  hook (0 – 2.95) ======== */
-      tl.fromTo("#stage", { scale: 1.08 }, { scale: 1, duration: 1.4, ease: E }, 0);
-      pulse(0, 1);
-      tl.fromTo("#t1a", { yPercent: 110, opacity: 0, filter: "blur(16px)", scale: 1.25 }, { yPercent: 0, opacity: 1, filter: "blur(0px)", scale: 1, duration: 1.0, ease: E }, 0.05);
-      blurIn("#t1b", 1.18); blurIn("#t1c", 1.78); blurIn("#t1d", 2.1);
-      tl.to("#t1", { scale: 1.04, duration: 2.85, ease: "none" }, 0);
-      // zoom-through to 2
-      tl.to("#t1", { scale: 2.6, opacity: 0, filter: "blur(24px)", duration: 0.45, ease: "power3.in" }, 2.85);
+      /* ======== 1  hook ======== */
+      tl.fromTo("#stage", { scale: 1.05 }, { scale: 1, duration: 1.6, ease: "expo.out" }, 0);
+      pulse(0, .5);
+      IN("#t1a", 0.05, 0, 0.9);
+      IN("#t1b", 1.2); IN("#t1c", 1.8); IN("#t1d", 2.12);
+      tl.fromTo("#t1", { scale: 1 }, { scale: 1.03, duration: 2.7, ease: "none" }, 0);
+      OUT(["#t1a", "#t1b", "#t1c", "#t1d"], 2.72, 0.03);
 
-      /* ======== 2  Sie wird gemacht. (3.1 – 4.75) ======== */
-      tl.fromTo("#t2", { scale: 0.55, opacity: 0, filter: "blur(18px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: E }, 3.08);
-      tl.fromTo(["#t2a", "#t2b"], { yPercent: 0 }, { yPercent: 0, duration: 0.01 }, 3.08);
-      tl.set("#t2c", { yPercent: 115 }, 0);
-      tl.to("#t2c", { yPercent: 0, duration: 0.55, ease: "back.out(1.6)" }, 3.55);
-      pulse(3.58, 1);
-      tl.fromTo("#t2", { x: 0 }, { keyframes: [{ x: -10, duration: 0.04 }, { x: 8, duration: 0.04 }, { x: -4, duration: 0.04 }, { x: 0, duration: 0.05 }] }, 3.6);
-      tl.to("#t2", { scale: 1.06, duration: 0.9, ease: "none" }, 3.7);
+      /* ======== 2  Sie wird gemacht. ======== */
+      tl.set("#t2", { opacity: 1 }, 0);
+      IN("#t2a", 3.12, 0); IN("#t2b", 3.24, 0);
+      IN("#t2c", 3.54, 0, 0.8);
+      pulse(3.6, .4);
+      tl.fromTo("#t2", { scale: 1 }, { scale: 1.04, duration: 1.5, ease: "none" }, 3.1);
+      OUT(["#t2a", "#t2b", "#t2c"], 4.55, 0.04);
 
-      /* ======== swoosh wipe into pillars (4.45 – 5.0) ======== */
-      tl.set(".band", { rotation: -24 }, 0);
-      tl.fromTo("#band2", { y: 2300 }, { y: -900, duration: 0.75, ease: "power2.inOut" }, 4.32);
-      tl.fromTo("#band1", { y: 2350 }, { y: -950, duration: 0.75, ease: "power2.inOut" }, 4.38);
-      tl.set("#t2", { opacity: 0 }, 4.75);
-
-      /* ======== 3  pillars (5.0 – 9.3) ======== */
-      const CY = 860;                     // centre line of the active word
+      /* ======== 3  pillars: one word at a time, same spot ======== */
       const stops = [5.0, 6.06, 7.24, 8.38];
-      tl.set("#pill", { opacity: 0 }, 0).set("#pill", { opacity: 1 }, 4.72);
-      tl.set("#col", { y: CY - 0 }, 0);
-      tl.set([".pw"], { opacity: 0.16, scale: 0.72, filter: "blur(3px)" }, 0);
+      tl.set(".pw", { yPercent: 135 }, 0);
       stops.forEach((t, i) => {
-        const at = i === 0 ? 4.72 : t - 0.18;
-        tl.to("#col", { y: CY - i * 220, duration: i === 0 ? 0.6 : 0.55, ease: i === 0 ? E : "power4.inOut" }, at);
-        tl.to("#p" + i, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: E }, at + 0.08);
-        if (i > 0) tl.to("#p" + (i - 1), { opacity: 0.16, scale: 0.72, filter: "blur(3px)", duration: 0.45, ease: "power2.out" }, at);
+        const at = t - 0.1;
+        if (i > 0) OUT("#p" + (i - 1), at - 0.36, 0);
+        IN("#p" + i, at, 0, 0.7);
         if (i < 3) {
-          tl.to("#barf", { scaleX: (i + 1) / 4, duration: 0.5, ease: E }, at + 0.1);
-          tl.to("#dg", { yPercent: -(100 / 3) * i, duration: 0.45, ease: "power4.inOut" }, at);
+          tl.to("#barf", { scaleX: (i + 1) / 4, duration: 0.6, ease: "expo.out" }, at);
+          if (i > 0) tl.to("#dg", { yPercent: -(100 / 3) * i, duration: 0.5, ease: "power3.inOut" }, at - 0.15);
         }
-        pulse(t, i === 3 ? 1 : 0.55);
+        pulse(t, i === 3 ? .45 : .25);
       });
-      tl.fromTo(["#bar", "#count"], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: E }, 4.95);
-      // Wachstum: the counter leaves, the word owns the frame
-      tl.to(["#bar", "#count"], { opacity: 0, y: 40, filter: "blur(8px)", duration: 0.35, ease: "power2.in" }, 8.2);
-      tl.to(["#p0", "#p1", "#p2"], { opacity: 0, duration: 0.4 }, 8.4);
-      tl.to("#p3", { scale: 1.12, duration: 0.9, ease: "power2.out" }, 8.4);
-      // exit: the column flies up
-      tl.to("#col", { y: CY - 660 - 900, duration: 0.55, ease: "power4.in" }, 9.05);
-      tl.to("#p3", { filter: "blur(16px)", opacity: 0, duration: 0.5, ease: "power2.in" }, 9.1);
+      tl.fromTo(["#bar", "#count"], { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 4.95);
+      tl.to(["#bar", "#count"], { opacity: 0, duration: 0.35, ease: "power2.in" }, 8.0);
+      OUT("#p3", 9.08, 0);
 
-      /* ======== 4  Für Marken mit Anspruch. (9.45 – 11.75) ======== */
-      tl.fromTo("#fm", { y: 260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: E }, 9.42);
-      tl.fromTo(["#fm1", "#fm2"], { yPercent: 0 }, { yPercent: 0, duration: 0.01 }, 9.42);
-      tl.fromTo("#fmline", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: E }, 9.8);
-      tl.set(["#fa1", "#fa2"], { yPercent: -110 }, 0);
-      tl.to("#fa1", { yPercent: 0, duration: 0.5, ease: E }, 10.72);
-      tl.to("#fa2", { yPercent: 0, duration: 0.55, ease: E }, 10.82);
-      pulse(10.76, 0.8);
-      // split exit: line flashes wide, the lines part
-      tl.to("#fmline", { scaleX: 1.5, height: 2, opacity: 0, duration: 0.45, ease: "power3.in" }, 11.55);
-      tl.to("#fm", { y: -220, opacity: 0, filter: "blur(10px)", duration: 0.45, ease: "power3.in" }, 11.5);
-      tl.to("#fa", { y: 220, opacity: 0, filter: "blur(10px)", duration: 0.45, ease: "power3.in" }, 11.5);
+      /* ======== 4  Für Marken mit Anspruch. ======== */
+      tl.set("#fm", { opacity: 1 }, 0);
+      IN(["#fm1", "#fm2"], 9.5, 0.09);
+      tl.fromTo("#fmline", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "expo.out" }, 9.75);
+      tl.set(["#fa1", "#fa2"], { yPercent: 135 }, 0);
+      tl.to("#fa1", { yPercent: 0, duration: 0.7, ease: "expo.out" }, 10.72);
+      tl.to("#fa2", { yPercent: 0, duration: 0.7, ease: "expo.out" }, 10.8);
+      pulse(10.76, .3);
+      OUT(["#fm1", "#fm2"], 11.42, 0.04);
+      tl.to(["#fa1", "#fa2"], { yPercent: 135, duration: 0.38, ease: "power3.in", stagger: 0.04 }, 11.42);
+      tl.to("#fmline", { scaleX: 0, duration: 0.45, ease: "power3.in" }, 11.45);
 
-      /* ======== 5  Deine Marke. Unser Fokus. (11.9 – 14.2) ======== */
-      tl.set(["#dm1", "#dm2", "#uf1", "#uf2"], { yPercent: 115 }, 0);
-      tl.to("#dm1", { yPercent: 0, duration: 0.6, ease: E }, 11.9);
-      tl.to("#dm2", { yPercent: 0, duration: 0.6, ease: E }, 12.12);
-      tl.to("#uf1", { yPercent: 0, duration: 0.6, ease: E }, 12.92);
-      tl.to("#uf2", { yPercent: 0, duration: 0.6, ease: E }, 13.18);
-      pulse(12.98, 0.8);
-      tl.fromTo(["#dm", "#uf"], { scale: 1 }, { scale: 1.05, duration: 1.95, ease: "none" }, 11.9);
-      // implode into a single point
-      tl.to(["#dm", "#uf"], { scale: 0.05, opacity: 0, filter: "blur(12px)", duration: 0.5, ease: "power3.in" }, 13.85);
-      tl.fromTo("#dot", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power2.out" }, 14.25);
+      /* ======== 5  Deine Marke. Unser Fokus. ======== */
+      tl.set(["#dm", "#uf"], { opacity: 1 }, 0);
+      IN("#dm1", 11.92, 0); IN("#dm2", 12.14, 0);
+      IN("#uf1", 12.94, 0); IN("#uf2", 13.2, 0);
+      pulse(12.98, .3);
+      OUT(["#dm1", "#dm2", "#uf1", "#uf2"], 13.82, 0.03);
+      tl.fromTo("#dot", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2)" }, 14.28);
 
-      /* ======== 6  logo (14.55 – 18) ======== */
-      tl.to("#dot", { scale: 40, opacity: 0, duration: 0.55, ease: "power3.out" }, 14.55);
-      tl.fromTo("#ring", { scale: 0.1, opacity: 1 }, { scale: 2.4, opacity: 0, duration: 0.9, ease: "power3.out" }, 14.55);
-      pulse(14.55, 1);
-      tl.fromTo("#logo svg", { clipPath: "inset(-5% 105% -5% -5%)" }, { clipPath: "inset(-5% -5% -5% -5%)", duration: 0.85, ease: E }, 14.58);
-      tl.fromTo("#logo", { scale: 1.18, x: -60 }, { scale: 1, x: 0, duration: 0.85, ease: E }, 14.58);
+      /* ======== 6  logo ======== */
+      tl.to("#dot", { scale: 0, opacity: 0, duration: 0.25, ease: "power2.in" }, 14.5);
+      pulse(14.6, .55);
+      tl.fromTo("#logo svg", { clipPath: "inset(-5% 105% -5% -5%)" }, { clipPath: "inset(-5% -5% -5% -5%)", duration: 1.0, ease: "expo.out" }, 14.6);
+      tl.fromTo("#logo", { scale: 1.06, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.0, ease: "expo.out" }, 14.6);
       tl.set("#streak", { skewX: -18, opacity: 0 }, 0);
-      tl.fromTo("#streak", { x: 120, opacity: 1 }, { x: 980, opacity: 1, duration: 0.8, ease: "power2.inOut", immediateRender: false }, 15.05);
-      tl.set("#streak", { opacity: 0 }, 15.86);
-      tl.fromTo(".bl", { opacity: 0, y: 40, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: E, stagger: 0.04 }, 15.0);
-      tl.fromTo(".bl", { x: (i) => (i - 5) * 26 }, { x: 0, duration: 1.0, ease: E }, 15.0);
-      tl.fromTo(["#tl1", "#tl2"], { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: E }, 15.45);
-      tl.fromTo("#tag", { opacity: 0, y: 24, scale: 1.08 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: E }, 15.4);
-      tl.fromTo("#logo", { y: 0 }, { y: -12, duration: 2.4, ease: "sine.inOut" }, 15.45);
-      // breathe glow and fade out
-      tl.to("#flash", { opacity: 0.35, duration: 1.0, ease: "sine.inOut" }, 15.6);
+      tl.fromTo("#streak", { x: 120, opacity: .6 }, { x: 980, opacity: .6, duration: 0.9, ease: "power2.inOut", immediateRender: false }, 15.1);
+      tl.set("#streak", { opacity: 0 }, 16.0);
+      tl.fromTo(".bl", { opacity: 0, yPercent: 60 }, { opacity: 1, yPercent: 0, duration: 0.8, ease: "expo.out", stagger: 0.035 }, 15.05);
+      tl.fromTo(["#tl1", "#tl2"], { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "expo.out" }, 15.5);
+      tl.fromTo("#tag", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, 15.45);
+      tl.fromTo("#logo", { y: 0 }, { y: -10, duration: 2.3, ease: "sine.inOut" }, 15.6);
+      tl.to("#flash", { opacity: 0.2, duration: 1.0, ease: "sine.inOut" }, 15.8);
       tl.to("#stage", { opacity: 0, duration: 0.7, ease: "power2.in" }, 17.3);
 
       window.__timelines["main"] = tl;

@@ -77,3 +77,6 @@
 - Auswerten morgen: Skip-Rate T2 vs. T1 (44,8 %). Wenn ≤ 45 %: Katze als wiederkehrende Figur behalten (Maskottchen-Potenzial).
 - Technik: tts.py mit 4 Retries pro Zeile + SKIP_DONE=1 (fertige Zeilen überspringen). „Also: Stein vier…“ (Doppelpunkt) gab NoAudioReceived → Kommas helfen. Hook-Untertitel auf y=1150, sonst verdecken sie Mauer+Katze im Zoom.
 - Gepostet 21:00 Berlin, media_id 18161475304503329. 4 Kommentare unter T1 beantwortet. Kein Spam.
+
+## 2026-11-13 15:00 – Tag 5 AUSGEFALLEN
+- Windsor-MCP beim Start nicht erreichbar (503), Wiederholung ebenfalls fehlgeschlagen → keine Zahlen, keine Abstimmung, kein Post. Lauf abgebrochen (Grenze: einmal wiederholen, dann aufhören). Abstimmung unter Tag-4-T2 (1 Brunnen / 2 Goldmine / 3 Strandkörbe) bleibt offen für den nächsten Lauf.

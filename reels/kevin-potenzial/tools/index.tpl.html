@@ -38,17 +38,24 @@
       .grey { color: var(--grey); }
       .g { background: linear-gradient(100deg, #a8782f 0%, #f7e2ad 30%, #d4a454 55%, #fff1cc 72%, #b98a3e 100%); background-size: 220% 100%;
            -webkit-background-clip: text; background-clip: text; color: transparent; }
-      #cam { perspective: 1000px; perspective-origin: 50% 50%; }
-      .st { will-change: transform, opacity, filter; opacity: 0; }
-      #p1b, #p4b, #d2 { opacity: 0; }
-      #p1 { top: 820px; font-size: 100px; font-weight: 700; line-height: 1.08; }
-      #p2 { top: 880px; font-size: 136px; font-weight: 700; }
-      .big { top: 870px; font-size: 168px; font-weight: 700; }
+      #p1 { top: 800px; font-size: 104px; font-weight: 700; line-height: 1.08; }
+      .hw { opacity: .2; }
+      #p2 { top: 880px; font-size: 136px; font-weight: 700; line-height: 1; opacity: 0; }
+      .dotgap { display: inline-block; width: 34px; }
+      .big { top: 870px; font-size: 168px; font-weight: 700; line-height: 1; opacity: 0; }
+      #hair { left: 140px; top: 953px; width: 800px; height: 2px; background: linear-gradient(90deg, rgba(227,194,122,0), #f3d9a0 50%, rgba(227,194,122,0)); opacity: 0; }
       #p4 { top: 800px; font-size: 100px; font-weight: 600; line-height: 1.1; }
+      #p4a { opacity: 0; }
       #p4b { font-size: 150px; font-weight: 700; }
       #d { top: 780px; }
-      #d1 { font-size: 210px; font-weight: 700; letter-spacing: -0.05em; padding: 0 20px; line-height: 1.05; }
-      #d2 { font-size: 108px; font-weight: 300; letter-spacing: -0.02em; }
+      #d1 { font-size: 210px; font-weight: 700; letter-spacing: -0.05em; padding: 0 20px; line-height: 1.05; opacity: 0; }
+      #d2 { font-size: 108px; font-weight: 300; letter-spacing: -0.02em; opacity: 0; }
+      #e { top: 690px; font-size: 140px; font-weight: 700; line-height: 1.12; opacity: 0; }
+      /* soft gradient wipe, driven by --m (100% hidden -> 0% shown) */
+      .wipe { --m: 100%; -webkit-mask-image: linear-gradient(90deg, #000 33%, transparent 66%); mask-image: linear-gradient(90deg, #000 33%, transparent 66%);
+              -webkit-mask-size: 300% 100%; mask-size: 300% 100%; -webkit-mask-position: var(--m) 0; mask-position: var(--m) 0; }
+      .wipeV { --v: 100%; -webkit-mask-image: linear-gradient(180deg, #000 33%, transparent 66%); mask-image: linear-gradient(180deg, #000 33%, transparent 66%);
+               -webkit-mask-size: 100% 300%; mask-size: 100% 300%; -webkit-mask-position: 0 var(--v); mask-position: 0 var(--v); }
       #logo { left: 185px; top: 560px; width: 710px; }
       #logo img { width: 100%; display: block; }
       #shine { left: 185px; top: 560px; width: 710px; height: 600px; -webkit-mask-image: url(ui/kn-logo.png); mask-image: url(ui/kn-logo.png); -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
@@ -71,19 +78,19 @@
           <div id="streak" class="abs"></div>
           <div id="scrim" class="full"></div>
 
-          <div id="p1" class="t st"><span class="l" id="p1a">In dir steckt mehr,</span><span class="l grey" id="p1b">als du denkst.</span></div>
-          <div id="p2" class="t st">Ein Funke.</div>
-          <div id="p3a" class="t st grey big">Druck.</div>
-          <div id="p3b" class="t st grey big">Zweifel.</div>
-          <div id="p3c" class="t st grey big">Angst.</div>
-          <div id="p4" class="t st"><span class="l" id="p4a">Doch ein Funke</span><span class="l g" id="p4b">genügt.</span></div>
-          <div id="d" class="t st"><span class="l g" id="d1">Potenzial</span><span class="l" id="d2">entfachen.</span></div>
-          <div id="e1" class="t st big">Klarheit.</div>
-          <div id="e2" class="t st big">Fokus.</div>
-          <div id="e3" class="t st big g">Stärke.</div>
+          <div id="p1" class="t"><span class="l"><span class="hw" id="w1">In</span> <span class="hw" id="w2">dir</span> <span class="hw" id="w3">steckt</span> <span class="hw" id="w4">mehr,</span></span><span class="l"><span class="hw" id="w5">als</span> <span class="hw" id="w6">du</span> <span class="hw" id="w7">denkst.</span></span></div>
+          <div id="p2" class="t wipe">Ein Funke<span class="dotgap"></span></div>
+          <div id="p3a" class="t grey big">Druck.</div>
+          <div id="p3b" class="t grey big">Zweifel.</div>
+          <div id="p3t" class="t grey big half" style="clip-path: inset(0 0 50% 0)">Angst.</div>
+          <div id="p3u" class="t grey big half" style="clip-path: inset(50% 0 0 0)">Angst.</div>
+          <div id="hair" class="abs"></div>
+          <div id="p4" class="t"><span class="l" id="p4a">Doch ein Funke</span><span class="l g wipe" id="p4b">genügt.</span></div>
+          <div id="d" class="t"><span class="l g" id="d1">Potenzial</span><span class="l" id="d2">entfachen.</span></div>
+          <div id="e" class="t"><span class="l hw" id="e1">Klarheit.</span><span class="l hw" id="e2">Fokus.</span><span class="l hw" id="e3"><span class="g">Stärke.</span></span></div>
 
           <div id="ring" class="abs"></div>
-          <div id="logo" class="abs"><img src="ui/kn-logo.png" alt="Kevin Nsimba" /></div>
+          <div id="logo" class="abs wipeV"><img src="ui/kn-logo.png" alt="Kevin Nsimba" /></div>
           <div id="shine" class="abs"></div>
           <div id="lline" class="abs"></div>
           <div id="role" class="t">MENTAL COACH</div>
@@ -106,88 +113,90 @@
       const tl = gsap.timeline({ paused: true });
       const IGN = 13.15;          // the big entry of the music
 
-      /* ---------- one continuous camera move ----------
-         every line waits in depth; the camera travels to it and lands on the beat,
-         then flies through it to the next one. arriving and leaving share one ease,
-         so it reads as a single dolly, never as separate effects. */
-      const FAR = -2600, PASS = 760;
-      let silkS = 1.0;
-      const travel = (tLand, d, ease, amt = 0.028) => { const a = silkS; silkS += amt; tl.fromTo("#silk", { scale: a }, { scale: silkS, duration: d, ease, immediateRender: false }, tLand - d); };
-      const move = (from, to, tLand, d = 0.8, ease = "power3.inOut") => {
-        travel(tLand, d, ease);
-        if (from) tl.to(from, { z: PASS, opacity: 0, filter: "blur(14px)", duration: d, ease }, tLand - d);
-        if (to) tl.fromTo(to, { z: FAR, opacity: 0, filter: "blur(8px)" }, { z: 0, opacity: 1, filter: "blur(0px)", duration: d, ease }, tLand - d);
-      };
-      const rise = (sel, t, d = 0.7) => tl.fromTo(sel, { opacity: 0, y: 34, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "power3.out" }, t);
-      const glide = (sel, t, d) => tl.to(sel, { z: 90, duration: d, ease: "none" }, t);   // the camera keeps creeping while a line holds
+      /* ---------- one quiet vocabulary ----------
+         light-up (words brighten in place), soft wipes, blur-morphs, one split, one reveal. no shakes, no pumps. */
+      const lit = (sel, t, d = 0.5) => tl.fromTo(sel, { opacity: .2 }, { opacity: 1, duration: d, ease: "power2.out" }, t);
+      const dim = (sel, t, d = 0.5) => tl.to(sel, { opacity: .2, duration: d, ease: "power2.inOut" }, t);
+      const blurOut = (sel, t, d = 0.45) => tl.to(sel, { opacity: 0, filter: "blur(18px)", scale: 1.04, duration: d, ease: "power2.in" }, t);
+      const blurIn = (sel, t, d = 0.6) => tl.fromTo(sel, { opacity: 0, filter: "blur(18px)", scale: .97 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: d, ease: "power2.out" }, t);
+      const wipe = (sel, t, d = 0.9) => tl.fromTo(sel, { "--m": "100%" }, { "--m": "0%", duration: d, ease: "power2.inOut" }, t);
 
-      gsap.set(".st", { z: FAR });
-      tl.set("#silk", { scale: 1 }, 0);
+      tl.fromTo("#silk", { scale: 1.0 }, { scale: 1.07, duration: 24.5, ease: "none" }, 0);
       {EMBER_JS}
 
-      /* ======== hook: the first line is already flying in on frame 0 ======== */
-      tl.fromTo("#p1", { z: -1400, opacity: 0, filter: "blur(10px)" }, { z: 0, opacity: 1, filter: "blur(0px)", duration: 1.3, ease: "power3.out" }, 0.0);
-      rise("#p1b", 1.95);
-      glide("#p1", 1.3, 2.2);
+      /* ======== 0  the sentence is there, dim; words light up on the hits ======== */
+      tl.fromTo("#p1", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0);
+      lit("#w1", 0.05); lit("#w2", 0.6); lit("#w3", 1.35); lit("#w4", 1.95, 0.6);
+      lit(["#w5", "#w6"], 2.45); lit("#w7", 3.05, 0.6);
+      blurOut("#p1", 3.85, 0.5);
 
-      /* spark wakes up, lines fly past it */
-      tl.fromTo("#spark", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.9, ease: "power3.out" }, 3.6);
-      move("#p1", "#p2", 4.35);
-      glide("#p2", 4.35, 2.1);
-      move("#p2", "#p3a", 7.25, 0.65);
-      move("#p3a", "#p3b", 7.85, 0.55);
-      move("#p3b", "#p3c", 8.45, 0.55);
+      /* ======== 1  "Ein Funke" — the full stop is the spark ======== */
+      gsap.set("#spark", { x: 289, y: -114.5, scale: 1.55, opacity: 0 });
+      wipe("#p2", 4.2, 1.0);
+      tl.fromTo("#p2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 4.2);
+      tl.fromTo("#spark", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1.55, duration: 0.5, ease: "back.out(2)" }, 4.75);
+      // the text leaves, the spark detaches and glides to the centre of the frame
+      blurOut("#p2", 6.55, 0.5);
+      tl.to("#spark", { x: 0, y: 0, scale: 1, duration: 1.0, ease: "power3.inOut" }, 6.35);
+
+      /* ======== 2  blur-morph in place ======== */
+      blurIn("#p3a", 7.15, 0.45);
+      blurOut("#p3a", 7.68, 0.25); blurIn("#p3b", 7.75, 0.4);
+      blurOut("#p3b", 8.28, 0.25); blurIn(["#p3t", "#p3u"], 8.35, 0.4);
       tl.to("#spark", { keyframes: [{ opacity: .45, duration: .12 }, { opacity: 1, duration: .14 }, { opacity: .35, duration: .1 }, { opacity: .9, duration: .16 }, { opacity: .5, duration: .12 }, { opacity: 1, duration: .3 }] }, 7.3);
-      glide("#p3c", 8.45, 1.0);
-      move("#p3c", "#p4", 10.25, 0.75);
-      rise("#p4b", 11.95, 0.6);
+
+      /* ======== 3  the split ======== */
+      tl.fromTo("#hair", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.35, ease: "power3.out" }, 9.75);
+      tl.to("#p3t", { y: -150, opacity: 0, duration: 0.6, ease: "power3.inOut" }, 9.95);
+      tl.to("#p3u", { y: 150, opacity: 0, duration: 0.6, ease: "power3.inOut" }, 9.95);
+      tl.to("#hair", { opacity: 0, scaleX: 1.3, duration: 0.5, ease: "power2.in" }, 10.1);
+      blurIn("#p4a", 10.2, 0.6);
+      wipe("#p4b", 11.85, 0.8);
       tl.fromTo("#p4b", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.2, ease: "power2.inOut" }, 11.95);
       tl.to("#spark", { scale: 1.5, duration: 1.6, ease: "sine.inOut" }, 10.4);
 
-      /* ======== the dive: the camera rushes into the spark ======== */
-      tl.to("#p4", { z: 900, opacity: 0, filter: "blur(18px)", duration: 0.7, ease: "power3.in" }, 12.45);
-      tl.to("#spark", { scale: 4.5, duration: 0.7, ease: "power3.in" }, 12.45);
-      travel(13.15, 0.7, "power3.in", 0.08);
-      { const a = silkS; silkS -= 0.06; tl.fromTo("#silk", { scale: a }, { scale: silkS, duration: 1.4, ease: "expo.out", immediateRender: false }, IGN); }
+      /* ======== the breath before: everything draws into the spark ======== */
+      tl.to("#p4", { scale: 0.6, y: 120, opacity: 0, filter: "blur(14px)", duration: 0.7, ease: "power3.in" }, 12.45);
+      tl.to("#spark", { scale: 3.2, duration: 0.7, ease: "power3.in" }, 12.45);
       tl.to(".ember", { opacity: 0, duration: 0.1 }, 12.4);
-      tl.fromTo(["#barT", "#barB"], { height: 0 }, { height: 110, duration: 0.7, ease: "power3.in" }, 12.45);
 
       /* ======== IGNITION ======== */
-      tl.to(["#barT", "#barB"], { height: 0, duration: 0.9, ease: "expo.out" }, IGN);
-      tl.fromTo("#white", { opacity: .9 }, { opacity: 0, duration: 0.6, ease: "power2.out", immediateRender: false }, IGN);
+      tl.fromTo("#white", { opacity: .7 }, { opacity: 0, duration: 0.7, ease: "power2.out", immediateRender: false }, IGN);
       tl.to("#spark", { scale: 10, opacity: 0, duration: 0.9, ease: "expo.out" }, IGN);
       tl.fromTo("#bloom", { opacity: 0, scale: 0.15 }, { opacity: 1, scale: 1.3, duration: 0.45, ease: "expo.out" }, IGN);
       tl.to("#bloom", { opacity: 0, scale: 1.9, duration: 1.4, ease: "power2.out" }, IGN + 0.45);
-      tl.fromTo("#streak", { opacity: 1, scaleX: 0.1, scaleY: 1.6 }, { opacity: 0, scaleX: 1.2, scaleY: 0.4, duration: 1.2, ease: "expo.out", immediateRender: false }, IGN);
+      tl.fromTo("#streak", { opacity: .9, scaleX: 0.1, scaleY: 1.2 }, { opacity: 0, scaleX: 1.15, scaleY: 0.4, duration: 1.2, ease: "expo.out", immediateRender: false }, IGN);
       tl.fromTo(".ember", { opacity: 0 }, { opacity: (i, el) => +el.dataset.o, duration: 1.0, ease: "power2.out", immediateRender: false }, IGN + 0.05);
       tl.fromTo("#scrim", { opacity: 0 }, { opacity: .75, duration: 1.0, ease: "power2.out" }, IGN + 0.3);
       tl.to("#scrim", { opacity: 1, duration: 0.8, ease: "power2.inOut" }, 18.6);
 
-      /* Potenzial comes out of the light: the camera pulls back from it */
-      tl.fromTo("#d", { z: 420, opacity: 0, filter: "blur(16px)" }, { z: 0, opacity: 1, filter: "blur(0px)", duration: 1.4, ease: "expo.out" }, IGN);
+      /* Potenzial: huge and soft, it settles precisely */
+      tl.fromTo("#d1", { opacity: 0, scale: 2.4, filter: "blur(24px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.5, ease: "expo.out" }, IGN + 0.05);
       tl.fromTo("#d1", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 2.6, ease: "power1.inOut" }, IGN);
-      rise("#d2", 14.6);
-      glide("#d", 14.55, 0.9);
+      tl.fromTo("#d2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 14.6);
+      blurOut("#d", 15.65, 0.45);
 
-      /* the stabs: three quick landings */
-      move("#d", "#e1", 16.15, 0.7);
-      move("#e1", "#e2", 16.75, 0.5);
-      move("#e2", "#e3", 17.65, 0.6);
-      tl.fromTo("#e3", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.0, ease: "power2.inOut" }, 17.65);
-      glide("#e3", 17.65, 0.7);
+      /* ======== 5  the list lights up ======== */
+      tl.fromTo("#e", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 15.95);
+      lit("#e1", 16.15, 0.35);
+      dim("#e1", 16.75, 0.4); lit("#e2", 16.75, 0.35);
+      dim("#e2", 17.65, 0.4); lit("#e3", 17.65, 0.4);
+      tl.fromTo("#e3 .g", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.0, ease: "power2.inOut" }, 17.65);
+      blurOut("#e", 18.6, 0.45);
 
-      /* ======== logo: the last landing ======== */
-      move("#e3", null, 19.15, 0.8);
-      tl.fromTo(["#logo", "#shine"], { z: FAR, opacity: 0, filter: "blur(8px)" }, { z: 0, opacity: 1, filter: "blur(0px)", duration: 0.8, ease: "power3.inOut" }, 18.35);
-      tl.fromTo("#ring", { opacity: .7, scale: 0.5 }, { opacity: 0, scale: 1.7, duration: 1.4, ease: "expo.out", immediateRender: false }, 19.15);
-      tl.fromTo("#shine", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.2, ease: "power2.inOut" }, 19.4);
-      tl.fromTo("#lline", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "expo.out" }, 19.6);
-      rise("#role", 19.85, .7);
-      rise("#cl1", 20.5, .7);
-      rise("#cl2", 22.05, .7);
+      /* ======== 6  logo: revealed top to bottom, then light passes over it ======== */
+      tl.fromTo("#logo", { "--v": "100%", opacity: 1 }, { "--v": "0%", duration: 1.1, ease: "power2.inOut" }, 19.0);
+      tl.fromTo("#ring", { opacity: .5, scale: 0.6 }, { opacity: 0, scale: 1.6, duration: 1.6, ease: "expo.out", immediateRender: false }, 19.15);
+      tl.fromTo("#shine", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.3, ease: "power2.inOut" }, 19.8);
+      tl.fromTo("#lline", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 19.7);
+      tl.fromTo("#role", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 20.0);
+      tl.fromTo("#claim", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 20.4);
+      tl.fromTo("#cl1", { opacity: .0 }, { opacity: .2, duration: 0.4 }, 20.4);
+      tl.fromTo("#cl2", { opacity: .0 }, { opacity: .2, duration: 0.4 }, 20.4);
+      lit("#cl1", 20.75, 0.6);
+      lit("#cl2", 22.05, 0.6);
       tl.fromTo("#cl2", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.2, ease: "power2.inOut" }, 22.05);
-      rise("#handle", 22.6, .7);
-      tl.to(["#logo", "#shine"], { z: 60, duration: 4.0, ease: "none" }, 19.95);
+      tl.fromTo("#handle", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.out" }, 22.6);
       tl.to(["#cam", "#silk"], { opacity: 0, duration: 0.9, ease: "power2.in" }, 23.55);
 
       window.__timelines["main"] = tl;

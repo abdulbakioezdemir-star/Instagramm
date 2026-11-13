@@ -72,6 +72,29 @@ Der Chef-Bot bewertet täglich. Er fährt **nicht selbst hoch**, sondern meldet 
 
 ---
 
+## Befehl 5 – Nur 1 Reel pro Tag pro Konto (gültig sofort, gegeben am 2026-11-13, ersetzt den Zeitplan aus Befehl 2)
+
+**Entscheidung des Besitzers:** Ab sofort nur noch **1 Reel pro Tag pro Konto**. Der Rest von Befehl 2 (Länge ca. 30 s, Qualität, Tests, LEARNINGS.md) und Befehl 3/4 gelten weiter.
+
+### Zeitplan (Europe/Berlin)
+
+| Konto | Einziger Slot | Bot, der postet | Bot, der NICHT mehr postet |
+|---|---|---|---|
+| @ahmed.glowup | 12:00 | „Ahmed Glowup – Teil 1 (Reel 12:00)“ | „Ahmed Glowup – Teil 2 (Reel 18:00) + Analyse“ |
+| @lorebound.tales | 13:00 | „Lorebound – zweites Reel 13:00“ | „Lorebound – tägliches Reel 19:00“ |
+| @valmora.nation | 15:00 | „Valmora – Teil 1 (Reel 15:00)“ | „Valmora – Teil 2 (Reel 21:00)“ |
+
+(Die frühen Slots hatten bisher auf allen drei Konten mehr Views.)
+
+### Regeln
+- **Bots für 18:00, 19:00 und 21:00:** nichts rendern, nichts posten. Nur Kommentare beantworten bzw. ausblenden ist erlaubt, dann Lauf beenden.
+- **Ahmed:** Ein Reel = ganze Folge des Tages („Tag N“, kein „Teil 1/2“). Hook, Gags, Ende mit der A/B-Abstimmung für Tag N+1. Stimmen unter dem Reel vom Vortag zählen.
+- **Valmora:** Ein Reel = ganzer Tag N („Tag N meiner eigenen Nation“, kein „Teil 1/2“). Top-Kommentar unter dem Reel vom Vortag entscheidet.
+- **Lorebound:** 1 Reel um 13:00, Kategorie wechseln wie bisher.
+- Analyse- und Kontroll-Bots: Soll = 1 Reel/Tag/Konto zu den Zeiten oben.
+
+---
+
 ## Status (vom Chef-Bot gepflegt)
 - 2026-11-10: Befehl 1 angelegt. Stufe 1 startet am 2026-11-11.
 - 2026-11-10: Befehl 2 vom Besitzer: Stufe 1 = 2 Reels/Tag/Konto statt 4. Extra-Bots pausiert.
@@ -80,3 +103,4 @@ Der Chef-Bot bewertet täglich. Er fährt **nicht selbst hoch**, sondern meldet 
 - 2026-11-11 (Chef-Bot, Abend): Stufe 1, Tag 1 von 2. Soll/Ist heute (Berlin): ahmed.glowup 2/2 (12:01, 18:01), lorebound.tales 2/2 (12:57, 19:00), valmora.nation 2/2 (15:00, 21:00). Views/Reel: Stufe-1-Reels alle <24 h, noch nicht bewertbar (Stand: ahmed 3042/908, lorebound 80/2, valmora 235/164). Basis vorher (Reels ≥24 h, 9.–10.11.): ahmed 1326 Views/1052 Reichweite (n=4), lorebound 118/101 (n=4), valmora 708/608 (n=3) – kleine Stichproben. Verteilung: alle 6 Haupt-Bots aktiv, lesen BEFEHLE.md, Zeitplan passt; 3 Extra-Bots deaktiviert; keine Fehlläufe, keiner >2 h (Lorebound je ~1,4–1,5 h). Auffällig: Lorebound-19:00-Reel (18147484315606747) nach ~4,5 h nur 2 Views laut Windsor-Cache (Trial, kein Refresh möglich) – morgen erneut prüfen. Hinweis bleibt: Analyse-Bots nennen noch "4 Reels/Tag".
 - 2026-11-12: Befehl 4 vom Besitzer: alle Bots antworten kurz.
 - 2026-11-12 (Chef-Bot, Abend): Stufe 1, Tag 2 von 2. Soll/Ist heute (Berlin): ahmed.glowup 2/2 (12:00, 18:00), lorebound.tales 2/2 (13:00, 19:00), valmora.nation 2/2 (15:01, 21:01). Views/Reel Stufe 1 (nur Reels ≥24 h = 11.11., n=2 je Konto) vs. Basis 9.–10.11.: ahmed 2852 vs. 1364 (209 %, Reichweite 2166 vs. 1077), lorebound 62 vs. 118 (53 %, Venus-Reel nur 7 Views), valmora 324 vs. 720 (45 %, Basis durch Tag-1/2-Neugier verzerrt) – sehr kleine Stichproben. Heute <24 h: ahmed 3089/969, lorebound 130/33, valmora 521/191. Follower: ahmed 14, valmora 16, lorebound 0 (Windsor). Bewertung: nicht stabil – lorebound und valmora unter 70 %. Probleme: growth/STUFE.md fehlt (Growth-Analyst lief 09:54 erfolgreich, Datei nicht im Repo); "Viral-Reel-Analyse für Instagram" und "grwoth marketing" sind noch AKTIV (sollten deaktiviert sein, liefen heute). Keine Fehlläufe, keiner >2 h (Lorebound ~1,5 h).
+- 2026-11-13: Befehl 5 vom Besitzer: nur noch 1 Reel/Tag/Konto (Ahmed 12:00, Lorebound 13:00, Valmora 15:00); Slot-2-Bots posten nicht mehr.

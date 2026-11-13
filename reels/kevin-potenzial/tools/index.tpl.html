@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="ui/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: Disp; font-weight: 300; src: url(fonts/InterDisplay-Light.otf) format("opentype"); }
+      @font-face { font-family: Disp; font-weight: 400; src: url(fonts/InterDisplay-Regular.otf) format("opentype"); }
+      @font-face { font-family: Disp; font-weight: 500; src: url(fonts/InterDisplay-Medium.otf) format("opentype"); }
+      @font-face { font-family: Disp; font-weight: 600; src: url(fonts/InterDisplay-SemiBold.otf) format("opentype"); }
+      @font-face { font-family: Disp; font-weight: 700; src: url(fonts/InterDisplay-Bold.otf) format("opentype"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      :root { --gold: #e3c27a; --grey: #86868b; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      .clip { position: absolute; inset: 0; }
+      .abs { position: absolute; }
+      .full { position: absolute; inset: 0; }
+
+      /* ---------- light ---------- */
+      #bg { background: #000; }
+      #warm { background: radial-gradient(70% 45% at 50% 50%, rgba(120,80,30,.55), rgba(60,38,12,.25) 45%, rgba(0,0,0,0) 75%); opacity: .35; }
+      #aur1 { left: -300px; top: 300px; width: 1100px; height: 1100px; border-radius: 50%; filter: blur(110px); background: radial-gradient(circle, rgba(214,160,74,.40), rgba(214,160,74,0) 65%); opacity: 0; }
+      #aur2 { left: 300px; top: 900px; width: 1100px; height: 1100px; border-radius: 50%; filter: blur(110px); background: radial-gradient(circle, rgba(170,105,40,.38), rgba(170,105,40,0) 65%); opacity: 0; }
+      .ember { position: absolute; left: 0; top: 0; border-radius: 50%; background: #ffe2a8; box-shadow: 0 0 10px 2px rgba(227,170,90,.65); }
+      #spark { left: 533px; top: 1093px; width: 14px; height: 14px; border-radius: 50%; background: #fff6e2;
+               box-shadow: 0 0 18px 6px rgba(255,214,140,.95), 0 0 60px 22px rgba(227,170,90,.55), 0 0 140px 60px rgba(200,130,50,.25); opacity: 0; }
+      #bloom { left: 40px; top: 600px; width: 1000px; height: 1000px; border-radius: 50%;
+               background: radial-gradient(circle, rgba(255,240,210,.95) 0%, rgba(240,196,120,.65) 18%, rgba(200,130,50,.25) 42%, rgba(0,0,0,0) 68%); opacity: 0; mix-blend-mode: screen; }
+      .ring { width: 300px; height: 300px; left: 390px; top: 950px; border-radius: 50%; border: 2px solid rgba(240,205,140,.9); opacity: 0; }
+      #vig { background: radial-gradient(120% 80% at 50% 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,.75) 100%); }
+      #grain { opacity: .05; mix-blend-mode: overlay; background-size: 256px 256px; }
+
+      /* ---------- type ---------- */
+      .t { position: absolute; left: 0; width: 1080px; text-align: center; font-family: Disp; color: #f5f5f7; letter-spacing: -0.025em; }
+      .l { display: block; }
+      .grey { color: var(--grey); }
+      .g { background: linear-gradient(100deg, #a8782f 0%, #f7e2ad 30%, #d4a454 55%, #fff1cc 72%, #b98a3e 100%); background-size: 220% 100%;
+           -webkit-background-clip: text; background-clip: text; color: transparent; }
+      #a { top: 820px; font-size: 92px; font-weight: 600; line-height: 1.1; }
+      #b { top: 840px; font-size: 104px; font-weight: 600; }
+      #c { top: 740px; font-size: 84px; font-weight: 600; line-height: 1.12; }
+      #d1 { top: 760px; font-size: 200px; font-weight: 700; letter-spacing: -0.045em; padding: 0 20px; }
+      #d2 { top: 1000px; font-size: 104px; font-weight: 300; letter-spacing: -0.02em; }
+      #e { top: 700px; font-size: 128px; font-weight: 600; line-height: 1.12; }
+      #logo { left: 185px; top: 560px; width: 710px; }
+      #logo img { width: 100%; display: block; }
+      #lline { left: 365px; top: 1190px; width: 350px; height: 2px; background: var(--gold); transform-origin: 50% 50%; }
+      #role { top: 1222px; font-size: 30px; font-weight: 500; letter-spacing: .42em; color: var(--gold); padding-left: .42em; }
+      #claim { top: 1320px; font-size: 64px; font-weight: 600; line-height: 1.16; }
+      #handle { top: 1530px; font-size: 34px; font-weight: 400; color: var(--grey); letter-spacing: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="22" data-fps="30" data-width="1080" data-height="1920">
+      <div id="stage" class="clip" data-start="0" data-duration="22" data-track-index="1">
+        <div id="bg" class="full">
+          <div id="warm" class="full"></div>
+          <div id="aur1" class="abs"></div><div id="aur2" class="abs"></div>
+          {EMBERS}
+          <div id="bloom" class="abs"></div>
+          <div id="r1" class="abs ring"></div><div id="r2" class="abs ring"></div>
+          <div id="spark" class="abs"></div>
+        </div>
+
+        <div id="a" class="t"><span class="l" id="a1">In dir steckt mehr,</span><span class="l grey" id="a2">als du denkst.</span></div>
+        <div id="b" class="t"><span class="l" id="b1">Ein Funke.</span></div>
+        <div id="c" class="t"><span class="l" id="c1">Er wartet nur darauf,</span><span class="l grey" id="c2"><span class="g" id="c3">entfacht</span> zu werden.</span></div>
+        <div id="d1" class="t g">Potenzial</div>
+        <div id="d2" class="t">entfachen.</div>
+        <div id="e" class="t"><span class="l" id="e1">Klarheit.</span><span class="l" id="e2">Fokus.</span><span class="l g" id="e3">Stärke.</span></div>
+
+        <div id="logo" class="abs"><img src="ui/kn-logo.png" alt="Kevin Nsimba" /></div>
+        <div id="lline" class="abs"></div>
+        <div id="role" class="t">MENTAL COACH</div>
+        <div id="claim" class="t"><span class="l" id="cl1">Train the mind.</span><span class="l g" id="cl2">Change the game.</span></div>
+        <div id="handle" class="t">@kevnsimba</div>
+
+        <div id="vig" class="full"></div>
+        <div id="grain" class="full" style="background-image:url(ui/grain.png)"></div>
+      </div>
+      <audio id="music" class="clip" src="music/rudenko-inhale2.mp3" data-start="0" data-duration="22" data-track-index="20" data-volume="0.9" data-media-start="62.88" data-fade-in="0.4" data-fade-out="1.6"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const IGN = 10.0; // the music opens up here
+
+      /* apple-style reveal: soft rise, fade, tiny blur. exits fade up. */
+      const show = (sel, t, d = 1.1, y = 36) => tl.fromTo(sel, { opacity: 0, y, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "power3.out" }, t);
+      const hide = (sel, t, d = 0.6) => tl.to(sel, { opacity: 0, y: -24, filter: "blur(8px)", duration: d, ease: "power2.in" }, t);
+
+      /* ======== ambient ======== */
+      tl.fromTo("#stage", { scale: 1.0 }, { scale: 1.04, duration: 22, ease: "none" }, 0);
+      tl.fromTo("#warm", { opacity: .25 }, { opacity: .45, duration: IGN, ease: "sine.inOut" }, 0);
+      {EMBER_JS}
+
+      /* ======== 1 ======== */
+      show("#a1", 0.25); show("#a2", 1.15);
+      hide("#a", 2.95);
+
+      /* ======== 2  the spark ======== */
+      tl.fromTo("#spark", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" }, 3.35);
+      tl.to("#spark", { keyframes: [{ scale: 1.25, duration: .9, ease: "sine.inOut" }, { scale: 1, duration: .9, ease: "sine.inOut" }, { scale: 1.3, duration: .9, ease: "sine.inOut" }, { scale: 1.05, duration: .8, ease: "sine.inOut" }] }, 4.6);
+      show("#b1", 3.7);
+      hide("#b", 6.15);
+
+      /* ======== 3 ======== */
+      show("#c1", 6.55); show("#c2", 7.35);
+      tl.fromTo("#c3", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.6, ease: "power2.inOut" }, 7.6);
+      hide("#c", 9.15);
+      // anticipation: the spark breathes faster, then draws in
+      tl.to("#spark", { scale: 1.8, duration: 0.45, ease: "power2.out" }, 8.4);
+      tl.to("#spark", { scale: 0.6, duration: 0.5, ease: "power3.in" }, IGN - 0.5);
+
+      /* ======== IGNITION ======== */
+      tl.to("#spark", { scale: 9, opacity: 0, duration: 0.9, ease: "expo.out" }, IGN);
+      tl.fromTo("#bloom", { opacity: 0, scale: 0.15 }, { opacity: 1, scale: 1.25, duration: 0.5, ease: "expo.out" }, IGN);
+      tl.to("#bloom", { opacity: 0, scale: 1.8, duration: 1.6, ease: "power2.out" }, IGN + 0.5);
+      tl.fromTo("#r1", { opacity: .9, scale: 0.1 }, { opacity: 0, scale: 5, duration: 1.4, ease: "expo.out", immediateRender: false }, IGN);
+      tl.fromTo("#r2", { opacity: .6, scale: 0.1 }, { opacity: 0, scale: 7, duration: 1.8, ease: "expo.out", immediateRender: false }, IGN + 0.12);
+      tl.to("#warm", { opacity: 1, duration: 0.6, ease: "power2.out" }, IGN);
+      tl.to("#warm", { opacity: .7, duration: 3, ease: "sine.inOut" }, IGN + 0.6);
+      tl.fromTo(["#aur1", "#aur2"], { opacity: 0 }, { opacity: 1, duration: 1.4, ease: "power2.out" }, IGN);
+      tl.fromTo("#aur1", { x: 0, y: 0 }, { x: 300, y: -200, duration: 12, ease: "sine.inOut" }, IGN);
+      tl.fromTo("#aur2", { x: 0, y: 0 }, { x: -280, y: -260, duration: 12, ease: "sine.inOut" }, IGN);
+      tl.fromTo(".ember", { opacity: 0 }, { opacity: (i, el) => +el.dataset.o, duration: 1.2, ease: "power2.out" }, IGN + 0.1);
+
+      /* ======== 4  Potenzial entfachen ======== */
+      tl.fromTo("#d1", { opacity: 0, scale: 1.18, filter: "blur(18px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.4, ease: "expo.out" }, IGN + 0.15);
+      tl.fromTo("#d1", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 3.2, ease: "power1.inOut" }, IGN + 0.15);
+      show("#d2", IGN + 0.95, 1.2);
+      hide(["#d1", "#d2"], 13.75, 0.6);
+
+      /* ======== 5 ======== */
+      show("#e1", 14.15, 0.9); show("#e2", 14.65, 0.9); show("#e3", 15.15, 0.9);
+      tl.fromTo("#e3", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.4, ease: "power2.inOut" }, 15.2);
+      hide("#e", 16.55, 0.6);
+
+      /* ======== 6  logo ======== */
+      tl.fromTo("#logo", { opacity: 0, scale: 1.06, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.6, ease: "expo.out" }, 17.05);
+      tl.fromTo("#lline", { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: "expo.out" }, 17.7);
+      show("#role", 17.95, 1.0, 16);
+      show("#cl1", 18.45, 1.0, 24); show("#cl2", 18.75, 1.0, 24);
+      tl.fromTo("#cl2", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.8, ease: "power2.inOut" }, 18.8);
+      show("#handle", 19.3, 1.0, 16);
+      tl.to("#stage", { opacity: 0, duration: 0.8, ease: "power2.in" }, 21.2);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -7,9 +7,9 @@ tpl = (HERE / "tools" / "index.tpl.html").read_text()
 logo = (HERE / "ui" / "logo.svg").read_text()
 rng = random.Random(7)
 emb, js = [], []
-for i in range(34):
-    x, sz, d, delay = rng.uniform(20, 1060), rng.uniform(4, 10), rng.uniform(7, 13), rng.uniform(0, 12)
-    op = rng.uniform(.12, .4)
+for i in range(22):
+    x, sz, d, delay = rng.uniform(20, 1060), rng.uniform(3, 7), rng.uniform(7, 13), rng.uniform(0, 12)
+    op = rng.uniform(.1, .32)
     emb.append(f'<div class="ember" id="e{i}" style="left:{x:.0f}px;top:0;width:{sz:.1f}px;height:{sz:.1f}px"></div>')
     drift = rng.uniform(-90, 90)
     # each ember rises from below the frame; start offset spreads them over the screen at t=0
@@ -23,6 +23,11 @@ sfx = []
 for i, (t, f, v) in enumerate([(2.78, "whoosh", .22), (4.25, "whoosh", .3), (8.98, "whoosh-short", .25), (11.45, "whoosh-short", .22), (13.88, "whoosh-short", .25)]):
     sfx.append(f'<audio id="sx{i}" class="clip" src="sfx/{f}.mp3" data-start="{t}" data-duration="0.6" data-track-index="{10+i}" data-volume="{v}"></audio>')
 out = tpl.replace("{LOGO}", logo).replace("{EMBERS}", "\n          ".join(emb)).replace("{EMBER_JS}", "\n      ".join(js)).replace("{BRAND}", brand).replace("{SFX}", "\n      ".join(sfx))
+def chars(m):
+    return m.group(1) + "".join(f'<span class="c">{ch}</span>' for ch in m.group(2)) + m.group(3)
+# split headline words into characters so they can be revealed letter by letter
+out = re.sub(r'(<span class="w" id="[^"]+">)([^<]+)(</span>)', chars, out)
+out = re.sub(r'(<div class="pw[^>]*>)([^<]+)(</div>)', chars, out)
 (HERE / "index.html").write_text(out)
 g = np.random.default_rng(3).normal(128, 50, (256, 256)).clip(0, 255).astype(np.uint8)
 cv2.imwrite(str(HERE / "ui" / "grain.png"), g)

@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=1080, height=1920" />
     <script src="ui/gsap.min.js"></script>
     <style>
-      @font-face { font-family: Sora; font-weight: 800; src: url(fonts/sora-latin-800-normal.woff2) format("woff2"); }
-      @font-face { font-family: Sora; font-weight: 700; src: url(fonts/sora-latin-700-normal.woff2) format("woff2"); }
-      @font-face { font-family: Sora; font-weight: 600; src: url(fonts/sora-latin-600-normal.woff2) format("woff2"); }
-      @font-face { font-family: Manrope; font-weight: 600; src: url(fonts/manrope-latin-600-normal.woff2) format("woff2"); }
-      @font-face { font-family: Manrope; font-weight: 500; src: url(fonts/manrope-latin-500-normal.woff2) format("woff2"); }
+      @font-face { font-family: Sora; font-weight: 300; src: url(fonts/Sora-Light.ttf) format("truetype"); }
+      @font-face { font-family: Sora; font-weight: 400; src: url(fonts/Sora-Regular.ttf) format("truetype"); }
+      @font-face { font-family: Sora; font-weight: 600; src: url(fonts/Sora-SemiBold.ttf) format("truetype"); }
+      @font-face { font-family: Sora; font-weight: 700; src: url(fonts/Sora-Bold.ttf) format("truetype"); }
+      @font-face { font-family: Sora; font-weight: 800; src: url(fonts/Sora-ExtraBold.ttf) format("truetype"); }
+      @font-face { font-family: Manrope; font-weight: 500; src: url(fonts/Manrope-Medium.ttf) format("truetype"); }
+      @font-face { font-family: Manrope; font-weight: 600; src: url(fonts/Manrope-SemiBold.ttf) format("truetype"); }
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0c0705; }
       :root { --or: #ff7a00; --or2: #ff9a2e; }
@@ -33,13 +35,15 @@
       .ember { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #ffb46b; box-shadow: 0 0 12px 3px rgba(255,122,0,.7); }
       #flash { background: radial-gradient(60% 40% at 50% 46%, rgba(255,140,40,.55), rgba(255,100,0,0) 70%); opacity: 0; mix-blend-mode: screen; }
       #vig { background: radial-gradient(110% 75% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,.7) 100%); }
-      #b1, #b2, #b3 { opacity: .55; } #lines { opacity: .4 !important; } #rays { opacity: .5; } #grid { opacity: .45; }
+      #b1, #b2, #b3 { opacity: .5; } #lines { opacity: .28 !important; filter: none; } #rays, #grid, #l2, #l4, #l6 { display: none; }
       #grain { opacity: .07; mix-blend-mode: overlay; background-size: 256px 256px; }
 
       /* ---------- type ---------- */
       .h { font-family: Sora; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1.02; text-align: center; width: 1080px; left: 0; }
       .o { color: var(--or); }
-      .w { display: inline-block; will-change: transform, opacity, filter; }
+      .w { display: inline-block; }
+      .c { display: inline-block; will-change: transform; }
+      .lt { font-weight: 300; letter-spacing: -0.01em; color: rgba(255,255,255,.94); }
       .mask { overflow: hidden; display: block; padding: 0.1em 0 0.14em; margin: -0.1em 0 -0.14em; }
       #t1 { top: 760px; font-size: 118px; }
       #t2 { top: 700px; font-size: 168px; }
@@ -47,14 +51,14 @@
       #pill { top: 0; left: 0; width: 1080px; height: 1920px; }
       #col { position: absolute; left: 0; width: 1080px; top: 0; }
       .pw { position: absolute; left: 0; width: 1080px; height: 220px; line-height: 220px; font-size: 150px; text-align: center; font-family: Sora; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
-      #count { top: 1120px; width: 1080px; left: 0; text-align: center; font-family: Manrope; font-weight: 600; font-size: 30px; letter-spacing: .32em; color: rgba(255,255,255,.75); }
-      #bar { top: 1090px; left: 390px; width: 300px; height: 4px; background: rgba(255,255,255,.14); border-radius: 2px; overflow: hidden; }
-      #barf { width: 100%; height: 100%; background: var(--or); transform-origin: 0 50%; transform: scaleX(0); box-shadow: 0 0 14px var(--or); }
+      #count { top: 1118px; width: 1080px; left: 0; text-align: center; font-family: Manrope; font-weight: 500; font-size: 26px; letter-spacing: .36em; color: rgba(255,255,255,.6); }
+      #bar { top: 1090px; left: 420px; width: 240px; height: 3px; background: rgba(255,255,255,.14); border-radius: 2px; overflow: hidden; }
+      #barf { width: 100%; height: 100%; background: var(--or); transform-origin: 0 50%; transform: scaleX(0); }
       .digits { display: inline-block; height: 1.2em; overflow: hidden; vertical-align: top; }
       .digits span span { display: block; height: 1.2em; line-height: 1.2em; } #dg { display: block; }
       /* für marken */
       #fm { top: 760px; font-size: 116px; }
-      #fmline { top: 905px; left: 170px; width: 740px; height: 5px; background: var(--or); box-shadow: 0 0 22px rgba(255,122,0,.8); border-radius: 3px; }
+      #fmline { top: 905px; left: 240px; width: 600px; height: 3px; background: var(--or); border-radius: 2px; }
       #fa { top: 935px; font-size: 116px; }
       #dm { top: 790px; font-size: 132px; }
       #uf { top: 945px; font-size: 132px; }
@@ -68,9 +72,9 @@
       #rays { left: -460px; top: -100px; width: 2000px; height: 2000px; border-radius: 50%; background: conic-gradient(from 0deg, rgba(255,122,0,0) 0deg, rgba(255,122,0,.16) 12deg, rgba(255,122,0,0) 30deg, rgba(255,122,0,0) 60deg, rgba(255,150,40,.12) 75deg, rgba(255,122,0,0) 95deg, rgba(255,122,0,0) 150deg, rgba(255,122,0,.14) 165deg, rgba(255,122,0,0) 185deg, rgba(255,122,0,0) 240deg, rgba(255,150,40,.12) 252deg, rgba(255,122,0,0) 272deg, rgba(255,122,0,0) 360deg); -webkit-mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,.5) 35%, transparent 62%); mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,.5) 35%, transparent 62%); filter: blur(6px); }
       #logo svg { width: 100%; display: block; }
       #streak { left: 0; top: 560px; width: 260px; height: 560px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,240,220,.85), rgba(255,255,255,0)); mix-blend-mode: overlay; opacity: 0; }
-      #brand { top: 1030px; width: 1080px; left: 0; text-align: center; font-family: Sora; font-weight: 700; font-size: 92px; letter-spacing: .12em; color: #fff; }
+      #brand { top: 1030px; width: 1080px; left: 0; text-align: center; font-family: Sora; font-weight: 600; font-size: 88px; letter-spacing: .14em; color: #fff; }
       #tag { top: 1170px; width: 1080px; left: 0; text-align: center; font-family: Manrope; font-weight: 500; font-size: 32px; letter-spacing: .3em; color: rgba(255,255,255,.82); }
-      .tl { position: absolute; top: 1190px; width: 110px; height: 3px; background: var(--or); }
+      .tl { position: absolute; top: 1191px; width: 110px; height: 2px; background: var(--or); }
       #tl1 { left: 70px; transform-origin: 100% 50%; } #tl2 { right: 70px; transform-origin: 0 50%; }
       #dot { left: 528px; top: 900px; width: 24px; height: 24px; border-radius: 50%; background: var(--or); box-shadow: 0 0 40px 12px rgba(255,122,0,.8); opacity: 0; }
       #ring { left: 340px; top: 712px; width: 400px; height: 400px; border-radius: 50%; border: 4px solid var(--or); opacity: 0; }
@@ -99,12 +103,12 @@
 
         <!-- 1 hook -->
         <div id="t1" class="abs h">
-          <span class="mask"><span class="w" id="t1a">Aufmerksamkeit</span></span>
+          <span class="mask lt"><span class="w" id="t1a">Aufmerksamkeit</span></span>
           <span class="mask o"><span class="w" id="t1b">ist</span> <span class="w" id="t1c">kein</span> <span class="w" id="t1d">Zufall.</span></span>
         </div>
         <!-- 2 -->
         <div id="t2" class="abs h">
-          <span class="mask"><span class="w" id="t2a">Sie</span> <span class="w" id="t2b">wird</span></span>
+          <span class="mask lt"><span class="w" id="t2a">Sie</span> <span class="w" id="t2b">wird</span></span>
           <span class="mask o"><span class="w" id="t2c">gemacht.</span></span>
         </div>
         <!-- 3 pillars -->
@@ -119,11 +123,11 @@
           <div id="count" class="abs"><span class="digits"><span id="dg"><span>01</span><span>02</span><span>03</span></span></span> / 04</div>
         </div>
         <!-- 4 -->
-        <div id="fm" class="abs h"><span class="mask"><span class="w" id="fm1">Für</span> <span class="w" id="fm2">Marken</span></span></div>
+        <div id="fm" class="abs h"><span class="mask lt"><span class="w" id="fm1">Für</span> <span class="w" id="fm2">Marken</span></span></div>
         <div id="fmline" class="abs"></div>
         <div id="fa" class="abs h o"><span class="mask"><span class="w" id="fa1">mit</span> <span class="w" id="fa2">Anspruch.</span></span></div>
         <!-- 5 -->
-        <div id="dm" class="abs h"><span class="mask"><span class="w" id="dm1">Deine</span> <span class="w" id="dm2">Marke.</span></span></div>
+        <div id="dm" class="abs h"><span class="mask lt"><span class="w" id="dm1">Deine</span> <span class="w" id="dm2">Marke.</span></span></div>
         <div id="uf" class="abs h o"><span class="mask"><span class="w" id="uf1">Unser</span> <span class="w" id="uf2">Fokus.</span></span></div>
         <!-- 6 logo -->
         <div id="dot" class="abs"></div>
@@ -164,13 +168,15 @@
       {EMBER_JS}
 
       /* one motion language: words rise out of a hard edge, leave upward through it. no blur, no overlap. */
-      const IN = (sel, t, st = 0.07, d = 0.75) => tl.fromTo(sel, { yPercent: 135 }, { yPercent: 0, duration: d, ease: "expo.out", stagger: st }, t);
-      const OUT = (sel, t, st = 0.04) => tl.to(sel, { yPercent: -135, duration: 0.38, ease: "power3.in", stagger: st }, t);
+      const C = (s) => (Array.isArray(s) ? s : [s]).map((x) => x + " .c").join(", ");
+      const IN = (sel, t, st = 0, d = 0.9) => tl.fromTo(C(sel), { yPercent: 135 }, { yPercent: 0, duration: d, ease: "expo.out", stagger: 0.022 }, t);
+      const OUT = (sel, t, st = 0) => tl.to(C(sel), { yPercent: -135, duration: 0.42, ease: "power3.in", stagger: 0.012 }, t);
       const pulse = (t, a = .35) => tl.fromTo("#flash", { opacity: a }, { opacity: 0, duration: 1.1, ease: "power2.out", immediateRender: false }, t);
 
       /* ======== 1  hook ======== */
       tl.fromTo("#stage", { scale: 1.05 }, { scale: 1, duration: 1.6, ease: "expo.out" }, 0);
       pulse(0, .5);
+      tl.to("#stage", { scale: 1.025, duration: 15.7, ease: "none" }, 1.6);
       IN("#t1a", 0.05, 0, 0.9);
       IN("#t1b", 1.2); IN("#t1c", 1.8); IN("#t1d", 2.12);
       tl.fromTo("#t1", { scale: 1 }, { scale: 1.03, duration: 2.7, ease: "none" }, 0);
@@ -186,7 +192,7 @@
 
       /* ======== 3  pillars: one word at a time, same spot ======== */
       const stops = [5.0, 6.06, 7.24, 8.38];
-      tl.set(".pw", { yPercent: 135 }, 0);
+      tl.set(".pw .c", { yPercent: 135 }, 0);
       stops.forEach((t, i) => {
         const at = t - 0.1;
         if (i > 0) OUT("#p" + (i - 1), at - 0.36, 0);
@@ -205,12 +211,10 @@
       tl.set("#fm", { opacity: 1 }, 0);
       IN(["#fm1", "#fm2"], 9.5, 0.09);
       tl.fromTo("#fmline", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "expo.out" }, 9.75);
-      tl.set(["#fa1", "#fa2"], { yPercent: 135 }, 0);
-      tl.to("#fa1", { yPercent: 0, duration: 0.7, ease: "expo.out" }, 10.72);
-      tl.to("#fa2", { yPercent: 0, duration: 0.7, ease: "expo.out" }, 10.8);
+      IN("#fa1", 10.72); IN("#fa2", 10.8);
       pulse(10.76, .3);
       OUT(["#fm1", "#fm2"], 11.42, 0.04);
-      tl.to(["#fa1", "#fa2"], { yPercent: 135, duration: 0.38, ease: "power3.in", stagger: 0.04 }, 11.42);
+      OUT(["#fa1", "#fa2"], 11.42);
       tl.to("#fmline", { scaleX: 0, duration: 0.45, ease: "power3.in" }, 11.45);
 
       /* ======== 5  Deine Marke. Unser Fokus. ======== */

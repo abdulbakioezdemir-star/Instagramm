@@ -12,57 +12,56 @@
       @font-face { font-family: Disp; font-weight: 700; src: url(fonts/InterDisplay-Bold.otf) format("opentype"); }
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
-      :root { --gold: #e3c27a; --grey: #86868b; }
+      :root { --gold: #e3c27a; --grey: #8e8e93; }
       #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
       .clip { position: absolute; inset: 0; }
       .abs { position: absolute; }
       .full { position: absolute; inset: 0; }
+      #silk { width: 1080px; height: 1920px; object-fit: cover; }
 
-      /* ---------- light ---------- */
-      #bg { background: transparent; }
-      #warm, #aur1, #aur2, .ring { display: none; }
-      #streak { left: -200px; top: 1096px; width: 1480px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, rgba(255,200,120,0), rgba(255,215,150,.85) 35%, #fffaf0 50%, rgba(255,215,150,.85) 65%, rgba(255,200,120,0)); filter: blur(2px); opacity: 0; }
-      #shine { left: 185px; top: 560px; width: 710px; height: 600px; -webkit-mask-image: url(ui/kn-logo.png); mask-image: url(ui/kn-logo.png); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; background: linear-gradient(105deg, rgba(255,255,255,0) 40%, rgba(255,236,190,1) 50%, rgba(255,255,255,0) 60%); background-size: 300% 100%; background-position: 100% 0; }
-      #warm { background: radial-gradient(70% 45% at 50% 50%, rgba(120,80,30,.55), rgba(60,38,12,.25) 45%, rgba(0,0,0,0) 75%); opacity: .35; }
-      #aur1 { left: -300px; top: 300px; width: 1100px; height: 1100px; border-radius: 50%; filter: blur(110px); background: radial-gradient(circle, rgba(214,160,74,.40), rgba(214,160,74,0) 65%); opacity: 0; }
-      #aur2 { left: 300px; top: 900px; width: 1100px; height: 1100px; border-radius: 50%; filter: blur(110px); background: radial-gradient(circle, rgba(170,105,40,.38), rgba(170,105,40,0) 65%); opacity: 0; }
       .ember { position: absolute; left: 0; top: 0; border-radius: 50%; background: #ffe2a8; box-shadow: 0 0 10px 2px rgba(227,170,90,.65); }
       #spark { left: 533px; top: 1093px; width: 14px; height: 14px; border-radius: 50%; background: #fff6e2;
                box-shadow: 0 0 18px 6px rgba(255,214,140,.95), 0 0 60px 22px rgba(227,170,90,.55), 0 0 140px 60px rgba(200,130,50,.25); opacity: 0; }
       #bloom { left: 40px; top: 600px; width: 1000px; height: 1000px; border-radius: 50%;
                background: radial-gradient(circle, rgba(255,240,210,.95) 0%, rgba(240,196,120,.65) 18%, rgba(200,130,50,.25) 42%, rgba(0,0,0,0) 68%); opacity: 0; mix-blend-mode: screen; }
-      .ring { width: 300px; height: 300px; left: 390px; top: 950px; border-radius: 50%; border: 2px solid rgba(240,205,140,.9); opacity: 0; }
-      #scrim { background: radial-gradient(64% 36% at 50% 54%, rgba(8,5,2,.82), rgba(8,5,2,.45) 55%, rgba(8,5,2,0) 100%); opacity: 0; }
+      #streak { left: -200px; top: 1096px; width: 1480px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, rgba(255,200,120,0), rgba(255,215,150,.85) 35%, #fffaf0 50%, rgba(255,215,150,.85) 65%, rgba(255,200,120,0)); filter: blur(2px); opacity: 0; }
+      #flash { background: radial-gradient(70% 50% at 50% 55%, rgba(255,235,200,.55), rgba(255,200,120,.15) 50%, rgba(0,0,0,0) 80%); opacity: 0; mix-blend-mode: screen; }
+      #white { background: #fff7e8; opacity: 0; }
+      #scrim { background: radial-gradient(64% 36% at 50% 52%, rgba(8,5,2,.82), rgba(8,5,2,.45) 55%, rgba(8,5,2,0) 100%); opacity: 0; }
       #vig { background: radial-gradient(120% 80% at 50% 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,.75) 100%); }
-      #grain { opacity: .05; mix-blend-mode: overlay; background-size: 256px 256px; }
+      .bar { position: absolute; left: 0; width: 1080px; height: 0; background: #000; }
+      #barT { top: 0; } #barB { bottom: 0; }
+      #grain { opacity: .06; mix-blend-mode: overlay; background-size: 256px 256px; }
 
-      /* ---------- type ---------- */
-      .t { position: absolute; left: 0; width: 1080px; text-align: center; font-family: Disp; color: #f5f5f7; letter-spacing: -0.025em; }
+      .t { position: absolute; left: 0; width: 1080px; text-align: center; font-family: Disp; color: #f5f5f7; letter-spacing: -0.03em; }
       .l { display: block; }
       .grey { color: var(--grey); }
       .g { background: linear-gradient(100deg, #a8782f 0%, #f7e2ad 30%, #d4a454 55%, #fff1cc 72%, #b98a3e 100%); background-size: 220% 100%;
            -webkit-background-clip: text; background-clip: text; color: transparent; }
-      #a { top: 820px; font-size: 92px; font-weight: 600; line-height: 1.1; }
-      #b { top: 840px; font-size: 104px; font-weight: 600; }
-      #c { top: 740px; font-size: 84px; font-weight: 600; line-height: 1.12; }
-      #d1 { top: 760px; font-size: 200px; font-weight: 700; letter-spacing: -0.045em; padding: 0 20px; }
-      #d2 { top: 1000px; font-size: 104px; font-weight: 300; letter-spacing: -0.02em; }
-      #e { top: 700px; font-size: 128px; font-weight: 600; line-height: 1.12; }
+      #p1 { top: 790px; font-size: 100px; font-weight: 700; line-height: 1.08; }
+      #p2 { top: 830px; font-size: 128px; font-weight: 700; }
+      #p3 { top: 610px; font-size: 140px; font-weight: 700; line-height: 1.08; }
+      #p4 { top: 780px; font-size: 100px; font-weight: 600; line-height: 1.1; }
+      #p4b { font-size: 150px; font-weight: 700; }
+      #d1 { top: 760px; font-size: 210px; font-weight: 700; letter-spacing: -0.05em; padding: 0 20px; }
+      #d2 { top: 1010px; font-size: 108px; font-weight: 300; letter-spacing: -0.02em; }
+      #e { top: 700px; font-size: 136px; font-weight: 700; line-height: 1.1; }
       #logo { left: 185px; top: 560px; width: 710px; }
       #logo img { width: 100%; display: block; }
+      #shine { left: 185px; top: 560px; width: 710px; height: 600px; -webkit-mask-image: url(ui/kn-logo.png); mask-image: url(ui/kn-logo.png); -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+               background: linear-gradient(105deg, rgba(255,255,255,0) 40%, rgba(255,236,190,1) 50%, rgba(255,255,255,0) 60%); background-size: 300% 100%; background-position: 100% 0; }
+      #ring { left: 140px; top: 460px; width: 800px; height: 800px; border-radius: 50%; border: 3px solid rgba(240,205,140,.9); opacity: 0; }
       #lline { left: 365px; top: 1190px; width: 350px; height: 2px; background: var(--gold); transform-origin: 50% 50%; }
       #role { top: 1222px; font-size: 30px; font-weight: 500; letter-spacing: .42em; color: var(--gold); padding-left: .42em; }
-      #claim { top: 1320px; font-size: 64px; font-weight: 600; line-height: 1.16; }
-      #handle { top: 1530px; font-size: 34px; font-weight: 400; color: #c9c6c0; letter-spacing: 0; }
+      #claim { top: 1320px; font-size: 66px; font-weight: 700; line-height: 1.16; }
+      #handle { top: 1535px; font-size: 34px; font-weight: 400; color: #c9c6c0; letter-spacing: 0; }
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="22" data-fps="30" data-width="1080" data-height="1920">
-      <video id="silk" class="clip" src="clips/silk.mp4" muted playsinline data-start="0" data-duration="22" data-track-index="0"></video>
-      <div id="stage" class="clip" data-start="0" data-duration="22" data-track-index="1">
-        <div id="bg" class="full">
-          <div id="warm" class="full"></div>
-          <div id="aur1" class="abs"></div><div id="aur2" class="abs"></div>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="24.5" data-fps="30" data-width="1080" data-height="1920">
+      <video id="silk" class="clip" src="clips/silk.mp4" muted playsinline data-start="0" data-duration="24.5" data-track-index="0"></video>
+      <div id="stage" class="clip" data-start="0" data-duration="24.5" data-track-index="1">
+        <div id="cam" class="full">
           <div class="ember" id="em0" data-o="0.40" style="left:492px;width:5.2px;height:5.2px;opacity:0"></div>
           <div class="ember" id="em1" data-o="0.24" style="left:225px;width:5.0px;height:5.0px;opacity:0"></div>
           <div class="ember" id="em2" data-o="0.59" style="left:131px;width:6.2px;height:6.2px;opacity:0"></div>
@@ -94,43 +93,57 @@
           <div class="ember" id="em28" data-o="0.34" style="left:777px;width:5.8px;height:5.8px;opacity:0"></div>
           <div class="ember" id="em29" data-o="0.55" style="left:941px;width:6.5px;height:6.5px;opacity:0"></div>
           <div id="bloom" class="abs"></div>
-          <div id="r1" class="abs ring"></div><div id="r2" class="abs ring"></div>
           <div id="spark" class="abs"></div>
           <div id="streak" class="abs"></div>
+          <div id="scrim" class="full"></div>
+
+          <div id="p1" class="t"><span class="l" id="p1a">In dir steckt mehr,</span><span class="l grey" id="p1b">als du denkst.</span></div>
+          <div id="p2" class="t">Ein Funke.</div>
+          <div id="p3" class="t grey"><span class="l" id="p3a">Druck.</span><span class="l" id="p3b">Zweifel.</span><span class="l" id="p3c">Angst.</span></div>
+          <div id="p4" class="t"><span class="l" id="p4a">Doch ein Funke</span><span class="l g" id="p4b">genügt.</span></div>
+          <div id="d1" class="t g">Potenzial</div>
+          <div id="d2" class="t">entfachen.</div>
+          <div id="e" class="t"><span class="l" id="e1">Klarheit.</span><span class="l" id="e2">Fokus.</span><span class="l g" id="e3">Stärke.</span></div>
+
+          <div id="ring" class="abs"></div>
+          <div id="logo" class="abs"><img src="ui/kn-logo.png" alt="Kevin Nsimba" /></div>
+          <div id="shine" class="abs"></div>
+          <div id="lline" class="abs"></div>
+          <div id="role" class="t">MENTAL COACH</div>
+          <div id="claim" class="t"><span class="l" id="cl1">Train the mind.</span><span class="l g" id="cl2">Change the game.</span></div>
+          <div id="handle" class="t">@kevnsimba</div>
         </div>
-
-        <div id="scrim" class="full"></div>
-        <div id="a" class="t"><span class="l" id="a1">In dir steckt mehr,</span><span class="l grey" id="a2">als du denkst.</span></div>
-        <div id="b" class="t"><span class="l" id="b1">Ein Funke.</span></div>
-        <div id="c" class="t"><span class="l" id="c1">Er wartet nur darauf,</span><span class="l grey" id="c2"><span class="g" id="c3">entfacht</span> zu werden.</span></div>
-        <div id="d1" class="t g">Potenzial</div>
-        <div id="d2" class="t">entfachen.</div>
-        <div id="e" class="t"><span class="l" id="e1">Klarheit.</span><span class="l" id="e2">Fokus.</span><span class="l g" id="e3">Stärke.</span></div>
-
-        <div id="logo" class="abs"><img src="ui/kn-logo.png" alt="Kevin Nsimba" /></div>
-        <div id="shine" class="abs"></div>
-        <div id="lline" class="abs"></div>
-        <div id="role" class="t">MENTAL COACH</div>
-        <div id="claim" class="t"><span class="l" id="cl1">Train the mind.</span><span class="l g" id="cl2">Change the game.</span></div>
-        <div id="handle" class="t">@kevnsimba</div>
-
+        <div id="flash" class="full"></div>
+        <div id="white" class="full"></div>
         <div id="vig" class="full"></div>
+        <div id="bars" class="full"><div id="barT" class="bar"></div><div id="barB" class="bar"></div></div>
         <div id="grain" class="full" style="background-image:url(ui/grain.png)"></div>
       </div>
-      <audio id="music" class="clip" src="music/rudenko-inhale2.mp3" data-start="0" data-duration="22" data-track-index="20" data-volume="0.9" data-media-start="62.88" data-fade-in="0.4" data-fade-out="1.6"></audio>
+      <audio id="music" class="clip" src="music/onni-fearless.mp3" data-start="0" data-duration="24.5" data-track-index="20" data-volume="1" data-media-start="5.85" data-fade-out="1.2"></audio>
+      <audio id="riser" class="clip" src="sfx/riser.wav" data-start="12.12" data-duration="1.0" data-track-index="21" data-volume="0.35"></audio>
+      <audio id="boom" class="clip" src="sfx/boom.wav" data-start="13.15" data-duration="2.2" data-track-index="22" data-volume="0.9"></audio>
+      <audio id="boom2" class="clip" src="sfx/boom.wav" data-start="19.15" data-duration="2.2" data-track-index="23" data-volume="0.55"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      const IGN = 10.0; // the music opens up here
+      const IGN = 13.15;          // the big entry of the music
 
-      /* apple-style reveal: soft rise, fade, tiny blur. exits fade up. */
-      const show = (sel, t, d = 1.1, y = 36) => tl.fromTo(sel, { opacity: 0, y, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "power3.out" }, t);
-      const hide = (sel, t, d = 0.6) => tl.to(sel, { opacity: 0, y: -24, filter: "blur(8px)", duration: d, ease: "power2.in" }, t);
+      /* ---------- motion vocabulary ---------- */
+      const slam = (sel, t, from = 1.35, d = 0.45) => tl.fromTo(sel, { opacity: 0, scale: from, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: d, ease: "expo.out" }, t - 0.06);
+      const rise = (sel, t, d = 0.6) => tl.fromTo(sel, { opacity: 0, y: 40, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "power3.out" }, t);
+      const exitZ = (sel, t, d = 0.28) => tl.to(sel, { opacity: 0, scale: 1.6, filter: "blur(16px)", duration: d, ease: "power2.in" }, t);
+      const punch = (t, a = 0.035) => {
+        tl.fromTo("#cam", { scale: 1 + a }, { scale: 1, duration: 0.55, ease: "expo.out", immediateRender: false }, t);
+        tl.fromTo("#silk", { scale: 1 + a * 1.4 }, { scale: 1, duration: 0.7, ease: "expo.out", immediateRender: false }, t);
+      };
+      const flash = (t, a = 0.6) => tl.fromTo("#flash", { opacity: a }, { opacity: 0, duration: 0.5, ease: "power2.out", immediateRender: false }, t);
+      const shake = (t, amp = 14) => tl.fromTo("#cam", { x: 0, y: 0 }, { keyframes: [
+        { x: amp, y: -amp * .6, duration: .04 }, { x: -amp * .8, y: amp * .5, duration: .04 }, { x: amp * .5, y: amp * .3, duration: .04 },
+        { x: -amp * .3, y: -amp * .2, duration: .05 }, { x: 0, y: 0, duration: .06 }], immediateRender: false }, t);
 
-      /* ======== ambient ======== */
-      tl.fromTo("#stage", { scale: 1.0 }, { scale: 1.04, duration: 22, ease: "none" }, 0);
-      tl.fromTo("#warm", { opacity: .25 }, { opacity: .45, duration: IGN, ease: "sine.inOut" }, 0);
+      tl.set("#cam", { scale: 1, x: 0, y: 0 }, 0);
+      tl.set("#silk", { scale: 1 }, 0);
       tl.fromTo("#em0", { y: 999, x: 7 }, { y: -80, x: 14, duration: 7.03, ease: "none" }, 0);
       tl.fromTo("#em0", { y: 2000, x: 0 }, { y: -80, x: 14, duration: 13.55, ease: "none", repeat: 2, immediateRender: false }, 7.03);
       tl.fromTo("#em1", { y: 40, x: -30 }, { y: -80, x: -31, duration: 0.68, ease: "none" }, 0);
@@ -192,63 +205,78 @@
       tl.fromTo("#em29", { y: 1888, x: 1 }, { y: -80, x: 12, duration: 9.94, ease: "none" }, 0);
       tl.fromTo("#em29", { y: 2000, x: 0 }, { y: -80, x: 12, duration: 10.50, ease: "none", repeat: 2, immediateRender: false }, 9.94);
 
-      /* ======== 1 ======== */
-      show("#a1", 0.25); show("#a2", 1.15);
-      hide("#a", 2.95);
+      /* ======== 0  hook: on the very first hit ======== */
+      tl.fromTo(["#barT", "#barB"], { height: 150 }, { height: 0, duration: 1.2, ease: "expo.inOut" }, 0.05);
+      slam("#p1a", 0.05, 1.5, 0.55);
+      punch(0.05, .05); flash(0.05, .5);
+      punch(1.35, .02); punch(1.95, .02); punch(2.45, .025);
+      rise("#p1b", 1.95, 0.6);
+      punch(3.05, .03);
+      exitZ("#p1", 4.1);
 
-      /* ======== 2  the spark ======== */
-      tl.fromTo("#spark", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" }, 3.35);
-      tl.to("#spark", { keyframes: [{ scale: 1.25, duration: .9, ease: "sine.inOut" }, { scale: 1, duration: .9, ease: "sine.inOut" }, { scale: 1.3, duration: .9, ease: "sine.inOut" }, { scale: 1.05, duration: .8, ease: "sine.inOut" }] }, 4.6);
-      show("#b1", 3.7);
-      hide("#b", 6.15);
+      /* ======== 1  the spark ======== */
+      tl.fromTo("#spark", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1.4, duration: 0.35, ease: "expo.out" }, 4.33);
+      tl.to("#spark", { scale: 1, duration: 0.8, ease: "power2.out" }, 4.7);
+      slam("#p2", 4.35, 1.3); punch(4.35, .04); flash(4.35, .35);
+      punch(5.65, .02); punch(6.25, .02);
+      exitZ("#p2", 7.0);
 
-      /* ======== 3 ======== */
-      show("#c1", 6.55); show("#c2", 7.35);
-      tl.fromTo("#c3", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.6, ease: "power2.inOut" }, 7.6);
-      hide("#c", 9.15);
-      // anticipation: the spark breathes faster, then draws in
-      tl.to("#spark", { scale: 1.8, duration: 0.45, ease: "power2.out" }, 8.4);
-      tl.to("#spark", { scale: 0.6, duration: 0.5, ease: "power3.in" }, IGN - 0.5);
+      /* ======== 2  what holds it down ======== */
+      slam("#p3a", 7.25, 1.4, .35); punch(7.25, .04); shake(7.25, 8);
+      slam("#p3b", 7.85, 1.4, .35); punch(7.85, .03); shake(7.85, 6);
+      slam("#p3c", 8.45, 1.4, .35); punch(8.45, .04); shake(8.45, 10);
+      tl.to("#spark", { keyframes: [{ opacity: .35, scale: .7, duration: .08 }, { opacity: 1, scale: 1, duration: .1 }, { opacity: .25, scale: .6, duration: .1 }, { opacity: .9, scale: .9, duration: .12 },
+        { opacity: .4, scale: .7, duration: .1 }, { opacity: 1, scale: 1, duration: .2 }] }, 7.3);
+      exitZ("#p3", 9.95, .25);
+
+      /* ======== 3  but a spark is enough ======== */
+      slam("#p4a", 10.25, 1.3); punch(10.25, .035);
+      slam("#p4b", 11.95, 1.5, .5); punch(11.95, .05); flash(11.95, .45);
+      tl.to("#spark", { scale: 1.6, duration: 1.0, ease: "power2.inOut" }, 10.3);
+
+      /* ======== implosion: everything is pulled into the spark ======== */
+      tl.to("#p4", { scale: 0.05, y: 280, opacity: 0, filter: "blur(10px)", duration: 0.55, ease: "power4.in" }, 12.35);
+      tl.to("#spark", { scale: 3.2, duration: 0.55, ease: "power2.in" }, 12.35);
+      tl.to("#spark", { scale: 0.5, duration: 0.25, ease: "power4.in" }, IGN - 0.25);
+      tl.fromTo(["#barT", "#barB"], { height: 0 }, { height: 120, duration: 0.6, ease: "power3.in", immediateRender: false }, 12.5);
 
       /* ======== IGNITION ======== */
-      tl.to("#spark", { scale: 9, opacity: 0, duration: 0.9, ease: "expo.out" }, IGN);
-      tl.fromTo("#bloom", { opacity: 0, scale: 0.15 }, { opacity: 1, scale: 1.25, duration: 0.5, ease: "expo.out" }, IGN);
-      tl.to("#bloom", { opacity: 0, scale: 1.8, duration: 1.6, ease: "power2.out" }, IGN + 0.5);
-      tl.fromTo("#r1", { opacity: .9, scale: 0.1 }, { opacity: 0, scale: 5, duration: 1.4, ease: "expo.out", immediateRender: false }, IGN);
-      tl.fromTo("#r2", { opacity: .6, scale: 0.1 }, { opacity: 0, scale: 7, duration: 1.8, ease: "expo.out", immediateRender: false }, IGN + 0.12);
-      tl.fromTo("#streak", { opacity: 1, scaleX: 0.1, scaleY: 1.4 }, { opacity: 0, scaleX: 1.15, scaleY: 0.4, duration: 1.3, ease: "expo.out", immediateRender: false }, IGN);
-      tl.to("#warm", { opacity: 1, duration: 0.6, ease: "power2.out" }, IGN);
-      tl.to("#warm", { opacity: .7, duration: 3, ease: "sine.inOut" }, IGN + 0.6);
-      tl.fromTo(["#aur1", "#aur2"], { opacity: 0 }, { opacity: 1, duration: 1.4, ease: "power2.out" }, IGN);
-      tl.fromTo("#aur1", { x: 0, y: 0 }, { x: 300, y: -200, duration: 12, ease: "sine.inOut" }, IGN);
-      tl.fromTo("#aur2", { x: 0, y: 0 }, { x: -280, y: -260, duration: 12, ease: "sine.inOut" }, IGN);
-      tl.fromTo(".ember", { opacity: 0 }, { opacity: (i, el) => +el.dataset.o, duration: 1.2, ease: "power2.out" }, IGN + 0.1);
-
-      /* dark veil behind the type once the background turns gold */
-      tl.fromTo("#scrim", { opacity: 0 }, { opacity: .75, duration: 1.2, ease: "power2.out" }, IGN + 0.4);
-      tl.to("#scrim", { opacity: 1, duration: 1.0, ease: "power2.inOut" }, 16.6);
-      tl.set("#scrim", { y: 0 }, 0);
+      tl.to(["#barT", "#barB"], { height: 0, duration: 0.5, ease: "expo.out" }, IGN);
+      tl.fromTo("#white", { opacity: .85 }, { opacity: 0, duration: 0.45, ease: "power2.out", immediateRender: false }, IGN);
+      tl.to("#spark", { scale: 10, opacity: 0, duration: 0.9, ease: "expo.out" }, IGN);
+      tl.fromTo("#bloom", { opacity: 0, scale: 0.15 }, { opacity: 1, scale: 1.3, duration: 0.45, ease: "expo.out" }, IGN);
+      tl.to("#bloom", { opacity: 0, scale: 1.9, duration: 1.4, ease: "power2.out" }, IGN + 0.45);
+      tl.fromTo("#streak", { opacity: 1, scaleX: 0.1, scaleY: 1.6 }, { opacity: 0, scaleX: 1.2, scaleY: 0.4, duration: 1.2, ease: "expo.out", immediateRender: false }, IGN);
+      shake(IGN, 22); punch(IGN, .08);
+      tl.fromTo(".ember", { opacity: 0 }, { opacity: (i, el) => +el.dataset.o, duration: 1.0, ease: "power2.out" }, IGN + 0.05);
+      tl.fromTo("#scrim", { opacity: 0 }, { opacity: .75, duration: 1.0, ease: "power2.out" }, IGN + 0.3);
+      tl.to("#scrim", { opacity: 1, duration: 0.8, ease: "power2.inOut" }, 18.6);
 
       /* ======== 4  Potenzial entfachen ======== */
-      tl.fromTo("#d1", { opacity: 0, scale: 1.18, filter: "blur(18px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.4, ease: "expo.out" }, IGN + 0.15);
-      tl.fromTo("#d1", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 3.2, ease: "power1.inOut" }, IGN + 0.15);
-      show("#d2", IGN + 0.95, 1.2);
-      hide(["#d1", "#d2"], 13.55, 0.55);
+      slam("#d1", IGN + 0.02, 1.6, 0.7);
+      tl.fromTo("#d1", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 2.6, ease: "power1.inOut" }, IGN);
+      slam("#d2", 14.6, 1.25, 0.5); punch(14.6, .025);
+      exitZ(["#d1", "#d2"], 15.85, .28);
 
-      /* ======== 5 ======== */
-      show("#e1", 14.2, 0.9); show("#e2", 14.68, 0.9); show("#e3", 15.15, 0.9);
-      tl.fromTo("#e3", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.4, ease: "power2.inOut" }, 15.2);
-      hide("#e", 16.55, 0.6);
+      /* ======== 5  stabs ======== */
+      slam("#e1", 16.15, 1.4, .35); punch(16.15, .045); shake(16.15, 9); flash(16.15, .35);
+      slam("#e2", 16.75, 1.4, .35); punch(16.75, .03);
+      slam("#e3", 17.65, 1.5, .4); punch(17.65, .05); shake(17.65, 12); flash(17.65, .4);
+      tl.fromTo("#e3", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.0, ease: "power2.inOut" }, 17.7);
+      exitZ("#e", 18.85, .28);
 
       /* ======== 6  logo ======== */
-      tl.fromTo("#logo", { opacity: 0, scale: 1.06, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.6, ease: "expo.out" }, 17.05);
-      tl.fromTo("#lline", { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: "expo.out" }, 17.7);
-      show("#role", 17.95, 1.0, 16);
-      show("#cl1", 18.45, 1.0, 24); show("#cl2", 18.75, 1.0, 24);
-      tl.fromTo("#cl2", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.8, ease: "power2.inOut" }, 18.8);
-      show("#handle", 19.3, 1.0, 16);
-      tl.fromTo("#shine", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.6, ease: "power2.inOut" }, 18.2);
-      tl.to(["#stage", "#silk"], { opacity: 0, duration: 0.8, ease: "power2.in" }, 21.2);
+      tl.fromTo("#logo", { opacity: 0, scale: 1.45, filter: "blur(18px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, 19.1);
+      tl.fromTo("#ring", { opacity: .9, scale: 0.4 }, { opacity: 0, scale: 1.9, duration: 1.1, ease: "expo.out", immediateRender: false }, 19.15);
+      punch(19.15, .06); shake(19.15, 14); flash(19.15, .5);
+      tl.fromTo("#shine", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.0, ease: "power2.inOut" }, 19.5);
+      tl.fromTo("#lline", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "expo.out" }, 19.7);
+      rise("#role", 19.9, .6);
+      rise("#cl1", 20.5, .55);
+      slam("#cl2", 22.05, 1.3, .45); punch(22.05, .03); flash(22.05, .3);
+      tl.fromTo("#cl2", { backgroundPosition: "100% 0" }, { backgroundPosition: "0% 0", duration: 1.2, ease: "power2.inOut" }, 22.1);
+      rise("#handle", 22.6, .6);
+      tl.to(["#cam", "#silk"], { opacity: 0, duration: 0.9, ease: "power2.in" }, 23.55);
 
       window.__timelines["main"] = tl;
     </script>

@@ -5,8 +5,8 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent.parent
-W, H, FPS, DUR = 360, 640, 30, 22.0
-IGN = 10.0
+W, H, FPS, DUR = 360, 640, 30, 24.5
+IGN = 13.15
 N = int(DUR * FPS)
 
 x = np.linspace(0, 1, W, dtype=np.float32)[None, :]
@@ -43,7 +43,7 @@ def frame(t):
         sheen += wt * np.exp(-e * e)
     # state: 0 = dormant, 1 = ignited
     s = smooth(IGN - 0.05, IGN + 1.2, t)
-    calm = smooth(16.6, 18.5, t)                                # settle under the logo
+    calm = smooth(18.8, 20.5, t)                                # settle under the logo
     wave = 0.0
     if t >= IGN:
         rad = (t - IGN) * 1.25
@@ -72,7 +72,7 @@ out = HERE / "clips" / "silk.mp4"
 out.parent.mkdir(exist_ok=True)
 enc = subprocess.Popen(["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "bgr48le", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
                         "-vf", "scale=1080:1920:flags=bicubic,gblur=sigma=1.2,noise=alls=3:allf=t",
-                        "-c:v", "libx264", "-preset", "slow", "-crf", "14", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(out)],
+                        "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(out)],
                        stdin=subprocess.PIPE)
 rng = np.random.default_rng(3)
 for i in range(N):

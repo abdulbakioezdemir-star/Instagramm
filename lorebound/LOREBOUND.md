@@ -24,7 +24,7 @@ Deutsch. Keine echten lebenden Personen, keine geschützten Figuren/Marken, nich
 - Stimme optional (edge-tts, de-DE-FlorianMultilingualNeural, ruhig), sonst Texttafeln + Musik.
 
 ## Zeitplan
-**Zwei Reels pro Tag** (Wunsch Besitzer 2026-11-10): ca. 13:00 und ca. 19:00 (Europe/Berlin), zwei verschiedene Themen-Kategorien pro Tag.
+**Ein Reel pro Tag um 13:00 (Europe/Berlin)** – BEFEHLE.md Befehl 5 vom 2026-11-13 (vorher 2/Tag). Kategorie gegenüber dem letzten Reel wechseln.
 
 ## Caption
 2–3 kurze Zeilen mit Hook, optional Frage an die Zuschauer, ggf. Musik-Credit, 4–6 Hashtags inkl. #lorebound.

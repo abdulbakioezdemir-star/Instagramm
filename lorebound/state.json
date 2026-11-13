@@ -106,20 +106,35 @@
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/leere-truhe/",
       "permalink": "https://www.instagram.com/reel/DfpplMwD4wz/"
+    },
+    {
+      "datum": "2026-11-13",
+      "zeit": "13:00",
+      "slot": "einziger Slot (13:00, Befehl 5)",
+      "slug": "duennes-seil",
+      "thema": "Gleichnis/Motivation",
+      "serie": "Gleichnisse in 30 Sekunden #3",
+      "titel": "Das dünne Seil – Ihn hält eine Erinnerung",
+      "media_id": "18139798480730537",
+      "permalink": "https://www.instagram.com/reel/DfrlM8HjDnO/",
+      "video": "media/lorebound/duennes-seil.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/duennes-seil/"
     }
   ],
   "naechste_themen_ideen": [
-    "Mythos: Ikarus",
-    "Wissen: Warum der Himmel blau ist",
-    "Fantasy: Die Bibliothek, die Erinnerungen frisst",
+    "Mythos mit Gleichnis-Bauplan: ein Objekt + Zähler, Hook ohne Vorwissen (z. B. Ikarus: 'Er hatte Flügel. Und ignorierte eine Regel.')",
     "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen",
-    "Gleichnis #3 (Gewinner-Serie, ein Objekt + Zähler)"
+    "Gleichnis #4 (Gewinner-Serie, ein Objekt + Zähler)",
+    "Fantasy #2: Die Bibliothek, die Erinnerungen frisst"
   ],
-  "letzte_kategorie": "Fantasy",
+  "letzte_kategorie": "Gleichnis",
   "serien": {
-    "Gleichnisse in 30 Sekunden": 2,
+    "Gleichnisse in 30 Sekunden": 3,
     "Mythen in 30 Sekunden": 1,
     "Wissen in 30 Sekunden": 1,
     "Fantasy in 30 Sekunden": 1
-  }
+  },
+  "zeitplan": "ab 2026-11-13: 1 Reel/Tag um 13:00 Berlin (BEFEHLE.md Befehl 5)"
 }

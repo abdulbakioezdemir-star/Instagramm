@@ -125,7 +125,13 @@
     "18047794709684921",
     "18133836103764900",
     "18098154365446004",
-    "17886308121624988"
+    "17886308121624988",
+    "17898634212613877",
+    "18028979393872348",
+    "18127174444698164",
+    "18113051411631602",
+    "17915823912284081",
+    "18111398738219354"
   ],
   "tag_3": {
     "abstimmung_tag2": {
@@ -312,7 +318,12 @@
       "datei": "media/glowup/tag04_teil2.mp4",
       "dauer_s": 31.8,
       "slot": "18:00 Teil 2/2 + A/B",
-      "caption_test": "Save-CTA statt Share-CTA"
+      "caption_test": "Save-CTA statt Share-CTA",
+      "abstimmung_stand_2026-11-13_17:15": {
+        "A": 0,
+        "B": 3,
+        "sonst": "lilly089.09: 'Zwilling ist gerade nicht da'"
+      }
     }
   },
   "analyse_2026-11-12_17:15": {
@@ -367,5 +378,6 @@
       "shares": 0,
       "saves": 1
     }
-  }
+  },
+  "hinweis_2026-11-13": "Befehl 5: 18-Uhr-Lauf postet nicht mehr, nur Kommentare. Kein Tag-5-Reel in Windsor-Daten gefunden (Stand 17:15)."
 }

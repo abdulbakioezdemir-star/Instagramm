@@ -223,3 +223,46 @@ def katze(d, x, base, s=1.0, hop=0.0, col=(60, 60, 70)):
     for lx in (-22, -10, 10, 20):
         d.line([(x + lx * s, y - 18 * s), (x + lx * s, y)], fill=col, width=max(2, int(6 * s)))
     d.line([(x - 28 * s, y - 30 * s), (x - 48 * s, y - 60 * s)], fill=col, width=max(2, int(7 * s)))  # Schwanz
+
+def goldmine(d, x, base, prog, t, font=None):
+    """Goldmine im Nordgebirge (Tag 5, Top-Kommentar justin0885_ 'Goldmine für sicheres Einkommen').
+    x = Mitte des Stolleneingangs, base = Boden. prog 0–0,4 Stollen, 0,4–0,7 Schienen, 0,7–1 Lore + Schild."""
+    if prog <= 0: return
+    wood, dark = (140, 95, 55), (90, 60, 35)
+    q1 = min(1, prog / 0.4)
+    hw, hh = 70, 150 * q1
+    d.ellipse([x - hw, base - hh - 40 * q1, x + hw, base - hh + 60 * q1], fill=(20, 18, 22))
+    d.rectangle([x - hw, base - hh + 10 * q1, x + hw, base], fill=(20, 18, 22))
+    if q1 >= 1:
+        d.rectangle([x - hw - 18, base - 175, x - hw, base], fill=wood, outline=dark, width=3)
+        d.rectangle([x + hw, base - 175, x + hw + 18, base], fill=wood, outline=dark, width=3)
+        d.rectangle([x - hw - 30, base - 195, x + hw + 30, base - 170], fill=wood, outline=dark, width=3)
+    q2 = max(0, min(1, (prog - 0.4) / 0.3))
+    if q2 > 0:   # Schienen nach rechts unten
+        ex, ey = x + 240 * q2, base + 150 * q2
+        for k in range(int(9 * q2) + 1):
+            u = k / 8
+            if u > q2: break
+            sx, sy = x + 240 * u, base + 150 * u
+            d.line([(sx - 22, sy + 30), (sx + 22, sy - 30)], fill=dark, width=8)
+        d.line([(x - 15, base - 18), (ex - 15, ey - 18)], fill=(120, 120, 130), width=6)
+        d.line([(x + 15, base + 18), (ex + 15, ey + 18)], fill=(120, 120, 130), width=6)
+    if prog >= 0.7 and font:
+        d.rounded_rectangle([x - 95, base - 250, x + 95, base - 205], radius=8, fill=(255, 245, 210), outline=dark, width=3)
+        d.text((x, base - 228), "GOLDMINE", font=font, fill=dark, anchor="mm")
+
+def lore(d, x, y, s=1.0, stein=False, t=0.0):
+    """Kleine Lore (Grubenwagen). x, y = Mitte unten. stein=True -> gelber Stein drin."""
+    if stein:
+        gelber_stein(d, x, y - 62 * s, 0.8 * s, t)
+    d.polygon([(x - 60 * s, y - 70 * s), (x + 60 * s, y - 70 * s), (x + 45 * s, y - 18 * s), (x - 45 * s, y - 18 * s)],
+              fill=(110, 110, 120), outline=(60, 60, 70))
+    d.rectangle([x - 62 * s, y - 76 * s, x + 62 * s, y - 66 * s], fill=(80, 80, 90))
+    for wx in (-30, 30):
+        d.ellipse([x + (wx - 13) * s, y - 26 * s, x + (wx + 13) * s, y], fill=(40, 40, 45))
+
+def gelber_stein(d, x, y, s=1.0, t=0.0):
+    """Gelber Stein (kein Gold). x, y = Mitte unten."""
+    pts = [(-40, 0), (-46, -26), (-24, -50), (8, -54), (38, -36), (44, -6), (20, 4)]
+    d.polygon([(x + a * s, y + b * s) for a, b in pts], fill=(232, 200, 70), outline=(170, 135, 40))
+    d.polygon([(x - 20 * s, y - 40 * s), (x + 4 * s, y - 46 * s), (x - 6 * s, y - 30 * s)], fill=(255, 235, 140))

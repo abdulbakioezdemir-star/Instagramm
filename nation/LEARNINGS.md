@@ -91,3 +91,7 @@
 - Technik: neue Bergansicht pan_view(900) (Strand ist voll), zoom_at(img, z, cx, cy, sx, sy) statt festem zoomed(). Audio pro Zeile auf Wortende + 0,2 s getrimmt (edge-tts hängt ~1 s Stille an) → 6 Zeilen = 30,5 s ohne Kürzen der Pausen. Schild der Goldmine in der Fund-Szene ausgeblendet (überlappte „ÜBRIG“). Pre-commit: `__pycache__` ist eingecheckt und wird beim Rendern verändert → `git pull --rebase --autostash` nutzen.
 - Nächstes Mal: Watch-Time Tag 5 vs. Tag 4·T1 (11,3 s) prüfen. Brunnen verliert seit 4 Runden → ersetzen durch neue Option.
 - Gepostet 15:00 Berlin, media_id 17973429978174403 (https://www.instagram.com/reel/DfuXs9QhAIC/). Antwort an justin0885_ gesetzt; übrige Kommentare unter Tag-4-T2 waren schon beantwortet. Kein Spam.
+
+## 2026-11-14 21:00 – Slot 2: kein Reel (Befehl 5)
+- Laut BEFEHLE.md Befehl 5 postet der 21-Uhr-Bot nicht mehr. Nichts gerendert, nichts gepostet.
+- Kommentare: 1 neuer unter Tag 5 (karstenffm „2 die Mauer muss wachsen!!“, 2 Likes) beantwortet. Kein Spam. Stand Abstimmung Tag 5 (Cache): 1× „2“ (Längere Mauer).

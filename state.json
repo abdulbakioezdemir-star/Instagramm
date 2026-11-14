@@ -76,7 +76,12 @@
       "A": "Emre mit Döner bestechen",
       "B": "Endlich die Wahrheit sagen"
     },
-    "entscheidet": "Tag 6 (2026-11-15 12:00)"
+    "entscheidet": "Tag 6 (2026-11-15 12:00)",
+    "stand_2026-11-14_17:10": {
+      "A": 4,
+      "B": 0,
+      "sonst": "lior_darken427: 'Sag du bist krank und mach dein Gesicht hübscher'"
+    }
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -132,11 +137,11 @@
     "17915823912284081",
     "18111398738219354",
     "17997842067021456",
-    "18028979393872348",
-    "18127174444698164",
-    "18113051411631602",
-    "17915823912284081",
-    "17898634212613877"
+    "18148311862607552",
+    "18599900806071143",
+    "17999106885028762",
+    "17978662356177412",
+    "18092920817304423"
   ],
   "tag_3": {
     "abstimmung_tag2": {
@@ -443,5 +448,6 @@
       "saves": 1
     }
   },
-  "hinweis_2026-11-14": "Tag 5 am 13.11. ausgefallen (12-Uhr-Lauf hing). Am 14.11. nachgeholt als Tag 5."
+  "hinweis_2026-11-14": "Tag 5 am 13.11. ausgefallen (12-Uhr-Lauf hing). Am 14.11. nachgeholt als Tag 5.",
+  "hinweis_2026-11-14_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gepostet, nur 5 Kommentare unter Tag 5 beantwortet."
 }

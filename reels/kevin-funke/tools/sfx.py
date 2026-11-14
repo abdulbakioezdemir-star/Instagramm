@@ -29,7 +29,7 @@ def whoosh(d=0.6, up=True, g=1.0):
     env = np.sin(np.pi * t / d) ** 2
     cut = np.linspace(0.02, 0.35, n) if up else np.linspace(0.35, 0.03, n)
     x = rng.normal(0, 1, n); y = lp(x, cut) - lp(x, cut * 0.25)
-    return y * env * 0.9 * g
+    return y * env * 0.9 * g * 0.316          # whooshes 10 dB down (customer request)
 
 def shimmer(d=0.8, f0=2600, g=1.0):
     t = tt(d); x = np.zeros_like(t)

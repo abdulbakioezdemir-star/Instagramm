@@ -27,7 +27,7 @@
       "views": 48
     }
   ],
-  "format": "Ab 2026-11-11 (BEFEHLE.md Befehl 2): 2 Reels/Tag – 12:00 Teil 1/2, 18:00 Teil 2/2 + A/B; je 28–32 s; Humor/Hook nach Befehl 3",
+  "format": "Ab 2026-11-13 (BEFEHLE.md Befehl 5): 1 Reel/Tag um 12:00 = ganze Folge \"Tag N\" mit A/B am Ende; 28–32 s; Humor/Hook nach Befehl 3",
   "bio": "korrigiert 2026-11-09 (Ahmed statt Kevin, Zeiten 12:00 & 18:00)",
   "aktueller_tag": 5,
   "tag_2": {
@@ -69,15 +69,14 @@
     "Doenermann": "de-DE-ConradNeural +0Hz +0%"
   },
   "letzte_abstimmungs_folge": {
-    "tag": 4,
-    "teil": 2,
-    "media_id": "17952247524346816",
-    "gepostet": "2026-11-12T18:00:30+01:00",
+    "tag": 5,
+    "media_id": "18140705509649313",
+    "gepostet": "2026-11-14T12:00:10+01:00",
     "abstimmung": {
-      "A": "Den echten Emre anrufen",
-      "B": "Ahmed spielt beide"
+      "A": "Emre mit Döner bestechen",
+      "B": "Endlich die Wahrheit sagen"
     },
-    "entscheidet": "Tag 5 Teil 1 (2026-11-13 12:00)"
+    "entscheidet": "Tag 6 (2026-11-15 12:00)"
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -131,7 +130,13 @@
     "18127174444698164",
     "18113051411631602",
     "17915823912284081",
-    "18111398738219354"
+    "18111398738219354",
+    "17997842067021456",
+    "18028979393872348",
+    "18127174444698164",
+    "18113051411631602",
+    "17915823912284081",
+    "17898634212613877"
   ],
   "tag_3": {
     "abstimmung_tag2": {
@@ -379,5 +384,64 @@
       "saves": 1
     }
   },
-  "hinweis_2026-11-13": "Befehl 5: 18-Uhr-Lauf postet nicht mehr, nur Kommentare. Kein Tag-5-Reel in Windsor-Daten gefunden (Stand 17:15)."
+  "hinweis_2026-11-13": "Befehl 5: 18-Uhr-Lauf postet nicht mehr, nur Kommentare. Kein Tag-5-Reel in Windsor-Daten gefunden (Stand 17:15).",
+  "tag_5": {
+    "abstimmung_tag4": {
+      "A": 0,
+      "B": 3,
+      "ergebnis": "B – Ahmed spielt beide",
+      "zuschauer_idee": "lilly089.09: 'Zwilling ist gerade nicht da'"
+    },
+    "reel": {
+      "datei": "media/glowup/tag05.mp4",
+      "skript": "pipeline/tag05/tag05.py (PART=1) – README pipeline/tag05/README.md",
+      "dauer_s": 31.97,
+      "slot": "12:00 (einziges Reel)",
+      "hook": "Ich hab vor Lena meinen eigenen Zwilling gespielt. Live. (Text: ICH BIN JETZT MEIN ZWILLING.)",
+      "abstimmung": {
+        "A": "Emre mit Döner bestechen",
+        "B": "Endlich die Wahrheit sagen"
+      },
+      "test": "Folge-CTA als letzte Einblendung ('FOLG MIR · TAG 6 MORGEN 12 UHR') -> Follower-Zuwachs vergleichen",
+      "media_id": "18140705509649313",
+      "gepostet": "2026-11-14T12:00:10+01:00",
+      "permalink": "https://www.instagram.com/reel/DfuDG5BCWO-/"
+    }
+  },
+  "analyse_2026-11-14_11:10": {
+    "followers": 14,
+    "tag3_teil1": {
+      "views": 3124,
+      "reach": 2395,
+      "skip": 0.268,
+      "avg_watch_s": 22.9
+    },
+    "tag3_teil2": {
+      "views": 2602,
+      "reach": 1951,
+      "skip": 0.271,
+      "avg_watch_s": 16.0
+    },
+    "tag4_teil1": {
+      "views": 3176,
+      "reach": 2243,
+      "skip": 0.286,
+      "avg_watch_s": 21.0,
+      "likes": 27,
+      "comments": 2,
+      "shares": 0,
+      "saves": 1
+    },
+    "tag4_teil2": {
+      "views": 1524,
+      "reach": 1185,
+      "skip": 0.275,
+      "avg_watch_s": 16.8,
+      "likes": 16,
+      "comments": 11,
+      "shares": 0,
+      "saves": 1
+    }
+  },
+  "hinweis_2026-11-14": "Tag 5 am 13.11. ausgefallen (12-Uhr-Lauf hing). Am 14.11. nachgeholt als Tag 5."
 }

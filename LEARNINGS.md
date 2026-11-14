@@ -112,3 +112,21 @@
 - **Test heute (Teil 2):** Save-CTA statt Share-CTA in der Caption („Speicher dir den Panorama-Trick fürs nächste Gruppenfoto“). Morgen Saves mit Tag 3 T2 (1) vergleichen.
 - Follower wachsen kaum (13 → 14) trotz 2–3 k Views/Reel → Ideen: Serien-Hinweis „Folge mir, sonst verpasst du Tag 5“ als letzte Einblendung testen; Profil-Highlights sind Sache des Besitzers.
 - 3 Kommentare beantwortet (Zuschauer-Idee „Nimm KI“ → Easter-Egg-Kandidat für Tag 5), kein Spam.
+
+## 2026-11-14 12:00 (Tag 5 – erstes Ein-Reel-Format nach Befehl 5)
+- 13.11.: Tag 5 ausgefallen (Lauf hing) → heute nachgeholt. Abstimmung Tag 4 T2: **B 3 : A 0** → „Ahmed spielt beide“ (wenig Stimmen: 3 statt 5–7, Tag 4 T2 nur 1.524 Views).
+- Zahlen (Windsor-Cache, ohne force_refresh), Follower 14 (unverändert seit 12.11.):
+  | Reel | Views | Reach | Skip | Ø Watch |
+  |---|---|---|---|---|
+  | Tag 3 T1 | 3.124 | 2.395 | 26,8 % | 22,9 s |
+  | Tag 4 T1 (32,4 s) | **3.176** | 2.243 | 28,6 % | 21,0 s |
+  | Tag 4 T2 (31,8 s) | 1.524 | 1.185 | 27,5 % | 16,8 s |
+- Tag 4 T1 hat nachträglich aufgeholt (5 h: 2.346 → jetzt 3.176) → bestes Reel. 12-Uhr-Slot bleibt klar stärker (Befehl 5 bestätigt).
+- Hook-Varianten Tag 5: (1) „Ich hab vor Lena meinen eigenen Zwilling gespielt. Live.“ (2) „POV: Du bist dein eigener Zwilling – und sie will euch beide sehen.“ (3) „3 zu 0. Ihr wollt also, dass ich zwei Leute bin.“ → **(1)** (Gewinner-Bauart Peinlichkeits-Behauptung, Pointe „Live.“ am Satzende + Stempel). Text „ICH BIN JETZT MEIN ZWILLING.“
+- Keine Abstimmungs-Ergebniskarte mehr (Lehre aus Tag 4 T1) – nach dem Hook sofort Action (Cappy auf/ab).
+- Gags: „Cappy auf: Emre. Cappy ab: Ahmed. 100 % sicher.“ / „Wir teilen uns eine Stimme. Ist billiger.“ (SPARTARIF) / Lena „Morgen. Beide. Gleichzeitig.“ (GLEICHZEITIG?!).
+- **Tagestest:** Folge-CTA als letzte Einblendung („FOLG MIR · TAG 6 MORGEN 12 UHR“) → Follower-Zuwachs morgen mit 14 vergleichen.
+- Pipeline: neue Vorlage `pipeline/tag05/` (Ein-Reel-Format, Szenen cold/switch/call/poll); kappt Stille am Zeilenende (edge-tts hängt ~0,9 s an) → 36 s auf 32 s ohne Text zu kürzen.
+- Whisper (faster-whisper small): korrekt bis auf „besteche“ → „beschläche“ (klingt ok, kleines Modell). faster-whisper braucht Audio als numpy-Array (av-Version inkompatibel mit Dateipfad).
+- Gepostet 12:00, media_id 18140705509649313 (https://www.instagram.com/reel/DfuDG5BCWO-/), 32,0 s. Caption ohne „Teil 1/2“ (Befehl 5), Folge-CTA auch in der Caption.
+- 1 offener Kommentar beantwortet (lilly089.09 „beides unglaubwürdig“), kein Spam/keine Beleidigungen.

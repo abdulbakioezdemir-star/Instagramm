@@ -1,9 +1,9 @@
 {
   "account_id": "17841459168444268",
   "nation": "Valmora",
-  "tag": 4,
-  "staatskasse_eur": 10,
-  "einwohner": 15,
+  "tag": 5,
+  "staatskasse_eur": 3,
+  "einwohner": 17,
   "gebaut": [
     {
       "was": "Leuchtturm-Haus am Strand",
@@ -39,22 +39,27 @@
       "was": "Mauer erhöht auf 6 Steine (Top-Kommentar 'Eine noch höhere Mauer', karstenffm)",
       "kosten": 9,
       "tag": 4
+    },
+    {
+      "was": "Goldmine im Nordgebirge (Top-Kommentar 'Goldmine für sicheres Einkommen', justin0885_, 3 Likes) – Fund: gelber Stein, kein Gold",
+      "kosten": 40,
+      "tag": 5
     }
   ],
-  "letztes_reel_media_id": "18161475304503329",
-  "naechstes_reel": "Tag 5 · Teil 1/2 (15:00): Abstimmung unter Tag-4-T2 (1 Brunnen / 2 Goldmine / 3 Strandkörbe). Kasse 10 € + neue Likes. Goldmine passt ins Nordgebirge (rechts/oben im Panorama), Strand links ist voll.",
+  "letztes_reel_media_id": "17973429978174403",
+  "naechstes_reel": "Tag 6 (15:00): Abstimmung unter Tag 5 (1 Brunnen / 2 Längere Mauer / 3 Strandkörbe). Kasse 3 € + neue Likes. Katze = Running Gag.",
   "profil_offen": null,
   "tag1_video": "media/nation/valmora_tag01.mp4",
   "tag1_status": "gepostet 2026-11-09 23:28 (Europe/Berlin)",
   "stimme": "edge-tts de-DE-FlorianMultilingualNeural, pitch -4Hz, rate +4%",
-  "vorlage": "nation/pipeline/tag04b.py (neueste, 30,6 s; mauer(steine=6), Hook mit springender Katze ab Frame 0, Hook-Untertitel y=1150; tts.py mit Retry + SKIP_DONE=1)",
+  "vorlage": "nation/pipeline/tag05.py (neueste, 30,5 s; zoom_at(), Audio auf Wortende getrimmt, Goldmine/Lore/gelber_stein in bauten.py)",
   "tag1_inhalt": "Gründung, 12 km² (Nordgebirge, großer Wald, Fluss mit Wasserfall, Bucht, Strand, Insel), Leuchtturm-Haus am Strand gebaut (−800 €)",
-  "ausgaben_eur": 1084,
+  "ausgaben_eur": 1124,
   "staatskasse_formel": "1000 + alle Likes − ausgaben_eur",
   "profil": "@valmora.nation, Name 'Valmora | Eigenes Land', Logo als Profilbild, Bio gesetzt (2026-11-09)",
-  "letztes_reel_link": null,
-  "letztes_reel_teil": "Tag 4 · Teil 2/2",
-  "likes_gesamt": 94,
+  "letztes_reel_link": "https://www.instagram.com/reel/DfuXs9QhAIC/",
+  "letztes_reel_teil": "Tag 5",
+  "likes_gesamt": 127,
   "tag2_video": "media/nation/valmora_tag02.mp4",
   "tag2_status": "gepostet 2026-11-10 15:01 (Europe/Berlin)",
   "tag2_inhalt": "Kein Kommentar unter Tag 1 → selbst entschieden: Bootssteg mit Boot am Strand (−150 €). Kasse 200+1 Like=201 → 51 €. 'Fast pleite – ich brauche euch.'",
@@ -63,7 +68,7 @@
   "tag2_teil2_inhalt": "Top-Kommentar 'Bau einen Bäcker' (Username nicht lesbar) → Bäckerei am Strand (−60 €). Kasse 1000+16−950=66 → 6 €. 'Das Brot ist frisch. Der Gründer ist pleite.' Ende: 1 Fischerhütte · 2 Brunnen · 3 Garten.",
   "optionen_offen": {
     "1": "Brunnen",
-    "2": "Goldmine (Wunsch korosensei0815)",
+    "2": "Längere Mauer (Wunsch karstenffm)",
     "3": "Strandkörbe"
   },
   "tag3_video": "media/nation/valmora_tag03.mp4",
@@ -79,5 +84,7 @@
   "tag4_teil2_video": "media/nation/valmora_tag04_teil2.mp4",
   "tag4_teil2_inhalt": "Top-Kommentar karstenffm 'Eine noch höhere Mauer' (2 Likes) → Mauer 3→6 Steine (−9 €). Kasse 1000+94−1075=19 → 10 €. Hook 'Die Katze ist über meine Mauer gestiegen. Das war ein Fehler.' Pointe: Katze geht außen rum. Optionen: 1 Brunnen · 2 Goldmine · 3 Strandkörbe.",
   "tag4_teil2_status": "gepostet 2026-11-12 21:00 (Europe/Berlin), media_id 18161475304503329, Slot 21:00 (Teil 2/2)",
-  "lauf_2026-11-13_21uhr": "Befehl 5: Slot 21:00 postet nicht mehr. Nur 5 Kommentare unter Tag-4-T2 beantwortet. Stand Abstimmung Tag-4-T2: '2' Goldmine 3 Stimmen (korosensei0815, nico_krawietz, karstenffm) + Wunsch justin0885_ (3 Likes) → Goldmine führt. Neuer Wunsch karstenffm: 'längere Mauer'. Achtung: Bis 20:22 Berlin kein Tag-5-Reel (15:00) auf dem Konto gefunden (Windsor frisch 19:22 UTC)."
+  "tag5_video": "media/nation/valmora_tag05.mp4",
+  "tag5_inhalt": "Top-Kommentar justin0885_ 'Goldmine für sicheres Einkommen' (3 Likes) → Goldmine im Nordgebirge (−40 €), pan_view(900). Kasse 1000+127−1084=43 → 3 €. Hook 'Vierzig Euro für eine Goldmine. Ratet, was drin war.' Pointe: gelber Stein, kein Gold, Katze schläft drauf. Optionen: 1 Brunnen · 2 Längere Mauer · 3 Strandkörbe.",
+  "tag5_status": "gepostet 2026-11-14 15:00 (Europe/Berlin), media_id 17973429978174403, Slot 15:00 (einziger Slot, Befehl 5)"
 }

@@ -80,3 +80,14 @@
 
 ## 2026-11-13 15:00 – Tag 5 AUSGEFALLEN
 - Windsor-MCP beim Start nicht erreichbar (503), Wiederholung ebenfalls fehlgeschlagen → keine Zahlen, keine Abstimmung, kein Post. Lauf abgebrochen (Grenze: einmal wiederholen, dann aufhören). Abstimmung unter Tag-4-T2 (1 Brunnen / 2 Goldmine / 3 Strandkörbe) bleibt offen für den nächsten Lauf.
+
+## 2026-11-14 15:00 – Tag 5 (Goldmine, 30,5 s) – erstes Reel nach Befehl 5 (1 Reel/Tag)
+- Zahlen vor dem Post (Windsor, Cache): Tag 4·T1 (Mauer, Humor-Hook) **1.079 Views / 36 Likes / Skip 38,1 % / Ø 11,3 s** – zweitbestes Reel nach Tag 2·T1. Tag 4·T2 (Mauer 2.0, Katze) 457 / 12 / 10 Kom. / Skip 44,8 % / Ø 10,9 s. Tag 3·T1 333 / Skip 43 %, Tag 3·T2 315 / Skip 53 %. Likes gesamt 127, Follower 17 (+2 seit 12.11.). Shares weiter ~0.
+- Auswertung: Humor-/Rätsel-Hook („Keiner hat gesagt, wofür.“) ist klarer Gewinner (Skip 38 %). Katze als Running Gag hielt ordentlich (Skip < 45 %) → Katze bleibt.
+- Top-Kommentar: „Goldmine für sicheres Einkommen“ (justin0885_, 3 Likes); dazu 3× „2“ (nico_krawietz, korosensei0815, karstenffm). Kasse 1000 + 127 − 1084 = 43 € → Goldmine −40 € → **3 €**.
+- **Test des Tages: Rätsel-Hook mit Frage an die Zuschauer** („Vierzig Euro für eine Goldmine. Ratet, was drin war.“, roter Kasten „WAS WAR DRIN?“), Auflösung erst bei ~13 s. Varianten: (A) „Ihr wolltet eine Goldmine. Ich habe einen Stein gefunden.“ (B) „Vierzig Euro für eine Goldmine. Ratet, was drin war.“ (C) „Meine Goldmine hat sich gelohnt. Für die Katze.“ → **B** (Gewinner-Format Rätsel, Neugier bis zur Pointe). Hypothese: höhere Ø-Watch-Time (> 11 s) weil Auflösung später kommt.
+- Pointe: „Drin war ein gelber Stein, kein Gold. Und die Katze schläft jetzt drauf.“ (Selbstironie + Running Gag).
+- Neue Optionen: 1 Brunnen · 2 Längere Mauer (Wunsch karstenffm) · 3 Strandkörbe.
+- Technik: neue Bergansicht pan_view(900) (Strand ist voll), zoom_at(img, z, cx, cy, sx, sy) statt festem zoomed(). Audio pro Zeile auf Wortende + 0,2 s getrimmt (edge-tts hängt ~1 s Stille an) → 6 Zeilen = 30,5 s ohne Kürzen der Pausen. Schild der Goldmine in der Fund-Szene ausgeblendet (überlappte „ÜBRIG“). Pre-commit: `__pycache__` ist eingecheckt und wird beim Rendern verändert → `git pull --rebase --autostash` nutzen.
+- Nächstes Mal: Watch-Time Tag 5 vs. Tag 4·T1 (11,3 s) prüfen. Brunnen verliert seit 4 Runden → ersetzen durch neue Option.
+- Gepostet 15:00 Berlin, media_id 17973429978174403 (https://www.instagram.com/reel/DfuXs9QhAIC/). Antwort an justin0885_ gesetzt; übrige Kommentare unter Tag-4-T2 waren schon beantwortet. Kein Spam.

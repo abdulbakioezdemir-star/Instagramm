@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="ui/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: Kin; font-weight: 900; src: url(fonts/InterDisplay-Black.otf) format("opentype"); }
+      @font-face { font-family: Kin; font-weight: 700; src: url(fonts/InterDisplay-Bold.otf) format("opentype"); }
+      @font-face { font-family: Kin; font-weight: 500; src: url(fonts/InterDisplay-Medium.otf) format("opentype"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      .clip { position: absolute; inset: 0; }
+      .card { position: absolute; inset: 0; visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: Kin; }
+      .card.w { background: #fafafa; color: #0a0a0a; }
+      .card.b { background: #070707; color: #fafafa; }
+      #c0 { visibility: visible; }
+      .dust i { position: absolute; border-radius: 50%; }
+      .w .dust i { background: #000; }
+      .b .dust i { background: #fff; }
+      .stack { display: inline-flex; flex-direction: column; align-items: flex-start; margin-top: -40px; }
+      .ln { font-weight: 900; letter-spacing: -0.045em; line-height: .86; white-space: nowrap; padding: 0 .04em .06em 0; }
+      .gold-b { background: linear-gradient(100deg, #b8862f 0%, #f7e2ad 40%, #d6a24a 70%, #fff0c8 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .gold-w { color: #a8741f; }
+      .logo { display: block; margin-top: -60px; }
+      .logo.inv { filter: invert(1); }
+      .role { margin-top: 70px; font-weight: 700; font-size: 66px; letter-spacing: -0.03em; }
+      .claim { margin-top: 46px; font-weight: 500; font-size: 46px; line-height: 1.25; letter-spacing: -0.01em; text-align: center; color: #d8d8d8; }
+      .handle { margin-top: 50px; font-weight: 500; font-size: 32px; color: #8e8e8e; }
+      #vig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(130% 90% at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,.14) 100%); }
+      #grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay; background-size: 256px 256px; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="{DUR}" data-fps="30" data-width="1080" data-height="1920">
+      <div id="stage" class="clip" data-start="0" data-duration="{DUR}" data-track-index="1">
+      {CARDS}
+      <div id="vig"></div>
+      <div id="grain" style="background-image:url(ui/grain.png)"></div>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      {JS}
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

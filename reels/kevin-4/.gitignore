@@ -1,0 +1,4 @@
+build/
+.hyperframes/
+node_modules/
+clips/stadium.mp4

@@ -1,0 +1,199 @@
+"""Kevin Nsimba – 'Der Funke' (Stil-Referenz 2: ein Leitmotiv trägt die Geschichte).
+The golden spark writes the first line, becomes the full stop, is buried under Druck/Zweifel/Angst,
+cracks them open, goes silent, explodes into 'Potenzial', climbs Klarheit-Fokus-Stärke and draws the logo ring.
+Writes index.html."""
+import json
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent.parent
+W = {w["w"] + str(i): w["t"] for i, w in enumerate(json.load(open(HERE / "tools" / "words.json")))}
+T = [w["t"] for w in json.load(open(HERE / "tools" / "words.json"))]
+DUR = 18.0
+
+CSS = """
+@font-face { font-family: I; font-weight: 300; src: url(fonts/InterDisplay-Light.otf) format("opentype"); }
+@font-face { font-family: I; font-weight: 500; src: url(fonts/InterDisplay-Medium.otf) format("opentype"); }
+@font-face { font-family: I; font-weight: 600; src: url(fonts/InterDisplay-SemiBold.otf) format("opentype"); }
+@font-face { font-family: I; font-weight: 700; src: url(fonts/InterDisplay-Bold.otf) format("opentype"); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; font-family: I; }
+#root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.clip { position: absolute; inset: 0; } .abs { position: absolute; } .full { position: absolute; inset: 0; }
+#bg { background: radial-gradient(90% 60% at 50% 48%, #17110a 0%, #0b0806 55%, #050403 100%); }
+#warm { background: radial-gradient(70% 45% at 50% 50%, rgba(214,160,74,.35), rgba(214,160,74,0) 70%); opacity: 0; }
+.t { position: absolute; left: 0; width: 1080px; text-align: center; color: #f4efe6; letter-spacing: -0.03em; font-weight: 700; white-space: nowrap; }
+.gold { background: linear-gradient(100deg, #b8862f 0%, #f7e2ad 40%, #d6a24a 70%, #fff0c8 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.grey { color: #8e8a83; }
+#l1 { top: 830px; font-size: 96px; line-height: 1.1; clip-path: inset(0 100% 0 0); }
+#l2 { top: 936px; font-size: 96px; line-height: 1.1; clip-path: inset(0 100% 0 0); }
+#fk { top: 885px; font-size: 150px; line-height: 1; opacity: 0; }
+.gap { display: inline-block; width: 46px; }
+#spark { left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: #fff7e6;
+         box-shadow: 0 0 16px 6px rgba(255,222,150,.95), 0 0 60px 24px rgba(230,170,80,.6), 0 0 160px 70px rgba(200,130,50,.25); z-index: 5; }
+#trail { left: 0; top: 0; height: 6px; width: 260px; border-radius: 3px; background: linear-gradient(90deg, rgba(255,210,130,0), rgba(255,220,150,.85)); filter: blur(2px); opacity: 0; z-index: 4; transform-origin: 100% 50%; }
+.slab { position: absolute; left: 160px; width: 760px; height: 190px; border-radius: 28px; background: linear-gradient(180deg, #24211d, #171512);
+        border: 2px solid #34302a; display: flex; align-items: center; justify-content: center; font-size: 110px; font-weight: 700; color: #a29d94; letter-spacing: -0.03em; box-shadow: 0 30px 60px rgba(0,0,0,.6); }
+.half { position: absolute; left: 160px; width: 760px; height: 190px; overflow: hidden; opacity: 0; }
+.half .slab { left: 0; top: 0; }
+#cracks { left: 0; top: 0; width: 1080px; height: 1920px; z-index: 3; }
+#cracks path { fill: none; stroke: #ffd889; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 8px rgba(255,200,110,.95)); }
+#dk { top: 850px; font-size: 104px; line-height: 1.12; opacity: 0; z-index: 6; }
+#black { background: #000; opacity: 0; z-index: 7; }
+#bloom { left: 40px; top: 460px; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(255,245,220,.95) 0%, rgba(240,196,120,.6) 22%, rgba(200,130,50,.2) 45%, rgba(0,0,0,0) 68%); opacity: 0; mix-blend-mode: screen; z-index: 8; }
+#pz { top: 830px; font-size: 200px; letter-spacing: -0.05em; line-height: 1; opacity: 0; z-index: 9; padding: 0 20px .08em; }
+#ef { top: 1050px; font-size: 104px; font-weight: 300; letter-spacing: -0.02em; opacity: 0; z-index: 9; }
+#rail { left: 538px; top: 640px; width: 4px; height: 820px; border-radius: 2px; background: linear-gradient(180deg, rgba(255,220,150,.05), rgba(255,220,150,.45)); transform-origin: 50% 100%; }
+.st { font-size: 130px; opacity: 0; }
+#ring { left: 0; top: 0; width: 1080px; height: 1920px; z-index: 6; }
+#ring circle { fill: none; stroke: #e7c27a; stroke-width: 3; filter: drop-shadow(0 0 10px rgba(240,190,110,.8)); }
+#logo { left: 240px; top: 606px; width: 600px; opacity: 0; z-index: 7; }
+#logo img { width: 100%; display: block; }
+#lline { left: 390px; top: 1180px; width: 300px; height: 3px; background: #e3c27a; z-index: 7; }
+#rl { top: 1215px; font-size: 64px; opacity: 0; z-index: 7; }
+#cl { top: 1330px; font-size: 44px; font-weight: 500; line-height: 1.3; color: #cfc9be; opacity: 0; z-index: 7; }
+#hd { top: 1480px; font-size: 34px; font-weight: 500; color: #8f8a82; opacity: 0; z-index: 7; }
+#vig { background: radial-gradient(120% 85% at 50% 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,.7) 100%); z-index: 10; pointer-events: none; }
+#grain { opacity: .07; mix-blend-mode: overlay; background: url(ui/grain.png); background-size: 256px; z-index: 11; pointer-events: none; }
+"""
+
+SLABS = [("druck.", 1050), ("zweifel.", 840), ("angst.", 630)]
+
+def body():
+    b = ["<div id='bg' class='full'></div><div id='warm' class='full'></div>",
+         "<div id='l1' class='t'>In dir steckt <span class='gold'>mehr</span>,</div>",
+         "<div id='l2' class='t grey'>als du denkst.</div>",
+         "<div id='fk' class='t'>Ein <span class='gold'>Funke</span><span class='gap'></span></div>"]
+    for i, (w, y) in enumerate(SLABS):
+        word = w[0].upper() + w[1:]
+        b.append(f"<div class='slab' id='s{i}' style='top:{y}px'>{word}</div>")
+        b.append(f"<div class='half' id='hl{i}' style='top:{y}px;clip-path:inset(0 50% 0 0)'><div class='slab'>{word}</div></div>")
+        b.append(f"<div class='half' id='hr{i}' style='top:{y}px;clip-path:inset(0 0 0 50%)'><div class='slab'>{word}</div></div>")
+    # crack lines across the three slabs
+    paths = ["M200,1060 L250,1120 L215,1180 L262,1238", "M880,850 L835,905 L880,965 L840,1028", "M215,640 L258,700 L222,760 L262,818",
+             "M860,1062 L815,1120 L860,1180", "M240,860 L205,920 L250,985"]
+    b.append("<svg id='cracks' class='abs' viewBox='0 0 1080 1920'>" + "".join(f"<path id='c{i}' d='{p}'/>" for i, p in enumerate(paths)) + "</svg>")
+    b.append("<div id='dk' class='t'><div>Doch ein Funke</div><div class='gold'>genügt.</div></div>")
+    b.append("<div id='rail' class='abs'></div>")
+    for i, (w, y) in enumerate([("Klarheit.", 1180), ("Fokus.", 900), ("Stärke.", 620)]):
+        g = " gold" if i == 2 else ""
+        b.append(f"<div class='t st{g}' id='st{i}' style='top:{y}px'>{w}</div>")
+    b.append("<svg id='ring' class='abs' viewBox='0 0 1080 1920'><circle id='rc' cx='540' cy='860' r='340'/></svg>")
+    b.append("<div id='logo' class='abs'><img src='ui/kn-logo.png' alt='Kevin Nsimba' /></div><div id='lline' class='abs'></div>")
+    b.append("<div id='rl' class='t'>dein <span class='gold'>Mental Coach.</span></div>")
+    b.append("<div id='cl' class='t'>Train the mind.<br><span class='gold'>Change the game.</span></div><div id='hd' class='t'>@kevnsimba</div>")
+    b.append("<div id='trail' class='abs'></div><div id='spark' class='abs'></div>")
+    b.append("<div id='black' class='full'></div><div id='bloom' class='abs'></div>")
+    b.append("<div id='pz' class='t gold'>Potenzial</div><div id='ef' class='t'>entfachen.</div>")
+    b.append("<div id='vig' class='full'></div><div id='grain' class='full'></div>")
+    return "".join(b)
+
+JS = f"""
+const tl = gsap.timeline({{ paused: true }});
+const P = (x, y) => ({{ x: x, y: y }});
+gsap.set('#spark', {{ xPercent: -50, yPercent: -50, x: 150, y: 883 }});
+gsap.set('#trail', {{ yPercent: -50, x: -110, y: 883 }});
+gsap.set('#rc', {{ strokeDasharray: 2140, strokeDashoffset: 2140 }});
+gsap.set('#rail', {{ scaleY: 0 }}); gsap.set('#lline', {{ scaleX: 0 }});
+gsap.set('#cracks path', {{ strokeDasharray: 400, strokeDashoffset: 400 }});
+
+/* 1  the spark writes the first sentence */
+tl.fromTo('#spark', {{ scale: 0 }}, {{ scale: 1, duration: 0.25, ease: 'back.out(2)' }}, 0);
+tl.to('#spark', {{ x: 930, duration: 1.0, ease: 'none' }}, 0.02);
+tl.fromTo('#l1', {{ clipPath: 'inset(0 83.8% 0 0)' }}, {{ clipPath: 'inset(0 16% 0 0)', duration: 1.0, ease: 'none' }}, 0.02);
+tl.set('#l1', {{ clipPath: 'inset(0 0% 0 0)' }}, 1.03);
+tl.fromTo('#trail', {{ opacity: 0 }}, {{ opacity: 1, duration: 0.15 }}, 0.05);
+tl.to('#trail', {{ x: 670, duration: 1.0, ease: 'none' }}, 0.02);
+tl.set('#spark', {{ x: 235, y: 989 }}, 1.04); tl.set('#trail', {{ x: -25, y: 989 }}, 1.04);
+tl.to('#spark', {{ x: 850, duration: 1.02, ease: 'none' }}, 1.04);
+tl.to('#trail', {{ x: 590, duration: 1.02, ease: 'none' }}, 1.04);
+tl.fromTo('#l2', {{ clipPath: 'inset(0 76.4% 0 0)' }}, {{ clipPath: 'inset(0 21% 0 0)', duration: 1.02, ease: 'none' }}, 1.04);
+tl.set('#l2', {{ clipPath: 'inset(0 0% 0 0)' }}, 2.07);
+tl.to('#trail', {{ opacity: 0, duration: 0.2 }}, 2.0);
+
+/* 2  the spark becomes the full stop of "Ein Funke." */
+tl.to(['#l1', '#l2'], {{ opacity: 0, y: -40, filter: 'blur(10px)', duration: 0.3, ease: 'power2.in' }}, 2.12);
+tl.to('#spark', {{ x: 857, y: 1000, scale: 1.3, duration: 0.45, ease: 'power3.inOut' }}, 2.15);
+tl.fromTo('#fk', {{ opacity: 0, y: 30, filter: 'blur(10px)' }}, {{ opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.45, ease: 'power3.out' }}, 2.38);
+tl.to('#spark', {{ scale: 1.7, duration: 0.12, yoyo: true, repeat: 1 }}, 2.9);
+tl.to('#fk', {{ opacity: 0, filter: 'blur(10px)', duration: 0.3, ease: 'power2.in' }}, 3.25);
+tl.to('#spark', {{ x: 540, y: 1320, scale: 1, duration: 0.35, ease: 'power3.inOut' }}, 3.2);
+
+/* 3  Druck, Zweifel, Angst fall onto the spark */
+"""
+for i, (w, y) in enumerate(SLABS):
+    t = T[9 + i]
+    JS += f"tl.fromTo('#s{i}', {{ y: -{y + 300} }}, {{ y: 0, duration: 0.32, ease: 'power4.in' }}, {t - 0.3:.2f});\n"
+    JS += f"tl.to('#spark', {{ scale: {0.8 - 0.15 * i:.2f}, opacity: {0.85 - 0.2 * i:.2f}, duration: 0.15 }}, {t + 0.02:.2f});\n"
+    JS += f"tl.fromTo('#s{i}', {{ scaleY: 0.94 }}, {{ scaleY: 1, duration: 0.25, ease: 'back.out(3)', immediateRender: false }}, {t + 0.02:.2f});\n"
+JS += f"""
+/* 4  "Doch ein Funke genügt." – light breaks through the cracks */
+tl.to('#spark', {{ scale: 1.4, opacity: 1, duration: 0.4, ease: 'power2.out' }}, {T[12]:.2f});
+tl.to('#cracks path', {{ strokeDashoffset: 0, duration: 0.35, ease: 'power2.out', stagger: 0.18 }}, {T[12] - 0.02:.2f});
+tl.to(['#s0', '#s1', '#s2'], {{ opacity: 0.28, duration: 0.4 }}, {T[12] + 0.05:.2f});
+tl.fromTo('#dk', {{ opacity: 0, y: 30, filter: 'blur(10px)' }}, {{ opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.45, ease: 'power3.out' }}, {T[12] - 0.05:.2f});
+tl.fromTo('#dk .gold', {{ opacity: 0 }}, {{ opacity: 1, duration: 0.3 }}, {T[15] - 0.04:.2f});
+tl.to('#spark', {{ keyframes: [{{ scale: 1.9, duration: 0.18 }}, {{ scale: 1.3, duration: 0.18 }}, {{ scale: 2.1, duration: 0.16 }}, {{ scale: 1.4, duration: 0.16 }}] }}, {T[15]:.2f});
+
+/* 5  the pause: everything goes dark, only the spark breathes */
+tl.to('#black', {{ opacity: 0.92, duration: 0.3, ease: 'power2.in' }}, 7.88);
+tl.to('#spark', {{ scale: 0.7, duration: 0.3, ease: 'power3.in' }}, 7.88);
+
+/* 6  IGNITION on "Potenzial": the slabs shatter */
+tl.set(['#s0', '#s1', '#s2', '#cracks', '#dk'], {{ opacity: 0 }}, 8.2);
+tl.set(['#hl0', '#hr0', '#hl1', '#hr1', '#hl2', '#hr2'], {{ opacity: 0.6 }}, 8.2);
+tl.to('#black', {{ opacity: 0, duration: 0.15 }}, 8.2);
+"""
+for i in range(3):
+    JS += f"tl.to('#hl{i}', {{ x: -700, y: {-120 + 80 * i}, rotation: -{25 + 10 * i}, opacity: 0, duration: 0.8, ease: 'power3.out' }}, 8.2);\n"
+    JS += f"tl.to('#hr{i}', {{ x: 700, y: {120 - 60 * i}, rotation: {25 + 8 * i}, opacity: 0, duration: 0.8, ease: 'power3.out' }}, 8.2);\n"
+JS += f"""
+tl.to('#spark', {{ scale: 5, opacity: 0, duration: 0.3, ease: 'expo.out' }}, 8.2);
+tl.fromTo('#bloom', {{ opacity: 0, scale: 0.2 }}, {{ opacity: 1, scale: 1.3, duration: 0.4, ease: 'expo.out' }}, 8.2);
+tl.to('#bloom', {{ opacity: 0, scale: 1.9, duration: 1.2, ease: 'power2.out' }}, 8.6);
+tl.fromTo('#warm', {{ opacity: 0 }}, {{ opacity: 1, duration: 0.6 }}, 8.2);
+tl.fromTo('#pz', {{ opacity: 0, scale: 1.6, filter: 'blur(18px)' }}, {{ opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.7, ease: 'expo.out' }}, 8.22);
+tl.fromTo('#ef', {{ opacity: 0, y: 30 }}, {{ opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }}, {T[17] - 0.04:.2f});
+tl.to(['#pz', '#ef'], {{ opacity: 0, y: -40, filter: 'blur(12px)', duration: 0.35, ease: 'power2.in' }}, 9.3);
+
+/* 7  the spark climbs: Klarheit, Fokus, Stärke */
+tl.set('#spark', {{ x: 540, y: 1460, scale: 0, opacity: 1 }}, 9.4);
+tl.to('#spark', {{ scale: 1, duration: 0.25, ease: 'back.out(2)' }}, 9.45);
+tl.to('#warm', {{ opacity: 0.5, duration: 1 }}, 9.4);
+"""
+for i, (ty, sy) in enumerate([(1180, 1290), (900, 1010), (620, 730)]):
+    t = T[18 + i]
+    JS += f"tl.to('#spark', {{ y: {sy}, duration: 0.3, ease: 'power3.out' }}, {t - 0.2:.2f});\n"
+    JS += f"tl.to('#rail', {{ scaleY: {(1460 - sy) / 820:.3f}, duration: 0.3, ease: 'power3.out' }}, {t - 0.2:.2f});\n"
+    JS += f"tl.fromTo('#st{i}', {{ opacity: 0, y: 30, filter: 'blur(10px)' }}, {{ opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.4, ease: 'power3.out' }}, {t - 0.05:.2f});\n"
+JS += f"""
+tl.to(['#st0', '#st1', '#st2', '#rail'], {{ opacity: 0, filter: 'blur(10px)', duration: 0.3, ease: 'power2.in' }}, 12.3);
+
+/* 8  the spark draws the ring and lands as the line under the logo */
+tl.to('#spark', {{ x: 540, y: 520, duration: 0.25, ease: 'power3.in' }}, 12.35);
+tl.to('#rc', {{ strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut' }}, 12.6);
+tl.to('#spark', {{ motionPath: null, duration: 0 }}, 12.6);
+const orb = {{ a: 0 }}; const sp = document.getElementById('spark');
+tl.to(orb, {{ a: 1, duration: 0.7, ease: 'power2.inOut', onUpdate: () => {{ const ang = -Math.PI / 2 + orb.a * Math.PI * 2; gsap.set(sp, {{ x: 540 + 340 * Math.cos(ang), y: 860 + 340 * Math.sin(ang) }}); }} }}, 12.6);
+tl.fromTo('#logo', {{ opacity: 0, scale: 1.1, filter: 'blur(12px)' }}, {{ opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.6, ease: 'expo.out' }}, 13.0);
+tl.to('#spark', {{ x: 540, y: 1181, scale: 0.6, duration: 0.4, ease: 'power3.inOut' }}, 13.4);
+tl.to('#lline', {{ scaleX: 1, duration: 0.5, ease: 'power3.out' }}, 13.75);
+tl.to('#spark', {{ opacity: 0, duration: 0.3 }}, 13.85);
+tl.to('#rc', {{ opacity: 0.25, duration: 0.6 }}, 13.8);
+tl.fromTo('#rl', {{ opacity: 0, y: 24 }}, {{ opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }}, {T[23] - 0.05:.2f});
+tl.fromTo('#cl', {{ opacity: 0, y: 24 }}, {{ opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }}, 15.3);
+tl.fromTo('#hd', {{ opacity: 0 }}, {{ opacity: 1, duration: 0.45 }}, 15.8);
+/* 9  fade to the single spark again (loop) */
+tl.to(['#logo', '#lline', '#rl', '#cl', '#hd', '#ring', '#warm'], {{ opacity: 0, duration: 0.5, ease: 'power2.in' }}, 17.2);
+tl.set('#spark', {{ x: 150, y: 883, scale: 0, opacity: 1 }}, 17.6);
+tl.to('#spark', {{ scale: 1, duration: 0.3 }}, 17.65);
+window.__timelines = window.__timelines || {{}}; window.__timelines['main'] = tl;
+"""
+JS = JS.replace("tl.to('#spark', { motionPath: null, duration: 0 }, 12.6);\n", "")
+
+html = ("<!doctype html><html lang='de'><head><meta charset='UTF-8' /><meta name='viewport' content='width=1080, height=1920' />"
+        "<script src='ui/gsap.min.js'></script><style>" + CSS + "</style></head><body>"
+        f"<div id='root' data-composition-id='main' data-start='0' data-duration='{DUR}' data-fps='30' data-width='1080' data-height='1920'>"
+        f"<div id='stage' class='clip' data-start='0' data-duration='{DUR}' data-track-index='1'>" + body() + "</div></div>"
+        "<script>" + JS + "</script></body></html>")
+(HERE / "index.html").write_text(html)
+print("ok")

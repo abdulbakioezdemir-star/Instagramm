@@ -121,18 +121,33 @@
       "dauer_s": 30,
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/duennes-seil/"
+    },
+    {
+      "datum": "2026-11-14",
+      "zeit": "13:01",
+      "slot": "einziger Slot (13:00, Befehl 5)",
+      "slug": "damokles",
+      "thema": "Mythen & Sagen (griechisch/antik)",
+      "serie": "Mythen in 30 Sekunden #2",
+      "titel": "Das Schwert des Damokles – Ein einziges Haar",
+      "media_id": "18659532328013276",
+      "permalink": "https://www.instagram.com/reel/DfuJ_mDAkRd/",
+      "video": "media/lorebound/damokles.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/damokles/"
     }
   ],
   "naechste_themen_ideen": [
-    "Mythos mit Gleichnis-Bauplan: ein Objekt + Zähler, Hook ohne Vorwissen (z. B. Ikarus: 'Er hatte Flügel. Und ignorierte eine Regel.')",
-    "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen",
-    "Gleichnis #4 (Gewinner-Serie, ein Objekt + Zähler)",
+    "Gleichnis #4 im Seil-Bauplan (riesige Last vs. winziger Halt, Lehre am Ende)",
+    "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen (Hook: 'Ein Teelöffel. Milliarden Tonnen.')",
+    "Mythos #3 im Gewinner-Hook (z. B. Ikarus: 'Zwei Flügel. Eine Regel.')",
     "Fantasy #2: Die Bibliothek, die Erinnerungen frisst"
   ],
-  "letzte_kategorie": "Gleichnis",
+  "letzte_kategorie": "Mythen",
   "serien": {
     "Gleichnisse in 30 Sekunden": 3,
-    "Mythen in 30 Sekunden": 1,
+    "Mythen in 30 Sekunden": 2,
     "Wissen in 30 Sekunden": 1,
     "Fantasy in 30 Sekunden": 1
   },

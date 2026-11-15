@@ -107,3 +107,20 @@ und Soundeffekte, die genau auf die Übergänge abgestimmt sind. Fünf Vorbilder
 ## Umsetzung
 - Erst die **Geschichte und das Leitmotiv** festlegen, dann die Szenen als Verwandlungen des Motivs planen.
 - Sound-Spur als **Liste von Ereignissen** (Zeit, Art) zusammen mit der Animation erzeugen, damit Bild und Ton gleich liegen.
+
+---
+
+# Stil-Referenz 3: „3D-Kamerafahrt → Kinetic 3D-Type → Neon“ (Vorbild vom 15.11.2026)
+
+Vorbild: Reel von Slate Academy (12,9 s, Rap-Song). Drei Welten, jede mit eigenem Look:
+
+| Zeit | Welt | Was passiert |
+|---|---|---|
+| 0–2,3 s | **Tiefblau** | 3D-Handy mit Instagram-Profil dreht sich, Kamera fliegt dicht über Profil und Bio (Bewegungsunschärfe), taucht ins Profilbild |
+| 2,3–3,5 s | Tiefblau | Profilbild wird zum **leuchtenden 3D-App-Icon mit Lichtringen**, dann klein → Buchstaben **kreisen in 3D** um einen Würfel mit Logo, ziehen sich zusammen |
+| 3,7–7 s | **Hellgrau mit Spotlight** | große fette Wörter (Text des Songs) **in 3D gekippt**, rutschen mit Bewegungsunschärfe; ein Wort in **schwarzem Kasten**, eins mit **Farbverlauf (lila)**, eins in einem **hellen Oval auf Schwarz** |
+| 7–11,5 s | **Schwarz** | **Neon-Wörter mit Glow** (Rot, Gelb, Blau), Zeilen stapeln sich und rollen hoch; zuletzt rote Schrift **hinter Gitterstäben** (dunkle 3D-Zylinder, unscharf im Vordergrund) |
+| 11,5–12,9 s | Schwarz | Logo kommt **unscharf → scharf**, darunter **gesperrt** „A C A D E M Y“ |
+
+Merken: Jede Welt wechselt hart auf einem Schlag im Song. Die Kamera fährt, wackelt aber nie.
+Schrift: sehr fette Grotesk. Ton: Musik trägt, jeder Wortwechsel sitzt auf einer Silbe.

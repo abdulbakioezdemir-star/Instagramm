@@ -102,3 +102,6 @@ Duplikat (gelöscht): 63 Views, Skip 67 %, Ø 3,5 s. followers_count lieferte 0 
 **Technik:** 30,0 s, animation-studio, Musik synthetisiert (D-Moll, -12,9 LUFS, Peak -1,0 dB), Marimba-Arpeggien im Prunk-Teil, Glocken-„Schwertklang“ (bell ratio 2.76) bei Hook/Reveal/Drop; verify: Reveal 12,0 s und Drop 20,0 s exakt synchron. Schwert nur im Hook und ab „Dann sah er nach oben“ sichtbar (Reveal mit Lichtkegel + Flash). Schwertspitze ~55 px über dem Kopf. Render ≈ 4,5 min. `chordAt().notes` liefert MIDI-Zahlen, nicht Notennamen.
 **Gepostet:** 12:01 UTC (13:01 Berlin), media_id 18659532328013276, https://www.instagram.com/reel/DfuJ_mDAkRd/, Cover thumb_offset 1500 ms. Seil lag kurz vorher bei 1.306 Views.
 **Nächstes Mal prüfen:** Damokles vs. Seil/Bambus/Sisyphos (Skip, Ø Watch, Likes). Wenn Damokles ≤ 30 % Skip: Gewinner-Hook „große Last ↔ winziger Halt“ wird Standard für alle Kategorien. Kommentare kamen bisher nie – evtl. Kommentar-Anreiz testen (z. B. „Schreib ein Wort: …“).
+
+## 2026-11-15 – 19:00-Lauf (Befehl 5: kein Reel)
+Nichts gerendert/gepostet (Befehl 5). Keine Kommentare zu beantworten (Windsor, 14 Tage, 0 Kommentare). **Auffällig:** Kein Lorebound-Reel am 15.11. – der 13:00-Lauf hat weder gepostet noch committet (Windsor-Cache zeigt nur Seil 1.311 und Damokles 146 Views). Muss vom 13:00-Bot/Besitzer geprüft werden.

@@ -124,3 +124,15 @@ Vorbild: Reel von Slate Academy (12,9 s, Rap-Song). Drei Welten, jede mit eigene
 
 Merken: Jede Welt wechselt hart auf einem Schlag im Song. Die Kamera fährt, wackelt aber nie.
 Schrift: sehr fette Grotesk. Ton: Musik trägt, jeder Wortwechsel sitzt auf einer Silbe.
+
+## Stil 3 – Mikro-Details, die es professionell machen (Feedback 15.11.)
+Der Kunde will, dass ich auf solche Ideen **selbst** komme. Checkliste für jedes Reel:
+- **Schweben statt Stehen**: Ebenen lösen sich in echter 3D-Tiefe vom Untergrund (Beiträge heben vom Handy ab, Profilbild steigt über Lichtringe), wippen kurz nach und landen wieder.
+- **Kamera mit Tiefe**: Neigung + Drehung + Zoom gleichzeitig, kurze Bewegungsunschärfe nur in schnellen Fahrten, nie Wackeln.
+- **Echtes Material des Kunden** (Profil, Beiträge, Handle), damit es sofort „seins“ ist; Text aus seinen eigenen Posts.
+- **Licht-Details**: Glanz-Streifen über das Glas, Staubpartikel, die langsam steigen, Glow-Ränder, Lichtoval als Spotlight.
+- **Schnitte auf dem Beat-Raster** (Welten wechseln auf Zählzeit 1), Beat setzt für das Spotlight einen halben Schlag aus.
+- **Neon flackert beim Einschalten**, Glitch-Versatz (Cyan/Magenta) auf dem „Problem“-Wort.
+- **Bedeutung in Objekten**: Gitter vor „Grenzen sind im Kopf“, die aufbrechen → Logo.
+- Ohne Stimme: Musik trägt, jede Bewegung hat ihren leisen Sound (Ticks für Buchstaben, Brummen für Neon, Klirren für Metall).
+- Technik: kein `filter` und keine `opacity` auf einem `preserve-3d`-Element, sonst wird es platt – Unschärfe auf den Eltern-Container legen.

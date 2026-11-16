@@ -130,3 +130,13 @@
 - Whisper (faster-whisper small): korrekt bis auf „besteche“ → „beschläche“ (klingt ok, kleines Modell). faster-whisper braucht Audio als numpy-Array (av-Version inkompatibel mit Dateipfad).
 - Gepostet 12:00, media_id 18140705509649313 (https://www.instagram.com/reel/DfuDG5BCWO-/), 32,0 s. Caption ohne „Teil 1/2“ (Befehl 5), Folge-CTA auch in der Caption.
 - 1 offener Kommentar beantwortet (lilly089.09 „beides unglaubwürdig“), kein Spam/keine Beleidigungen.
+
+## 2026-11-16 12:00 (Tag 6)
+- 15.11. ausgefallen (USAGE_LIMIT_REACHED, Reel war schon gerendert) → heute das fertige Tag-6-Reel gepostet. Abstimmung Tag 5: **A 5 : B 0** → Döner-Bestechung.
+- Prüfung: Kontaktbogen sauber, Whisper-Transkript korrekt (kleines Modell hört „Döner“ als „Böhner“, „Ayran“ als „Eier an“ – klingt im Video normal). 31,9 s, 1080×1920.
+- Zahlen Tag 5 (~48 h, Windsor-Cache): 2.472 Views, 1.842 Reichweite, Skip 29,4 %, Ø Watch 16,6 s, 31 Likes, 12 Komm., 0 Shares, 0 Saves. Follower 14 → **15**.
+- **Test Tag 5 (Folge-CTA „FOLG MIR · TAG 6 MORGEN 12 UHR“): schwach** – nur +1 Follower; Ø Watch 16,6 s (Tag 4 T1: 21 s) → Zwilling-Plot war schwerer verständlich.
+- Ausfall-Lehre: Kommentar-Antwort „Tag 6 heute 12 Uhr“ war gestern schon raus, Reel kam einen Tag später → Ankündigungen in Antworten erst nach erfolgreichem Post.
+- **Tagestest Tag 6:** Share-CTA mit Alltags-Typ in der Caption („Schick das dem Freund, der immer ‚geht auf mich‘ sagt und nie zahlt“) → Shares mit Tag 5 (0) vergleichen.
+- Gepostet 12:00:47, media_id 18099729620393539 (https://www.instagram.com/reel/DfzMrGKlNiw/). Keine offenen Kommentare, kein Spam.
+- Tag 7 (morgen): A = Mama um Geld fragen / B = Döner auf Raten. Emres Bestellung 14,90 € als laufender Gag weiterführen; Hook wieder Peinlichkeits-Behauptung.

@@ -29,7 +29,7 @@
   ],
   "format": "Ab 2026-11-13 (BEFEHLE.md Befehl 5): 1 Reel/Tag um 12:00 = ganze Folge \"Tag N\" mit A/B am Ende; 28–32 s; Humor/Hook nach Befehl 3",
   "bio": "korrigiert 2026-11-09 (Ahmed statt Kevin, Zeiten 12:00 & 18:00)",
-  "aktueller_tag": 5,
+  "aktueller_tag": 6,
   "tag_2": {
     "abstimmung_tag1": {
       "A": 2,
@@ -69,19 +69,14 @@
     "Doenermann": "de-DE-ConradNeural +0Hz +0%"
   },
   "letzte_abstimmungs_folge": {
-    "tag": 5,
-    "media_id": "18140705509649313",
-    "gepostet": "2026-11-14T12:00:10+01:00",
+    "tag": 6,
+    "media_id": "18099729620393539",
+    "gepostet": "2026-11-16T12:00:47+01:00",
     "abstimmung": {
-      "A": "Emre mit Döner bestechen",
-      "B": "Endlich die Wahrheit sagen"
+      "A": "Mama um Geld fragen",
+      "B": "Döner auf Raten"
     },
-    "entscheidet": "Tag 6 (2026-11-15 12:00)",
-    "stand_2026-11-14_17:10": {
-      "A": 4,
-      "B": 0,
-      "sonst": "lior_darken427: 'Sag du bist krank und mach dein Gesicht hübscher'"
-    }
+    "entscheidet": "Tag 7 (2026-11-17 12:00)"
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -451,5 +446,41 @@
   },
   "hinweis_2026-11-14": "Tag 5 am 13.11. ausgefallen (12-Uhr-Lauf hing). Am 14.11. nachgeholt als Tag 5.",
   "hinweis_2026-11-14_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gepostet, nur 5 Kommentare unter Tag 5 beantwortet.",
-  "hinweis_2026-11-15_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gerendert/gepostet. Keine offenen Kommentare (lilly089.09 'A' wurde um 11:14 mit '5:0 für A' beantwortet). Unter Tag 6 laut Windsor-Cache noch keine Kommentare."
+  "hinweis_2026-11-15_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gerendert/gepostet. Keine offenen Kommentare (lilly089.09 'A' wurde um 11:14 mit '5:0 für A' beantwortet). Unter Tag 6 laut Windsor-Cache noch keine Kommentare.",
+  "tag_6": {
+    "abstimmung_tag5": {
+      "A": 5,
+      "B": 0,
+      "ergebnis": "A – Emre mit Döner bestechen"
+    },
+    "reel": {
+      "datei": "media/glowup/tag06.mp4",
+      "skript": "pipeline/tag06/tag06.py (PART=1) – README pipeline/tag06/README.md",
+      "dauer_s": 31.9,
+      "slot": "12:00 (einziges Reel)",
+      "hook": "Ich wollte meinen Cousin mit einem Döner bestechen. Ich hatte drei Euro vierzig. (Text: ICH BESTECHE MEINEN COUSIN.)",
+      "abstimmung": {
+        "A": "Mama um Geld fragen",
+        "B": "Döner auf Raten"
+      },
+      "test": "Share-CTA mit Alltags-Typ in der Caption ('Schick das dem Freund, der immer \"geht auf mich\" sagt und nie zahlt') -> Shares vs. Tag 5 (0)",
+      "media_id": "18099729620393539",
+      "gepostet": "2026-11-16T12:00:47+01:00",
+      "permalink": "https://www.instagram.com/reel/DfzMrGKlNiw/",
+      "hinweis": "Am 15.11. gerendert, Lauf brach mit USAGE_LIMIT_REACHED ab -> am 16.11. unverändert gepostet"
+    }
+  },
+  "analyse_2026-11-16_11:10": {
+    "followers": 15,
+    "tag5": {
+      "views": 2472,
+      "reach": 1842,
+      "skip": 0.294,
+      "avg_watch_s": 16.6,
+      "likes": 31,
+      "comments": 12,
+      "shares": 0,
+      "saves": 0
+    }
+  }
 }

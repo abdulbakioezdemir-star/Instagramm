@@ -95,3 +95,14 @@
 ## 2026-11-14 21:00 – Slot 2: kein Reel (Befehl 5)
 - Laut BEFEHLE.md Befehl 5 postet der 21-Uhr-Bot nicht mehr. Nichts gerendert, nichts gepostet.
 - Kommentare: 1 neuer unter Tag 5 (karstenffm „2 die Mauer muss wachsen!!“, 2 Likes) beantwortet. Kein Spam. Stand Abstimmung Tag 5 (Cache): 1× „2“ (Längere Mauer).
+
+## 2026-11-16 15:00 – Tag 6 (Längere Mauer, 31,9 s)
+- 15.11. ausgefallen (USAGE_LIMIT_REACHED, Lauf nach 8 s beendet) → heute Tag 6.
+- Zahlen vor dem Post (Windsor, Cache): **Tag 5 (Goldmine, Rätsel-Hook) 498 Views / 436 Reichweite / 12 Likes / Skip 38,0 % / Ø 17,7 s** – Watch-Time-Rekord (vorher max. 12,2 s). Likes gesamt 139, Follower 17 (±0 seit 14.11.). Shares weiter 0.
+- Ergebnis Test Tag 5: Rätsel-Hook mit später Auflösung hebt die Watch-Time deutlich (17,7 vs. 11,3 s) bei gleicher Skip-Rate → **Rätsel-Hook ist Standard.** Aber: Views/Likes niedriger als Mauer-Reel (1.079) – Reichweite hängt evtl. am Thema (Mauer/Katze) und am Ausfall-Tag danach.
+- Top-Kommentar: „2 die Mauer muss wachsen!!“ (karstenffm, 2 Likes; einziger Kommentar) → Mauer 4 → 8 Steine lang (−12 €). Kasse 1000 + 139 − 1136 = **3 €**.
+- **Test des Tages: Gewinner ausbauen** – Mauer + Katze (bestes Reel-Thema) mit Rätsel-Hook kombiniert. Varianten: (A) „Meine Mauer ist jetzt doppelt so lang. Die Katze hat trotzdem gewonnen.“ (B) „Karsten will, dass die Mauer wächst. Ich hab fünfzehn Euro.“ (C) „Zwölf Euro für eine längere Mauer. Ratet, was die Katze macht.“ → **C**. Katze läuft ab Frame 0 (Bewegung), roter Kasten „UND DIE KATZE?“. Pointe: „Die Katze sitzt einfach oben drauf.“
+- Neue Optionen: 1 Strandkörbe · 2 Katzenhaus (Maskottchen ausbauen) · 3 Gemüsegarten. Brunnen nach 4 Niederlagen gestrichen. Caption fragt zusätzlich nach einem Namen für die Katze (Kommentar-Anreiz).
+- Technik: mauer(n=…) in bauten.py (Steine pro Reihe), Strandansicht pan_view(2150) aus tag04b + zoom_at aus tag05 (zm(), Zoom 1,8 auf Mauermitte). Katze 1,6× größer, sonst im Zoom kaum sichtbar. Pausen 0,1 s → 31,9 s.
+- Auswerten morgen: Views Tag 6 vs. Mauer-Reel (1.079) und Watch-Time vs. 17,7 s. Wenn Katze-Thema wieder > 800 Views: Katze dauerhaft als Maskottchen (Name per Kommentar).
+- Gepostet 15:00 Berlin, media_id 18438236794149534 (https://www.instagram.com/reel/DfzhTSmoZEH/). Kommentar unter Tag 5 war schon beantwortet. Kein Spam.

@@ -136,20 +136,42 @@
       "dauer_s": 30,
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/damokles/"
+    },
+    {
+      "datum": "2026-11-16",
+      "zeit": "13:00",
+      "slot": "einziger Slot (13:00, Befehl 5)",
+      "slug": "glas-wasser",
+      "thema": "Gleichnis/Motivation",
+      "serie": "Gleichnisse in 30 Sekunden #4",
+      "titel": "Das Glas Wasser – 250 Gramm. Zu schwer.",
+      "media_id": "17943235728392375",
+      "permalink": "https://www.instagram.com/reel/DfzTjq0HzE9/",
+      "video": "media/lorebound/glas-wasser.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/glas-wasser/",
+      "test": "Ein-Wort-Kommentar-Anreiz (ABGESTELLT)"
     }
   ],
   "naechste_themen_ideen": [
-    "Gleichnis #4 im Seil-Bauplan (riesige Last vs. winziger Halt, Lehre am Ende)",
-    "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen (Hook: 'Ein Teelöffel. Milliarden Tonnen.')",
-    "Mythos #3 im Gewinner-Hook (z. B. Ikarus: 'Zwei Flügel. Eine Regel.')",
-    "Fantasy #2: Die Bibliothek, die Erinnerungen frisst"
+    "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen (Hook: 'Ein Teelöffel. Milliarden Tonnen.') im Gleichnis-Bauplan mit Lehre",
+    "Fantasy #2 als Gleichnis (ein Objekt, Zähler, Lehre): z. B. Die Laterne, die nie ausging",
+    "Gleichnis #5 (nach Kategorie-Wechsel): Der Schmetterling und der Kokon (Hilfe, die schwächt)",
+    "Mythos #3 nur mit Hook ohne Vorwissen"
   ],
-  "letzte_kategorie": "Mythen",
+  "letzte_kategorie": "Gleichnis",
   "serien": {
-    "Gleichnisse in 30 Sekunden": 3,
+    "Gleichnisse in 30 Sekunden": 4,
     "Mythen in 30 Sekunden": 2,
     "Wissen in 30 Sekunden": 1,
     "Fantasy in 30 Sekunden": 1
   },
-  "zeitplan": "ab 2026-11-13: 1 Reel/Tag um 13:00 Berlin (BEFEHLE.md Befehl 5)"
+  "zeitplan": "ab 2026-11-13: 1 Reel/Tag um 13:00 Berlin (BEFEHLE.md Befehl 5)",
+  "ausfaelle": [
+    {
+      "datum": "2026-11-15",
+      "grund": "13:00-Lauf FAILED (USAGE_LIMIT_REACHED), kein Reel"
+    }
+  ]
 }

@@ -190,11 +190,11 @@ def strandbar(d, x, base, prog, t, font=None):
         for yy in range(int(base - 200 * prog), base, 45):
             d.line([(x - 15, yy), (x + tw + 15, yy)], fill=(150, 110, 70), width=5)
 
-def mauer(d, x, base, prog, t, font=None, steine=3):
+def mauer(d, x, base, prog, t, font=None, steine=3, n=4):
     """Mini-Mauer am Strand (Tag 4 · Teil 1, Abstimmung '3', Wunsch von seal.medusa). x = linke Kante, base = Boden.
     Nur drei Steinreihen hoch (Kasse reichte nicht für mehr). Reihen kommen nacheinander dazu."""
     if prog <= 0: return
-    sw, sh, n = 50, 30, 4                      # Stein-Breite/-Höhe, Steine pro Reihe
+    sw, sh = 50, 30                            # Stein-Breite/-Höhe; n = Steine pro Reihe (Tag 6: 8 = doppelt so lang)
     stone, dark = (175, 170, 160), (110, 105, 98)
     rows = min(steine, int(prog * steine + 0.999))
     for r in range(rows):

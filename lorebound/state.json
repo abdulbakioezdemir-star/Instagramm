@@ -152,19 +152,35 @@
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/glas-wasser/",
       "test": "Ein-Wort-Kommentar-Anreiz (ABGESTELLT)"
+    },
+    {
+      "datum": "2026-11-17",
+      "zeit": "13:00",
+      "slot": "einziger Slot (13:00, Befehl 5)",
+      "slug": "mammutbaum",
+      "thema": "Wissen (Natur) im Gleichnis-Bauplan",
+      "serie": "Wissen in 30 Sekunden #2",
+      "titel": "Der Riese, der auf Feuer wartet (Mammutbaum)",
+      "media_id": "18112829990214057",
+      "permalink": "https://www.instagram.com/reel/Df14W7UGTA0/",
+      "video": "media/lorebound/mammutbaum.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/mammutbaum/",
+      "test": "Speicher-Anreiz statt Kommentar-Anreiz"
     }
   ],
   "naechste_themen_ideen": [
-    "Wissen #2: Neutronenstern – ein Teelöffel wiegt Milliarden Tonnen (Hook: 'Ein Teelöffel. Milliarden Tonnen.') im Gleichnis-Bauplan mit Lehre",
     "Fantasy #2 als Gleichnis (ein Objekt, Zähler, Lehre): z. B. Die Laterne, die nie ausging",
     "Gleichnis #5 (nach Kategorie-Wechsel): Der Schmetterling und der Kokon (Hilfe, die schwächt)",
-    "Mythos #3 nur mit Hook ohne Vorwissen"
+    "Mythos #3 nur mit Hook ohne Vorwissen",
+    "Wissen #3 im Gleichnis-Bauplan (Fakt + Lehre), z. B. Neutronenstern-Teelöffel"
   ],
-  "letzte_kategorie": "Gleichnis",
+  "letzte_kategorie": "Wissen",
   "serien": {
     "Gleichnisse in 30 Sekunden": 4,
     "Mythen in 30 Sekunden": 2,
-    "Wissen in 30 Sekunden": 1,
+    "Wissen in 30 Sekunden": 2,
     "Fantasy in 30 Sekunden": 1
   },
   "zeitplan": "ab 2026-11-13: 1 Reel/Tag um 13:00 Berlin (BEFEHLE.md Befehl 5)",

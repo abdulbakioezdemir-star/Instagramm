@@ -266,3 +266,35 @@ def gelber_stein(d, x, y, s=1.0, t=0.0):
     pts = [(-40, 0), (-46, -26), (-24, -50), (8, -54), (38, -36), (44, -6), (20, 4)]
     d.polygon([(x + a * s, y + b * s) for a, b in pts], fill=(232, 200, 70), outline=(170, 135, 40))
     d.polygon([(x - 20 * s, y - 40 * s), (x + 4 * s, y - 46 * s), (x - 6 * s, y - 30 * s)], fill=(255, 235, 140))
+
+def katzenhaus(d, x, base, prog, t, font=None):
+    """Katzenhaus (Tag 7, selbst entschieden, Option 2 von Tag 6). x = Mitte, base = Boden.
+    prog 0–0,4 Wände (Bretter), 0,4–0,7 Dach, 0,7–1 Kissen + Schild."""
+    if prog <= 0: return
+    wood, dark, roof = (196, 140, 80), (120, 80, 40), (200, 70, 60)
+    q1 = min(1, prog / 0.4)
+    hw, hh = 75, 110
+    nb = max(1, int(5 * q1 + 0.999))
+    for k in range(nb):
+        y1 = base - k * hh / 5
+        d.rectangle([x - hw, y1 - hh / 5, x + hw, y1], fill=wood if k % 2 == 0 else (184, 128, 72), outline=dark, width=3)
+    if q1 >= 1:
+        d.ellipse([x - 32, base - 70, x + 32, base + 10], fill=(40, 28, 20))   # Eingang
+        d.rectangle([x - 32, base - 30, x + 32, base], fill=(40, 28, 20))
+    q2 = max(0, min(1, (prog - 0.4) / 0.3))
+    if q2 > 0:
+        top = base - hh - 80 * q2
+        d.polygon([(x - hw - 25, base - hh + 5), (x, top), (x + hw + 25, base - hh + 5)], fill=roof, outline=(130, 40, 35))
+    q3 = max(0, min(1, (prog - 0.7) / 0.3))
+    if q3 > 0:
+        d.ellipse([x - 28, base - 22 * q3, x + 28, base + 4], fill=(240, 120, 170))  # Kissen
+        d.rectangle([x - 60, base - hh - 120, x + 60, base - hh - 85], fill=(250, 245, 230), outline=dark, width=3)
+        if font: d.text((x, base - hh - 102), "MIAU", font=font, fill=(90, 60, 30), anchor="mm")
+
+def karton(d, x, base, s=1.0):
+    """Offener Pappkarton (Lieferkarton vom Katzenhaus)."""
+    c, dk = (205, 160, 105), (150, 110, 65)
+    d.polygon([(x - 60 * s, base - 70 * s), (x + 60 * s, base - 70 * s), (x + 55 * s, base), (x - 55 * s, base)], fill=c, outline=dk)
+    d.polygon([(x - 60 * s, base - 70 * s), (x - 95 * s, base - 100 * s), (x - 55 * s, base - 95 * s)], fill=(190, 145, 95), outline=dk)
+    d.polygon([(x + 60 * s, base - 70 * s), (x + 95 * s, base - 100 * s), (x + 55 * s, base - 95 * s)], fill=(190, 145, 95), outline=dk)
+    d.line([(x - 20 * s, base - 40 * s), (x + 20 * s, base - 40 * s)], fill=dk, width=max(2, int(4 * s)))

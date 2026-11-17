@@ -106,3 +106,13 @@
 - Technik: mauer(n=…) in bauten.py (Steine pro Reihe), Strandansicht pan_view(2150) aus tag04b + zoom_at aus tag05 (zm(), Zoom 1,8 auf Mauermitte). Katze 1,6× größer, sonst im Zoom kaum sichtbar. Pausen 0,1 s → 31,9 s.
 - Auswerten morgen: Views Tag 6 vs. Mauer-Reel (1.079) und Watch-Time vs. 17,7 s. Wenn Katze-Thema wieder > 800 Views: Katze dauerhaft als Maskottchen (Name per Kommentar).
 - Gepostet 15:00 Berlin, media_id 18438236794149534 (https://www.instagram.com/reel/DfzhTSmoZEH/). Kommentar unter Tag 5 war schon beantwortet. Kein Spam.
+
+## 2026-11-17 15:00 – Tag 7 (Katzenhaus, 29,3 s)
+- Zahlen vor dem Post (Windsor, Cache): **Tag 6 (Längere Mauer) 162 Views / 131 Reichweite / 5 Likes / 0 Kom. / Skip 54,9 % / Ø 6,2 s** – schwächstes Reel seit Tag 1. Tag 5 (Goldmine) 498 / Skip 38 % / Ø 17,7 s. Tag 4·T1 (Mauer) 1.079 / Skip 38 %. Likes gesamt 144, Follower 17 (±0 seit 13.11.). Shares weiter 0.
+- Auswertung Tag 6: „Zwölf Euro für eine längere Mauer“ als Hook zieht nicht – dritte Mauer-Folge, Thema ausgelutscht, Hook beginnt mit Kosten statt mit Emotion. Kein einziger Kommentar → Abstimmung leer.
+- Entscheidung: kein Kommentar → selbst gewählt: Katzenhaus (Option 2, baut Maskottchen aus). Kasse 1000 + 144 − 1136 = 8 € → −8 € → **0 €**.
+- **Test des Tages: Geständnis-Hook in Ich-Form** (Befehl 3: Peinlichkeit). Varianten: (A) „Keiner hat abgestimmt. Also hab ich entschieden.“ (B) „Acht Euro für ein Katzenhaus. Ratet, wo sie schläft.“ (C) „Ich hab mein ganzes Geld für eine Katze ausgegeben.“ → **C** (Peinlichkeit + Alltags-Pointe, die jeder Katzenbesitzer kennt: Karton statt teurem Haus). Roter Kasten „8 € → 0 €“.
+- Neue Optionen: 1 Strandkörbe · 2 Gemüsegarten · 3 Brücke. Caption fragt nach Katzennamen.
+- Technik: katzenhaus()/karton() in bauten.py; Zoom 1,5 auf (660, 1800), Haus x=880, Karton x=470. Untertitel in Welt-Szenen auf y=1180 (unten verdecken sie sonst Haus/Karton). Hinweis: `sleep` in der Sandbox kehrt teils früh zurück → Uhrzeit per HTTP-Date-Header prüfen.
+- Auswerten morgen: Skip-Rate Tag 7 vs. Tag 6 (54,9 %) und Tag 5 (38 %). Wenn < 45 %: Ich-Geständnis-Hook neben Rätsel-Hook als Standard. Wenn weiter 0 Kommentare: Abstimmung im Video früher (Sekunde 3–5) zeigen.
+- Gepostet 15:00 Berlin, media_id 18111504647248085. Keine neuen Kommentare zu beantworten, kein Spam.

@@ -140,3 +140,14 @@
 - **Tagestest Tag 6:** Share-CTA mit Alltags-Typ in der Caption („Schick das dem Freund, der immer ‚geht auf mich‘ sagt und nie zahlt“) → Shares mit Tag 5 (0) vergleichen.
 - Gepostet 12:00:47, media_id 18099729620393539 (https://www.instagram.com/reel/DfzMrGKlNiw/). Keine offenen Kommentare, kein Spam.
 - Tag 7 (morgen): A = Mama um Geld fragen / B = Döner auf Raten. Emres Bestellung 14,90 € als laufender Gag weiterführen; Hook wieder Peinlichkeits-Behauptung.
+
+## 2026-11-17 12:00 (Tag 7)
+- Abstimmung Tag 6: **A 3 : B 1** → Ahmed fragt Mama um Geld.
+- Zahlen Tag 6 (~24 h, Windsor-Cache): 1.814 Views, 1.312 Reichweite, **Skip 41 %** (Tag 5: 29,5 %), Ø Watch 14,0 s, 18 Likes, 8 Komm., 0 Shares, 0 Saves. Follower 16.
+- **Test Tag 6 (Share-CTA mit Alltags-Typ in Caption): kein Effekt** (0 Shares). Hook „Ich wollte meinen Cousin mit einem Döner bestechen…“ hat schlecht gezogen → Bestechungs-Hook ist kein Alltagsmoment; Pointe kam erst nach 3 s.
+- Hook-Varianten Tag 7: (1) „Ich hab Mama um Geld für einen Döner gefragt. Ich bin siebenundzwanzig.“ (2) „POV: Du fragst Mama nach 15 € und kriegst ein Verhör.“ (3) „Ich hab Mama nach 15 Euro gefragt. Sie hat gefragt: Für wen?“ → **(1)** (Peinlichkeit + Pointe am Satzende, Zahl als Stempel bei ~3 s).
+- Gags (Alltag Mama): „Für Bildung.“ / 4-Minuten-Sprachnachricht „Bei Minute 3 war sie noch bei meiner Geburt.“ / „Wer ist das Mädchen?“ → Tante Fatma hat Tinder gesehen, mit Emres Gesicht / stärkster am Ende: Überweisung mit „Verwendungszweck: Sonntag bringst du sie mit.“
+- **Tagestest:** Hook-Text mit Zahl + Selbstironie („ICH BIN 27. ICH FRAG MAMA.“) → Skip morgen mit Tag 6 (41 %) und Tag 3 T1 (26 %) vergleichen.
+- 32,1 s, Whisper (small) korrekt bis auf „Schreibt A oder B“ → „Schreibt auch der B“ (klingt im Video normal). Kontaktbogen sauber; Untertitel im Chat höher gesetzt (cy 1560), damit Ahmed sichtbar bleibt.
+- Gepostet 12:00:40, media_id 18142988455713035 (https://www.instagram.com/reel/Df1xf1kjssw/). Keine offenen Kommentare (alle 4 unter Tag 6 gestern beantwortet), kein Spam.
+- Tag 8 (morgen): A = Lena Sonntag zu Mama mitbringen / B = „Es gibt kein Mädchen“. Tante Fatma + Emres Foto als Konflikt weiterführen.

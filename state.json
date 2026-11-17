@@ -29,7 +29,7 @@
   ],
   "format": "Ab 2026-11-13 (BEFEHLE.md Befehl 5): 1 Reel/Tag um 12:00 = ganze Folge \"Tag N\" mit A/B am Ende; 28–32 s; Humor/Hook nach Befehl 3",
   "bio": "korrigiert 2026-11-09 (Ahmed statt Kevin, Zeiten 12:00 & 18:00)",
-  "aktueller_tag": 6,
+  "aktueller_tag": 7,
   "tag_2": {
     "abstimmung_tag1": {
       "A": 2,
@@ -69,14 +69,14 @@
     "Doenermann": "de-DE-ConradNeural +0Hz +0%"
   },
   "letzte_abstimmungs_folge": {
-    "tag": 6,
-    "media_id": "18099729620393539",
-    "gepostet": "2026-11-16T12:00:47+01:00",
+    "tag": 7,
+    "media_id": "18142988455713035",
+    "gepostet": "2026-11-17T12:00:40+01:00",
     "abstimmung": {
-      "A": "Mama um Geld fragen",
-      "B": "Döner auf Raten"
+      "A": "Lena Sonntag zu Mama mitbringen",
+      "B": "Es gibt kein Mädchen"
     },
-    "entscheidet": "Tag 7 (2026-11-17 12:00)"
+    "entscheidet": "Tag 8 (2026-11-18 12:00)"
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -487,5 +487,47 @@
       "saves": 0
     }
   },
-  "hinweis_2026-11-16_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gerendert/gepostet. 4 Kommentare unter Tag 6 beantwortet. Zwischenstand Abstimmung Tag 6 (17:10 Berlin): A (Mama um Geld fragen) 3, B (Döner auf Raten) 1."
+  "hinweis_2026-11-16_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gerendert/gepostet. 4 Kommentare unter Tag 6 beantwortet. Zwischenstand Abstimmung Tag 6 (17:10 Berlin): A (Mama um Geld fragen) 3, B (Döner auf Raten) 1.",
+  "tag_7": {
+    "abstimmung_tag6": {
+      "A": 3,
+      "B": 1,
+      "ergebnis": "A – Mama um Geld fragen"
+    },
+    "reel": {
+      "datei": "media/glowup/tag07.mp4",
+      "skript": "pipeline/tag07/tag07.py (PART=1) – README pipeline/tag07/README.md",
+      "dauer_s": 32.09,
+      "slot": "12:00 (einziges Reel)",
+      "hook": "Ich hab Mama um Geld für einen Döner gefragt. Ich bin siebenundzwanzig. (Text: ICH BIN 27. ICH FRAG MAMA.)",
+      "abstimmung": {
+        "A": "Lena mitbringen",
+        "B": "Es gibt kein Mädchen"
+      },
+      "test": "Hook-Text mit Zahl + Selbstironie ('ICH BIN 27. ICH FRAG MAMA.') -> Skip-Rate vs. Tag 6 (41 %)",
+      "media_id": "18142988455713035",
+      "gepostet": "2026-11-17T12:00:40+01:00",
+      "permalink": "https://www.instagram.com/reel/Df1xf1kjssw/"
+    },
+    "teil2_hinweis": "Befehl 5: kein Teil 2, ganze Folge im 12-Uhr-Reel; 18-Uhr-Lauf nur Kommentare."
+  },
+  "analyse_2026-11-17_11:15": {
+    "followers": 16,
+    "tag6": {
+      "views": 1814,
+      "reach": 1312,
+      "skip": 0.41,
+      "avg_watch_s": 14.0,
+      "likes": 18,
+      "comments": 8,
+      "shares": 0,
+      "saves": 0
+    },
+    "tag5": {
+      "views": 2502,
+      "reach": 1857,
+      "skip": 0.295,
+      "avg_watch_s": 16.6
+    }
+  }
 }

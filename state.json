@@ -141,7 +141,10 @@
     "17888881479500912",
     "18171323533470973",
     "18380391349240649",
-    "18176339944399918"
+    "18176339944399918",
+    "18005256636041011",
+    "18350595040248470",
+    "18129372109850726"
   ],
   "tag_3": {
     "abstimmung_tag2": {
@@ -529,5 +532,6 @@
       "skip": 0.295,
       "avg_watch_s": 16.6
     }
-  }
+  },
+  "hinweis_2026-11-17_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gerendert/gepostet. 3 Kommentare unter Tag 7 beantwortet. Zwischenstand Abstimmung Tag 7 (17:15 Berlin): A (Lena mitbringen) 3, B (Es gibt kein Mädchen) 0."
 }

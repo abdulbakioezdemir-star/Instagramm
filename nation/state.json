@@ -102,5 +102,14 @@
   "tag6_status": "gepostet 2026-11-16 15:00 (Europe/Berlin), media_id 18438236794149534, Slot 15:00",
   "tag7_video": "media/nation/valmora_tag07.mp4",
   "tag7_inhalt": "Kein Kommentar unter Tag 6 → selbst entschieden: Katzenhaus (−8 €). Kasse 1000+144−1144=0 €. Geständnis-Hook 'Ich hab mein ganzes Geld für eine Katze ausgegeben.' Pointe: Katze schläft lieber im Karton. Optionen: 1 Strandkörbe · 2 Gemüsegarten · 3 Brücke.",
-  "tag7_status": "gepostet 2026-11-17 15:00 (Europe/Berlin), media_id 18111504647248085, Slot 15:00"
+  "tag7_status": "gepostet 2026-11-17 15:00 (Europe/Berlin), media_id 18111504647248085, Slot 15:00",
+  "stimmen_tag7": [
+    {
+      "username": "justin0885_",
+      "stimme": "2 Gemüsegarten",
+      "text": "Ein Garten, irgendwie muss man sich ja ernähren",
+      "likes": 0,
+      "beantwortet": "2026-11-17 21:2x (21-Uhr-Lauf, Befehl 5: kein Post)"
+    }
+  ]
 }

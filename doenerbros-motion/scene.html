@@ -20,7 +20,7 @@
   #wordmark .h{font-size:150px}
   #wordmark .h small{display:block;font-size:46px;letter-spacing:.42em;font-weight:700;color:rgba(255,255,255,.8);margin-top:18px;text-indent:.42em}
   #outro img{width:230px;height:230px;border-radius:50%;box-shadow:0 0 80px rgba(255,40,20,.55)}
-  #outro .h{font-size:128px;margin-top:26px}
+  #outro .h{font-size:112px}
   .row{display:flex;gap:18px;justify-content:center;margin-top:30px}
   .chip{font-family:"Inter";font-weight:600;font-size:28px;padding:12px 24px;border-radius:999px;border:2px solid rgba(255,60,40,.6);color:#fff;background:rgba(20,6,6,.55)}
   #bars .b{position:absolute;left:0;right:0;height:0;background:#000}
@@ -61,13 +61,23 @@
     <span class="mask" style="padding-bottom:40px"><span class="line"><span class="price">Jede Pizza 8,00 €</span></span></span>
   </div>
 
-  <div class="ov" id="outro" style="top:560px">
-    <span class="mask" style="padding-bottom:40px;padding-top:40px"><span class="line"><img src="assets/icon-192x192.png" alt=""></span></span>
+  <div id="outroLogo" style="position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none;display:none">
+    <div id="logoShade" style="position:absolute;left:140px;top:560px;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(0,0,0,.75) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,0) 70%)"></div>
+    <div id="logoFlash" style="position:absolute;left:190px;top:610px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,30,.55) 0%,rgba(255,30,10,.18) 40%,rgba(255,20,0,0) 70%);opacity:0"></div>
+    <svg id="logoRing" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0;overflow:visible">
+      <defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle id="ringA" cx="540" cy="960" r="232" fill="none" stroke="#ff2414" stroke-width="9" stroke-linecap="round" filter="url(#glow)" transform="rotate(-90 540 960)"/>
+      <circle id="ringB" cx="540" cy="960" r="268" fill="none" stroke="#ff3a24" stroke-width="2.5" stroke-linecap="round" filter="url(#glow)" transform="rotate(90 540 960) scale(1 -1) translate(0 -1920)"/>
+    </svg>
+    <img id="logoImg" src="assets/icon-192x192.png" alt="" style="position:absolute;left:370px;top:790px;width:340px;height:340px;border-radius:50%;box-shadow:0 0 70px rgba(255,40,20,.45)">
+  </div>
+  <div class="ov" id="outro" style="top:1265px">
     <span class="mask"><span class="line h">DönER Bro's</span></span>
-    <span class="mask"><span class="line sub" style="margin-top:14px">Brückenstraße 36 · 83059 Kolbermoor</span></span>
-    <span class="mask" style="padding-bottom:50px"><span class="line"><span class="price">Jetzt bestellen · 0176 315 96145</span></span></span>
+    <span class="mask"><span class="line sub" style="margin-top:10px">Brückenstraße 36 · 83059 Kolbermoor</span></span>
+    <span class="mask" style="padding-bottom:40px"><span class="line"><span class="price">Jetzt bestellen · 0176 315 96145</span></span></span>
     <span class="mask"><span class="line row"><span class="chip">100% halal</span><span class="chip">Handgemacht</span><span class="chip">Mo–Sa 11–21 Uhr</span></span></span>
   </div>
+</div>
 </div>
 
 <script type="importmap">
@@ -82,7 +92,7 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
-const W = 1080, H = 1920, DURATION = 20;
+const W = 1080, H = 1920, DURATION = 22;
 
 // ---------- utils ----------
 let seed = 1337;
@@ -655,11 +665,13 @@ const camKeys = [
   [[-4.68, 3.01, -21.32], [0, 2.35, -26]],
   [[-5.78, 4.41, -26.55], [-5, 0.9, -35]],
   [[-3.18, 4.80, -29.02], [-5, 0.9, -35]],
-  [[-8.12, 4.41, -30.32], [-5, 0.9, -35]],
-  [[-3.00, 3.00, -36.80], [0, 2.8, -46]],
-  [[-0.60, 2.80, -38.60], [0, 2.8, -46]],
-  [[0.00, 2.80, -39.30], [0, 2.8, -46]],
-  [[0.00, 2.80, -39.50], [0, 2.8, -46]],
+  [[-2.60, 3.30, -36.20], [0, 2.8, -46]],
+
+  [[-0.70, 2.85, -38.30], [0, 2.8, -46]],
+  [[0.00, 2.80, -39.10], [0, 2.8, -46]],
+  [[0.00, 2.80, -39.35], [0, 2.8, -46]],
+  [[0.00, 2.80, -39.55], [0, 2.8, -46]],
+  [[0.00, 2.80, -39.70], [0, 2.8, -46]],
 ];
 const posCurve = new THREE.CatmullRomCurve3(camKeys.map(k => new THREE.Vector3(...k[0])), false, 'catmullrom', .5);
 const tgtCurve = new THREE.CatmullRomCurve3(camKeys.map(k => new THREE.Vector3(...k[1])), false, 'catmullrom', .5);
@@ -697,7 +709,7 @@ window.renderFrame = function (t) {
   pos.x += Math.sin(t * .9) * .03; pos.y += Math.sin(t * 1.3 + 1) * .025;
   camera.position.copy(pos); camera.lookAt(tgt);
   camera.rotateZ(Math.sin(t * .45) * .012 + (posCurve.getTangent(uu).x) * -.035);
-  camera.fov = 50 - 3 * smooth(range(t, 17.5, 20)); camera.updateProjectionMatrix();
+  camera.fov = 50 - 3 * smooth(range(t, 17.5, 21)); camera.updateProjectionMatrix();
 
   // intro
   setReveal(introRing, 0, easeInOut(range(t, .2, 2.0)));
@@ -751,9 +763,29 @@ window.renderFrame = function (t) {
   setReveal(pizRing, 0, easeInOut(range(t, 14.0, 16.2)));
 
   // outro
-  setReveal(outRing, 0, easeInOut(range(t, 16.8, 18.6)));
-  setReveal(outRing2, 0, easeInOut(range(t, 17.3, 19.2)));
-  outGlow.material.opacity = .15 * smooth(range(t, 17, 19));
+  setReveal(outRing, 0, 0); setReveal(outRing2, 0, 0);
+  outGlow.material.opacity = .25 * smooth(range(t, 17, 19));
+  // logo lands dead-centre, THEN the ring draws around it (impact @ RING_T)
+  { const RING_T = 18.3;
+    const ol = $('outroLogo'); ol.style.display = t > 17.4 ? 'block' : 'none';
+    const lk = range(t, 17.55, 18.2);
+    const ls = .45 + .55 * easeOutBack(lk);
+    const img = $('logoImg');
+    img.style.transform = `scale(${ls * (1 + .035 * Math.exp(-(t - RING_T) * 6) * (t > RING_T ? 1 : 0))}) rotate(${(1 - easeOutCubic(lk)) * -40}deg)`;
+    img.style.opacity = String(smooth(range(t, 17.55, 17.9)));
+    img.style.filter = `blur(${(1 - smooth(lk)) * 10}px)`;
+    $('logoShade').style.opacity = String(smooth(range(t, 17.4, 18.0)));
+    const CA = 2 * Math.PI * 232, CB = 2 * Math.PI * 268;
+    const ra = easeInOut(range(t, RING_T, RING_T + .55)), rb = easeInOut(range(t, RING_T + .12, RING_T + .8));
+    const A = $('ringA'), B = $('ringB');
+    A.setAttribute('stroke-dasharray', `${CA * ra} ${CA}`); A.style.opacity = ra > 0 ? '1' : '0';
+    B.setAttribute('stroke-dasharray', `${CB * rb} ${CB}`); B.style.opacity = rb > 0 ? '.85' : '0';
+    const pulse = 1 + .015 * Math.sin((t - RING_T) * 5) * (t > RING_T + .8 ? 1 : 0);
+    $('logoRing').style.transform = `scale(${pulse})`; $('logoRing').style.transformOrigin = '540px 960px';
+    const fl = Math.exp(-Math.max(0, t - RING_T - .5) * 3.2) * smooth(range(t, RING_T + .35, RING_T + .55));
+    $('logoFlash').style.opacity = String(fl);
+    $('logoFlash').style.transform = `scale(${.8 + .5 * smooth(range(t, RING_T + .35, RING_T + 1.4))})`;
+  }
 
   // particles & smoke
   emberMats.forEach(m => m.uniforms.uTime.value = t + 3);
@@ -771,7 +803,7 @@ window.renderFrame = function (t) {
   textBlock($('t2'), t, 7.9, 10.4);
   textBlock($('t3'), t, 11.3, 14.0);
   textBlock($('t4'), t, 15.0, 17.15);
-  textBlock($('outro'), t, 18.0, 99);
+  textBlock($('outro'), t, 18.95, 99);
   $('wordmark').style.transform += ` scale(${1 + range(t, 0, 3) * .12})`;
   $('wordmark').style.filter = `blur(${smooth(range(t, 2.4, 3.2)) * 6}px)`;
 

@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>DönER Bro's – Motion v2</title>
+<style>
+  html,body{margin:0;background:#000;overflow:hidden}
+  #stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+  canvas{position:absolute;inset:0;width:1080px!important;height:1920px!important}
+  .ov{position:absolute;left:0;right:0;font-family:"Inter Display","Inter",sans-serif;color:#fff;text-align:center;pointer-events:none;display:none}
+  .mask{overflow:hidden;display:block;padding:0 40px}
+  .line{display:block}
+  .kicker{font-family:"Inter";font-weight:700;font-size:30px;letter-spacing:.32em;text-transform:uppercase;color:#ff3b30;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+  .kicker .dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ff2a1f;box-shadow:0 0 18px #ff2a1f;margin:0 18px 4px 0;vertical-align:middle}
+  .h{font-weight:900;font-size:124px;line-height:.98;letter-spacing:-.035em;text-shadow:0 10px 50px rgba(0,0,0,.85),0 2px 6px rgba(0,0,0,.5)}
+  .h .red{color:#ff2a1f;text-shadow:0 0 40px rgba(255,40,20,.45),0 10px 50px rgba(0,0,0,.8)}
+  .sub{font-family:"Inter";font-weight:500;font-size:34px;color:rgba(255,255,255,.85);margin-top:22px;text-shadow:0 2px 14px rgba(0,0,0,.9)}
+  .price{display:inline-block;margin-top:30px;font-family:"Inter";font-weight:800;font-size:42px;padding:16px 36px;border-radius:999px;background:#e3170a;color:#fff;box-shadow:0 0 50px rgba(255,30,10,.55),0 10px 30px rgba(0,0,0,.5)}
+  #wordmark .h{font-size:150px}
+  .punch{position:absolute;left:0;right:0;top:300px;text-align:center;font-family:"Inter Display","Inter";font-weight:900;font-size:170px;letter-spacing:-.04em;color:#fff;text-shadow:0 12px 60px rgba(0,0,0,.9);display:none}
+  .punch.small{font-size:88px;top:760px;left:90px;right:90px;padding:34px 0 44px;border-radius:40px;background:rgba(8,3,3,.78);box-shadow:0 20px 80px rgba(0,0,0,.6)}
+  .punch .red{color:#ff2a1f}
+  #outro .h{font-size:112px}
+  .row{display:flex;gap:18px;justify-content:center;margin-top:30px}
+  .chip{font-family:"Inter";font-weight:600;font-size:28px;padding:12px 24px;border-radius:999px;border:2px solid rgba(255,60,40,.6);color:#fff;background:rgba(20,6,6,.6)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="ov" id="wordmark" style="top:760px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Kebaphaus in Kolbermoor</span></span>
+    <span class="mask" style="margin-top:22px"><span class="line h">DönER Bro's</span></span>
+  </div>
+  <div class="ov" id="tDoener" style="top:200px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Unser Klassiker</span></span>
+    <span class="mask" style="margin-top:20px"><span class="line h">Frisch. Saftig.</span></span>
+    <span class="mask"><span class="line h"><span class="red">Legendär.</span></span></span>
+    <span class="mask" style="padding-bottom:40px"><span class="line"><span class="price">Döner ab 7,00 €</span></span></span>
+  </div>
+  <div class="ov" id="tDuerum" style="top:200px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Handgerollt</span></span>
+    <span class="mask" style="margin-top:20px"><span class="line h">Dürüm</span></span>
+    <span class="mask"><span class="line h"><span class="red">Wrap.</span></span></span>
+    <span class="mask" style="padding-bottom:40px"><span class="line"><span class="price">8,00 €</span></span></span>
+  </div>
+  <div class="ov" id="tBurger" style="top:200px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Bestseller</span></span>
+    <span class="mask" style="margin-top:20px"><span class="line h">Chicken</span></span>
+    <span class="mask"><span class="line h"><span class="red">Burger.</span></span></span>
+    <span class="mask" style="padding-bottom:40px"><span class="line"><span class="price">7,00 €</span></span></span>
+  </div>
+  <div class="ov" id="tPizza" style="top:200px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Jeden Montag</span></span>
+    <span class="mask" style="margin-top:20px"><span class="line h">Pizza-</span></span>
+    <span class="mask"><span class="line h"><span class="red">Montag.</span></span></span>
+    <span class="mask" style="padding-bottom:40px"><span class="line"><span class="price">Jede Pizza 8,00 €</span></span></span>
+  </div>
+  <div class="punch" id="p1">Lahmacun</div>
+  <div class="punch" id="p2">Pide</div>
+  <div class="punch" id="p3">Nuggets</div>
+  <div class="punch small" id="p4">Alles <span class="red">100% halal.</span></div>
+
+  <div id="outroLogo" style="position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none;display:none">
+    <div id="logoShade" style="position:absolute;left:90px;top:510px;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(0,0,0,.8) 0%,rgba(0,0,0,.5) 45%,rgba(0,0,0,0) 70%)"></div>
+    <div id="logoFlash" style="position:absolute;left:190px;top:610px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,30,.6) 0%,rgba(255,30,10,.2) 40%,rgba(255,20,0,0) 70%);opacity:0"></div>
+    <svg id="logoRing" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0;overflow:visible">
+      <defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle id="ringA" cx="540" cy="960" r="232" fill="none" stroke="#ff2414" stroke-width="9" stroke-linecap="round" filter="url(#glow)" transform="rotate(-90 540 960)"/>
+      <circle id="ringB" cx="540" cy="960" r="268" fill="none" stroke="#ff3a24" stroke-width="2.5" stroke-linecap="round" filter="url(#glow)" transform="rotate(90 540 960) scale(1 -1) translate(0 -1920)"/>
+    </svg>
+    <img id="logoImg" src="assets/icon-192x192.png" alt="" style="position:absolute;left:370px;top:790px;width:340px;height:340px;border-radius:50%;box-shadow:0 0 70px rgba(255,40,20,.45)">
+  </div>
+  <div class="ov" id="outro" style="top:1265px">
+    <span class="mask"><span class="line h">DönER Bro's</span></span>
+    <span class="mask"><span class="line sub" style="margin-top:10px">Brückenstraße 36 · 83059 Kolbermoor</span></span>
+    <span class="mask" style="padding-bottom:40px"><span class="line"><span class="price">Jetzt bestellen · 0176 315 96145</span></span></span>
+    <span class="mask"><span class="line row"><span class="chip">100% halal</span><span class="chip">Handgemacht</span><span class="chip">Mo–Sa 11–21 Uhr</span></span></span>
+  </div>
+</div>
+
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+
+const W = 1080, H = 1920, DURATION = 22;
+let seed = 4242;
+const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+const rr = (a, b) => a + (b - a) * rnd();
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const smooth = x => { x = clamp(x); return x * x * (3 - 2 * x); };
+const easeOutCubic = x => 1 - Math.pow(1 - clamp(x), 3);
+const easeOutBack = x => { x = clamp(x); const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const easeInOut = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const range = (t, a, b) => clamp((t - a) / (b - a));
+const $ = id => document.getElementById(id);
+
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.toneMapping = THREE.NoToneMapping;
+document.getElementById('stage').prepend(renderer.domElement);
+
+const loader = new THREE.TextureLoader();
+const pending = [];
+function tex(url, srgb = true) {
+  const t = loader.load(url); pending.push(new Promise(r => { const i = setInterval(() => { if (t.image && t.image.complete !== false && t.image.width) { clearInterval(i); r(); } }, 20); }));
+  t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace; t.anisotropy = 8;
+  t.minFilter = THREE.LinearMipmapLinearFilter; t.generateMipmaps = true; return t;
+}
+function canvasTex(w, h, draw) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+const smokeTex = canvasTex(256, 256, (g, w, h) => {
+  for (let i = 0; i < 45; i++) { const x = w / 2 + rr(-55, 55), y = h / 2 + rr(-55, 55), r = rr(30, 85);
+    const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, 'rgba(255,255,255,.11)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h); }
+});
+
+// ============ photo scene (2.5D: displaced by depth map) ============
+const photoVS = `
+  uniform sampler2D depthMap; uniform float uAmp; varying vec2 vUv;
+  void main(){ vUv = uv; vec3 p = position; p.z += (texture2D(depthMap, uv).r - .35) * uAmp;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.); }`;
+const photoFS = `
+  uniform sampler2D map, maskMap, haloMap; uniform float uTime, uGlow, uHalo, uRays, uShine, uShineAmt, uExposure, uSat;
+  uniform vec3 uGlowColor; uniform vec2 uCenter; varying vec2 vUv;
+  void main(){
+    vec3 c = texture2D(map, vUv).rgb;
+    float m = texture2D(maskMap, vUv).r;
+    float halo = texture2D(haloMap, vUv).r;
+    float lum = dot(c, vec3(.2126,.7152,.0722));
+    c = mix(vec3(lum), c, uSat);
+    // food glows from within: lift + warm highlights, gentle breathing pulse
+    float pulse = .85 + .15 * sin(uTime * 2.6);
+    c *= 1. + uGlow * m * .16 * pulse;
+    c += uGlow * m * smoothstep(.45, .95, lum) * uGlowColor * .14 * pulse;
+    // back-light halo around the food
+    c += halo * halo * uHalo * uGlowColor * .55 * pulse;
+    // light rays behind the food
+    vec2 d = (vUv - uCenter) * vec2(.625, 1.);
+    float ang = atan(d.y, d.x), r = length(d);
+    float rays = pow(.5 + .5 * sin(ang * 14. + uTime * .5) * sin(ang * 5. - uTime * .35 + 1.3), 4.);
+    c += rays * smoothstep(.55, .15, r) * (1. - m) * uRays * uGlowColor * .3;
+    // specular shine sweeping across the food
+    float band = exp(-pow((vUv.x * .62 + vUv.y * .78 - uShine) * 9., 2.));
+    c += band * m * (.12 + lum * .7) * vec3(1., .9, .72) * uShineAmt;
+    c *= uExposure;
+    gl_FragColor = vec4(c, 1.);
+  }`;
+
+function emberField(count, spread, height, size, color, z0, z1) {
+  const g = new THREE.BufferGeometry(); const s = new Float32Array(count * 4);
+  for (let i = 0; i < count; i++) s.set([rr(-1, 1) * spread, rnd(), rr(z0, z1), rr(.25, 1)], i * 4);
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * 3), 3)); g.setAttribute('seed', new THREE.BufferAttribute(s, 4));
+  const m = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uH: { value: height }, uSize: { value: size }, uColor: { value: new THREE.Color(color) }, uY0: { value: -height / 2 } },
+    vertexShader: `attribute vec4 seed; uniform float uTime,uH,uSize,uY0; varying float vA;
+      void main(){ float sp=.12+seed.w*.22; float y=mod(seed.y*uH + uTime*sp, uH);
+        vec3 p=vec3(seed.x + sin(uTime*1.2*seed.w+seed.y*20.)*.03, uY0 + y, seed.z);
+        vA = smoothstep(0.,.2,y/uH)*(1.-smoothstep(.6,1.,y/uH)) * (.55+.45*sin(uTime*8.*seed.w+seed.y*40.));
+        vec4 mv=modelViewMatrix*vec4(p,1.); gl_PointSize=uSize*seed.w*(900./-mv.z); gl_Position=projectionMatrix*mv; }`,
+    fragmentShader: `uniform vec3 uColor; varying float vA; void main(){ float d=length(gl_PointCoord-.5); float a=smoothstep(.5,0.,d); a*=a; gl_FragColor=vec4(uColor*2.2*a*vA, 1.); }`,
+    transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending
+  });
+  const p = new THREE.Points(g, m); p.frustumCulled = false; return p;
+}
+function sparkles(count, cx, cy, rx, ry, z) { // twinkling star glints on the food
+  const g = new THREE.BufferGeometry(); const s = new Float32Array(count * 4);
+  for (let i = 0; i < count; i++) s.set([cx + rr(-1, 1) * rx, cy + rr(-1, 1) * ry, rnd() * 6.28, rr(.5, 1)], i * 4);
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * 3), 3)); g.setAttribute('seed', new THREE.BufferAttribute(s, 4));
+  const m = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uAmt: { value: 1 } },
+    vertexShader: `attribute vec4 seed; uniform float uTime; varying float vA;
+      void main(){ vA = pow(max(0., sin(uTime*(1.4+seed.w*1.5) + seed.z)), 12.);
+        vec4 mv = modelViewMatrix*vec4(seed.x, seed.y, ${z.toFixed(3)}, 1.); gl_PointSize = 70.*seed.w*(1.6/-mv.z); gl_Position = projectionMatrix*mv; }`,
+    fragmentShader: `uniform float uAmt; varying float vA; void main(){ vec2 q = gl_PointCoord-.5;
+      float star = .012/abs(q.x*q.y+.0006) * smoothstep(.5,.0,length(q)); float core = smoothstep(.12,0.,length(q));
+      gl_FragColor = vec4(vec3(1.,.92,.75)*(star*.06+core)*vA*uAmt, 1.); }`,
+    transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending
+  });
+  const p = new THREE.Points(g, m); p.frustumCulled = false; return p;
+}
+
+function photoScene(o) {
+  const scene = new THREE.Scene(); scene.background = new THREE.Color(0);
+  const cam = new THREE.PerspectiveCamera(28, W / H, .05, 20);
+  const hgt = o.height || 1, w = hgt * o.aspect;
+  const geo = new THREE.PlaneGeometry(w, hgt, o.flat ? 1 : 200, o.flat ? 1 : 320);
+  const black = canvasTex(4, 4, (g) => { g.fillStyle = '#000'; g.fillRect(0, 0, 4, 4); });
+  const mat = new THREE.ShaderMaterial({
+    uniforms: {
+      map: { value: tex(o.img) }, depthMap: { value: o.depth ? tex(o.depth, false) : black }, maskMap: { value: o.mask ? tex(o.mask, false) : black },
+      haloMap: { value: o.halo ? tex(o.halo, false) : black }, uAmp: { value: o.amp ?? .1 }, uTime: { value: 0 },
+      uGlow: { value: o.glow ?? .35 }, uHalo: { value: o.haloAmt ?? .3 }, uRays: { value: o.rays ?? .1 }, uShine: { value: -2 }, uShineAmt: { value: o.shineAmt ?? .6 },
+      uExposure: { value: o.exposure ?? 1.05 }, uSat: { value: o.sat ?? 1.08 }, uGlowColor: { value: new THREE.Color(o.glowColor ?? 0xff8a2a) }, uCenter: { value: new THREE.Vector2(...(o.center || [.48, .41])) }
+    }, vertexShader: photoVS, fragmentShader: photoFS
+  });
+  const mesh = new THREE.Mesh(geo, mat); scene.add(mesh);
+  const fx = new THREE.Group(); scene.add(fx);
+  const toW = (u, v) => [(u - .5) * w, (v - .5) * hgt];
+  if (o.embers) { const e = emberField(o.embers, w * .55, hgt * .9, .02, o.emberColor ?? 0xff6a1a, .05, .35); fx.add(e); o._e = e; }
+  if (o.sparkle) { const [cx, cy] = toW(...(o.center || [.48, .41])); const s = sparkles(o.sparkle, cx, cy, w * .3, hgt * .12, .06); fx.add(s); o._s = s; }
+  const smokes = [];
+  if (o.steam) {
+    const [cx, cy] = toW(o.center?.[0] ?? .48, (o.foodTop ?? .66) - .04);
+    for (let i = 0; i < o.steam; i++) {
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: smokeTex, color: 0xfff1e6, transparent: true, depthWrite: false, depthTest: false, opacity: 0 }));
+      s.userData = { cx: cx + rr(-.1, .1), cy, ph: rnd(), sp: rr(.16, .26), rot: rr(-.4, .4) }; fx.add(s); smokes.push(s);
+    }
+  }
+  const pivotV = o.pivot ?? .52;
+  return {
+    o, scene, cam, mat,
+    update(t, u) { // u = 0..1 progress through the scene's (padded) lifetime
+      const m = o.move;
+      const e = o.ease ? o.ease(u) : u;
+      const z = lerp(m.z[0], m.z[1], e), yaw = lerp(m.yaw[0], m.yaw[1], e) * Math.PI / 180, pitch = lerp(m.pitch[0], m.pitch[1], e) * Math.PI / 180;
+      const [px, py] = toW(lerp(m.px?.[0] ?? .5, m.px?.[1] ?? .5, e), pivotV + lerp(m.py?.[0] ?? 0, m.py?.[1] ?? 0, e));
+      cam.position.set(px + Math.sin(yaw) * Math.cos(pitch) * z, py + Math.sin(pitch) * z, Math.cos(yaw) * Math.cos(pitch) * z);
+      cam.lookAt(px, py, 0); cam.rotateZ((m.roll ? lerp(m.roll[0], m.roll[1], e) : 0) * Math.PI / 180);
+      // handheld micro-drift
+      cam.position.x += Math.sin(t * 1.1) * .0025; cam.position.y += Math.sin(t * 1.7 + 1) * .002;
+      mat.uniforms.uTime.value = t;
+      const sh = o.shine || []; let shv = -2;
+      for (const s of sh) { const k = range(t, s, s + 1.1); if (k > 0 && k < 1) shv = lerp(-.1, 1.6, easeInOut(k)); }
+      mat.uniforms.uShine.value = shv;
+      if (o._e) o._e.material.uniforms.uTime.value = t + 5;
+      if (o._s) o._s.material.uniforms.uTime.value = t;
+      smokes.forEach(s => { const d = s.userData; const k = (d.ph + t * d.sp) % 1;
+        s.position.set(d.cx + Math.sin(t * .8 + d.ph * 9) * .03, d.cy + k * .35, .04);
+        const sc = .08 + k * .22; s.scale.set(sc, sc, 1); s.material.rotation = d.rot * t + d.ph * 6;
+        s.material.opacity = Math.sin(k * Math.PI) * (o.steamOp ?? .14); });
+    }
+  };
+}
+
+const P = 'photos/', MP = 'v2/maps/';
+const food = (name, file, extra) => ({ img: P + file, depth: MP + name + '_depth.png', mask: MP + name + '_mask.png', halo: MP + name + '_halo.png', aspect: 900 / 1438, ...extra });
+
+const S = {
+  intro: photoScene({ img: P + 'atmosphere-Bys1WIvX.webp', aspect: 1781 / 883, flat: true, glow: 0, haloAmt: 0, rays: 0, shineAmt: 0, exposure: 1.15,
+    embers: 160, emberColor: 0xff3a10, pivot: .5,
+    move: { z: [1.75, 1.15], yaw: [0, 0], pitch: [0, 0], px: [.53, .5], roll: [1.5, -1] } }),
+  doener: photoScene(food('doener', 'doener-CyLmZTQQ.jpg', {
+    glow: .7, haloAmt: .8, rays: .6, shineAmt: 1.0, shine: [3.25, 5.3], center: [.475, .41], foodTop: .68, glowColor: 0xffa040, exposure: 1.0,
+    embers: 140, sparkle: 26, steam: 8, steamOp: .16, amp: .1, pivot: .5,
+    move: { z: [1.88, 1.5], yaw: [-6, 5], pitch: [3, 5], py: [.01, -.03], roll: [-1.2, .8] }, ease: x => x })),
+  duerum: photoScene(food('duerum', 'duerum-tsgVpUZ0.jpg', {
+    glow: .5, haloAmt: .5, rays: .3, shineAmt: .8, shine: [7.7], center: [.496, .43], embers: 80, sparkle: 12, steam: 8,
+    move: { z: [1.7, 1.85], yaw: [7, -5], pitch: [6, 2], roll: [1, -1] } })),
+  burger: photoScene(food('chicken', 'chicken-burger-DgrScr1a.jpg', {
+    glow: .55, haloAmt: .55, rays: .35, shineAmt: .9, shine: [10.4], center: [.472, .403], embers: 90, sparkle: 14, steam: 8, amp: .18,
+    move: { z: [1.85, 1.5], yaw: [-4, 6], pitch: [10, 3], roll: [0, 1.2] } })),
+  pizza: photoScene(food('pizza', 'pizza-CnkGcVBZ.jpg', {
+    glow: .5, haloAmt: .45, rays: .3, shineAmt: .8, shine: [13.3], center: [.482, .408], embers: 80, sparkle: 12, steam: 8,
+    move: { z: [1.45, 1.75], yaw: [0, 0], pitch: [16, 5], roll: [-6, 4] } })),
+  lahmacun: photoScene(food('lahmacun', 'lahmacun-zh68VmK6.jpg', { glow: .4, haloAmt: .4, rays: .2, embers: 60, steam: 6, center: [.505, .384],
+    move: { z: [1.62, 1.45], yaw: [-6, -2], pitch: [8, 6], roll: [2, 0] } })),
+  pide: photoScene(food('pide', 'pide-DO-5RQrx.jpg', { glow: .4, haloAmt: .4, rays: .2, embers: 60, steam: 6, center: [.519, .409],
+    move: { z: [1.45, 1.62], yaw: [6, 2], pitch: [5, 7], roll: [-2, 0] } })),
+  nuggets: photoScene(food('nuggets', 'nuggets-CVphdSG7.jpg', { glow: .4, haloAmt: .4, rays: .2, embers: 60, steam: 6, center: [.496, .423],
+    move: { z: [1.62, 1.45], yaw: [-3, 3], pitch: [9, 5], roll: [1.5, -.5] } })),
+  laden: photoScene({ img: P + 'der-laden-yml-HXRQ.png', aspect: 1122 / 1402, flat: true, glow: 0, haloAmt: 0, rays: 0, shineAmt: 0, pivot: .55, embers: 50,
+    move: { z: [1.55, 1.3], yaw: [0, 0], pitch: [0, 0], px: [.5, .5], roll: [-1, 1] } }),
+  outro: photoScene({ img: MP + 'storefront_bg.jpg', aspect: 1200 / 900, flat: true, glow: 0, haloAmt: 0, rays: 0, shineAmt: 0, exposure: .55, pivot: .52,
+    embers: 220, emberColor: 0xff3a14,
+    move: { z: [1.5, 1.2], yaw: [0, 0], pitch: [0, 0], px: [.42, .45], roll: [0, 0] } }),
+};
+
+// timeline: [scene, start, end]
+const TL = [
+  ['intro', 0, 2.5], ['doener', 2.5, 7.2], ['duerum', 7.2, 9.9], ['burger', 9.9, 12.8], ['pizza', 12.8, 15.5],
+  ['lahmacun', 15.5, 16.0], ['pide', 16.0, 16.5], ['nuggets', 16.5, 17.0], ['laden', 17.0, 17.75], ['outro', 17.75, 22.0],
+];
+// transitions at scene boundaries: type 1 whip, 2 zoom-through, 3 spin, 4 flash-cut
+const TR = [
+  { at: 2.5, dur: .75, type: 2 }, { at: 7.2, dur: .5, type: 1, dir: [-1, 0] }, { at: 9.9, dur: .5, type: 1, dir: [0, 1] },
+  { at: 12.8, dur: .62, type: 3 }, { at: 15.5, dur: .22, type: 4 }, { at: 16.0, dur: .22, type: 4 }, { at: 16.5, dur: .22, type: 4 },
+  { at: 17.0, dur: .22, type: 4 }, { at: 17.75, dur: .75, type: 2 },
+];
+
+// ============ compositor ============
+const rtOpts = { type: THREE.HalfFloatType, colorSpace: THREE.LinearSRGBColorSpace, depthBuffer: true };
+const rtA = new THREE.WebGLRenderTarget(W, H, rtOpts), rtB = new THREE.WebGLRenderTarget(W, H, rtOpts);
+const compScene = new THREE.Scene(); const ortho = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const comp = new THREE.ShaderMaterial({
+  uniforms: { tA: { value: rtA.texture }, tB: { value: rtB.texture }, p: { value: 0 }, type: { value: 0 }, dir: { value: new THREE.Vector2(1, 0) }, uTime: { value: 0 } },
+  vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0., 1.); }`,
+  fragmentShader: `
+    uniform sampler2D tA, tB; uniform float p, uTime; uniform int type; uniform vec2 dir; varying vec2 vUv;
+    const float PI = 3.14159265;
+    vec3 tap(sampler2D t, vec2 uv){ uv = clamp(uv, .001, .999); return texture2D(t, uv).rgb; }
+    vec3 dirBlur(sampler2D t, vec2 uv, vec2 v){ vec3 c = vec3(0.); for (int i = 0; i < 24; i++){ float k = float(i)/23. - .5; c += tap(t, uv + v*k); } return c/24.; }
+    vec3 zoomBlur(sampler2D t, vec2 uv, float s){ vec3 c = vec3(0.); vec2 d = uv - .5; for (int i = 0; i < 24; i++){ float k = float(i)/23.; c += tap(t, .5 + d*(1. - s*k)); } return c/24.; }
+    vec2 rot(vec2 uv, float a){ vec2 d = (uv - .5) * vec2(.5625, 1.); d = mat2(cos(a), -sin(a), sin(a), cos(a)) * d; return d / vec2(.5625, 1.) + .5; }
+    vec3 spinBlur(sampler2D t, vec2 uv, float a, float spread){ vec3 c = vec3(0.); for (int i = 0; i < 24; i++){ float k = float(i)/23. - .5; c += tap(t, rot(uv, a + spread*k)); } return c/24.; }
+    void main(){
+      vec2 uv = vUv; vec3 col;
+      float bell = sin(PI * clamp(p, 0., 1.));
+      if (type == 0) { col = tap(tA, uv); }
+      else if (type == 1) { // whip pan with directional motion blur
+        float e = p < .5 ? 4.*p*p*p : 1. - pow(-2.*p + 2., 3.)/2.;
+        vec2 v = dir * bell * .55;
+        vec3 a = dirBlur(tA, uv + dir * e, v), b = dirBlur(tB, uv + dir * (e - 1.), v);
+        float sel = step(0., dot(uv + dir*e - .5, dir) * -1. + .5); // A while still on screen
+        col = mix(b, a, smoothstep(.45, .55, 1. - e + (dot(uv - .5, dir))*.0));
+        col = mix(b, a, step(e, .5));
+      }
+      else if (type == 2) { // zoom-through with radial blur + light flash
+        if (p < .5) { float k = p*2.; vec2 u2 = .5 + (uv - .5) / (1. + k*k*2.5); col = zoomBlur(tA, u2, k*.45); }
+        else { float k = (p - .5)*2.; vec2 u2 = .5 + (uv - .5) * (1.35 - .35*(1. - pow(1.-k, 3.))) ; u2 = .5 + (uv - .5) / (1. + (1.-k)*(1.-k)*1.6); col = zoomBlur(tB, u2, (1.-k)*.45); }
+        col += vec3(1., .5, .25) * exp(-pow((p - .5)*7., 2.)) * .4;
+      }
+      else if (type == 3) { // spin + zoom
+        float a = (p < .5 ? p*p*2. : -(1.-p)*(1.-p)*2.) * PI * .9;
+        float s = 1. + bell*.35; vec2 u2 = .5 + (uv - .5) / s;
+        col = p < .5 ? spinBlur(tA, u2, a, bell*.35) : spinBlur(tB, u2, a, bell*.35);
+        col += vec3(1., .4, .2) * exp(-pow((p - .5)*8., 2.)) * .25;
+      }
+      else { // flash cut with punch-in
+        if (p < .5) col = tap(tA, .5 + (uv - .5) / (1. + p*.12));
+        else col = tap(tB, .5 + (uv - .5) / (1.1 - (p - .5)*.2));
+        col += vec3(1., .8, .7) * exp(-pow((p - .5)*10., 2.)) * .45;
+      }
+      // warm light leak drifting through during transitions
+      if (type > 0 && type < 4) {
+        vec2 lp = vec2(-.3 + p*1.6, .65 - p*.3);
+        float leak = exp(-dot((uv - lp)*vec2(1.6, .9), (uv - lp)*vec2(1.6, .9))*6.) * bell;
+        col += vec3(1., .35, .08) * leak * .45;
+      }
+      gl_FragColor = vec4(col, 1.);
+    }`
+});
+compScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), comp));
+
+const composer = new EffectComposer(renderer);
+composer.setPixelRatio(1); composer.setSize(W, H);
+composer.addPass(new RenderPass(compScene, ortho));
+const bloom = new UnrealBloomPass(new THREE.Vector2(W, H), .4, .5, .93);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+const grade = new ShaderPass({
+  uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uCA: { value: 0 } },
+  vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+  fragmentShader: `uniform sampler2D tDiffuse; uniform float uTime, uCA; varying vec2 vUv;
+    float h(vec2 p){ return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453); }
+    void main(){ vec2 c=vUv-.5; float d=length(c*vec2(1.,1.25));
+      vec2 off=c*(.003 + uCA)*d*2.;
+      vec3 col=vec3(texture2D(tDiffuse,vUv+off).r, texture2D(tDiffuse,vUv).g, texture2D(tDiffuse,vUv-off).b);
+      col = (col - .5) * 1.06 + .5;                                   // contrast
+      col *= vec3(1.03, .99, .96);                                    // warm
+      col *= mix(1., .45, smoothstep(.3, .9, d));                     // vignette
+      col += (h(vUv*vec2(1080.,1920.) + fract(uTime*7.31)) - .5) * .03; // grain
+      gl_FragColor=vec4(col,1.); }`
+});
+composer.addPass(grade);
+
+// ============ overlays ============
+function textBlock(el, t, tIn, tOut) {
+  const vis = t > tIn - .05 && t < tOut + .8; el.style.display = vis ? 'block' : 'none'; if (!vis) return;
+  el.querySelectorAll('.line').forEach((ln, i) => {
+    const kin = easeOutCubic(range(t, tIn + i * .08, tIn + i * .08 + .55));
+    const kout = easeInOut(range(t, tOut + i * .04, tOut + i * .04 + .4));
+    ln.style.transform = `translateY(${(1 - kin) * 110 - kout * 110}%)`;
+    ln.style.opacity = String(Math.min(kin, 1 - kout) * .999 + .001);
+  });
+  el.style.transform = `translateY(${-(t - tIn) * 8}px)`;
+}
+function punch(el, t, a, b) {
+  const vis = t >= a && t < b; el.style.display = vis ? 'block' : 'none'; if (!vis) return;
+  const k = range(t, a, a + .18); const s = 1.35 - .35 * easeOutBack(k);
+  el.style.transform = `scale(${s})`; el.style.opacity = String(Math.min(1, k * 3) * (1 - range(t, b - .06, b)));
+}
+
+function sceneU(name, t) {
+  const seg = TL.find(s => s[0] === name); const pad = .45;
+  return clamp((t - (seg[1] - pad)) / (seg[2] - seg[1] + 2 * pad));
+}
+function renderSceneTo(name, t, rt) {
+  const s = S[name]; s.update(t, sceneU(name, t));
+  renderer.setRenderTarget(rt); renderer.render(s.scene, s.cam); renderer.setRenderTarget(null);
+}
+
+window.renderFrame = function (t) {
+  const tr = TR.find(x => Math.abs(t - x.at) < x.dur / 2);
+  const cur = TL.find(s => t >= s[1] && t < s[2]) || TL[TL.length - 1];
+  if (tr) {
+    const ia = TL.findIndex(s => Math.abs(s[2] - tr.at) < 1e-6);
+    renderSceneTo(TL[ia][0], t, rtA); renderSceneTo(TL[ia + 1][0], t, rtB);
+    comp.uniforms.type.value = tr.type; comp.uniforms.p.value = (t - (tr.at - tr.dur / 2)) / tr.dur;
+    comp.uniforms.dir.value.set(...(tr.dir || [1, 0]));
+    grade.uniforms.uCA.value = Math.sin(Math.PI * comp.uniforms.p.value) * (tr.type === 4 ? .004 : .012);
+  } else {
+    renderSceneTo(cur[0], t, rtA); comp.uniforms.type.value = 0; grade.uniforms.uCA.value = 0;
+  }
+  grade.uniforms.uTime.value = t;
+
+  textBlock($('wordmark'), t, .35, 2.05);
+  $('wordmark').style.transform += ` scale(${1 + range(t, 0, 2.6) * .1})`;
+  textBlock($('tDoener'), t, 3.1, 6.75);
+  textBlock($('tDuerum'), t, 7.55, 9.5);
+  textBlock($('tBurger'), t, 10.25, 12.4);
+  textBlock($('tPizza'), t, 13.2, 15.15);
+  punch($('p1'), t, 15.5, 16.0); punch($('p2'), t, 16.0, 16.5); punch($('p3'), t, 16.5, 17.0); punch($('p4'), t, 17.0, 17.7);
+
+  { const RING_T = 19.0;
+    const ol = $('outroLogo'); ol.style.display = t > 18.15 ? 'block' : 'none';
+    const lk = range(t, 18.3, 18.9);
+    const img = $('logoImg');
+    img.style.transform = `scale(${(.45 + .55 * easeOutBack(lk)) * (1 + .035 * Math.exp(-(t - RING_T) * 6) * (t > RING_T ? 1 : 0))}) rotate(${(1 - easeOutCubic(lk)) * -40}deg)`;
+    img.style.opacity = String(smooth(range(t, 18.3, 18.6)));
+    img.style.filter = `blur(${(1 - smooth(lk)) * 10}px)`;
+    $('logoShade').style.opacity = String(smooth(range(t, 18.15, 18.7)));
+    const CA = 2 * Math.PI * 232, CB = 2 * Math.PI * 268;
+    const ra = easeInOut(range(t, RING_T, RING_T + .55)), rb = easeInOut(range(t, RING_T + .12, RING_T + .8));
+    $('ringA').setAttribute('stroke-dasharray', `${CA * ra} ${CA}`); $('ringA').style.opacity = ra > 0 ? '1' : '0';
+    $('ringB').setAttribute('stroke-dasharray', `${CB * rb} ${CB}`); $('ringB').style.opacity = rb > 0 ? '.85' : '0';
+    const fl = Math.exp(-Math.max(0, t - RING_T - .5) * 3.2) * smooth(range(t, RING_T + .35, RING_T + .55));
+    $('logoFlash').style.opacity = String(fl);
+    $('logoFlash').style.transform = `scale(${.8 + .5 * smooth(range(t, RING_T + .35, RING_T + 1.4))})`;
+  }
+  textBlock($('outro'), t, 19.6, 99);
+
+  composer.render();
+  return true;
+};
+window.DURATION = DURATION;
+Promise.all(pending).then(() => { // warm-up: upload all textures once
+  for (const k in S) renderSceneTo(k, 0, rtA);
+  renderFrame(Number(new URLSearchParams(location.search).get('t') || 0));
+  window.ready = true;
+});
+</script>
+</body>
+</html>

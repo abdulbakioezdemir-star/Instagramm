@@ -3,7 +3,7 @@ const { chromium } = require('playwright');
 const { spawn } = require('child_process');
 const http = require('http'), fs = require('fs'), path = require('path');
 const root = __dirname;
-const types = { '.html': 'text/html', '.js': 'text/javascript', '.png': 'image/png' };
+const types = { '.html': 'text/html', '.js': 'text/javascript', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp' };
 const srv = http.createServer((q, r) => { const f = path.join(root, decodeURIComponent(q.url.split('?')[0]));
   fs.readFile(f, (e, d) => { if (e) { r.writeHead(404); r.end(); return; } r.writeHead(200, { 'Content-Type': types[path.extname(f)] || 'application/octet-stream' }); r.end(d); }); });
 (async () => {
@@ -11,7 +11,7 @@ const srv = http.createServer((q, r) => { const f = path.join(root, decodeURICom
   const b = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
   const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
   p.on('console', m => console.log('[page]', m.text())); p.on('pageerror', e => console.log('[err]', e.message));
-  await p.goto(`http://localhost:${port}/scene.html`); await p.waitForFunction(() => window.ready, null, { timeout: 120000 });
+  await p.goto(`http://localhost:${port}/${process.env.PAGE || 'scene.html'}`); await p.waitForFunction(() => window.ready, null, { timeout: 120000 });
   await p.evaluate(() => document.fonts.ready);
   const [mode, arg, fpsArg] = process.argv.slice(2);
   const shot = async t => { await p.evaluate(t => renderFrame(t), t); return p.screenshot({ type: 'jpeg', quality: 94, clip: { x: 0, y: 0, width: 1080, height: 1920 } }); };

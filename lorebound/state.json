@@ -168,20 +168,36 @@
       "musik": "im Code synthetisiert",
       "pipeline": "lorebound/pipeline/mammutbaum/",
       "test": "Speicher-Anreiz statt Kommentar-Anreiz"
+    },
+    {
+      "datum": "2026-11-18",
+      "zeit": "13:00",
+      "slot": "einziger Slot (13:00, Befehl 5)",
+      "slug": "zieh-tor",
+      "thema": "Fantasy-Kurzgeschichte (Gleichnis-Bauplan)",
+      "serie": "Fantasy in 30 Sekunden #2",
+      "titel": "Das Tor – 1.000 Ritter. Ein Kind.",
+      "media_id": "18134106115699938",
+      "permalink": "https://www.instagram.com/reel/Df4dJ7zCbrk/",
+      "video": "media/lorebound/zieh-tor.mp4",
+      "dauer_s": 30,
+      "musik": "im Code synthetisiert",
+      "pipeline": "lorebound/pipeline/zieh-tor/",
+      "test": "Share-Anreiz + Rewatch-Detail (Inschrift ab Sekunde 0 sichtbar)"
     }
   ],
   "naechste_themen_ideen": [
-    "Fantasy #2 als Gleichnis (ein Objekt, Zähler, Lehre): z. B. Die Laterne, die nie ausging",
-    "Gleichnis #5 (nach Kategorie-Wechsel): Der Schmetterling und der Kokon (Hilfe, die schwächt)",
-    "Mythos #3 nur mit Hook ohne Vorwissen",
-    "Wissen #3 im Gleichnis-Bauplan (Fakt + Lehre), z. B. Neutronenstern-Teelöffel"
+    "Gleichnis #5: Der Schmetterling und der Kokon (Hilfe, die schwächt)",
+    "Mythos #3 nur mit Hook ohne Vorwissen, Bauplan riesig↔winzig",
+    "Wissen #3 im Gleichnis-Bauplan (Fakt + Lehre), z. B. Neutronenstern-Teelöffel",
+    "Fantasy #3 falls Tor gut läuft: wieder Alltags-Pointe (z. B. Drache, der den Schlüssel unter der Fußmatte hatte)"
   ],
-  "letzte_kategorie": "Wissen",
+  "letzte_kategorie": "Fantasy",
   "serien": {
     "Gleichnisse in 30 Sekunden": 4,
     "Mythen in 30 Sekunden": 2,
     "Wissen in 30 Sekunden": 2,
-    "Fantasy in 30 Sekunden": 1
+    "Fantasy in 30 Sekunden": 2
   },
   "zeitplan": "ab 2026-11-13: 1 Reel/Tag um 13:00 Berlin (BEFEHLE.md Befehl 5)",
   "ausfaelle": [

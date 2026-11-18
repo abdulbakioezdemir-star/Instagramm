@@ -365,7 +365,7 @@ function world2(t) {
   { const u = seg(t, b(17) - .04, .26, 'o'); W2.doch.position.set(-800 * (1 - u), 270, -40); W2.doch.rotation.set(0, -.6 * (1 - u) - .26, .08); setOp(W2.doch, u); }
   { const u = seg(t, b(17.5) - .04, .26, 'o'); W2.jed2.position.set(800 * (1 - u), 50, 40); W2.jed2.rotation.set(0, .6 * (1 - u) + .2, -.07); setOp(W2.jed2, u); }
   { const u = seg(t, b(18) - .04, .26, 'o'); W2.wird.position.set(0, -190 - 220 * (1 - u), 20); W2.wird.rotation.set(-1 * (1 - u), 0, 0); setOp(W2.wird, u); }
-  document.getElementById('oval').style.opacity = (t >= b(16) && t < b(17) - .02) ? 1 : 0;
+  document.getElementById('oval').style.opacity = 0;   // no black oval on "Grenzen." (customer request)
 }
 
 function world3(t) {

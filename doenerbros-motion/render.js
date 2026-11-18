@@ -18,10 +18,10 @@ const srv = http.createServer((q, r) => { const f = path.join(root, decodeURICom
   if (mode === 'stills') {
     for (const t of arg.split(',').map(Number)) { const t0 = Date.now(); fs.writeFileSync(path.join(process.env.OUT || '.', `still_${t}.jpg`), await shot(t)); console.log('still', t, Date.now() - t0, 'ms'); }
   } else {
-    const fps = Number(fpsArg || 30), N = Math.round(20 * fps);
+    const fps = Number(fpsArg || 30), N = Math.round(Number(process.env.DUR || 22) * fps), F0 = Number(process.env.FROM || 0);
     const ff = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-preset', 'slow', '-crf', '17', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', arg], { stdio: ['pipe', 'inherit', 'inherit'] });
     const t0 = Date.now();
-    for (let i = 0; i < N; i++) { const buf = await shot(i / fps); if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
+    for (let i = F0; i < N; i++) { const buf = await shot(i / fps); if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
       if (i % 30 === 0) console.log(`frame ${i}/${N}  ${((Date.now() - t0) / 1000).toFixed(0)}s`); }
     ff.stdin.end(); await new Promise(r => ff.on('close', r));
   }

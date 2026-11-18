@@ -151,3 +151,14 @@
 - 32,1 s, Whisper (small) korrekt bis auf „Schreibt A oder B“ → „Schreibt auch der B“ (klingt im Video normal). Kontaktbogen sauber; Untertitel im Chat höher gesetzt (cy 1560), damit Ahmed sichtbar bleibt.
 - Gepostet 12:00:40, media_id 18142988455713035 (https://www.instagram.com/reel/Df1xf1kjssw/). Keine offenen Kommentare (alle 4 unter Tag 6 gestern beantwortet), kein Spam.
 - Tag 8 (morgen): A = Lena Sonntag zu Mama mitbringen / B = „Es gibt kein Mädchen“. Tante Fatma + Emres Foto als Konflikt weiterführen.
+
+## 2026-11-18 12:00 (Tag 8)
+- Abstimmung Tag 7: **A 4 : B 0** → Lena kommt Sonntag zu Mama (Stimmen: lilly089.09, al_nasr7n, lior_darken427, vali24680).
+- Zahlen Tag 7 (~23 h, Windsor-Cache): **3.081 Views**, 2.204 Reichweite, Skip **32,1 %** (Tag 6: 41 %), Ø Watch 17,3 s, 39 Likes, 8 Komm., **4 Shares, 3 Saves** (vorher je 0). Follower 18.
+- **Test Tag 7 (Hook-Text mit Zahl + Selbstironie „ICH BIN 27. ICH FRAG MAMA.“): Gewinner** – Skip 41 → 32 %, bestes Reel seit Tag 4 T1. Mama-/Familien-Alltag zieht (erste Shares + Saves) → Familie als Gag-Quelle ausbauen (Gewinner ausbauen).
+- Hook-Varianten Tag 8: (1) „Ich hab Lena zu meiner Mama eingeladen. Wir hatten noch kein Date.“ (2) „POV: Euer erstes Date ist Sonntagsessen bei deiner Mama.“ (3) „4 zu 0. Ihr wollt, dass Lena meine Mama kennenlernt.“ → **(1)** (Peinlichkeit, Pointe am Satzende + Stempel „0 DATES“).
+- Gags (Alltag): 20 Minuten getippt → „Sonntag Hunger?“ / „Wer kocht?“ – „Meine Mama.“ / „Ich sag Bekannte. Mama schreibt der Familie: Verlobte.“ (Familiengruppe 47, Tante „Aus guter Familie?“, Oma „Wann ist die Hochzeit?“) / stärkster am Ende: Lena „Endlich sehe ich dich in echt!“ – „Mit meinem Gesicht. Nicht Emres.“
+- **Tagestest:** Story-Hook-Text ohne Zahl („ERSTES DATE: BEI MAMA.“, 4 Wörter) vs. Zahlen-Hook Tag 7 → Skip morgen vergleichen (Ziel ≤ 32 %).
+- 31,95 s. Whisper (small) korrekt bis auf Kleinigkeiten („Date“→„Deat“, „Verlobte“→„Verlochte“, „Schreibt A oder B“→„Schreibt auch der Be“ – klingt im Video normal). Kontaktbogen sauber; Echt-Szene: Tinder-Karte (Emre) VS Karte „Ahmed, echt“.
+- Gepostet 12:00:00, media_id 18434437519150352. 2 Kommentare beantwortet (vali24680 „A“, al_nasr7n Grüße-Wunsch – freundlich, nichts versprochen), kein Spam.
+- Tag 9 (morgen): A = Emre mitnehmen / B = Friseur „wie Emre“. Familie (Tante Fatma, Oma) + Sonntag-Countdown weiterführen.

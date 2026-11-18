@@ -29,7 +29,7 @@
   ],
   "format": "Ab 2026-11-13 (BEFEHLE.md Befehl 5): 1 Reel/Tag um 12:00 = ganze Folge \"Tag N\" mit A/B am Ende; 28–32 s; Humor/Hook nach Befehl 3",
   "bio": "korrigiert 2026-11-09 (Ahmed statt Kevin, Zeiten 12:00 & 18:00)",
-  "aktueller_tag": 7,
+  "aktueller_tag": 8,
   "tag_2": {
     "abstimmung_tag1": {
       "A": 2,
@@ -69,14 +69,14 @@
     "Doenermann": "de-DE-ConradNeural +0Hz +0%"
   },
   "letzte_abstimmungs_folge": {
-    "tag": 7,
-    "media_id": "18142988455713035",
-    "gepostet": "2026-11-17T12:00:40+01:00",
+    "tag": 8,
+    "media_id": "18434437519150352",
+    "gepostet": "2026-11-18T12:00:00+01:00",
     "abstimmung": {
-      "A": "Lena Sonntag zu Mama mitbringen",
-      "B": "Es gibt kein Mädchen"
+      "A": "Emre mitnehmen",
+      "B": "Zum Friseur: wie Emre"
     },
-    "entscheidet": "Tag 8 (2026-11-18 12:00)"
+    "entscheidet": "Tag 9 (2026-11-19 12:00)"
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -144,7 +144,9 @@
     "18176339944399918",
     "18005256636041011",
     "18350595040248470",
-    "18129372109850726"
+    "18129372109850726",
+    "18061175711652592",
+    "17956462719282356"
   ],
   "tag_3": {
     "abstimmung_tag2": {
@@ -533,5 +535,52 @@
       "avg_watch_s": 16.6
     }
   },
-  "hinweis_2026-11-17_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gerendert/gepostet. 3 Kommentare unter Tag 7 beantwortet. Zwischenstand Abstimmung Tag 7 (17:15 Berlin): A (Lena mitbringen) 3, B (Es gibt kein Mädchen) 0."
+  "hinweis_2026-11-17_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gerendert/gepostet. 3 Kommentare unter Tag 7 beantwortet. Zwischenstand Abstimmung Tag 7 (17:15 Berlin): A (Lena mitbringen) 3, B (Es gibt kein Mädchen) 0.",
+  "tag_8": {
+    "abstimmung_tag7": {
+      "A": 4,
+      "B": 0,
+      "ergebnis": "A – Lena Sonntag zu Mama mitbringen"
+    },
+    "reel": {
+      "datei": "media/glowup/tag08.mp4",
+      "skript": "pipeline/tag08/tag08.py (PART=1) – README pipeline/tag08/README.md",
+      "dauer_s": 31.95,
+      "slot": "12:00 (einziges Reel)",
+      "hook": "Ich hab Lena zu meiner Mama eingeladen. Wir hatten noch kein Date. (Text: ERSTES DATE: BEI MAMA.)",
+      "abstimmung": {
+        "A": "Emre mitnehmen",
+        "B": "Zum Friseur: wie Emre"
+      },
+      "test": "Story-Hook-Text ohne Zahl (ERSTES DATE: BEI MAMA.) vs. Zahlen-Hook Tag 7 (Skip 32,1 %)",
+      "media_id": "18434437519150352",
+      "gepostet": "2026-11-18T12:00:00+01:00"
+    },
+    "teil2_hinweis": "Befehl 5: kein Teil 2, ganze Folge im 12-Uhr-Reel; 18-Uhr-Lauf nur Kommentare."
+  },
+  "analyse_2026-11-18_11:10": {
+    "followers": 18,
+    "tag7": {
+      "views": 3081,
+      "reach": 2204,
+      "skip": 0.321,
+      "avg_watch_s": 17.3,
+      "likes": 39,
+      "comments": 8,
+      "shares": 4,
+      "saves": 3
+    },
+    "tag6": {
+      "views": 1891,
+      "reach": 1368,
+      "skip": 0.41,
+      "avg_watch_s": 14.1
+    },
+    "tag5": {
+      "views": 2526,
+      "reach": 1870,
+      "skip": 0.295,
+      "avg_watch_s": 16.6
+    }
+  }
 }

@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>DönER Bro's – Motion</title>
+<style>
+  html,body{margin:0;background:#050203;overflow:hidden}
+  #stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#050203}
+  canvas{position:absolute;inset:0;width:1080px!important;height:1920px!important}
+  .ov{position:absolute;left:0;right:0;font-family:"Inter Display","Inter",sans-serif;color:#fff;text-align:center;pointer-events:none;will-change:transform,opacity}
+  .mask{overflow:hidden;display:block;padding:0 40px}
+  .line{display:block;will-change:transform}
+  .kicker{font-family:"Inter";font-weight:700;font-size:30px;letter-spacing:.32em;text-transform:uppercase;color:#ff3b30}
+  .kicker .dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ff2a1f;box-shadow:0 0 18px #ff2a1f;margin:0 18px 4px 0;vertical-align:middle}
+  .h{font-weight:900;font-size:118px;line-height:.98;letter-spacing:-.035em;text-shadow:0 8px 40px rgba(0,0,0,.6)}
+  .h .red{color:#ff2a1f;text-shadow:0 0 40px rgba(255,40,20,.45)}
+  .sub{font-family:"Inter";font-weight:500;font-size:34px;color:rgba(255,255,255,.72);margin-top:26px;letter-spacing:.01em}
+  .price{display:inline-block;margin-top:30px;font-family:"Inter";font-weight:800;font-size:40px;padding:16px 34px;border-radius:999px;background:#e3170a;color:#fff;box-shadow:0 0 50px rgba(255,30,10,.55)}
+  .rule{height:3px;width:120px;background:#ff2a1f;margin:28px auto 0;box-shadow:0 0 16px #ff2a1f;transform-origin:center}
+  #wordmark .h{font-size:150px}
+  #wordmark .h small{display:block;font-size:46px;letter-spacing:.42em;font-weight:700;color:rgba(255,255,255,.8);margin-top:18px;text-indent:.42em}
+  #outro img{width:230px;height:230px;border-radius:50%;box-shadow:0 0 80px rgba(255,40,20,.55)}
+  #outro .h{font-size:128px;margin-top:26px}
+  .row{display:flex;gap:18px;justify-content:center;margin-top:30px}
+  .chip{font-family:"Inter";font-weight:600;font-size:28px;padding:12px 24px;border-radius:999px;border:2px solid rgba(255,60,40,.6);color:#fff;background:rgba(20,6,6,.55)}
+  #bars .b{position:absolute;left:0;right:0;height:0;background:#000}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="ov" id="wordmark" style="top:690px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Kebaphaus in Kolbermoor</span></span>
+    <span class="mask" style="margin-top:22px"><span class="line h">DönER Bro's</span></span>
+  </div>
+
+  <div class="ov" id="t1" style="top:250px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Täglich frisch gegrillt</span></span>
+    <span class="mask" style="margin-top:20px"><span class="line h">Hausgemachtes</span></span>
+    <span class="mask"><span class="line h"><span class="red">Dönerfleisch.</span></span></span>
+    <span class="mask"><span class="line sub">Nach eigenem Rezept mariniert · 100% halal</span></span>
+  </div>
+
+  <div class="ov" id="t2" style="top:250px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Unser Klassiker</span></span>
+    <span class="mask" style="margin-top:20px"><span class="line h">Frisch. Saftig.</span></span>
+    <span class="mask"><span class="line h"><span class="red">Legendär.</span></span></span>
+    <span class="mask" style="padding-bottom:40px"><span class="line"><span class="price">Döner ab 7,00 €</span></span></span>
+  </div>
+
+  <div class="ov" id="t3" style="top:250px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Bestseller</span></span>
+    <span class="mask" style="margin-top:20px"><span class="line h">Chicken</span></span>
+    <span class="mask"><span class="line h"><span class="red">Burger.</span></span></span>
+    <span class="mask"><span class="line sub">Knusprig, saftig, hoch gestapelt.</span></span>
+  </div>
+
+  <div class="ov" id="t4" style="top:250px">
+    <span class="mask"><span class="line kicker"><span class="dot"></span>Jeden Montag</span></span>
+    <span class="mask" style="margin-top:20px"><span class="line h">Pizza-</span></span>
+    <span class="mask"><span class="line h"><span class="red">Montag.</span></span></span>
+    <span class="mask" style="padding-bottom:40px"><span class="line"><span class="price">Jede Pizza 8,00 €</span></span></span>
+  </div>
+
+  <div class="ov" id="outro" style="top:560px">
+    <span class="mask" style="padding-bottom:40px;padding-top:40px"><span class="line"><img src="assets/icon-192x192.png" alt=""></span></span>
+    <span class="mask"><span class="line h">DönER Bro's</span></span>
+    <span class="mask"><span class="line sub" style="margin-top:14px">Brückenstraße 36 · 83059 Kolbermoor</span></span>
+    <span class="mask" style="padding-bottom:50px"><span class="line"><span class="price">Jetzt bestellen · 0176 315 96145</span></span></span>
+    <span class="mask"><span class="line row"><span class="chip">100% halal</span><span class="chip">Handgemacht</span><span class="chip">Mo–Sa 11–21 Uhr</span></span></span>
+  </div>
+</div>
+
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const W = 1080, H = 1920, DURATION = 20;
+
+// ---------- utils ----------
+let seed = 1337;
+const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+const rr = (a, b) => a + (b - a) * rnd();
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const smooth = x => { x = clamp(x); return x * x * (3 - 2 * x); };
+const easeOutCubic = x => 1 - Math.pow(1 - clamp(x), 3);
+const easeOutBack = x => { x = clamp(x); const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const easeInOut = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const range = (t, a, b) => clamp((t - a) / (b - a));
+const n3 = (x, y, z) => // cheap smooth pseudo-noise
+  (Math.sin(x * 1.7 + y * 2.3) * Math.cos(y * 1.3 - z * 2.1) + Math.sin(z * 2.9 + x * 0.7) * 0.6 + Math.sin(x * 5.1 + z * 4.3 + y * 3.7) * 0.25) / 1.85;
+
+function canvasTex(w, h, draw, repeat) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  if (repeat) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(...repeat); }
+  return t;
+}
+function speckle(g, w, h, n, colors, rmin, rmax, alpha = 1) {
+  for (let i = 0; i < n; i++) {
+    g.globalAlpha = alpha * rr(.3, 1); g.fillStyle = colors[Math.floor(rnd() * colors.length)];
+    g.beginPath(); g.ellipse(rnd() * w, rnd() * h, rr(rmin, rmax), rr(rmin, rmax) * rr(.4, 1), rnd() * 3, 0, 7); g.fill();
+  }
+  g.globalAlpha = 1;
+}
+
+// ---------- renderer ----------
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H, false);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = .82;
+document.getElementById('stage').prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x050203);
+scene.fog = new THREE.FogExp2(0x060203, 0.05);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+scene.environmentIntensity = 0.3;
+
+const camera = new THREE.PerspectiveCamera(50, W / H, 0.05, 120);
+
+// ---------- lights ----------
+scene.add(new THREE.HemisphereLight(0xffe2d0, 0x200404, 0.12));
+const key = new THREE.DirectionalLight(0xfff0e0, 1.25); key.position.set(4, 9, 6); scene.add(key);
+function pl(color, intensity, pos, dist = 10) { const l = new THREE.PointLight(color, intensity * .32, dist, 2); l.position.set(...pos); scene.add(l); return l; }
+
+// ---------- materials & textures ----------
+const RED = new THREE.Color(0xff1a0a);
+const neonMat = () => new THREE.MeshBasicMaterial({ color: RED.clone().multiplyScalar(1.2), toneMapped: false, fog: false, transparent: true });
+
+const meatTex = canvasTex(512, 1024, (g, w, h) => {
+  g.fillStyle = '#6b2f12'; g.fillRect(0, 0, w, h);
+  let y = 0;
+  while (y < h) { // layered stacked slices
+    const th = rr(6, 22);
+    const cols = ['#8a4319', '#a5541f', '#5c2710', '#b9692b', '#7a3815', '#c47a39', '#4a1f0c'];
+    g.fillStyle = cols[Math.floor(rnd() * cols.length)];
+    g.beginPath(); g.moveTo(0, y);
+    for (let x = 0; x <= w; x += 16) g.lineTo(x, y + Math.sin(x * .03 + y) * 3 + rr(-2, 2));
+    for (let x = w; x >= 0; x -= 16) g.lineTo(x, y + th + Math.sin(x * .025 + y * 2) * 3 + rr(-2, 2));
+    g.fill(); y += th * rr(.7, 1);
+  }
+  speckle(g, w, h, 1400, ['#2a0f05', '#3b1608', '#d48a45', '#e6a25a'], 1, 5, .55); // char + caramel
+  for (let i = 0; i < 35; i++) { // shaved crispy vertical streaks
+    g.globalAlpha = rr(.08, .2); g.strokeStyle = rnd() > .4 ? '#2d1206' : '#c98544'; g.lineWidth = rr(2, 7);
+    const x = rnd() * w; g.beginPath(); g.moveTo(x, 0);
+    for (let yy = 0; yy < h; yy += 30) g.lineTo(x + Math.sin(yy * .02 + i) * 8, yy); g.stroke();
+  }
+  g.globalAlpha = 1;
+});
+const breadTex = canvasTex(1024, 512, (g, w, h) => {
+  const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#c9802c'); gr.addColorStop(.5, '#b0661c'); gr.addColorStop(1, '#d08f3e');
+  g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  speckle(g, w, h, 900, ['#a55d1c', '#8c4a14', '#f0c27a'], 4, 22, .35);
+  speckle(g, w, h, 2500, ['#fff3dc', '#f7e4c0'], .6, 2, .7); // flour dust
+  speckle(g, w, h, 180, ['#5e2f0b'], 2, 6, .5);
+});
+const crumbTex = canvasTex(512, 512, (g, w, h) => {
+  g.fillStyle = '#cfa468'; g.fillRect(0, 0, w, h);
+  speckle(g, w, h, 1500, ['#b88a4e', '#dcb57c', '#a87a40'], 1, 6, .7);
+}, [2, 2]);
+const bunTex = canvasTex(512, 512, (g, w, h) => {
+  const gr = g.createLinearGradient(0, 0, 0, h);
+  gr.addColorStop(0, '#f3dcaa'); gr.addColorStop(.12, '#f0d29a'); gr.addColorStop(.2, '#c9792a'); gr.addColorStop(.6, '#b0601d'); gr.addColorStop(1, '#8f4612');
+  g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  speckle(g, w, h, 500, ['#d38c3d', '#9b5016'], 3, 14, .3);
+});
+const crispTex = canvasTex(512, 512, (g, w, h) => {
+  g.fillStyle = '#c98232'; g.fillRect(0, 0, w, h);
+  speckle(g, w, h, 3000, ['#e3a24e', '#a8621f', '#f2c072', '#7d4313'], 2, 9, .6);
+}, [3, 1]);
+const tomatoTex = canvasTex(256, 256, (g, w, h) => {
+  const c = w / 2; g.fillStyle = '#b5130c'; g.fillRect(0, 0, w, h);
+  g.fillStyle = '#e02a18'; g.beginPath(); g.arc(c, c, c * .92, 0, 7); g.fill();
+  for (let i = 0; i < 4; i++) { const a = i * Math.PI / 2 + .4;
+    g.fillStyle = '#ff6a3d'; g.beginPath(); g.ellipse(c + Math.cos(a) * c * .45, c + Math.sin(a) * c * .45, c * .28, c * .2, a, 0, 7); g.fill();
+    g.fillStyle = '#ffd77a'; for (let k = 0; k < 5; k++) { g.beginPath(); g.ellipse(c + Math.cos(a) * c * .45 + rr(-12, 12), c + Math.sin(a) * c * .45 + rr(-9, 9), 4, 2.5, a, 0, 7); g.fill(); } }
+  g.fillStyle = '#c91d10'; g.beginPath(); g.arc(c, c, c * .16, 0, 7); g.fill();
+});
+const salamiTex = canvasTex(256, 256, (g, w, h) => {
+  const c = w / 2; g.fillStyle = '#6e0f0a'; g.fillRect(0, 0, w, h);
+  g.fillStyle = '#a3201a'; g.beginPath(); g.arc(c, c, c * .94, 0, 7); g.fill();
+  speckle(g, w, h, 60, ['#f2c9b6', '#e8b19c'], 3, 8, .9);
+});
+const pizzaTex = canvasTex(1024, 1024, (g, w, h) => {
+  const c = w / 2;
+  g.fillStyle = '#b8261a'; g.fillRect(0, 0, w, h);
+  speckle(g, w, h, 400, ['#8f150d', '#d2412a'], 4, 18, .5);
+  for (let i = 0; i < 90; i++) { // cheese blobs
+    const a = rnd() * 7, r = Math.sqrt(rnd()) * c * .82;
+    const gr = g.createRadialGradient(c + Math.cos(a) * r, c + Math.sin(a) * r, 0, c + Math.cos(a) * r, c + Math.sin(a) * r, rr(40, 90));
+    gr.addColorStop(0, 'rgba(246,196,96,1)'); gr.addColorStop(.7, 'rgba(236,176,70,.95)'); gr.addColorStop(1, 'rgba(250,200,90,0)');
+    g.fillStyle = gr; g.beginPath(); g.arc(c + Math.cos(a) * r, c + Math.sin(a) * r, 90, 0, 7); g.fill();
+  }
+  speckle(g, w, h, 220, ['#b36b20', '#8c4a12'], 3, 12, .45); // browned spots
+  speckle(g, w, h, 300, ['#3d6b1f'], 1, 3, .7); // oregano
+});
+const woodTex = canvasTex(512, 512, (g, w, h) => {
+  g.fillStyle = '#2a170c'; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < 160; i++) { g.strokeStyle = rnd() > .5 ? '#3a2112' : '#1c0f07'; g.globalAlpha = rr(.3, .8); g.lineWidth = rr(1, 4);
+    const y = rnd() * h; g.beginPath(); g.moveTo(0, y); for (let x = 0; x < w; x += 20) g.lineTo(x, y + Math.sin(x * .02 + i) * 6); g.stroke(); }
+  g.globalAlpha = 1;
+});
+const glowTex = canvasTex(256, 256, (g, w, h) => {
+  const gr = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2);
+  gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.25, 'rgba(255,255,255,.45)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, w, h);
+});
+const smokeTex = canvasTex(256, 256, (g, w, h) => {
+  for (let i = 0; i < 40; i++) {
+    const x = w / 2 + rr(-50, 50), y = h / 2 + rr(-50, 50), r = rr(30, 80);
+    const gr = g.createRadialGradient(x, y, 0, x, y, r);
+    gr.addColorStop(0, 'rgba(255,255,255,.12)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  }
+});
+const shadowTex = canvasTex(256, 256, (g, w, h) => {
+  const gr = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2);
+  gr.addColorStop(0, 'rgba(0,0,0,.85)'); gr.addColorStop(.6, 'rgba(0,0,0,.35)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, w, h);
+});
+
+const M = {
+  meat: new THREE.MeshPhysicalMaterial({ map: meatTex, bumpMap: meatTex, bumpScale: 1.4, roughness: .5, clearcoat: .35, clearcoatRoughness: .45 }),
+  bread: new THREE.MeshStandardMaterial({ map: breadTex, bumpMap: breadTex, bumpScale: 2, roughness: .75 }),
+  crumb: new THREE.MeshStandardMaterial({ map: crumbTex, roughness: .95, side: THREE.BackSide }),
+  crumbFront: new THREE.MeshStandardMaterial({ map: crumbTex, roughness: .95 }),
+  bun: new THREE.MeshStandardMaterial({ map: bunTex, roughness: .55 }),
+  bunBottom: new THREE.MeshStandardMaterial({ color: 0xc98a45, roughness: .65 }),
+  crisp: new THREE.MeshStandardMaterial({ map: crispTex, bumpMap: crispTex, bumpScale: 6, roughness: .7 }),
+  lettuce: new THREE.MeshPhysicalMaterial({ color: 0x5fb22e, roughness: .45, clearcoat: .4, side: THREE.DoubleSide }),
+  tomato: new THREE.MeshPhysicalMaterial({ map: tomatoTex, roughness: .3, clearcoat: .8, clearcoatRoughness: .2 }),
+  tomatoSkin: new THREE.MeshPhysicalMaterial({ color: 0xc8160c, roughness: .25, clearcoat: 1 }),
+  onion: new THREE.MeshPhysicalMaterial({ color: 0xb04a8f, roughness: .35, clearcoat: .6 }),
+  sauce: new THREE.MeshPhysicalMaterial({ color: 0xe6d9bc, roughness: .2, clearcoat: 1, clearcoatRoughness: .1 }),
+  cheese: new THREE.MeshPhysicalMaterial({ color: 0xf5ad22, roughness: .3, clearcoat: .7, side: THREE.DoubleSide }),
+  pizza: new THREE.MeshPhysicalMaterial({ map: pizzaTex, bumpMap: pizzaTex, bumpScale: 2, roughness: .45, clearcoat: .5, clearcoatRoughness: .35 }),
+  salami: new THREE.MeshPhysicalMaterial({ map: salamiTex, roughness: .35, clearcoat: .7 }),
+  olive: new THREE.MeshPhysicalMaterial({ color: 0x141010, roughness: .2, clearcoat: 1 }),
+  pepper: new THREE.MeshPhysicalMaterial({ color: 0x2f8a22, roughness: .3, clearcoat: .8 }),
+  wood: new THREE.MeshStandardMaterial({ map: woodTex, roughness: .7 }),
+  steel: new THREE.MeshStandardMaterial({ color: 0xb8b8c0, metalness: 1, roughness: .25 }),
+  plinth: new THREE.MeshStandardMaterial({ color: 0x0e0909, roughness: .32, metalness: .4 }),
+};
+
+// ---------- floor ----------
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(240, 240),
+  new THREE.MeshStandardMaterial({ color: 0x0a0606, roughness: .26, metalness: .55 }));
+floor.rotation.x = -Math.PI / 2; scene.add(floor);
+
+// ---------- helpers for scene pieces ----------
+function contactShadow(parent, r, y = 0.002, op = 1) {
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(r * 2, r * 2), new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false, opacity: op }));
+  m.rotation.x = -Math.PI / 2; m.position.y = y; parent.add(m); return m;
+}
+function glowSprite(pos, scale, color, opacity) {
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color, transparent: true, opacity: opacity * .3, blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+  s.position.set(...pos); s.scale.set(scale, scale, 1); scene.add(s); return s;
+}
+// arc/ring drawn as tube so drawRange reveals it along the path
+function neonCurve(curve, segs, radius, parent) {
+  const geo = new THREE.TubeGeometry(curve, segs, radius, 8, false);
+  const m = new THREE.Mesh(geo, neonMat()); m.userData.total = geo.index.count; (parent || scene).add(m);
+  const halo = new THREE.Mesh(new THREE.TubeGeometry(curve, segs, radius * 5 + .03, 8, false),
+    new THREE.MeshBasicMaterial({ color: 0xff1206, transparent: true, opacity: .16, blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+  m.add(halo); m.userData.halo = halo; return m;
+}
+function setReveal(m, a, b = 1) { // reveal fraction a..b
+  const tot = m.userData.total, per = 8 * 6;
+  const s = Math.floor(clamp(a) * tot / per) * per, e = Math.floor(clamp(b) * tot / per) * per;
+  m.geometry.setDrawRange(s, Math.max(0, e - s)); m.userData.halo.geometry.setDrawRange(s, Math.max(0, e - s));
+}
+class CircleCurve extends THREE.Curve {
+  constructor(r, a0 = 0, a1 = Math.PI * 2) { super(); this.r = r; this.a0 = a0; this.a1 = a1; }
+  getPoint(t, o = new THREE.Vector3()) { const a = lerp(this.a0, this.a1, t); return o.set(Math.cos(a) * this.r, Math.sin(a) * this.r, 0); }
+}
+class HelixCurve extends THREE.Curve {
+  constructor(r, h, turns) { super(); this.r = r; this.h = h; this.turns = turns; }
+  getPoint(t, o = new THREE.Vector3()) { const a = t * Math.PI * 2 * this.turns; const rr2 = this.r * (1 + .15 * Math.sin(t * 9)); return o.set(Math.cos(a) * rr2, t * this.h, Math.sin(a) * rr2); }
+}
+function plinth(pos, r = 1.6, h = .6) {
+  const g = new THREE.Group(); g.position.set(...pos);
+  const p = new THREE.Mesh(new THREE.CylinderGeometry(r, r * 1.04, h, 96), M.plinth); p.position.y = h / 2; g.add(p);
+  const trim = new THREE.Mesh(new THREE.TorusGeometry(r * 1.005, .018, 8, 160), neonMat()); trim.rotation.x = Math.PI / 2; trim.position.y = h; g.add(trim);
+  const trim2 = new THREE.Mesh(new THREE.TorusGeometry(r * 1.045, .012, 8, 160), neonMat()); trim2.rotation.x = Math.PI / 2; trim2.position.y = .02; g.add(trim2);
+  contactShadow(g, r * 2.2, .003, .9);
+  scene.add(g); return g;
+}
+
+// =====================================================
+// STATION 0 – intro ring
+// =====================================================
+const introRing = neonCurve(new CircleCurve(2.3, Math.PI * 0.5, Math.PI * 2.5), 260, .035);
+introRing.position.set(0, 1.8, 0);
+const introRing2 = neonCurve(new CircleCurve(2.6, Math.PI * 1.5, Math.PI * 3.1), 220, .012);
+introRing2.position.set(0, 1.8, -0.3);
+const introGlow = glowSprite([0, 1.8, -2.5], 9, 0xff1505, .35);
+
+// =====================================================
+// STATION 1 – Döner-Spieß  @ (0, 0, -8)
+// =====================================================
+const SPIT = new THREE.Vector3(0, 0, -8);
+const spitGroup = new THREE.Group(); spitGroup.position.copy(SPIT); scene.add(spitGroup);
+{
+  const pts = [];
+  const y0 = .55, y1 = 3.25, N = 70;
+  for (let i = 0; i <= N; i++) {
+    const k = i / N, y = lerp(y0, y1, k);
+    let r = lerp(.48, .74, Math.pow(k, .8));             // wider at the top
+    r *= 1 - Math.pow(Math.max(0, (k - .93) / .07), 2) * .35; // rounded top
+    r *= 1 - Math.pow(Math.max(0, (.06 - k) / .06), 2) * .25; // rounded bottom
+    pts.push(new THREE.Vector2(r, y));
+  }
+  pts.unshift(new THREE.Vector2(0.02, y0)); pts.push(new THREE.Vector2(0.02, y1));
+  const geo = new THREE.LatheGeometry(pts, 160);
+  const p = geo.attributes.position; const v = new THREE.Vector3();
+  for (let i = 0; i < p.count; i++) {
+    v.fromBufferAttribute(p, i);
+    const a = Math.atan2(v.z, v.x), r = Math.hypot(v.x, v.z);
+    if (r < .05) continue;
+    const d = 1 + .045 * n3(Math.cos(a) * 3, v.y * 2.2, Math.sin(a) * 3) + .008 * Math.sin(v.y * 46 + Math.sin(a * 3) * 2) + .02 * Math.sin(a * 23 + v.y * 9) * n3(a, v.y * 3, 1);
+    p.setXYZ(i, v.x * d, v.y, v.z * d);
+  }
+  geo.computeVertexNormals();
+  const meat = new THREE.Mesh(geo, M.meat); spitGroup.add(meat); spitGroup.userData.meat = meat;
+  const rod = new THREE.Mesh(new THREE.CylinderGeometry(.035, .035, 4.1, 16), M.steel); rod.position.y = 2.05; spitGroup.add(rod);
+  const plateT = new THREE.Mesh(new THREE.CylinderGeometry(.42, .42, .05, 48), M.steel); plateT.position.y = 3.35; spitGroup.add(plateT);
+  const plateB = new THREE.Mesh(new THREE.CylinderGeometry(.85, .85, .06, 64), M.steel); plateB.position.y = .46; spitGroup.add(plateB);
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(.9, 1.0, .44, 64), M.plinth); base.position.y = .22; spitGroup.add(base);
+  const trim = new THREE.Mesh(new THREE.TorusGeometry(.95, .016, 8, 120), neonMat()); trim.rotation.x = Math.PI / 2; trim.position.y = .02; spitGroup.add(trim);
+  contactShadow(spitGroup, 2.4, .003);
+}
+// grill wall with glowing elements behind the spit
+{
+  const g = new THREE.Group(); g.position.set(SPIT.x, 0, SPIT.z - 1.25);
+  const panel = new THREE.Mesh(new THREE.BoxGeometry(2.6, 3.4, .12), new THREE.MeshStandardMaterial({ color: 0x1a1414, metalness: .9, roughness: .35 }));
+  panel.position.y = 2.0; g.add(panel);
+  const hot = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xff5a10).multiplyScalar(1.8), toneMapped: false });
+  for (let c = 0; c < 3; c++) for (let r = 0; r < 9; r++) {
+    const b = new THREE.Mesh(new THREE.BoxGeometry(.62, .055, .03), hot);
+    b.position.set((c - 1) * .76, .75 + r * .3, .08); g.add(b);
+  }
+  scene.add(g);
+}
+const spitHelix = neonCurve(new HelixCurve(1.05, 3.2, 2.2), 420, .018);
+spitHelix.position.set(SPIT.x, .35, SPIT.z);
+const spitRing = neonCurve(new CircleCurve(2.4, Math.PI * .5, Math.PI * 2.5), 260, .03);
+spitRing.position.set(SPIT.x, 2.0, SPIT.z - 1.6);
+const spitFire = pl(0xff6a20, 18, [SPIT.x, 1.9, SPIT.z - .7], 5);
+pl(0xff1a0a, 13, [SPIT.x - 2.2, 2.6, SPIT.z - 1.8], 9);
+pl(0xff1a0a, 9, [SPIT.x + 2.4, 1.2, SPIT.z - 1.4], 8);
+glowSprite([SPIT.x, 2.0, SPIT.z - 1.9], 7, 0xff2a08, .55);
+
+// =====================================================
+// STATION 2 – Döner im Brot  @ (4.5, 0, -14)
+// =====================================================
+const DON = new THREE.Vector3(5, 0, -17);
+plinth([DON.x, 0, DON.z], 1.65, .6);
+const donerGroup = new THREE.Group(); donerGroup.position.set(DON.x, .6, DON.z); scene.add(donerGroup);
+const donerAnim = [];
+{
+  const S = new THREE.Vector3(1.3, .42, 1.3), OPEN = .4;
+  const lift = (z, top) => top ? OPEN * Math.pow(1 - clamp(z), 2.2) : -OPEN * .18 * Math.pow(1 - clamp(z), 2);
+  const shell = (top) => {
+    const geo = new THREE.SphereGeometry(1, 96, 32, 0, Math.PI, top ? 0 : Math.PI / 2, Math.PI / 2);
+    const p = geo.attributes.position;
+    for (let i = 0; i < p.count; i++) {
+      let x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+      y = y * (1 + .04 * n3(x * 4, 0, z * 4));
+      p.setXYZ(i, x * S.x, y * S.y + lift(z, top), z * S.z);
+    }
+    geo.computeVertexNormals(); return geo;
+  };
+  for (const top of [true, false]) {
+    const g = shell(top);
+    const outer = new THREE.Mesh(g, M.bread); const inner = new THREE.Mesh(g, M.crumb);
+    const shellGroup = new THREE.Group(); shellGroup.add(outer, inner);
+    // thick crumb rim along the cut edge
+    const arc = []; for (let i = 0; i <= 64; i++) { const th = (i / 64) * Math.PI; // dome cross-section in plane z=0
+      const x = -Math.cos(th), yy = Math.sin(th) * (top ? 1 : -1);
+      arc.push(new THREE.Vector3(x * S.x * .995, yy * S.y + lift(0, top), 0)); }
+    const rim = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(arc), 96, .055, 10, false), M.crumbFront);
+    shellGroup.add(rim);
+    donerGroup.add(shellGroup);
+  }
+  // bread sits on its bottom; raise group so bottom touches plinth
+  donerGroup.children.forEach(c => c.position.y = S.y + .02);
+  donerGroup.userData.base = S.y + .02;
+  const yTop = (x, z) => Math.sqrt(Math.max(0, 1 - (x / S.x) ** 2 - (z / S.z) ** 2)) * S.y + lift(z / S.z, true);
+  const yBot = (x, z) => -Math.sqrt(Math.max(0, 1 - (x / S.x) ** 2 - (z / S.z) ** 2)) * S.y + lift(z / S.z, false);
+
+  const dummy = new THREE.Object3D();
+  function fill(geo, mat, count, place, colorFn) {
+    const im = new THREE.InstancedMesh(geo, mat, count);
+    const items = [];
+    for (let i = 0; i < count; i++) {
+      const it = place(i); if (!it) continue; items.push(it);
+      if (colorFn) im.setColorAt(i, colorFn(i));
+    }
+    im.count = items.length; im.userData.items = items;
+    im.position.y = donerGroup.userData.base; donerGroup.add(im); donerAnim.push(im); return im;
+  }
+  const inPocket = (zMin, zMax, hiK = 1) => {
+    for (let tries = 0; tries < 50; tries++) {
+      const z = rr(zMin, zMax) * S.z, x = rr(-1, 1) * S.x * Math.sqrt(Math.max(0, 1 - (z / S.z) ** 2)) * .9;
+      const lo = yBot(x, z) + .05, hi = yTop(x, z) - .04;
+      if (hi - lo > .08) return new THREE.Vector3(x, lerp(lo, hi, Math.pow(rnd(), 1 / hiK)), z);
+    }
+    return null;
+  };
+  // meat shavings
+  const shav = new THREE.BoxGeometry(.2, .028, .1, 3, 1, 1);
+  { const p = shav.attributes.position; for (let i = 0; i < p.count; i++) { const x = p.getX(i); p.setY(i, p.getY(i) + Math.sin(x * 14) * .02); } shav.computeVertexNormals(); }
+  const meatCols = [0x8a4518, 0xa65a24, 0x6b3210, 0xbf7234, 0x7d3c14, 0xc98443, 0x4f230b].map(c => new THREE.Color(c));
+  fill(shav, new THREE.MeshPhysicalMaterial({ roughness: .42, clearcoat: .6, clearcoatRoughness: .35 }), 900, i => {
+    const p = inPocket(-.06, .3, 1.4); if (!p) return null;
+    return { p, r: new THREE.Euler(rr(-1, 1), rr(0, 6.3), rr(-1, 1)), s: rr(.55, 1.0), d: i / 900 };
+  }, () => meatCols[Math.floor(rnd() * meatCols.length)]);
+  // lettuce
+  const leaf = new THREE.PlaneGeometry(.34, .26, 6, 4);
+  { const p = leaf.attributes.position; for (let i = 0; i < p.count; i++) { const x = p.getX(i), y = p.getY(i); p.setZ(i, Math.sin(x * 26) * .025 + Math.cos(y * 22) * .02 + (x * x) * .6); } leaf.computeVertexNormals(); }
+  fill(leaf, M.lettuce, 70, i => {
+    const p = inPocket(-.14, .18, 3); if (!p) return null;
+    return { p, r: new THREE.Euler(rr(-1.2, 1.2), rr(0, 6.3), rr(-1.2, 1.2)), s: rr(.5, .8), d: .35 + i / 70 * .4 };
+  }, () => new THREE.Color().setHSL(rr(.22, .28), .55, rr(.28, .42)));
+  // tomato half-slices
+  const tomGeo = new THREE.CylinderGeometry(.13, .13, .035, 32, 1, false, 0, Math.PI);
+  fill(tomGeo, M.tomato, 12, i => {
+    const p = inPocket(-.08, .2, 4); if (!p) return null;
+    return { p, r: new THREE.Euler(rr(-.4, .4) + Math.PI / 2 * (rnd() > .5 ? 1 : 0), rr(0, 6.3), rr(-.4, .4)), s: rr(.9, 1.2), d: .55 + i / 12 * .3 };
+  });
+  // onion rings
+  fill(new THREE.TorusGeometry(.085, .012, 8, 24), M.onion, 26, i => {
+    const p = inPocket(-.1, .16, 4); if (!p) return null;
+    return { p, r: new THREE.Euler(rr(0, 6.3), rr(0, 6.3), 0), s: rr(.8, 1.3), d: .6 + i / 26 * .3 };
+  });
+  // sauce blobs on top of the filling, drooping out of the opening
+  fill(new THREE.SphereGeometry(.09, 16, 12), M.sauce, 22, i => {
+    const x = rr(-.85, .85) * S.x * .8, z = rr(-.05, .15) * S.z;
+    const y = lerp(yBot(x, z), yTop(x, z), .62);
+    return { p: new THREE.Vector3(x, y, z - .02), r: new THREE.Euler(0, rr(0, 6.3), 0), s: rr(.9, 1.6), sy: .45, d: .85 + i / 22 * .15 };
+  });
+  donerGroup.userData.dummy = dummy;
+}
+donerGroup.rotation.set(.2, Math.PI + .3, 0); // open side toward camera path
+pl(0xff1a0a, 11, [DON.x - 1.5, 3.0, DON.z - 2.3], 9);
+pl(0xffc9a0, 9, [DON.x + 2.2, 2.6, DON.z + 1.8], 8);
+const donRing = neonCurve(new CircleCurve(2.2, Math.PI * .5, Math.PI * 2.5), 260, .03);
+donRing.position.set(DON.x - .9, 2.1, DON.z - 2.4); donRing.rotation.y = .5;
+glowSprite([DON.x - 1.2, 2.0, DON.z - 3.0], 8, 0xff1505, .4);
+
+// =====================================================
+// STATION 3 – Chicken Burger  @ (0, 0, -20)
+// =====================================================
+const BUR = new THREE.Vector3(0, 0, -26);
+plinth([BUR.x, 0, BUR.z], 1.6, .6);
+const burgerGroup = new THREE.Group(); burgerGroup.position.set(BUR.x, .6, BUR.z); scene.add(burgerGroup);
+const burgerLayers = [];
+{
+  const lathe = (pts, seg = 128) => new THREE.LatheGeometry(pts.map(([r, y]) => new THREE.Vector2(r, y)), seg);
+  const addLayer = (mesh, h) => { burgerGroup.add(mesh); burgerLayers.push({ mesh, h }); };
+  // bottom bun
+  addLayer(new THREE.Mesh(lathe([[0, 0], [.95, 0], [1.06, .04], [1.1, .14], [1.08, .26], [1.0, .32], [0, .32]]), M.bunBottom), .32);
+  // sauce
+  { const g = new THREE.CylinderGeometry(.96, .96, .018, 96, 1); const p = g.attributes.position;
+    for (let i = 0; i < p.count; i++) { const a = Math.atan2(p.getZ(i), p.getX(i)), r = Math.hypot(p.getX(i), p.getZ(i)); if (r > .5) { const k = 1 + .07 * Math.sin(a * 7) + .04 * Math.sin(a * 13); p.setX(i, p.getX(i) * k); p.setZ(i, p.getZ(i) * k); } }
+    g.computeVertexNormals(); addLayer(new THREE.Mesh(g, M.sauce), .03); }
+  // lettuce
+  const lettuceLayer = (R) => { const g = new THREE.RingGeometry(.001, R, 128, 8); const p = g.attributes.position;
+    for (let i = 0; i < p.count; i++) { const x = p.getX(i), y = p.getY(i), a = Math.atan2(y, x), r = Math.hypot(x, y) / R;
+      const k = 1 + .07 * Math.sin(a * 9) * r + .03 * Math.sin(a * 23) * r; p.setXYZ(i, x * k, y * k, (Math.sin(a * 17) * .05 + Math.sin(a * 5) * .03) * r * r); }
+    g.rotateX(-Math.PI / 2); g.computeVertexNormals(); return new THREE.Mesh(g, M.lettuce); };
+  addLayer(lettuceLayer(1.22), .05);
+  // crispy chicken patty
+  { const g = lathe([[0, 0], [.98, 0], [1.08, .05], [1.12, .16], [1.08, .28], [.98, .33], [0, .33]], 128);
+    const p = g.attributes.position; const v = new THREE.Vector3();
+    for (let i = 0; i < p.count; i++) { v.fromBufferAttribute(p, i); const r = Math.hypot(v.x, v.z); if (r < .05) continue; const a = Math.atan2(v.z, v.x);
+      const d = 1 + .035 * n3(Math.cos(a) * 6, v.y * 8, Math.sin(a) * 6) + .02 * Math.sin(a * 31); p.setXYZ(i, v.x * d, v.y + (v.y > .3 ? .02 * n3(v.x * 5, 1, v.z * 5) : 0), v.z * d); }
+    g.computeVertexNormals(); addLayer(new THREE.Mesh(g, M.crisp), .33); }
+  // cheese
+  { const g = new THREE.PlaneGeometry(2.0, 2.0, 40, 40); g.rotateX(-Math.PI / 2); g.rotateY(Math.PI / 4); const p = g.attributes.position;
+    for (let i = 0; i < p.count; i++) { const x = p.getX(i), z = p.getZ(i); const r = Math.hypot(x, z); const d = Math.max(0, r - .95);
+      p.setY(i, -d * d * 1.4 - d * .25 + .01 * Math.sin(x * 9)); }
+    g.computeVertexNormals(); addLayer(new THREE.Mesh(g, M.cheese), .03); }
+  // tomatoes
+  { const grp = new THREE.Group(); const tg = new THREE.CylinderGeometry(.5, .5, .07, 48);
+    [[-.45, -.3], [.48, -.2], [0, .45]].forEach(([x, z], i) => { const t = new THREE.Mesh(tg, [M.tomatoSkin, M.tomato, M.tomato]); t.position.set(x, .035, z); t.rotation.y = i; grp.add(t); });
+    addLayer(grp, .08); }
+  // onion
+  { const grp = new THREE.Group(); [[-.3, .2, .42], [.35, .3, .36], [.1, -.4, .4], [-.5, -.45, .3]].forEach(([x, z, r]) => { const o = new THREE.Mesh(new THREE.TorusGeometry(r, .03, 10, 48), M.onion); o.rotation.x = Math.PI / 2; o.position.set(x, .025, z); grp.add(o); }); addLayer(grp, .05); }
+  addLayer(lettuceLayer(1.16), .05);
+  // sauce drip
+  { const g = new THREE.CylinderGeometry(.92, .92, .035, 96, 1); const p = g.attributes.position;
+    for (let i = 0; i < p.count; i++) { const a = Math.atan2(p.getZ(i), p.getX(i)), r = Math.hypot(p.getX(i), p.getZ(i)); if (r > .5) { const k = 1 + .12 * Math.max(0, Math.sin(a * 6)) ; p.setX(i, p.getX(i) * k); p.setZ(i, p.getZ(i) * k); if (p.getY(i) < 0) p.setY(i, p.getY(i) - .08 * Math.max(0, Math.sin(a * 6))); } }
+    g.computeVertexNormals(); addLayer(new THREE.Mesh(g, M.sauce), .035); }
+  // top bun with sesame
+  { const grp = new THREE.Group();
+    const prof = [[0, 0], [1.08, 0], [1.13, .07], [1.1, .24], [.98, .44], [.75, .62], [.42, .73], [0, .76]];
+    const g = lathe(prof); const top = new THREE.Mesh(g, M.bun); grp.add(top);
+    const sesame = new THREE.InstancedMesh(new THREE.SphereGeometry(.035, 10, 6), new THREE.MeshStandardMaterial({ color: 0xf6e7c4, roughness: .5 }), 90);
+    const dm = new THREE.Object3D();
+    for (let i = 0; i < 90; i++) { const a = rnd() * 6.283, r = Math.sqrt(rnd()) * .95;
+      // height of dome at r
+      let y = 0; for (let k = 1; k < prof.length; k++) { if (r <= prof[k - 1][0] && r >= prof[k][0]) { const f = (r - prof[k][0]) / (prof[k - 1][0] - prof[k][0] || 1); y = lerp(prof[k][1], prof[k - 1][1], f); } }
+      dm.position.set(Math.cos(a) * r, y + .01, Math.sin(a) * r); dm.rotation.set(rr(-.4, .4), rnd() * 6, rr(-.4, .4)); dm.scale.set(1, .45, .6); dm.updateMatrix(); sesame.setMatrixAt(i, dm.matrix); }
+    grp.add(sesame); addLayer(grp, .76); }
+  contactShadow(burgerGroup, 1.9, .002);
+}
+pl(0xff1a0a, 13, [BUR.x + 1.8, 3.0, BUR.z - 2.4], 9);
+pl(0xffc9a0, 10, [BUR.x - 2.0, 3.0, BUR.z + 2.2], 8);
+const burRing = neonCurve(new CircleCurve(2.3, Math.PI * .5, Math.PI * 2.5), 260, .03);
+burRing.position.set(BUR.x, 2.1, BUR.z - 2.4);
+const burArc = neonCurve(new HelixCurve(1.6, 2.6, 1.3), 300, .014);
+burArc.position.set(BUR.x, .7, BUR.z);
+glowSprite([BUR.x, 2.0, BUR.z - 3.0], 8, 0xff1505, .45);
+
+// =====================================================
+// STATION 4 – Pizza  @ (-5, 0, -26)
+// =====================================================
+const PIZ = new THREE.Vector3(-5, 0, -35);
+plinth([PIZ.x, 0, PIZ.z], 1.9, .6);
+const pizzaGroup = new THREE.Group(); pizzaGroup.position.set(PIZ.x, .6, PIZ.z); scene.add(pizzaGroup);
+const pizzaToppings = [];
+{
+  const board = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.8, .07, 96), M.wood); board.position.y = .035; pizzaGroup.add(board);
+  const spin = new THREE.Group(); spin.position.y = .07; pizzaGroup.add(spin); pizzaGroup.userData.spin = spin;
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, .05, 128), M.bread); base.position.y = .025; spin.add(base);
+  const top = new THREE.Mesh(new THREE.CircleGeometry(1.42, 128), M.pizza); top.rotation.x = -Math.PI / 2; top.position.y = .052; spin.add(top);
+  { const g = new THREE.TorusGeometry(1.45, .11, 20, 160); const p = g.attributes.position;
+    for (let i = 0; i < p.count; i++) { const x = p.getX(i), y = p.getY(i), z = p.getZ(i); const a = Math.atan2(y, x); const k = 1 + .25 * n3(Math.cos(a) * 5, Math.sin(a) * 5, z * 10); p.setZ(i, z * k); }
+    g.computeVertexNormals(); const crust = new THREE.Mesh(g, M.bread); crust.rotation.x = Math.PI / 2; crust.position.y = .07; crust.scale.z = .8; spin.add(crust); }
+  const add = (mesh, d) => { spin.add(mesh); mesh.userData.final = mesh.position.clone(); mesh.userData.d = d; pizzaToppings.push(mesh); };
+  const sg = new THREE.CylinderGeometry(.21, .21, .03, 40);
+  for (let i = 0; i < 11; i++) { const a = i * 2.39996 + .3, r = Math.sqrt((i + .5) / 11) * 1.12;
+    const s = new THREE.Mesh(sg, [M.salami, M.salami, M.salami]); s.position.set(Math.cos(a) * r, .075, Math.sin(a) * r); s.rotation.y = rnd() * 6; s.rotation.x = rr(-.05, .05); add(s, i / 11 * .5); }
+  const og = new THREE.TorusGeometry(.055, .028, 10, 20);
+  for (let i = 0; i < 16; i++) { const a = rnd() * 6.28, r = Math.sqrt(rnd()) * 1.2; const o = new THREE.Mesh(og, M.olive); o.rotation.x = Math.PI / 2; o.position.set(Math.cos(a) * r, .085, Math.sin(a) * r); add(o, .3 + i / 16 * .5); }
+  const pg = new THREE.TorusGeometry(.14, .025, 8, 24, Math.PI * 1.2);
+  for (let i = 0; i < 9; i++) { const a = rnd() * 6.28, r = Math.sqrt(rnd()) * 1.15; const o = new THREE.Mesh(pg, M.pepper); o.rotation.set(Math.PI / 2, 0, rnd() * 6); o.position.set(Math.cos(a) * r, .085, Math.sin(a) * r); add(o, .45 + i / 9 * .4); }
+  const lg = new THREE.SphereGeometry(.1, 16, 8); lg.scale(1, .12, .55);
+  for (let i = 0; i < 7; i++) { const a = rnd() * 6.28, r = Math.sqrt(rnd()) * 1.0; const l = new THREE.Mesh(lg, new THREE.MeshPhysicalMaterial({ color: 0x2f7d1c, roughness: .3, clearcoat: .8 })); l.position.set(Math.cos(a) * r, .1, Math.sin(a) * r); l.rotation.y = rnd() * 6; add(l, .7 + i / 7 * .3); }
+  contactShadow(pizzaGroup, 2.2, .002, .8);
+}
+pizzaGroup.rotation.x = .12;
+pl(0xff1a0a, 13, [PIZ.x - 2.0, 3.0, PIZ.z - 2.3], 9);
+pl(0xffc9a0, 12, [PIZ.x + 1.5, 3.6, PIZ.z + 1.5], 8);
+const pizRing = neonCurve(new CircleCurve(2.2, Math.PI * .5, Math.PI * 2.5), 260, .03);
+pizRing.position.set(PIZ.x, .64, PIZ.z); pizRing.rotation.x = -Math.PI / 2;
+glowSprite([PIZ.x, 1.4, PIZ.z - 2.6], 8, 0xff1505, .4);
+
+// =====================================================
+// OUTRO – big ring @ (0, 2.8, -34)
+// =====================================================
+const OUT = new THREE.Vector3(0, 2.8, -46);
+const outRing = neonCurve(new CircleCurve(2.7, Math.PI * .5, Math.PI * 2.5), 300, .045);
+outRing.position.copy(OUT);
+const outRing2 = neonCurve(new CircleCurve(3.15, Math.PI * 1.5, Math.PI * 3.5), 300, .014);
+outRing2.position.copy(OUT).add(new THREE.Vector3(0, 0, -.4));
+const outGlow = glowSprite([OUT.x, OUT.y, OUT.z - 2], 12, 0xff1505, .5);
+pl(0xff1a0a, 18, [OUT.x, OUT.y, OUT.z - 1.5], 10);
+
+// =====================================================
+// Particles – embers (GPU, deterministic in uTime)
+// =====================================================
+function embers(center, count, spread, height, size, color) {
+  const g = new THREE.BufferGeometry(); const a = new Float32Array(count * 4); const b = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) { a.set([rr(-1, 1) * spread, rnd(), rr(-1, 1) * spread, rr(.25, 1)], i * 4); b.set([0, 0, 0], i * 3); }
+  g.setAttribute('position', new THREE.BufferAttribute(b, 3)); g.setAttribute('seed', new THREE.BufferAttribute(a, 4));
+  const m = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uH: { value: height }, uSize: { value: size }, uColor: { value: new THREE.Color(color) } },
+    vertexShader: `attribute vec4 seed; uniform float uTime,uH,uSize; varying float vA;
+      void main(){ float sp=.25+seed.w*.55; float y=mod(seed.y*uH + uTime*sp, uH);
+        vec3 p=vec3(seed.x + sin(uTime*1.3*seed.w+seed.y*20.)*.25, y, seed.z + cos(uTime*1.1+seed.x*7.)*.25);
+        vA = smoothstep(0.,.15,y/uH)*(1.-smoothstep(.55,1.,y/uH)) * (.5+.5*sin(uTime*9.*seed.w+seed.y*40.));
+        vec4 mv=modelViewMatrix*vec4(p,1.); gl_PointSize=uSize*seed.w*(300./-mv.z); gl_Position=projectionMatrix*mv; }`,
+    fragmentShader: `uniform vec3 uColor; varying float vA; void main(){ float d=length(gl_PointCoord-.5); float a=smoothstep(.5,0.,d); gl_FragColor=vec4(uColor*3.*a, a*vA); }`,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false
+  });
+  const pts = new THREE.Points(g, m); pts.position.copy(center); pts.frustumCulled = false; scene.add(pts); return m;
+}
+const emberMats = [
+  embers(new THREE.Vector3(SPIT.x, .4, SPIT.z), 260, 1.4, 5, .09, 0xff6a1a),
+  embers(new THREE.Vector3(0, 0, -24), 700, 11, 7, .06, 0xff2a10),
+  embers(new THREE.Vector3(OUT.x, 0, OUT.z + 2), 300, 4, 7, .07, 0xff3a14),
+];
+
+// smoke / steam sprites
+const smokes = [];
+function smoke(center, n, spread, h, op) {
+  for (let i = 0; i < n; i++) {
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: smokeTex, color: 0x7a6560, transparent: true, depthWrite: false, opacity: 0 }));
+    s.userData = { c: center.clone(), ox: rr(-spread, spread), oz: rr(-spread, spread), ph: rnd(), sp: rr(.12, .22), h, op, rot: rr(-.3, .3) };
+    scene.add(s); smokes.push(s);
+  }
+}
+smoke(new THREE.Vector3(SPIT.x, 2.4, SPIT.z - .3), 14, .5, 3.2, .55);
+smoke(new THREE.Vector3(DON.x, 1.2, DON.z), 10, .5, 2.2, .4);
+smoke(new THREE.Vector3(BUR.x, 1.9, BUR.z), 8, .4, 2.0, .35);
+smoke(new THREE.Vector3(PIZ.x, 1.0, PIZ.z), 8, .7, 2.0, .3);
+
+// =====================================================
+// Post-processing
+// =====================================================
+const composer = new EffectComposer(renderer);
+composer.setPixelRatio(1); composer.setSize(W, H);
+composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(W, H), .4, .35, .97);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+const grade = new ShaderPass({
+  uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uFade: { value: 1 } },
+  vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+  fragmentShader: `uniform sampler2D tDiffuse; uniform float uTime,uFade; varying vec2 vUv;
+    float h(vec2 p){ return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453); }
+    void main(){ vec2 c=vUv-.5; float d=length(c*vec2(1.,1.25));
+      vec2 off=c*.0035*d;
+      vec3 col=vec3(texture2D(tDiffuse,vUv+off).r, texture2D(tDiffuse,vUv).g, texture2D(tDiffuse,vUv-off).b);
+      col*=mix(1.,.38,smoothstep(.25,.85,d));                // vignette
+      col=mix(col, col*vec3(1.06,.97,.95), .6);              // warm grade
+      col+= (h(vUv*vec2(1080.,1920.)+fract(uTime*7.31))-.5)*.035; // grain
+      gl_FragColor=vec4(col*uFade,1.); }`
+});
+composer.addPass(grade);
+
+// =====================================================
+// Camera path – one continuous move (keys every second)
+// =====================================================
+const camKeys = [
+  [[0.00, 1.90, 12.00], [0, 1.9, 0]],
+  [[0.00, 1.90, 9.50], [0, 1.9, 0]],
+  [[0.00, 1.95, 6.50], [0, 1.95, -4]],
+  [[0.00, 2.20, 3.00], [0, 2.3, -8]],
+  [[-1.56, 2.93, 0.45], [0, 3, -8]],
+  [[1.04, 3.09, -0.98], [0, 2.9, -8]],
+  [[4.42, 2.86, -2.28], [0, 2.8, -8]],
+  [[6.22, 2.52, -4.80], [1.8, 2, -10]],
+  [[5.78, 2.90, -7.90], [5, 1.85, -17]],
+  [[4.22, 2.25, -10.50], [5, 1.95, -17]],
+  [[7.47, 2.15, -11.28], [5, 1.85, -17]],
+  [[9.68, 2.90, -15.70], [5, 1.85, -17]],
+  [[8.06, 3.53, -18.85], [0, 2.35, -26]],
+  [[4.16, 3.01, -20.28], [0, 2.35, -26]],
+  [[-0.78, 2.75, -19.50], [0, 2.35, -26]],
+  [[-4.68, 3.01, -21.32], [0, 2.35, -26]],
+  [[-5.78, 4.41, -26.55], [-5, 0.9, -35]],
+  [[-3.18, 4.80, -29.02], [-5, 0.9, -35]],
+  [[-8.12, 4.41, -30.32], [-5, 0.9, -35]],
+  [[-3.00, 3.00, -36.80], [0, 2.8, -46]],
+  [[-0.60, 2.80, -38.60], [0, 2.8, -46]],
+  [[0.00, 2.80, -39.30], [0, 2.8, -46]],
+  [[0.00, 2.80, -39.50], [0, 2.8, -46]],
+];
+const posCurve = new THREE.CatmullRomCurve3(camKeys.map(k => new THREE.Vector3(...k[0])), false, 'catmullrom', .5);
+const tgtCurve = new THREE.CatmullRomCurve3(camKeys.map(k => new THREE.Vector3(...k[1])), false, 'catmullrom', .5);
+const KEYSPAN = camKeys.length - 1; // seconds covered by keys
+
+// =====================================================
+// Overlays
+// =====================================================
+const $ = id => document.getElementById(id);
+function textBlock(el, t, tIn, tOut) {
+  const lines = el.querySelectorAll('.line');
+  const vis = t > tIn - .1 && t < tOut + .9;
+  el.style.display = vis ? 'block' : 'none'; if (!vis) return;
+  lines.forEach((ln, i) => {
+    const kin = easeOutCubic(range(t, tIn + i * .09, tIn + i * .09 + .7));
+    const kout = easeInOut(range(t, tOut + i * .05, tOut + i * .05 + .55));
+    const y = (1 - kin) * 110 - kout * 110;
+    ln.style.transform = `translateY(${y}%)`;
+    ln.style.opacity = String(Math.min(kin, 1 - kout) * .999 + .001);
+  });
+  const drift = (t - tIn) * 6;
+  el.style.transform = `translateY(${-drift}px)`;
+}
+
+// =====================================================
+// Frame renderer
+// =====================================================
+const dummy = new THREE.Object3D();
+window.renderFrame = function (t) {
+  // camera
+  const u = clamp(t / DURATION) * (KEYSPAN / KEYSPAN);
+  const uu = clamp((t) / KEYSPAN);
+  const pos = posCurve.getPoint(uu), tgt = tgtCurve.getPoint(uu);
+  // subtle hand-held breathing
+  pos.x += Math.sin(t * .9) * .03; pos.y += Math.sin(t * 1.3 + 1) * .025;
+  camera.position.copy(pos); camera.lookAt(tgt);
+  camera.rotateZ(Math.sin(t * .45) * .012 + (posCurve.getTangent(uu).x) * -.035);
+  camera.fov = 50 - 3 * smooth(range(t, 17.5, 20)); camera.updateProjectionMatrix();
+
+  // intro
+  setReveal(introRing, 0, easeInOut(range(t, .2, 2.0)));
+  setReveal(introRing2, easeInOut(range(t, 1.2, 3.2)) * .6, easeInOut(range(t, .5, 2.4)));
+  introGlow.material.opacity = .1 * smooth(range(t, 0, 1.5));
+
+  // spit
+  spitGroup.userData.meat.rotation.y = t * .55;
+  setReveal(spitHelix, easeInOut(range(t, 4.6, 7.6)), easeInOut(range(t, 2.8, 5.6)));
+  setReveal(spitRing, 0, easeInOut(range(t, 2.6, 4.6)));
+  spitFire.intensity = (16 + Math.sin(t * 13) * 2 + Math.sin(t * 7.3) * 2) * .32;
+
+  // döner assembly
+  const dk = range(t, 6.6, 9.0);
+  for (const im of donerAnim) {
+    const items = im.userData.items;
+    for (let i = 0; i < items.length; i++) {
+      const it = items[i]; const k = easeOutBack(range(dk, it.d * .6, it.d * .6 + .4));
+      dummy.position.copy(it.p); dummy.position.y += (1 - k) * 2.4; dummy.position.z += (1 - k) * -.4;
+      dummy.rotation.copy(it.r); dummy.rotation.y += (1 - k) * 2;
+      const s = it.s * clamp(k * 1.2, 0, 1); dummy.scale.set(s, s * (it.sy || 1), s);
+      dummy.updateMatrix(); im.setMatrixAt(i, dummy.matrix);
+    }
+    im.instanceMatrix.needsUpdate = true;
+  }
+  donerGroup.rotation.y = Math.PI + .3 + Math.sin(t * .6) * .05 + (t - 9) * .04;
+  setReveal(donRing, easeInOut(range(t, 10.4, 11.5)), easeInOut(range(t, 6.8, 8.8)));
+
+  // burger stacking
+  const bk = range(t, 10.2, 12.6);
+  let yAcc = 0; const n = burgerLayers.length;
+  burgerLayers.forEach((L, i) => {
+    const d = i / n; const k = easeOutBack(range(bk, d * .7, d * .7 + .3));
+    const spread = (1 - smooth(range(t, 12.4, 13.4))) * 0; // keep stacked
+    L.mesh.position.y = yAcc + (1 - k) * (2.6 + i * .15) + spread;
+    L.mesh.rotation.y = (1 - k) * (i % 2 ? 1.2 : -1.2) + t * .12;
+    L.mesh.visible = k > 0.001;
+    yAcc += L.h;
+  });
+  // gentle exploded "breath" moment
+  const ex = Math.sin(clamp(range(t, 12.9, 14.2)) * Math.PI) * .9;
+  if (ex > 0) { let acc = 0; burgerLayers.forEach((L, i) => { L.mesh.position.y += i * .085 * ex; }); }
+  setReveal(burRing, 0, easeInOut(range(t, 10.0, 12.0)));
+  setReveal(burArc, easeInOut(range(t, 12.0, 14.6)), easeInOut(range(t, 10.6, 13.2)));
+
+  // pizza
+  pizzaGroup.userData.spin.rotation.y = t * .35;
+  const pk = range(t, 14.2, 15.9);
+  pizzaToppings.forEach(m => { const k = easeOutBack(range(pk, m.userData.d * .65, m.userData.d * .65 + .35));
+    m.position.copy(m.userData.final); m.position.y += (1 - k) * 1.8; m.visible = k > .001; m.scale.setScalar(Math.max(.001, clamp(k * 1.3))); });
+  setReveal(pizRing, 0, easeInOut(range(t, 14.0, 16.2)));
+
+  // outro
+  setReveal(outRing, 0, easeInOut(range(t, 16.8, 18.6)));
+  setReveal(outRing2, 0, easeInOut(range(t, 17.3, 19.2)));
+  outGlow.material.opacity = .15 * smooth(range(t, 17, 19));
+
+  // particles & smoke
+  emberMats.forEach(m => m.uniforms.uTime.value = t + 3);
+  smokes.forEach(s => { const d = s.userData; const k = (d.ph + t * d.sp) % 1;
+    s.position.set(d.c.x + d.ox + Math.sin(t * .7 + d.ph * 9) * .15, d.c.y + k * d.h, d.c.z + d.oz);
+    const sc = .6 + k * 1.8; s.scale.set(sc, sc, 1); s.material.rotation = d.rot * t + d.ph * 6;
+    s.material.opacity = d.op * Math.sin(k * Math.PI) * .32; });
+
+  grade.uniforms.uTime.value = t;
+  grade.uniforms.uFade.value = smooth(range(t, 0, .6)) * (1 - smooth(range(t, 19.75, 20)) * 0);
+
+  // text
+  textBlock($('wordmark'), t, .5, 2.55);
+  textBlock($('t1'), t, 3.7, 6.5);
+  textBlock($('t2'), t, 7.9, 10.4);
+  textBlock($('t3'), t, 11.3, 14.0);
+  textBlock($('t4'), t, 15.0, 17.15);
+  textBlock($('outro'), t, 18.0, 99);
+  $('wordmark').style.transform += ` scale(${1 + range(t, 0, 3) * .12})`;
+  $('wordmark').style.filter = `blur(${smooth(range(t, 2.4, 3.2)) * 6}px)`;
+
+  composer.render();
+  return true;
+};
+window.DURATION = DURATION;
+window.ready = true;
+renderFrame(Number(new URLSearchParams(location.search).get('t') || 0));
+</script>
+</body>
+</html>

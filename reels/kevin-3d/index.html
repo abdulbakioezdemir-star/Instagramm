@@ -14,21 +14,21 @@
   #oval { opacity: 0; background: radial-gradient(49% 10.5% at 50% 50.5%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 91%, #000 100%); pointer-events: none; }
   #rim { position: absolute; left: 30px; top: 755px; width: 1020px; height: 410px; border-radius: 50%; border-top: 4px solid rgba(90,160,255,.95);
          filter: blur(2px); box-shadow: 0 -6px 30px rgba(70,140,255,.6); }
-  #vig { background: radial-gradient(120% 85% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.5) 100%); pointer-events: none; }
+  #vig { background: radial-gradient(120% 85% at 50% 50%, rgba(0,0,0,0) 60%, rgba(40,50,70,.16) 100%); pointer-events: none; }
   #grain { opacity: .05; mix-blend-mode: overlay; background: url(ui/grain.png); background-size: 256px; pointer-events: none; }
 </style>
 </head>
 <body>
-<div id="root" data-composition-id="main" data-start="0" data-duration="14.4" data-fps="30" data-width="1080" data-height="1920">
-  <canvas id="c" class="clip" data-start="0" data-duration="14.4" data-track-index="1"></canvas>
-  <div id="oval" class="clip" data-start="0" data-duration="14.4" data-track-index="2"><div id="rim"></div></div>
-  <div id="vig" class="clip" data-start="0" data-duration="14.4" data-track-index="3"></div>
-  <div id="grain" class="clip" data-start="0" data-duration="14.4" data-track-index="4"></div>
+<div id="root" data-composition-id="main" data-start="0" data-duration="16.4" data-fps="30" data-width="1080" data-height="1920">
+  <canvas id="c" class="clip" data-start="0" data-duration="16.4" data-track-index="1"></canvas>
+  <div id="oval" class="clip" data-start="0" data-duration="16.4" data-track-index="2"><div id="rim"></div></div>
+  <div id="vig" class="clip" data-start="0" data-duration="16.4" data-track-index="3"></div>
+  <div id="grain" class="clip" data-start="0" data-duration="16.4" data-track-index="4"></div>
 </div>
 <script>
   window.__hf = window.__hf || {}; window.__hf.buildReady = window.__hf.buildReady || {};
   window.__timelines = window.__timelines || {};
-  const tl = gsap.timeline({ paused: true }); tl.to({}, { duration: 14.4 });
+  const tl = gsap.timeline({ paused: true }); tl.to({}, { duration: 16.4 });
   window.__timelines["main"] = tl;
 </script>
 <script type="module">
@@ -41,7 +41,7 @@ import { BokehPass } from 'three/addons/postprocessing/BokehPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
-const W = 1080, H = 1920, DUR = 14.4;
+const W = 1080, H = 1920, DUR = 16.4;
 const BEAT = 2.65 / 6, T0 = 5.85 - 13 * BEAT, b = n => T0 + n * BEAT;
 const D = 3045;                                   // camera distance where 1 unit = 1 px (fov 35)
 
@@ -101,6 +101,9 @@ function textTex(text, o = {}) {
   g.textAlign = 'center'; g.textBaseline = 'middle';
   const x = c.width / 2 + (o.spacing ? o.spacing * R / 2 : 0), y = c.height / 2 + size * R * 0.04;
   if (o.box) { g.fillStyle = o.box; const bw = m.width + 70 * R, bh = size * 1.12 * R; g.fillRect(c.width / 2 - bw / 2, c.height / 2 - bh / 2 + size * R * .04, bw, bh); }
+  if (o.shadowOnly) { g.save(); g.shadowColor = o.shadowOnly; g.shadowBlur = 34 * R; g.shadowOffsetY = 30 * R + 20000; g.shadowOffsetX = 10 * R; g.fillStyle = '#000';
+                  if (o.box) { const bw = m.width + 70 * R, bh = size * 1.12 * R; g.fillRect(c.width / 2 - bw / 2, c.height / 2 - bh / 2 - 20000, bw, bh); } else g.fillText(text, x, y - 20000);
+                  g.restore(); return { tex: texFromCanvas(c), w: c.width / R, h: c.height / R }; }
   if (o.shadow) { g.save(); g.shadowColor = 'rgba(20,24,30,.38)'; g.shadowBlur = 30 * R; g.shadowOffsetY = 26 * R; g.shadowOffsetX = 8 * R;
                   g.fillStyle = o.box ? 'rgba(0,0,0,0)' : (o.color || '#000'); if (!o.box) g.fillText(text, x, y); g.restore(); }
   if (o.glow) { g.save(); g.shadowColor = o.glow; g.fillStyle = o.glow; for (const bl of [70, 34, 14]) { g.shadowBlur = bl * R; g.fillText(text, x, y); } g.restore(); }
@@ -114,6 +117,16 @@ function plane(tt, o = {}) {
                                             blending: o.add ? THREE.AdditiveBlending : THREE.NormalBlending });
   if (o.hdr) mat.color.setScalar(o.hdr);
   return new THREE.Mesh(new THREE.PlaneGeometry(o.w || tt.w, o.h || tt.h), mat);
+}
+// a word with real depth: shadow at the back, solid side layers, face in front
+function word3d(text, o = {}) {
+  const g = new THREE.Group(), depth = o.depth ?? 22, n = o.layers ?? 12;
+  const sh = plane(textTex(text, Object.assign({}, o, { shadowOnly: o.shadowCol || 'rgba(25,30,40,.30)', grad: null, glow: null })));
+  sh.position.z = -depth - 2; g.add(sh);
+  const side = textTex(text, Object.assign({}, o, { color: o.side || '#111', grad: null, glow: null, shadow: false, box: o.box ? (o.sideBox || '#000') : null }));
+  for (let k = n; k >= 1; k--) { const m = plane(side); m.position.z = -depth * k / n; g.add(m); }
+  const face = plane(textTex(text, Object.assign({}, o, { shadow: false }))); face.position.z = 0.5; g.add(face); g.userData.face = face;
+  return g;
 }
 function setOp(obj, v) { obj.visible = v > 0.002; obj.traverse(n => { if (n.material) { (Array.isArray(n.material) ? n.material : [n.material]).forEach(m => { if (m.userData.base === undefined) m.userData.base = m.opacity; m.opacity = m.userData.base * v; m.transparent = true; }); } }); }
 
@@ -130,12 +143,12 @@ async function build() {
 
   /* ---------------- world 1: phone ---------------- */
   const S1 = new THREE.Scene(); W1.scene = S1;
-  S1.background = gradTex([[0, '#2152f2'], [.32, '#0c249e'], [.62, '#050e4a'], [1, '#010312']]);
+  S1.background = gradTex([[0, '#ffffff'], [.42, '#eef0f4'], [.8, '#d6dae1'], [1, '#c2c7cf']]);
   S1.environment = envTex; S1.environmentIntensity = 0.6;
-  S1.fog = new THREE.Fog(0x0a1c80, 10, 1e6); W1.fog = S1.fog;
-  S1.add(new THREE.AmbientLight(0x88aaff, 0.4));
+  S1.fog = new THREE.Fog(0xeef0f4, 10, 1e6); W1.fog = S1.fog;
+  S1.add(new THREE.AmbientLight(0xffffff, 0.5));
   const key = new THREE.DirectionalLight(0xffffff, 0.75); key.position.set(-600, 900, 1400); S1.add(key);
-  const rim = new THREE.DirectionalLight(0x5c8cff, 1.1); rim.position.set(900, -300, -400); S1.add(rim);
+  const rim = new THREE.DirectionalLight(0xbcd0ff, 0.9); rim.position.set(900, -300, -400); S1.add(rim);
 
   const ph = new THREE.Group(); S1.add(ph); W1.ph = ph;
   const shp = new THREE.Shape(); { const w = 290, h = 580, r = 88;
@@ -194,14 +207,14 @@ async function build() {
   // hologram puck: stacked rings + glow
   const rings = new THREE.Group(); rings.position.copy(AV); ph.add(rings); W1.rings = rings;
   [[104, 4], [116, 14], [128, 26], [140, 40]].forEach(([r, z], i) => {
-    const m = new THREE.Mesh(new THREE.TorusGeometry(r, i === 3 ? 4 : 2.6, 12, 160), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.25, 0.55, 2.2), transparent: true, fog: true }));
+    const m = new THREE.Mesh(new THREE.TorusGeometry(r, i === 3 ? 4 : 2.6, 12, 160), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.12, 0.38, 1.0), transparent: true, fog: true }));
     m.position.z = z; rings.add(m);
   });
   { const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d'); const gr = g.createRadialGradient(128, 128, 40, 128, 128, 128);
-    gr.addColorStop(0, 'rgba(60,120,255,0)'); gr.addColorStop(.6, 'rgba(60,120,255,.55)'); gr.addColorStop(.8, 'rgba(60,120,255,.25)'); gr.addColorStop(1, 'rgba(60,120,255,0)');
+    gr.addColorStop(0, 'rgba(60,120,255,0)'); gr.addColorStop(.6, 'rgba(60,120,255,.32)'); gr.addColorStop(.8, 'rgba(60,120,255,.14)'); gr.addColorStop(1, 'rgba(60,120,255,0)');
     g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
     const gl = new THREE.Mesh(new THREE.PlaneGeometry(380, 380), new THREE.MeshBasicMaterial({ map: texFromCanvas(c), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
-    gl.position.z = 2; rings.add(gl); }
+    gl.material.blending = THREE.NormalBlending; gl.position.z = 2; rings.add(gl); }
   // the icon that rises out of the profile picture
   const icon = new THREE.Group(); icon.position.copy(AV); ph.add(icon); W1.icon = icon;
   { const c = document.createElement('canvas'); c.width = c.height = 512; const g = c.getContext('2d');
@@ -218,63 +231,74 @@ async function build() {
       W1.dust0.push([h(1) * 3600 - 1800, h(2) * 5200 - 2600, h(3) * 3400 - 2400]); }
     const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); const gr = x.createRadialGradient(32, 32, 0, 32, 32, 32);
-    gr.addColorStop(0, 'rgba(200,220,255,1)'); gr.addColorStop(1, 'rgba(200,220,255,0)'); x.fillStyle = gr; x.fillRect(0, 0, 64, 64);
-    const pts = new THREE.Points(g, new THREE.PointsMaterial({ size: 9, map: texFromCanvas(c), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: .55, color: 0x9fbfff }));
+    gr.addColorStop(0, 'rgba(120,132,150,1)'); gr.addColorStop(1, 'rgba(120,132,150,0)'); x.fillStyle = gr; x.fillRect(0, 0, 64, 64);
+    const pts = new THREE.Points(g, new THREE.PointsMaterial({ size: 7, map: texFromCanvas(c), transparent: true, depthWrite: false, opacity: .4, color: 0xffffff }));
     S1.add(pts); W1.dust = pts; }
 
   /* cube + orbiting letters */
   const cubeG = new THREE.Group(); S1.add(cubeG); W1.cubeG = cubeG;
   const cube = new THREE.Group(); cubeG.add(cube); W1.cube = cube;
-  cube.add(new THREE.Mesh(new RoundedBoxGeometry(250, 250, 250, 5, 26), new THREE.MeshPhysicalMaterial({ color: 0x0a1f8a, emissive: 0x1a4cff, emissiveIntensity: 0.32, roughness: .25, metalness: .1, clearcoat: 1 })));
+  cube.add(new THREE.Mesh(new RoundedBoxGeometry(250, 250, 250, 5, 26), new THREE.MeshPhysicalMaterial({ color: 0x0e1119, roughness: .32, metalness: .1, clearcoat: .35, clearcoatRoughness: .25 })));
   { const lt = { tex: texFromImg(IM['kn-gold']), w: 200, h: 200 * IM['kn-gold'].height / IM['kn-gold'].width };
     for (let k = 0; k < 4; k++) { const p = plane(lt); p.material.depthWrite = true; const a = k * Math.PI / 2; p.position.set(Math.sin(a) * 126, 0, Math.cos(a) * 126); p.rotation.y = a; cube.add(p); } }
   W1.letters = [];
   const orbit = new THREE.Group(); cubeG.add(orbit); W1.orbit = orbit;
-  'MINDSET'.split('').forEach(ch => { const p = plane(textTex(ch, { size: 150, color: '#eaf1ff', glow: 'rgba(90,150,255,.9)', pad: 40 }), { hdr: 0.92 }); orbit.add(p); W1.letters.push(p); });
-  { const p = plane(textTex('MINDSET MINDSET', { size: 300, stroke: [2.5, 'rgba(150,185,255,.5)'], pad: 20 }));
+  'MINDSET'.split('').forEach(ch => { const p = word3d(ch, { size: 150, color: '#1b2230', side: '#596273', pad: 40, depth: 16, layers: 8 }); orbit.add(p); W1.letters.push(p); });
+  { const p = plane(textTex('MINDSET MINDSET', { size: 300, stroke: [2.5, 'rgba(30,40,60,.55)'], pad: 20 }));
     const rows = new THREE.Group(); for (let i = 0; i < 9; i++) { const q = p.clone(); q.position.y = (i - 4) * 330; q.position.x = (i % 2) * 300; rows.add(q); }
     rows.position.z = -2600; rows.scale.setScalar(1.6); S1.add(rows); W1.rows = rows; }
 
   /* ---------------- world 2: grey spotlight, words in 3D ---------------- */
   const S2 = new THREE.Scene(); W2.scene = S2;
-  S2.background = gradTex([[0, '#f5f7f9'], [.45, '#d5d9de'], [.8, '#9ca2a9'], [1, '#6c727a']], .5, .5, .66);
+  S2.background = gradTex([[0, '#ffffff'], [.5, '#e9ecf0'], [.85, '#cbd0d7'], [1, '#b6bcc4']], .5, .5, .66);
   const dark = '#2a2f36';
-  const word = (s, o) => { const m = plane(textTex(s, Object.assign({ color: dark, shadow: true }, o)), { depthWrite: false }); S2.add(m); return m; };
+  const word = (s, o) => { const m = word3d(s, Object.assign({ color: dark, side: '#0e1116' }, o)); S2.add(m); return m; };
   W2.jeder = new THREE.Group(); S2.add(W2.jeder); W2.jl = [];
-  { let x = 0; const parts = 'Jeder'.split(''); const ts = parts.map(ch => textTex(ch, { size: 260, color: dark, shadow: true, pad: 40 }));
+  { let x = 0; const parts = 'Jeder'.split(''); const ts = parts.map(ch => textTex(ch, { size: 260, color: dark, pad: 40 }));
     const adv = ts.map(t => t.w - 80 - 6); const tot = adv.reduce((a, c) => a + c, 0); x = -tot / 2;
-    ts.forEach((t, i) => { const g = new THREE.Group(); const m = plane(t); m.position.y = 130; g.add(m); g.position.x = x + adv[i] / 2; g.position.y = -130; x += adv[i]; W2.jeder.add(g); W2.jl.push(g); }); }
-  W2.fb = word('Fußballer', { size: 150, color: '#f2f3f5', box: '#0d0f12' });
+    ts.forEach((t, i) => { const g = new THREE.Group(); const m = word3d(parts[i], { size: 260, color: dark, side: '#0e1116', pad: 40, depth: 26 }); m.position.y = 130; g.add(m); g.position.x = x + adv[i] / 2; g.position.y = -130; x += adv[i]; W2.jeder.add(g); W2.jl.push(g); }); }
+  W2.fb = word('Fußballer', { size: 150, color: '#f2f3f5', box: '#0d0f12', side: '#000', sideBox: '#3a3f47' });
   W2.hat = word('hat', { size: 150 });
-  W2.gr = word('Grenzen.', { size: 240, grad: [[0, '#8a5a14'], [.35, '#e2b867'], [.5, '#f6dca2'], [.75, '#b8862f'], [1, '#7a4f10']] });
+  W2.gr = word('Grenzen.', { size: 240, side: '#6b4510', depth: 30, grad: [[0, '#8a5a14'], [.35, '#e2b867'], [.5, '#f6dca2'], [.75, '#b8862f'], [1, '#7a4f10']] });
   W2.doch = word('Doch nicht', { size: 150 });
   W2.jed2 = word('jeder', { size: 250 });
   W2.wird = word('wird aufgehalten.', { size: 100 });
 
   /* ---------------- world 3: neon, bars, logo ---------------- */
-  const S3 = new THREE.Scene(); W3.scene = S3; S3.background = new THREE.Color(0x000000);
+  const S3 = new THREE.Scene(); W3.scene = S3; S3.background = gradTex([[0, '#ffffff'], [.55, '#eceef2'], [1, '#cdd2d9']], .5, .45, .7);
   S3.environment = envTex; S3.environmentIntensity = 0.35;
   S3.add(new THREE.AmbientLight(0xffffff, 0.15)); { const l = new THREE.DirectionalLight(0xffe0d0, 1.4); l.position.set(300, 800, 3000); S3.add(l);
     const l2 = new THREE.PointLight(0xff3020, 3, 0, 0); l2.position.set(0, -100, 500); S3.add(l2); }
   const col = new THREE.Group(); S3.add(col); W3.col = col;
-  const neon = (s, size, core, glow) => plane(textTex(s, { size, color: core, glow, pad: 90 }), { hdr: 1.12 });
-  W3.lines = [neon('Klarheit.', 175, '#c4e2ff', 'rgba(40,120,255,1)'), neon('Fokus.', 185, '#ffeb85', 'rgba(255,200,0,1)'), neon('Leistung.', 175, '#ffd690', 'rgba(255,150,10,1)'),
-              neon('Grenzen sind', 132, '#ff7a6a', 'rgba(255,30,10,1)'), neon('im Kopf.', 176, '#ff7a6a', 'rgba(255,30,10,1)')];
+  const cw = (txt, size, color, side, sh) => word3d(txt, { size, color, side, shadowCol: sh, pad: 90, depth: 24 });
+  W3.lines = [cw('Klarheit.', 175, '#1f5bff', '#0b2a8a', 'rgba(31,91,255,.35)'), cw('Fokus.', 185, '#f0a800', '#8a5c00', 'rgba(240,168,0,.38)'),
+              cw('Leistung.', 175, '#c99030', '#6b4510', 'rgba(201,144,48,.38)'),
+              cw('Grenzen sind', 132, '#e3261c', '#7a0e08', 'rgba(227,38,28,.35)'), cw('im Kopf.', 176, '#e3261c', '#7a0e08', 'rgba(227,38,28,.35)')];
   W3.ly = [0, -215, -430, -670, -860];
   W3.lines.forEach((m, i) => { m.position.y = W3.ly[i]; col.add(m); });
-  W3.g1 = plane(textTex('Grenzen sind', { size: 132, color: 'rgba(0,230,255,.8)', pad: 90 }), { hdr: 1.3, add: true }); W3.g1.position.y = W3.ly[3]; col.add(W3.g1);
-  W3.g2 = plane(textTex('Grenzen sind', { size: 132, color: 'rgba(255,40,140,.8)', pad: 90 }), { hdr: 1.3, add: true }); W3.g2.position.y = W3.ly[3]; col.add(W3.g2);
-  // bars: metal cylinders on an arc around the camera
-  W3.bars = []; const barM = new THREE.MeshStandardMaterial({ color: 0x6a717c, metalness: 1, roughness: .32 });
-  for (let i = 0; i < 15; i++) {
-    const a = (i - 7) * 0.056, r = 2050; const m = new THREE.Mesh(new THREE.CylinderGeometry(21, 21, 5200, 32), barM);
-    m.userData.home = [Math.sin(a) * r, 0, D - Math.cos(a) * r]; S3.add(m); W3.bars.push(m);
-  }
-  W3.logo = plane({ tex: texFromImg(IM['kn-logo']), w: 600, h: 600 * IM['kn-logo'].height / IM['kn-logo'].width }); W3.logo.position.y = 150; S3.add(W3.logo);
-  W3.mc = []; { const s = 'MENTAL COACH'; let x = 0; const ts = s.split('').map(ch => ch === ' ' ? null : textTex(ch, { size: 54, weight: 500, color: '#e3c27a', pad: 10 }));
-    const step = 60; x = -(s.length - 1) * step / 2;
-    s.split('').forEach((ch, i) => { if (ts[i]) { const p = plane(ts[i]); p.position.set(x, -250, 0); S3.add(p); W3.mc.push(p); } x += step; }); }
-  W3.hd = plane(textTex('@kevnsimba', { size: 32, weight: 500, color: '#8a857c', pad: 10 })); W3.hd.position.y = -350; S3.add(W3.hd);
+  W3.g1 = plane(textTex('Grenzen sind', { size: 132, color: 'rgba(0,200,255,.75)', pad: 90 })); W3.g1.position.set(0, W3.ly[3], 1); col.add(W3.g1);
+  W3.g2 = plane(textTex('Grenzen sind', { size: 132, color: 'rgba(255,30,140,.75)', pad: 90 })); W3.g2.position.set(0, W3.ly[3], 1); col.add(W3.g2);
+  // where the full stop of "im Kopf." sits (inside the column)
+  { const g = document.createElement('canvas').getContext('2d'); g.font = '900 176px I'; const wAll = g.measureText('im Kopf.').width, wDot = g.measureText('.').width;
+    W3.dot = [wAll / 2 - wDot / 2, W3.ly[4] - 40]; }
+  // the spark (golden light), the ring it draws, the line it lands as
+  { const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d'); const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+    gr.addColorStop(0, 'rgba(255,252,240,1)'); gr.addColorStop(.1, 'rgba(255,236,190,1)'); gr.addColorStop(.25, 'rgba(240,190,90,.75)'); gr.addColorStop(.55, 'rgba(230,160,60,.22)'); gr.addColorStop(1, 'rgba(230,160,60,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+    W3.spark = new THREE.Mesh(new THREE.PlaneGeometry(150, 150), new THREE.MeshBasicMaterial({ map: texFromCanvas(c), transparent: true, depthWrite: false })); W3.spark.position.z = 30; S3.add(W3.spark); }
+  W3.RC = [0, 100], W3.RR = 340;
+  W3.ring = new THREE.Mesh(new THREE.RingGeometry(W3.RR - 2.2, W3.RR + 2.2, 360, 1, Math.PI / 2, Math.PI * 2), new THREE.MeshBasicMaterial({ color: 0xc99a45, side: THREE.DoubleSide, transparent: true }));
+  W3.ring.position.set(W3.RC[0], W3.RC[1], 0); W3.ring.scale.x = -1; S3.add(W3.ring);
+  W3.lline = new THREE.Mesh(new THREE.PlaneGeometry(300, 3), new THREE.MeshBasicMaterial({ color: 0xc99a45, transparent: true })); W3.lline.position.set(0, -220, 0); S3.add(W3.lline);
+  { const c = document.createElement('canvas'); const im = IM['kn-logo']; c.width = im.width; c.height = im.height; const g = c.getContext('2d');
+    g.drawImage(im, 0, 0); g.globalCompositeOperation = 'source-in'; g.fillStyle = '#15171c'; g.fillRect(0, 0, c.width, c.height);
+    W3.logo = plane({ tex: texFromCanvas(c), w: 600, h: 600 * im.height / im.width }); W3.logo.position.y = 100; S3.add(W3.logo); }
+  const dein = textTex('dein ', { size: 64, weight: 700, color: '#15171c', pad: 10 }), mc = textTex('Mental Coach.', { size: 64, weight: 700, color: '#c08a2e', pad: 10 });
+  W3.rl = new THREE.Group(); { const a = plane(dein), c2 = plane(mc); const wa = dein.w - 20, wc = mc.w - 20, tot = wa + wc;
+    a.position.x = -tot / 2 + wa / 2; c2.position.x = -tot / 2 + wa + wc / 2; W3.rl.add(a, c2); } W3.rl.position.y = -290; S3.add(W3.rl);
+  W3.cl1 = plane(textTex('Train the mind.', { size: 44, weight: 500, color: '#5d6168', pad: 10 })); W3.cl1.position.y = -405; S3.add(W3.cl1);
+  W3.cl2 = plane(textTex('Change the game.', { size: 44, weight: 500, color: '#c08a2e', pad: 10 })); W3.cl2.position.y = -462; S3.add(W3.cl2);
+  W3.hd = plane(textTex('@kevnsimba', { size: 34, weight: 500, color: '#8f939a', pad: 10 })); W3.hd.position.y = -560; S3.add(W3.hd);
 
   // warm-up: compile all three scenes once
   for (const s of [S1, S2, S3]) { rp.scene = s; bokeh.scene = s; await renderer.compileAsync(s, cam); composer.render(); }
@@ -285,126 +309,135 @@ async function build() {
 function look(p, tg) { cam.position.set(p[0], p[1], p[2]); cam.up.set(0, 1, 0); cam.lookAt(tg[0], tg[1], tg[2]); }
 function dof(focus, ap, max) { bokeh.uniforms.focus.value = focus; bokeh.uniforms.aperture.value = ap; bokeh.uniforms.maxblur.value = max; }
 
+const CUBE = b(10.5);
 function world1(t) {
   rp.scene = bokeh.scene = W1.scene;
-  bloom.strength = 0.85; bloom.threshold = 1.0; bloom.radius = 0.5;
-  const phoneOn = t < b(9);
+  bloom.strength = 0.25; bloom.threshold = 1.0; bloom.radius = 0.4;
+  const phoneOn = t < CUBE;
   W1.ph.visible = phoneOn; W1.cubeG.visible = !phoneOn; W1.rows.visible = !phoneOn;
-  // dust drifts upward
   const pa = W1.dust.geometry.attributes.position;
   W1.dust0.forEach((p, i) => { let y = p[1] + t * 70; y = ((y + 2600) % 5200) - 2600; pa.setXYZ(i, p[0], y, p[2]); }); pa.needsUpdate = true;
   if (phoneOn) {
     W1.ph.rotation.set(K(t, [[0, .16], [b(1), .07, 'o'], [b(3), 0]]), K(t, [[0, -.55], [b(1), -.24, 'o'], [b(3), 0]]), K(t, [[0, .09], [b(1), .04, 'o'], [b(3), 0]]));
     W1.sheen.offset.x = K(t, [[0, -.5], [1.2, .6, 'io']]);
+    const IC = [-160, 356, 215];
     const CP = [[0, [0, 30, 5600]], [b(1), [0, -40, 3350], 'o'], [0.98, [420, -1650, 1450]], [b(3), [360, -760, 300]], [1.82, [70, -430, 250]],
-                [b(4.5), [-50, -80, 330]], [b(6), [-150, -60, 620]], [3.3, [-160, -560, 820]], [b(8), [-160, -640, 880]], [b(9), [-160, -1300, 6200], 'i']];
+                [b(4.5), [-50, -80, 330]], [b(6), [-150, -60, 620]], [3.3, [-160, -560, 820]],
+                [b(8), [140, -560, 700]], [b(9), [-470, -420, 640]], [b(10), [-260, -760, 980]], [CUBE, [-160, -1500, 6400], 'i']];
     const CT = [[0, [0, 0, 0]], [b(1), [0, 0, 0], 'o'], [0.98, [0, -60, 0]], [b(3), [-90, -70, 30]], [1.82, [-140, 140, 20]],
-                [b(4.5), [-160, 320, 0]], [b(6), [-160, 356, 20]], [3.3, [-160, 356, 170]], [b(8), [-160, 356, 205]], [b(9), [-160, 356, 205], 'i']];
+                [b(4.5), [-160, 320, 0]], [b(6), [-160, 356, 20]], [3.3, IC], [b(8), IC], [b(9), IC], [b(10), IC], [CUBE, IC, 'i']];
     const p = K(t, CP), tg = K(t, CT); look(p, tg);
     const dist = Math.hypot(p[0] - tg[0], p[1] - tg[1], p[2] - tg[2]);
-    dof(dist, K(t, [[0, .00001], [b(1), .000015], [1.1, .00004], [b(3), .00009], [b(6), .00007], [b(8), .00005], [b(9), .00001]]), K(t, [[0, .006], [1.1, .014], [b(3), .02], [b(8), .016], [b(9), .005]]));
-    W1.fog.far = K(t, [[b(8), 1e6], [b(8) + 0.05, 9000], [b(9), 3000, 'i']]); W1.fog.near = 10;
-    // panels and posts lift off the screen and float
+    dof(dist, K(t, [[0, .00001], [b(1), .000015], [1.1, .00004], [b(3), .00009], [b(6), .00007], [b(10), .00006], [CUBE, .00001]]), K(t, [[0, .006], [1.1, .014], [b(3), .02], [b(10), .016], [CUBE, .005]]));
+    W1.fog.far = K(t, [[b(10), 1e6], [b(10) + 0.05, 9000], [CUBE, 3000, 'i']]); W1.fog.near = 10;
     W1.tiles.forEach((m, i) => {
       const a = b(1) + 0.05 + i * 0.045, zt = 130 + (i * 53) % 120;
       const up = seg(t, a, 0.45, 'back'), dn = seg(t, b(3) - 0.38 + i * .03, 0.3, 'i');
       const fl = Math.sin(Math.max(0, t - a) * 5 + i) * 14 * up * (1 - dn);
       m.position.z = 2 + (zt * up + fl) * (1 - dn);
       m.rotation.x = (-0.12 + (i % 3) * 0.08) * up * (1 - dn); m.rotation.y = ((i % 2) ? .06 : -.06) * up * (1 - dn);
-      W1.tileSh[i].material.opacity = 0.7 * up * (1 - dn);
+      W1.tileSh[i].material.opacity = 0.45 * up * (1 - dn);
     });
     W1.panels.forEach((m, i) => { const up = seg(t, b(1) + 0.18 + i * .05, .45, 'back'), dn = seg(t, b(3) - .35, .3, 'i'); m.position.z = 1 + [70, 95, 40][i] * up * (1 - dn); });
-    // hologram rings + icon
     W1.rings.children.forEach((r, i) => { const s = seg(t, b(6) + i * .06, .5, 'expo'); r.scale.setScalar(Math.max(.001, s)); r.visible = s > 0.01;
       if (r.material) r.material.opacity = s * (0.85 + 0.15 * Math.sin(t * 9 + i)); });
-    const ic = seg(t, b(6) + .05, .65, 'o');
+    const ic = seg(t, b(6) + .05, .65, 'o'), tt = Math.max(0, t - b(6));
     W1.icon.visible = ic > 0.001; W1.icon.scale.setScalar(Math.max(.001, .55 + .45 * ic));
-    W1.icon.position.z = 8 + 225 * ic + Math.sin(Math.max(0, t - b(6)) * 3.2) * 10 * ic;
-    W1.icon.rotation.set(0.82 * ic, 0.32 * Math.sin(Math.max(0, t - b(6)) * 2.4) * ic, 0);
+    W1.icon.position.z = 8 + 225 * ic + Math.sin(tt * 3.2) * 12 * ic;
+    W1.icon.rotation.set(0.82 * ic + .1 * Math.sin(tt * 2.1), 0.35 * Math.sin(tt * 2.4) * ic, .06 * Math.sin(tt * 1.7));
   } else {
-    // cube with orbiting letters
-    look([Math.sin((t - b(9)) * .5) * 260, 90, 2300], [0, 0, 0]);
-    dof(2300, .00002, .012);
+    // short cube moment: drops in, letters whip around, collapses to a sliver
+    const u0 = t - CUBE;
+    look([Math.sin(u0 * 1.4) * 320, 120 - u0 * 40, 2250 - u0 * 260], [0, 0, 0]);
+    dof(2250 - u0 * 260, .00003, .012);
     W1.fog.far = 1e6;
-    const s = seg(t, b(9) - .05, .35, 'expo');
-    W1.cube.rotation.set(-0.3, -0.5 + (t - b(9)) * 1.25 + seg(t, b(12.4), .4, 'i') * 2.2, 0.08);
-    const sl = seg(t, b(12.5) - .02, .22, 'i');
+    const s = seg(t, CUBE - .02, .3, 'back');
+    W1.cube.rotation.set(-0.35 + u0 * .3, -0.6 + u0 * 2.6 + seg(t, b(12.3), .35, 'i') * 2.4, 0.1);
+    const sl = seg(t, b(12.55), .2, 'i');
     W1.cube.scale.set(Math.max(.02, s * (1 - .98 * sl)), Math.max(.02, s * (1 + .3 * sl)), Math.max(.02, s * (1 - .98 * sl)));
     W1.orbit.rotation.set(0.32, 0, -0.16);
-    const col = seg(t, b(12), .35, 'i'), sIn = seg(t, b(9) + .1, .3, 'o');
-    W1.letters.forEach((p, i) => { const th = (t - b(9)) * 2.2 + i / 7 * Math.PI * 2, r = 360 * (1 - col);
+    const col = seg(t, b(12.1), .3, 'i'), sIn = seg(t, CUBE + .03, .25, 'o');
+    W1.letters.forEach((p, i) => { const th = u0 * 3.6 + i / 7 * Math.PI * 2, r = 380 * (1 - col) + 120 * (1 - sIn);
       p.position.set(Math.sin(th) * r, 0, Math.cos(th) * r); p.rotation.y = th; p.scale.setScalar(Math.max(.001, sIn * (1 - .9 * col))); setOp(p, sIn * (1 - col)); });
-    W1.rows.position.x = -(t - b(9)) * 160;
-    setOp(W1.rows, 0.14 * seg(t, b(9), .5));
+    W1.rows.position.x = -u0 * 220;
+    setOp(W1.rows, 0.12 * seg(t, CUBE, .4));
   }
 }
 
 function world2(t) {
   rp.scene = bokeh.scene = W2.scene;
   bloom.strength = 0;
-  const p = [K(t, [[b(13), 90], [b(19), -120, 'l']]), K(t, [[b(13), 20], [b(19), -40, 'l']]), K(t, [[b(13), D + 250], [b(18), D - 60, 'l'], [b(19), D - 300, 'i2']])];
-  look(p, [p[0] * .4, p[1] * .4, 0]); cam.rotateZ(K(t, [[b(13), .03], [b(19), -.03, 'l']]));
-  // focus follows the active word
+  // the camera swings around the words – a new angle on every word
+  const px = K(t, [[b(13), 320], [b(14) + .1, -260], [b(15.5) + .1, 240], [b(17) + .1, -230], [b(18) + .1, 140], [b(19), 0]]);
+  const p = [px, K(t, [[b(13), 60], [b(15.5), -60], [b(19), 20]]), K(t, [[b(13), D + 250], [b(18), D - 60, 'l'], [b(19), D - 300, 'i2']])];
+  look(p, [0, 0, 0]); cam.rotateZ(K(t, [[b(13), .04], [b(15.5), -.03], [b(19), .02]]));
   const fz = K(t, [[b(13), 0], [b(14) - .1, 0], [b(14), -120], [b(15.5) - .1, -120], [b(15.5), 0], [b(17.5) - .1, 0], [b(17.5), 40]]);
-  dof(p[2] - fz, .00005, .012);
-  // Jeder: letters tumble in
+  dof(Math.hypot(p[0], p[1], p[2]) - fz, .00005, .012);
   W2.jeder.position.set(K(t, [[b(14) - .08, 0], [b(14) + .22, -70, 'o']]), K(t, [[b(14) - .08, 170], [b(14) + .22, 400, 'o'], [b(15) - .2, 400], [b(15) + .04, 1300, 'i']]), 0);
   W2.jeder.rotation.set(0, -.42, -.15);
   W2.jl.forEach((g, i) => { const u = seg(t, b(13) - .04 + i * .045, .32, 'back'); g.rotation.x = (-Math.PI / 2) * (1 - u); g.position.z = 0;
     g.children[0].position.y = 130 + 260 * (1 - cl(u)); setOp(g, cl(u * 3) * (1 - seg(t, b(15) - .2, .24))); });
   W2.jeder.visible = t < b(15.2);
-  // Fußballer box
   { const u = seg(t, b(14) - .08, .3, 'o'), out = seg(t, b(15) - .2, .24, 'i');
     W2.fb.position.set(900 * (1 - u), -140 + 900 * out, -120); W2.fb.rotation.set(0, .85 - .6 * u, -.08); setOp(W2.fb, u * (1 - out)); }
-  // hat + Grenzen.
   { const u = seg(t, b(15) - .04, .24, 'o'), out = seg(t, b(16) - .1, .18);
     W2.hat.position.set(-40, 250 - 150 * (1 - u) + 60 * out, 0); W2.hat.rotation.set(-1.1 * (1 - u), 0, 0); setOp(W2.hat, u * (1 - out)); }
   { const u = seg(t, b(15.5) - .06, .3, 'o'), out = seg(t, b(17) - .16, .2, 'i');
     W2.gr.position.set(-1150 * (1 - u) + 1150 * out, 10, 0); W2.gr.rotation.set(0, -.75 * (1 - u) - .14 + .3 * seg(t, b(15.5) + .24, b(17) - b(15.5), 'l'), 0); setOp(W2.gr, Math.min(u * 1.5, 1) * (1 - out)); }
-  // Doch nicht / jeder / wird aufgehalten.
   { const u = seg(t, b(17) - .04, .26, 'o'); W2.doch.position.set(-800 * (1 - u), 270, -40); W2.doch.rotation.set(0, -.6 * (1 - u) - .26, .08); setOp(W2.doch, u); }
   { const u = seg(t, b(17.5) - .04, .26, 'o'); W2.jed2.position.set(800 * (1 - u), 50, 40); W2.jed2.rotation.set(0, .6 * (1 - u) + .2, -.07); setOp(W2.jed2, u); }
   { const u = seg(t, b(18) - .04, .26, 'o'); W2.wird.position.set(0, -190 - 220 * (1 - u), 20); W2.wird.rotation.set(-1 * (1 - u), 0, 0); setOp(W2.wird, u); }
-  document.getElementById('oval').style.opacity = 0;   // no black oval on "Grenzen." (customer request)
 }
 
 function world3(t) {
   rp.scene = bokeh.scene = W3.scene;
-  bloom.strength = 0.4; bloom.threshold = 1.05; bloom.radius = 0.3;
-  const p = [K(t, [[b(19), -60], [b(26), 60, 'l']]), K(t, [[b(19), 0], [b(26), -20, 'l']]), K(t, [[b(19), D + 200], [b(26), D - 150, 'l'], [b(28), D - 150]])];
-  look(p, [p[0] * .3, p[1], 0]);
+  bloom.strength = 0;
+  const END = b(26);
+  // camera swings from line to line, then settles straight on for the logo
+  const px = K(t, [[b(19), -300], [b(20.5) + .1, 260], [b(22) + .1, -240], [b(23.5) + .1, 220], [b(25) + .1, -150], [END + .4, 0]]);
+  const p = [px, K(t, [[b(19), 40], [END, -30], [END + .4, 0]]), K(t, [[b(19), D + 200], [END, D - 120, 'l'], [END + .5, D], [DUR, D - 120, 'l']])];
+  look(p, [0, 0, 0]);
   const logoT = b(28);
-  const focusPull = K(t, [[logoT - .05, p[2]], [logoT, p[2] - 1400], [logoT + .75, p[2], 'o']]);
-  dof(focusPull, t < logoT ? .00003 : .00006, t < logoT ? .012 : .02);
-  // the column of neon lines rolls up, old lines recede into depth (and blur)
+  const base = Math.hypot(p[0], p[1], p[2]);
+  dof(K(t, [[logoT - .05, base], [logoT, base - 1300], [logoT + .8, base, 'o']]), t < logoT ? .00004 : .00006, t < logoT ? .012 : .02);
   W3.col.position.y = K(t, [[b(20.5) - .14, 0], [b(20.5) + .12, 110], [b(22) - .14, 110], [b(22) + .12, 325], [b(23.5) - .14, 325], [b(23.5) + .12, 570], [b(25) - .14, 570], [b(25) + .12, 680]]);
   const starts = [b(19), b(20.5), b(22), b(23.5), b(25)];
+  const away = seg(t, END + .05, .45, 'i');                     // the sentence dissolves once its full stop ignites
   W3.lines.forEach((m, i) => {
-    const on = seg(t, starts[i] - .04, .32, 'expo');
-    const next = i < 3 ? starts[i + 1] : (i === 3 ? b(26) + 5 : 99), next2 = i < 3 ? starts[i + 2] || 99 : 99;
+    const on = seg(t, starts[i] - .04, .34, 'back');
+    const next = i < 3 ? starts[i + 1] : 99, next2 = i < 3 ? (starts[i + 2] || 99) : 99;
     const back = seg(t, next - .14, .3), gone = seg(t, next2 - .14, .26);
-    const flick = (t > starts[i] + .38 && t < starts[i] + .5) ? (Math.sin(t * 160) > 0 ? .45 : 1) : 1;
-    m.position.z = -380 * back - 300 * gone; m.scale.setScalar(Math.max(.001, .7 + .3 * on));
-    const brk = seg(t, b(27.3), .34, 'i');
-    if (i >= 3) { m.scale.multiplyScalar(1 + .25 * brk); }
-    setOp(m, on * flick * (1 - .62 * back) * (1 - gone) * (i >= 3 ? 1 - brk : 1));
-    m.visible = t < logoT + .01 && m.material.opacity > .002;
+    m.position.z = -380 * back - 300 * gone - 500 * (i >= 3 ? away : 0);
+    m.rotation.x = -.9 * (1 - on); m.position.x = 0;
+    m.scale.setScalar(Math.max(.001, .75 + .25 * cl(on)));
+    setOp(m, cl(on * 1.4) * (1 - .62 * back) * (1 - gone) * (i >= 3 ? 1 - away : 1));
   });
-  W3.lines[3].position.z = 0; // "Grenzen sind" stays in front together with "im Kopf."
   { const a = b(23.5) + .02, gi = t > a && t < a + .2; const k = Math.floor((t - a) * 60) % 3;
     W3.g1.visible = W3.g2.visible = gi; W3.g1.position.x = [-16, 12, -7][k]; W3.g2.position.x = [16, -12, 7][k]; }
-  // bars slam down, then break open
-  W3.bars.forEach((m, i) => {
-    const h = m.userData.home, d = i - 7;
-    const dn = seg(t, b(26) - .2 + Math.abs(d) * .012, .2, 'i'), br = seg(t, b(27.3), .36, 'i');
-    m.position.set(h[0] + d * 160 * br, h[1] + 5600 * (1 - dn) + 600 * br, h[2] + 300 * br);
-    m.rotation.set(0, 0, -d * .05 * br); m.visible = dn > 0 && br < 1;
-  });
-  // logo into focus, then the claim letters
-  const lo = seg(t, logoT - .04, .5, 'o'), fade = seg(t, DUR - .5, .4, 'i');
-  setOp(W3.logo, lo * (1 - fade)); W3.logo.scale.setScalar(1.06 - .06 * lo);
-  W3.mc.forEach((m, i) => { const u = seg(t, b(29) + i * .04, .3, 'o'); m.position.y = -250 - 14 * (1 - u); setOp(m, u * (1 - fade)); });
-  setOp(W3.hd, seg(t, b(30), .4) * (1 - fade));
+  // the full stop of "im Kopf." ignites into the golden spark, flies up and draws the ring
+  const dotW = [W3.dot[0], W3.dot[1] + 680];
+  const ign = seg(t, END - .03, .25, 'o'), RC = W3.RC, R = W3.RR;
+  const fly = seg(t, END + .3, .4, 'io');
+  const drawS = END + .72, drawD = .78, dr = seg(t, drawS, drawD, 'io');
+  const land = seg(t, b(28.8), .4, 'io');
+  let sx, sy;
+  if (t < drawS) { sx = lerp(dotW[0], RC[0], fly); sy = lerp(dotW[1], RC[1] + R, fly); }
+  else if (t < b(28.8)) { const ang = Math.PI / 2 - dr * Math.PI * 2; sx = RC[0] + R * Math.cos(ang); sy = RC[1] + R * Math.sin(ang); }
+  else { sx = lerp(RC[0], 0, land); sy = lerp(RC[1] + R, -220, land); }
+  W3.spark.position.set(sx, sy, 30);
+  const sOut = seg(t, b(29.1), .3);
+  const pulse = 1 + .12 * Math.sin(t * 14);
+  W3.spark.scale.setScalar(Math.max(.001, ign * pulse * (1 + .5 * (1 - fly) * ign) * (1 - .6 * land)));
+  setOp(W3.spark, ign * (1 - sOut));
+  W3.ring.geometry.setDrawRange(0, Math.floor(360 * dr) * 6);
+  W3.ring.visible = dr > 0;
+  const fade = seg(t, DUR - .55, .45, 'i');
+  setOp(W3.ring, (1 - .7 * seg(t, b(29.3), .6)) * (1 - fade));
+  const lo = seg(t, logoT - .04, .55, 'o');
+  setOp(W3.logo, lo * (1 - fade)); W3.logo.scale.setScalar(1.07 - .07 * lo);
+  W3.lline.scale.x = Math.max(.001, seg(t, b(29), .45, 'o')); setOp(W3.lline, (W3.lline.scale.x > .01 ? 1 : 0) * (1 - fade));
+  const fy = (o, y0, a) => { const u = seg(t, a, .45, 'o'); o.position.y = y0 - 24 * (1 - u); setOp(o, u * (1 - fade)); };
+  fy(W3.rl, -290, b(30) - .05); fy(W3.cl1, -405, b(31.5)); fy(W3.cl2, -462, b(31.5) + .12); fy(W3.hd, -560, b(32.6));
 }
 
 function renderAt(t) {

@@ -298,3 +298,30 @@ def karton(d, x, base, s=1.0):
     d.polygon([(x - 60 * s, base - 70 * s), (x - 95 * s, base - 100 * s), (x - 55 * s, base - 95 * s)], fill=(190, 145, 95), outline=dk)
     d.polygon([(x + 60 * s, base - 70 * s), (x + 95 * s, base - 100 * s), (x + 55 * s, base - 95 * s)], fill=(190, 145, 95), outline=dk)
     d.line([(x - 20 * s, base - 40 * s), (x + 20 * s, base - 40 * s)], fill=dk, width=max(2, int(4 * s)))
+
+def gemuesegarten(d, x, base, prog, t, font=None, w=110):
+    """Gemüsebeet (Tag 8, Wunsch justin0885_). x = Mitte, base = Unterkante, w = halbe Breite.
+    prog 0–0,4 Erde umgraben, 0,4–0,7 Samen + Holzrahmen, 0,7–1 Gießkanne/Tropfen + Schild."""
+    if prog <= 0: return
+    soil, dark, wood = (110, 72, 42), (70, 45, 25), (170, 120, 70)
+    q1 = min(1, prog / 0.4)
+    hh = 60
+    d.rectangle([x - w, base - hh, x - w + 2 * w * q1, base], fill=soil)
+    for r in range(3):                                   # Furchen
+        yy = base - hh + 15 + r * 17
+        d.line([(x - w + 8, yy), (x - w + (2 * w - 8) * q1, yy)], fill=dark, width=4)
+    q2 = max(0, min(1, (prog - 0.4) / 0.3))
+    if q2 > 0:
+        d.rectangle([x - w - 8, base - hh - 8, x + w + 8, base], outline=wood, width=8)
+        n = int(12 * q2)
+        for k in range(n):
+            sx = x - w + 18 + (k % 6) * (2 * w - 36) / 5; sy = base - hh + 15 + (k // 6) * 34
+            d.ellipse([sx - 4, sy - 4, sx + 4, sy + 4], fill=(235, 220, 160))
+    q3 = max(0, min(1, (prog - 0.7) / 0.3))
+    if q3 > 0:
+        for k in range(5):                               # Wassertropfen
+            dx = x - w + 30 + k * (2 * w - 60) / 4; dy = base - hh - 50 + ((t * 300 + k * 37) % 50)
+            d.ellipse([dx - 5, dy - 8, dx + 5, dy + 6], fill=(120, 190, 240))
+        d.rectangle([x - w + 20, base - hh - 110, x - w + 28, base - hh], fill=wood)   # Schild links (rechts steht das Katzenhaus)
+        d.rectangle([x - w - 44, base - hh - 140, x - w + 92, base - hh - 100], fill=(250, 245, 230), outline=dark, width=3)
+        if font: d.text((x - w + 24, base - hh - 120), "GARTEN", font=font, fill=(60, 110, 50), anchor="mm")

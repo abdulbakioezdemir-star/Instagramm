@@ -30,3 +30,12 @@ Texte, Preise und Zeiten stehen als HTML in `scene.html` oben. Die Kamerafahrt i
 python3 sound.py soundtrack.wav
 ffmpeg -i video.mp4 -i soundtrack.wav -map 0:v -map 1:a -c:v copy -af loudnorm=I=-14:TP=-1.5 -c:a aac -b:a 192k out.mp4
 ```
+
+## Version 2 – realistisch (`DoenerBros_Motion_Realistic.mp4`)
+
+Diese Version basiert auf den echten Food-Fotos von der Website. Für jedes Foto gibt es eine Tiefenkarte (`v2/maps.py`), dadurch bewegt sich die Kamera mit echter 3D-Parallaxe. Der Döner strahlt mit Gegenlicht-Halo, Lichtstrahlen, wanderndem Glanz, Funkeln, Dampf und Glut. Als Übergänge gibt es einen Zoom durch das Bild, schnelle Schwenks mit Bewegungsunschärfe, einen Dreh-Zoom und Blitz-Schnitte auf den Beat.
+
+```bash
+PAGE=scene2.html node render.js video v2.mp4 30
+python3 sound2.py soundtrack2.wav
+```

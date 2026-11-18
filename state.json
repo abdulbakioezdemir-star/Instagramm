@@ -76,7 +76,11 @@
       "A": "Emre mitnehmen",
       "B": "Zum Friseur: wie Emre"
     },
-    "entscheidet": "Tag 9 (2026-11-19 12:00)"
+    "entscheidet": "Tag 9 (2026-11-19 12:00)",
+    "stand_2026-11-18_17:15": {
+      "A": 0,
+      "B": 9
+    }
   },
   "analyse_2026-11-10_17:30": {
     "followers": 6,
@@ -146,7 +150,16 @@
     "18350595040248470",
     "18129372109850726",
     "18061175711652592",
-    "17956462719282356"
+    "17956462719282356",
+    "18080403389456923",
+    "18129200914914428",
+    "18146564629592619",
+    "18155147143551406",
+    "18108970679206035",
+    "18489643162119132",
+    "17998825920105520",
+    "18105092099669871",
+    "18128989102893797"
   ],
   "tag_3": {
     "abstimmung_tag2": {
@@ -583,5 +596,6 @@
       "skip": 0.295,
       "avg_watch_s": 16.6
     }
-  }
+  },
+  "hinweis_2026-11-18_18uhr": "Befehl 5: 18-Uhr-Lauf hat nichts gerendert/gepostet. 9 Kommentare unter Tag 8 beantwortet (alle B), nichts ausgeblendet. Stand Tag-8-Abstimmung 0:9 für B (Zum Friseur: wie Emre)."
 }
